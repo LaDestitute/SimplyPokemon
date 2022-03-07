@@ -1,6 +1,7 @@
 package com.aquatictyphoon.pokemonmod.item;
 
 import com.aquatictyphoon.pokemonmod.PokemonMod;
+import com.aquatictyphoon.pokemonmod.item.advanced.RareCandyItem;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -62,7 +63,7 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     public static final RegistryObject<Item> Rarecandy = ITEMS.register("rarecandy",
-            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+            () -> new RareCandyItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(new FoodProperties.Builder().alwaysEat().build())));
 
     public static final RegistryObject<Item> Apricorn = ITEMS.register("apricorn",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
@@ -74,6 +75,9 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     public static final RegistryObject<Item> Vivichoke = ITEMS.register("vivichoke",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<Item> Tumblestone = ITEMS.register("tumblestone",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 
