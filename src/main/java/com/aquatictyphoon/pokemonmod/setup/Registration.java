@@ -1,19 +1,31 @@
-package com.aquatictyphoon.pokemonmod.item;
+package com.aquatictyphoon.pokemonmod.setup;
 
-import com.aquatictyphoon.pokemonmod.PokemonMod;
-import com.aquatictyphoon.pokemonmod.item.advanced.RareCandyItem;
+
+import com.aquatictyphoon.pokemonmod.setup.advanced.items.RareCandyItem;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModItems {
-    public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, PokemonMod.MOD_ID);
+import  static com.aquatictyphoon.pokemonmod.PokemonMod.MOD_ID;
 
+public class Registration {
+
+    private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
+    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
+
+    public static  void init(){
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        BLOCKS.register(bus);
+        ITEMS.register(bus);
+    }
+
+    //This is where all is registered
     public static final RegistryObject<Item> Pokeball = ITEMS.register("pokeball",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
@@ -79,11 +91,4 @@ public class ModItems {
 
     public static final RegistryObject<Item> Tumblestone = ITEMS.register("tumblestone",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
-
-
-
-
-    public static void register(IEventBus eventBus){
-        ITEMS.register(eventBus);
-    }
 }
