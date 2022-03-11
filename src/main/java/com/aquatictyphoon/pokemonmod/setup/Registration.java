@@ -1,7 +1,14 @@
 package com.aquatictyphoon.pokemonmod.setup;
 
 
+import com.aquatictyphoon.pokemonmod.setup.advanced.items.PokeballItem;
 import com.aquatictyphoon.pokemonmod.setup.advanced.items.RareCandyItem;
+import com.aquatictyphoon.pokemonmod.setup.entities.Pokeball_Entity;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -17,17 +24,28 @@ import  static com.aquatictyphoon.pokemonmod.PokemonMod.MOD_ID;
 public class Registration {
 
     private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
-    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =DeferredRegister.create(ForgeRegistries.ENTITIES, MOD_ID);
+
 
     public static  void init(){
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         BLOCKS.register(bus);
         ITEMS.register(bus);
+        ENTITY_TYPES.register(bus);
     }
+
+    //Projectiles
+    public static final RegistryObject<EntityType<Pokeball_Entity>> POKE_BALL = ENTITY_TYPES.register("pokeball",
+            () -> EntityType.Builder.<Pokeball_Entity>of(Pokeball_Entity::new,
+                    MobCategory.MISC).sized(0.25F, 0.25F).build("pokeball"));
+
+
+
 
     //This is where all is registered
     public static final RegistryObject<Item> Pokeball = ITEMS.register("pokeball",
-            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+            () -> new PokeballItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     public static final RegistryObject<Item> Greatball = ITEMS.register("greatball",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));

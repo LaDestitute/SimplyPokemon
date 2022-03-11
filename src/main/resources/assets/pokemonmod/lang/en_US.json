@@ -20,5 +20,6 @@
   "item.pokemonmod.oranberry": "Oran Berry",
   "item.pokemonmod.medicinalleek": "Medicinal Leek",
   "item.pokemonmod.vivichoke": "Vivichoke",
-  "item.pokemonmod.tumblestone": "Tumble Stone"
+  "item.pokemonmod.tumblestone": "Tumble Stone",
+  "tooltip.pokemonmod.item.pokeball": "A device for catching wild Pokémon."
 }
