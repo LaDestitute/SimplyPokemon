@@ -29,6 +29,7 @@ public class PokemonMod {
         IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
         modbus.addListener(ModSetup::init);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modbus.addListener(ClientSetup::init));
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientSetup::initRenders);
 
     }
 }
