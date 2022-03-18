@@ -1,5 +1,6 @@
 package com.aquatictyphoon.pokemonmod.setup.entities;
 
+import com.aquatictyphoon.pokemonmod.setup.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.nbt.CompoundTag;
@@ -18,6 +19,8 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
+
 import static com.aquatictyphoon.pokemonmod.setup.Registration.POKEBALL;
 import static com.aquatictyphoon.pokemonmod.setup.Registration.POKE_BALL;
 
@@ -30,51 +33,53 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
     public Pokeball_Entity(LivingEntity entity, Level level, InteractionHand pHand) {
         super(POKE_BALL.get(), entity, level);
         this.setOwner(entity);
-        PokeballItem = entity.getItemInHand(pHand);
+       // PokeballItem = entity.getItemInHand(pHand);
     }
 
-    private static ItemStack PokeballItem;
+    public ItemStack stack = ItemStack.EMPTY;
 
 
     protected Item getDefaultItem() {
         return (POKEBALL.get());
     }
 
-    public boolean containsEntity() {
-        return this.PokeballItem.hasTag() && this.PokeballItem.getTag().contains("entity");
+    //Helper
+    public static boolean containsEntity(@Nonnull ItemStack stack) {
+        return stack.hasTag() && stack.getTag().contains("entity");
     }
 
-    public Entity getEntityFromNBT(CompoundTag nbt, Level level, boolean withInfo) {
-        @SuppressWarnings("deprecation")
-        Entity entity = ForgeRegistries.ENTITIES.getValue(new ResourceLocation(nbt.getString("entity"))).create(level);
-        if (withInfo)
-            entity.load(nbt);
+    public static Entity getEntityFromStack(ItemStack stack, Level world, boolean withInfo) {
+        Entity entity = ForgeRegistries.ENTITIES.getValue(new ResourceLocation(stack.getTag().getString("entity"))).create(world);
+        if (withInfo) entity.load(stack.getTag());
         return entity;
     }
+
 
     protected void onHitEntity(EntityHitResult result)
     {
         Entity target = result.getEntity();
         if (result.getType() == EntityHitResult.Type.ENTITY && (!(result.getEntity() instanceof Player))) {
             if (!level.isClientSide) {
-                if (containsEntity())
-                {
-                   // Entity owned_pokemon = getEntityFromNBT(nbt, target.level, true);
-                   // BlockPos blockPos = this.blockPosition();
-                   // owned_pokemon.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
-                   // level.addFreshEntity(owned_pokemon);
-                    System.out.println("RELEASE SUCCESS!");
+                Player player = (Player) this.getOwner();
+                if(containsEntity(stack)) {
+                    Entity entity = getEntityFromStack(stack, player.level, true);
+                    entity.absMoveTo(this.getX(), this.getY(), this.getZ(), 0, 0);
+                    stack.setTag(null);
+                    player.level.addFreshEntity(entity);
                 }
-                else
+                if(!containsEntity(stack))
                 {
-                    CompoundTag entityid;
-                    entityid = target.serializeNBT();
-                    ItemStack emptyball = new ItemStack(POKEBALL.get());
-                    emptyball.getOrCreateTag().put("entity", entityid);
-                    ItemEntity owned_ball_drop = new ItemEntity(target.level, target.getX(), target.getY(), target.getZ(), emptyball);
-                    target.level.addFreshEntity(owned_ball_drop);
+                    CompoundTag nbt = new CompoundTag();
+                    String entityID = EntityType.getKey(target.getType()).toString();
+                    nbt.putString("entity", entityID);
+                    nbt.putString("id", EntityType.getKey(target.getType()).toString());
+                    target.save(nbt);
+                    ItemStack owned_ball = new ItemStack(Registration.POKEBALL.get());
+                    owned_ball.setTag(nbt);
+                    ItemEntity ball_drop = new ItemEntity(target.level, target.getX(), target.getY(), target.getZ(), owned_ball);
+                    level.addFreshEntity(ball_drop);
                     target.discard();
-                    System.out.println("CAPTURE SUCCESS!");
+
                 }
             }
         }
@@ -82,8 +87,39 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
 
 
     protected void onHitBlock(@NotNull BlockHitResult result) {
+        Player player = (Player) this.getOwner();
+        if (player == null)
+        {
+            return;
+        }
+        InteractionHand hand = InteractionHand.MAIN_HAND;
+        ItemStack stack = player.getMainHandItem();
+        if (player.getCommandSenderWorld().isClientSide || !containsEntity(stack))
+        {
+            return;
+        }
+        Entity entity = getEntityFromStack(stack, player.level, true);
+        BlockPos blockPos = this.blockPosition();
+        entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
+        stack.setTag(null);
+        player.setItemInHand(hand, stack);
+        player.level.addFreshEntity(entity);
         if (!level.isClientSide) {
             this.discard();
         }
     }
+
+    public void addAdditionalSaveData(CompoundTag p_213281_1_) {
+        super.addAdditionalSaveData(p_213281_1_);
+        if (!stack.isEmpty()) {
+            p_213281_1_.put("pokeball", stack.save(stack.getOrCreateTag()));
+        }
+
+    }
+
+    public void readAdditionalSaveData(CompoundTag p_70037_1_) {
+        super.readAdditionalSaveData(p_70037_1_);
+        stack = ItemStack.of(p_70037_1_.getCompound("pokeball"));
+    }
+
 }
