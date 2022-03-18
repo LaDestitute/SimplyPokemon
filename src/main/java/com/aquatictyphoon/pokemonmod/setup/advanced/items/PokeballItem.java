@@ -22,6 +22,7 @@ public class PokeballItem extends Item {
         super(pProperties);
     }
 
+
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         pTooltipComponents.add(new TranslatableComponent("tooltip.pokemonmod.item.pokeball"));
@@ -29,19 +30,19 @@ public class PokeballItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
-        pLevel.playSound((Player)null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
+        pLevel.playSound(pPlayer, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
         pPlayer.getCooldowns().addCooldown(this, 10);
-        ItemStack stack = pPlayer.getItemInHand(pHand);
+        ItemStack PokeballItem = pPlayer.getItemInHand(pHand);
         if (!pLevel.isClientSide) {
-            Pokeball_Entity projectile = new Pokeball_Entity(pPlayer, pLevel);
-            projectile.setItem(stack);
+            Pokeball_Entity projectile = new Pokeball_Entity(pPlayer, pLevel , pHand);
+            projectile.setItem(PokeballItem);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);
         }
 
         pPlayer.awardStat(Stats.ITEM_USED.get(this));
-        stack.shrink(1);
-        return InteractionResultHolder.sidedSuccess(stack, pLevel.isClientSide());
+        PokeballItem.shrink(1);
+        return InteractionResultHolder.sidedSuccess(PokeballItem, pLevel.isClientSide());
 
     }
 

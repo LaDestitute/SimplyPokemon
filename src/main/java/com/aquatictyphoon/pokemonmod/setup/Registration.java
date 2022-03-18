@@ -4,11 +4,8 @@ package com.aquatictyphoon.pokemonmod.setup;
 import com.aquatictyphoon.pokemonmod.setup.advanced.items.PokeballItem;
 import com.aquatictyphoon.pokemonmod.setup.advanced.items.RareCandyItem;
 import com.aquatictyphoon.pokemonmod.setup.entities.Pokeball_Entity;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -44,69 +41,69 @@ public class Registration {
 
 
     //This is where all is registered
-    public static final RegistryObject<Item> Pokeball = ITEMS.register("pokeball",
+    public static final RegistryObject<Item> POKEBALL = ITEMS.register("pokeball",
             () -> new PokeballItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Greatball = ITEMS.register("greatball",
+    public static final RegistryObject<Item> GREATBALL = ITEMS.register("greatball",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Ultraball = ITEMS.register("ultraball",
+    public static final RegistryObject<Item> ULTRABALL = ITEMS.register("ultraball",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Masterball = ITEMS.register("masterball",
+    public static final RegistryObject<Item> MASTERBALL = ITEMS.register("masterball",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Potion = ITEMS.register("potion",
+    public static final RegistryObject<Item> POTION = ITEMS.register("potion",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Superpotion = ITEMS.register("superpotion",
+    public static final RegistryObject<Item> SUPERPOTION = ITEMS.register("superpotion",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Hyperpotion = ITEMS.register("hyperpotion",
+    public static final RegistryObject<Item> HYPERPOTION = ITEMS.register("hyperpotion",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Maxpotion = ITEMS.register("maxpotion",
+    public static final RegistryObject<Item> MAXPOTION = ITEMS.register("maxpotion",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Fullrestore = ITEMS.register("fullrestore",
+    public static final RegistryObject<Item> FULLRESTORE = ITEMS.register("fullrestore",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Revive = ITEMS.register("revive",
+    public static final RegistryObject<Item> REVIVE = ITEMS.register("revive",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Maxrevive = ITEMS.register("maxrevive",
+    public static final RegistryObject<Item> MAXREVIVE = ITEMS.register("maxrevive",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Antidote = ITEMS.register("antidote",
+    public static final RegistryObject<Item> ANTIDOTE = ITEMS.register("antidote",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Burnheal = ITEMS.register("burnheal",
+    public static final RegistryObject<Item> BURNHEAL = ITEMS.register("burnheal",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Iceheal = ITEMS.register("iceheal",
+    public static final RegistryObject<Item> ICEHEAL = ITEMS.register("iceheal",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Awakening = ITEMS.register("awakening",
+    public static final RegistryObject<Item> AWAKENING = ITEMS.register("awakening",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Paralyzeheal = ITEMS.register("paralyzeheal",
+    public static final RegistryObject<Item> PARALYZEHEAL = ITEMS.register("paralyzeheal",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Rarecandy = ITEMS.register("rarecandy",
+    public static final RegistryObject<Item> RARECANDY = ITEMS.register("rarecandy",
             () -> new RareCandyItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(new FoodProperties.Builder().alwaysEat().build())));
 
-    public static final RegistryObject<Item> Apricorn = ITEMS.register("apricorn",
+    public static final RegistryObject<Item> APRICORN = ITEMS.register("apricorn",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Oranberry = ITEMS.register("oranberry",
+    public static final RegistryObject<Item> ORANBERRY = ITEMS.register("oranberry",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(new FoodProperties.Builder().nutrition(5).saturationMod(4.5f).alwaysEat().build())));
 
-    public static final RegistryObject<Item> Medicinalleek = ITEMS.register("medicinalleek",
+    public static final RegistryObject<Item> MEDICINALLEEK = ITEMS.register("medicinalleek",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Vivichoke = ITEMS.register("vivichoke",
+    public static final RegistryObject<Item> VIVICHOKE = ITEMS.register("vivichoke",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> Tumblestone = ITEMS.register("tumblestone",
+    public static final RegistryObject<Item> TUMBLESTONE = ITEMS.register("tumblestone",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 }
