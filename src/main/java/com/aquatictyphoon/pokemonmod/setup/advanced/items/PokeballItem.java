@@ -68,32 +68,19 @@ public class PokeballItem extends Item {
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pHand) {
+    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
         pLevel.playSound(pPlayer, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
         pPlayer.getCooldowns().addCooldown(this, 10);
         ItemStack PokeballItem = pPlayer.getItemInHand(pHand);
-
-
-        if ((!pLevel.isClientSide) && !(getID(pPlayer.getItemInHand(pHand)).isEmpty())){
-            Pokeball_Entity projectile = new Pokeball_Entity(pPlayer, pLevel, pHand);
-
-//            if ((getcaughtid(entity)))  // here is what I want to modify
-//            {
-
-               projectile.setItem(PokeballItem);
-                projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 0.8F, 1.0F);
-                pLevel.addFreshEntity(projectile);
-
- //           }
-
-             pPlayer.awardStat(Stats.ITEM_USED.get(this));
-        if ((!pLevel.isClientSide) && (getID(pPlayer.getItemInHand(pHand)).isEmpty())){
-             projectile.setItem(PokeballItem);
-             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
-             pLevel.addFreshEntity(projectile);
-             PokeballItem.shrink(1);
-            }
+        if (!pLevel.isClientSide) {
+            Pokeball_Entity projectile = new Pokeball_Entity(pPlayer, pLevel , pHand);
+            projectile.setItem(PokeballItem);
+            projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
+            pLevel.addFreshEntity(projectile);
         }
+
+        pPlayer.awardStat(Stats.ITEM_USED.get(this));
+        PokeballItem.shrink(1);
         return InteractionResultHolder.sidedSuccess(PokeballItem, pLevel.isClientSide());
 
     }
