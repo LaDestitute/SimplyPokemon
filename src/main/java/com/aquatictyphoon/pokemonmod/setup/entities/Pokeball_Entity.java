@@ -2,6 +2,8 @@ package com.aquatictyphoon.pokemonmod.setup.entities;
 
 import com.aquatictyphoon.pokemonmod.setup.Registration;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -21,6 +23,9 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
+import java.util.Objects;
+import java.util.Random;
+
 import static com.aquatictyphoon.pokemonmod.setup.Registration.POKEBALL;
 import static com.aquatictyphoon.pokemonmod.setup.Registration.POKE_BALL;
 
@@ -33,44 +38,57 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
     public Pokeball_Entity(LivingEntity entity, Level level, InteractionHand pHand) {
         super(POKE_BALL.get(), entity, level);
         this.setOwner(entity);
-       // PokeballItem = entity.getItemInHand(pHand);
+        PokeballItem = entity.getItemInHand(pHand);
     }
 
-    public ItemStack stack = ItemStack.EMPTY;
+    private static ItemStack PokeballItem = ItemStack.EMPTY;
 
 
-    protected Item getDefaultItem() {
+    protected @NotNull Item getDefaultItem() {
         return (POKEBALL.get());
     }
 
-    //Helper
-    public static boolean containsEntity(@Nonnull ItemStack stack) {
-        return stack.hasTag() && stack.getTag().contains("entity");
+    public boolean containsEntity(@Nonnull ItemStack PokeballItem) {
+        if (!PokeballItem.hasTag()) return false;
+        assert PokeballItem.getTag() != null;
+        return PokeballItem.getTag().contains("entity");
     }
 
-    public static Entity getEntityFromStack(ItemStack stack, Level world, boolean withInfo) {
-        Entity entity = ForgeRegistries.ENTITIES.getValue(new ResourceLocation(stack.getTag().getString("entity"))).create(world);
-        if (withInfo) entity.load(stack.getTag());
+    public Entity getEntityFromNBT(@Nonnull ItemStack PokeballItem, Level world, boolean withInfo) {
+        assert PokeballItem.getTag() != null;
+        Entity entity = Objects.requireNonNull(ForgeRegistries.ENTITIES.getValue(new ResourceLocation(PokeballItem.getTag().getString("entity")))).create(world);
+        if (withInfo) {
+            assert entity != null;
+            entity.load(PokeballItem.getTag());
+        }
         return entity;
     }
 
-
-    protected void onHitEntity(EntityHitResult result)
-    {
+    protected void onHitEntity(EntityHitResult result) {
         Entity target = result.getEntity();
-        if (result.getType() == EntityHitResult.Type.ENTITY && (!(result.getEntity() instanceof Player))) {
+        if (result.getType() == EntityHitResult.Type.ENTITY && (!(result.getEntity() instanceof Player)) && ((result.getEntity() instanceof TamableAnimal))){
             if (!level.isClientSide) {
-                Player player = (Player) this.getOwner();
-                if(containsEntity(stack)) {
-                    Entity entity = getEntityFromStack(stack, player.level, true);
-                    entity.absMoveTo(this.getX(), this.getY(), this.getZ(), 0, 0);
-                    stack.setTag(null);
-                    player.level.addFreshEntity(entity);
+                if ((containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame())) {
+                    Entity entity = getEntityFromNBT(PokeballItem, target.level, true);
+                    BlockPos blockPos = this.blockPosition();
+                    entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
+                    level.addFreshEntity(entity);
+                    //System.out.println("RELEASE SUCCESS!");
                 }
-                if(!containsEntity(stack))
+                if ((!containsEntity(PokeballItem)) && (target.isAlive() && !((TamableAnimal) target).isTame()))
                 {
+                    Player player = (Player) this.getOwner();
+                    if(player == null){
+                        return;
+                    }
+                    ((TamableAnimal) target).tame((Player) this.getOwner());
                     CompoundTag nbt = new CompoundTag();
                     String entityID = EntityType.getKey(target.getType()).toString();
+
+                    Random random = new Random();
+                    int CaughtID = random.nextInt(999999)+1;
+
+                    nbt.putString("entity", String.valueOf(CaughtID));
                     nbt.putString("entity", entityID);
                     nbt.putString("id", EntityType.getKey(target.getType()).toString());
                     target.save(nbt);
@@ -79,47 +97,47 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     ItemEntity ball_drop = new ItemEntity(target.level, target.getX(), target.getY(), target.getZ(), owned_ball);
                     level.addFreshEntity(ball_drop);
                     target.discard();
+                    //System.out.println("CAPTURE SUCCESS!");
+                }
+                if(((!containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame())))
+                {
+                    Player player = (Player) this.getOwner();
+                    if(player == null){
+                        return;
+                    }
 
+                    player.displayClientMessage(new TranslatableComponent("pokeball.cannot.catch"), true);
                 }
             }
         }
-    }
+//        if (result.getType() == EntityHitResult.Type.ENTITY && ((result.getEntity() instanceof Player))){
+//            if((containsEntity(PokeballItem))){
+//                //Need to program battles
+//            }
+//            else{
+//                //Do nothing
+//            }
+//        }
 
+    }
 
     protected void onHitBlock(@NotNull BlockHitResult result) {
-        Player player = (Player) this.getOwner();
-        if (player == null)
-        {
-            return;
-        }
-        InteractionHand hand = InteractionHand.MAIN_HAND;
-        ItemStack stack = player.getMainHandItem();
-        if (player.getCommandSenderWorld().isClientSide || !containsEntity(stack))
-        {
-            return;
-        }
-        Entity entity = getEntityFromStack(stack, player.level, true);
-        BlockPos blockPos = this.blockPosition();
-        entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
-        stack.setTag(null);
-        player.setItemInHand(hand, stack);
-        player.level.addFreshEntity(entity);
         if (!level.isClientSide) {
-            this.discard();
+            if (containsEntity(PokeballItem)) {
+                Player player = (Player) this.getOwner();
+                if (player == null) {
+                    return;
+                }
+                Entity entity = getEntityFromNBT(PokeballItem, player.level, true);
+                BlockPos blockPos = this.blockPosition();
+                entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
+                level.addFreshEntity(entity);
+                //System.out.println("RELEASE SUCCESS!");
+                this.discard();
+            }
+            else {
+                this.discard();
+            }
         }
     }
-
-    public void addAdditionalSaveData(CompoundTag p_213281_1_) {
-        super.addAdditionalSaveData(p_213281_1_);
-        if (!stack.isEmpty()) {
-            p_213281_1_.put("pokeball", stack.save(stack.getOrCreateTag()));
-        }
-
-    }
-
-    public void readAdditionalSaveData(CompoundTag p_70037_1_) {
-        super.readAdditionalSaveData(p_70037_1_);
-        stack = ItemStack.of(p_70037_1_.getCompound("pokeball"));
-    }
-
 }

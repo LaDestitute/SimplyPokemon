@@ -1,4 +1,4 @@
-package com.aquatictyphoon.pokemonmod.setup;
+package com.aquatictyphoon.pokemonmod.setup.Client;
 
 
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;

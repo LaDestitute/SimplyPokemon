@@ -1,7 +1,7 @@
 package com.aquatictyphoon.pokemonmod;
 
 import com.aquatictyphoon.pokemonmod.setup.ModSetup;
-import com.aquatictyphoon.pokemonmod.setup.ClientSetup;
+import com.aquatictyphoon.pokemonmod.setup.Client.ClientSetup;
 import com.aquatictyphoon.pokemonmod.setup.Registration;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
