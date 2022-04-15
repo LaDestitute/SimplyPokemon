@@ -1,6 +1,7 @@
 package com.aquatictyphoon.pokemonmod.setup.entities;
 
 import com.aquatictyphoon.pokemonmod.setup.Registration;
+import jdk.jfr.Event;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.TamableAnimal;
@@ -22,6 +23,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.Objects;
 import java.util.Random;
@@ -68,7 +70,7 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
         Entity target = result.getEntity();
         if (result.getType() == EntityHitResult.Type.ENTITY && (!(result.getEntity() instanceof Player)) && ((result.getEntity() instanceof TamableAnimal))){
             if (!level.isClientSide) {
-                if ((containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame())) {
+                if ((containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame()) && !(target.getPersistentData().getDouble("CaughtID") == PokeballItem.getOrCreateTag().getDouble("CaughtID"))) {
                     Entity entity = getEntityFromNBT(PokeballItem, target.level, true);
                     BlockPos blockPos = this.blockPosition();
                     entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
@@ -86,9 +88,9 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     String entityID = EntityType.getKey(target.getType()).toString();
 
                     Random random = new Random();
-                    int CaughtID = random.nextInt(999999)+1;
+                    Integer CaughtID = random.nextInt(999999)+1;
 
-                    nbt.putString("entity", String.valueOf(CaughtID));
+                    nbt.putDouble("CaughtID", CaughtID);
                     nbt.putString("entity", entityID);
                     nbt.putString("id", EntityType.getKey(target.getType()).toString());
                     target.save(nbt);
@@ -99,14 +101,16 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     target.discard();
                     //System.out.println("CAPTURE SUCCESS!");
                 }
-                if(((!containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame())))
+                //Retrieval
+                if(((containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame())) && (target.getPersistentData().getDouble("CaughtID") == PokeballItem.getOrCreateTag().getDouble("CaughtID")))
                 {
                     Player player = (Player) this.getOwner();
                     if(player == null){
                         return;
                     }
 
-                    player.displayClientMessage(new TranslatableComponent("pokeball.cannot.catch"), true);
+                    System.out.println("RECAPTURE SUCCESS!");
+                    //player.displayClientMessage(new TranslatableComponent("pokeball.cannot.catch"), true);
                 }
             }
         }
