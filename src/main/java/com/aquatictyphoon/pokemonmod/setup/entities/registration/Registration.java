@@ -1,7 +1,7 @@
 package com.aquatictyphoon.pokemonmod.setup.entities.registration;
 
 
-import com.aquatictyphoon.pokemonmod.setup.advanced.items.PokeBallItem;
+import com.aquatictyphoon.pokemonmod.setup.advanced.items.projectiles.PokeBallItem;
 import com.aquatictyphoon.pokemonmod.setup.advanced.items.RareCandyItem;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;

@@ -1,4 +1,4 @@
-package com.aquatictyphoon.pokemonmod.setup.advanced.items;
+package com.aquatictyphoon.pokemonmod.setup.advanced.items.projectiles;
 
 import com.aquatictyphoon.pokemonmod.setup.entities.misc.Pokeball_Entity;
 import net.minecraft.client.resources.language.I18n;
@@ -68,7 +68,7 @@ public class PokeBallItem extends Item {
         {
             Pokeball_Entity projectile = new Pokeball_Entity(pPlayer, pLevel, pHand);
             projectile.setItem(PokeballItem);
-            projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 0.8F, 1.0F);
+            projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.3F, 1.0F);
             pLevel.addFreshEntity(projectile);
         }
 
@@ -76,7 +76,7 @@ public class PokeBallItem extends Item {
         {
              Pokeball_Entity projectile = new Pokeball_Entity(pPlayer, pLevel, pHand);
              projectile.setItem(PokeballItem);
-             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
+             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.3F, 1.0F);
              pLevel.addFreshEntity(projectile);
              PokeballItem.shrink(1);
         }
