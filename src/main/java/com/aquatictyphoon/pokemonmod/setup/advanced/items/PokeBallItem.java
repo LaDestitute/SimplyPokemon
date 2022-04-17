@@ -1,6 +1,6 @@
 package com.aquatictyphoon.pokemonmod.setup.advanced.items;
 
-import com.aquatictyphoon.pokemonmod.setup.entities.Pokeball_Entity;
+import com.aquatictyphoon.pokemonmod.setup.entities.misc.Pokeball_Entity;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;

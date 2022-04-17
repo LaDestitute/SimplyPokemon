@@ -1,4 +1,4 @@
-package com.aquatictyphoon.pokemonmod.setup.entities;
+package com.aquatictyphoon.pokemonmod.setup.entities.misc;
 
 import com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration;
 import net.minecraft.core.BlockPos;

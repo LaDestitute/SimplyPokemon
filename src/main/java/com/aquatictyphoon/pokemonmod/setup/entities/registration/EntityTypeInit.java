@@ -1,7 +1,7 @@
 package com.aquatictyphoon.pokemonmod.setup.entities.registration;
 
 import com.aquatictyphoon.pokemonmod.PokemonMod;
-import com.aquatictyphoon.pokemonmod.setup.entities.Pokeball_Entity;
+import com.aquatictyphoon.pokemonmod.setup.entities.misc.Pokeball_Entity;
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
