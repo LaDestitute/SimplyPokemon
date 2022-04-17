@@ -1,9 +1,7 @@
 package com.aquatictyphoon.pokemonmod.setup.entities;
 
-import com.aquatictyphoon.pokemonmod.setup.Registration;
-import jdk.jfr.Event;
+import com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.nbt.CompoundTag;
@@ -23,13 +21,12 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import java.util.Objects;
 import java.util.Random;
 
-import static com.aquatictyphoon.pokemonmod.setup.Registration.POKEBALL;
-import static com.aquatictyphoon.pokemonmod.setup.Registration.POKE_BALL;
+import static com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration.POKEBALL;
+import static com.aquatictyphoon.pokemonmod.setup.entities.registration.EntityTypeInit.POKE_BALL;
 
 public class Pokeball_Entity extends ThrowableItemProjectile {
 
@@ -70,7 +67,7 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
         Entity target = result.getEntity();
         if (result.getType() == EntityHitResult.Type.ENTITY && (!(result.getEntity() instanceof Player)) && ((result.getEntity() instanceof TamableAnimal))){
             if (!level.isClientSide) {
-                if ((containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame()) && !(target.getPersistentData().getDouble("CaughtID") == PokeballItem.getOrCreateTag().getDouble("CaughtID"))) {
+                if ((containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame()) && !(target.getPersistentData().getDouble("UniqueID") == PokeballItem.getOrCreateTag().getDouble("UniqueID"))) {
                     Entity entity = getEntityFromNBT(PokeballItem, target.level, true);
                     BlockPos blockPos = this.blockPosition();
                     entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
@@ -88,9 +85,9 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     String entityID = EntityType.getKey(target.getType()).toString();
 
                     Random random = new Random();
-                    Integer CaughtID = random.nextInt(999999)+1;
+                    Integer UniqueID = random.nextInt(999999)+1;
 
-                    nbt.putDouble("CaughtID", CaughtID);
+                    nbt.putDouble("UniqueID", UniqueID);
                     nbt.putString("entity", entityID);
                     nbt.putString("id", EntityType.getKey(target.getType()).toString());
                     target.save(nbt);
@@ -102,7 +99,7 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     //System.out.println("CAPTURE SUCCESS!");
                 }
                 //Retrieval
-                if(((containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame())) && (target.getPersistentData().getDouble("CaughtID") == PokeballItem.getOrCreateTag().getDouble("CaughtID")))
+                if(((containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame())) && (target.getPersistentData().getDouble("UniqueID") == PokeballItem.getOrCreateTag().getDouble("UniqueID")))
                 {
                     Player player = (Player) this.getOwner();
                     if(player == null){

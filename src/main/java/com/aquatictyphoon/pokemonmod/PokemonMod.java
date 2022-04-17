@@ -1,11 +1,10 @@
 package com.aquatictyphoon.pokemonmod;
 
-import com.aquatictyphoon.pokemonmod.setup.ModSetup;
-import com.aquatictyphoon.pokemonmod.setup.Client.ClientSetup;
-import com.aquatictyphoon.pokemonmod.setup.Registration;
-import net.minecraftforge.api.distmarker.Dist;
+import com.aquatictyphoon.pokemonmod.setup.Client.ClientEventBusSubscriber;
+import com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration;
+import com.aquatictyphoon.pokemonmod.setup.entities.registration.EntityTypeInit;
+import com.aquatictyphoon.pokemonmod.util.CommonEventBusSubscriber;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -24,12 +23,13 @@ public class PokemonMod {
     public PokemonMod() {
         //Register the deferred registry
         Registration.init();
+        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        EntityTypeInit.ENTITIES.register(modEventBus);
 
         //Register the setup method for mod loading
         IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
-        modbus.addListener(ModSetup::init);
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modbus.addListener(ClientSetup::init));
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientSetup::initRenders);
+        modbus.addListener(CommonEventBusSubscriber::onStaticCommonSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEventBusSubscriber::initRenders);
 
     }
 }
