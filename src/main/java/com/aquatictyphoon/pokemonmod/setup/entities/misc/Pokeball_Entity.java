@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 
 import java.util.Objects;
-import java.util.Random;
+import java.util.UUID;
 
 import static com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration.POKEBALL;
 import static com.aquatictyphoon.pokemonmod.setup.entities.registration.EntityTypeInit.POKE_BALL;
@@ -83,11 +83,8 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     ((TamableAnimal) target).tame((Player) this.getOwner());
                     CompoundTag nbt = new CompoundTag();
                     String entityID = EntityType.getKey(target.getType()).toString();
-
-                    Random random = new Random();
-                    Integer UniqueID = random.nextInt(999999)+1;
-
-                    nbt.putDouble("UniqueID", UniqueID);
+                    UUID TargetUUID = target.getUUID();
+                    nbt.putString("UUID", String.valueOf(TargetUUID));
                     nbt.putString("entity", entityID);
                     nbt.putString("id", EntityType.getKey(target.getType()).toString());
                     target.save(nbt);
@@ -99,15 +96,23 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     //System.out.println("CAPTURE SUCCESS!");
                 }
                 //Retrieval
-                if(((containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame())) && (target.getPersistentData().getDouble("UniqueID") == PokeballItem.getOrCreateTag().getDouble("UniqueID")))
+                if((containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame()) && (String.valueOf(target.getUUID()).equals(String.valueOf(PokeballItem.getOrCreateTag().getUUID("UUID")))))
                 {
+                    //System.out.println("RECAPTURE SUCCESS!");
                     Player player = (Player) this.getOwner();
                     if(player == null){
                         return;
                     }
-
-                    System.out.println("RECAPTURE SUCCESS!");
-                    //player.displayClientMessage(new TranslatableComponent("pokeball.cannot.catch"), true);
+                    CompoundTag nbt = new CompoundTag();
+                    String entityID = EntityType.getKey(target.getType()).toString();
+                    UUID TargetUUID = target.getUUID();
+                    nbt.putString("UUID", String.valueOf(TargetUUID));
+                    nbt.putString("entity", entityID);
+                    nbt.putString("id", EntityType.getKey(target.getType()).toString());
+                    target.save(nbt);
+                    PokeballItem.setTag(nbt);
+                    this.discard();
+                    target.discard();
                 }
             }
         }

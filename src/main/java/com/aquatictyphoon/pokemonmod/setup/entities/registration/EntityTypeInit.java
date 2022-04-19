@@ -26,7 +26,7 @@ public class EntityTypeInit {
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
-        event.put(POKEMON.get(), PokemonEntity.customAttributes().build());
+        event.put(POKEMON.get(), PokemonEntity.createAttributes().build());
     }
 
 

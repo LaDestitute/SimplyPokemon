@@ -23,5 +23,7 @@
   "item.pokemonmod.tumblestone": "Tumble Stone",
   "tooltip.pokemonmod.item.pokeball": "A device for catching wild Pokémon.",
   "pokeball.cannot.catch": "You cannot catch a tamed pokemon!",
-  "pokeball.cannot.catch.player": "They cannot be caught!"
+  "pokeball.cannot.catch.player": "They cannot be caught!",
+  "entity.pokemonmod.pokemon":"pokemon"
+
 }

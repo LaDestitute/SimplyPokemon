@@ -1,4 +1,4 @@
-package com.aquatictyphoon.pokemonmod.setup.entities.pokemon;
+package com.aquatictyphoon.pokemonmod.setup.pokedata;
 
 @SuppressWarnings({"SpellCheckingInspection", "unused"})
 
