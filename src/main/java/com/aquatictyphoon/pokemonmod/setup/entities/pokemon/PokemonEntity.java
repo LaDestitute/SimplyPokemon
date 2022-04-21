@@ -3,13 +3,13 @@ package com.aquatictyphoon.pokemonmod.setup.entities.pokemon;
 import com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
@@ -22,6 +22,7 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -34,15 +35,10 @@ public class PokemonEntity extends TamableAnimal {
 
     private static final EntityDataAccessor<Integer> ID_SIZE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> POKEMON_LEVEL = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
-
+    private static final EntityDataAccessor<Integer> SPECIES = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
 
     public PokemonEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
-
-        String pokelevelstring = Integer.toString(this.entityData.get(POKEMON_LEVEL));
-
-        setCustomName(new TextComponent("Pokemon" + "Level" + pokelevelstring));
-
         setCustomNameVisible(true);
     }
 
@@ -82,17 +78,45 @@ public class PokemonEntity extends TamableAnimal {
     }
 
 
+    public String getPokeName(){
+
+        int species = this.getPokeSpecies();
+
+        if(species == 1) {
+            String getPokeName = ("Bulbasaur");
+            return getPokeName;
+        }
+        else if(species == 2) {
+            String getPokeName = ("Ivysaur");
+            return getPokeName;
+        }
+        else{
+            String getPokeName = ("MissingNo");
+            return getPokeName;
+        }
+    }
+
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(ID_SIZE, 3);
         this.entityData.define(POKEMON_LEVEL, 1);
+        this.entityData.define(SPECIES, 1);
     }
+
+    protected void setPokeSpecies(int pSize, boolean pResetHealth) {
+        int i = Mth.clamp(pSize, 1, 151);
+        this.entityData.set(SPECIES, i);
+    }
+
 
     protected void setPokeLevel(int pSize, boolean pResetHealth) {
         int i = Mth.clamp(pSize, 1, 100);
         this.entityData.set(POKEMON_LEVEL, i);
     }
 
+    public int getPokeSpecies() {
+        return this.entityData.get(SPECIES);
+    }
 
     protected void setSize(int pSize, boolean pResetHealth) {
         int i = Mth.clamp(pSize, 1, 5);
@@ -111,11 +135,13 @@ public class PokemonEntity extends TamableAnimal {
         super.addAdditionalSaveData(pCompound);
         pCompound.putInt("Size", this.getSize() - 1);
         pCompound.putInt("Level", this.getPokeLevel() - 1);
+        pCompound.putInt("Species", this.getPokeSpecies() - 1);
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
         this.setSize(pCompound.getInt("Size") + 1, false);
         this.setPokeLevel(pCompound.getInt("Level") + 1, false);
+        this.setPokeSpecies(pCompound.getInt("Species") + 1, false);
         super.readAdditionalSaveData(pCompound);
     }
 
@@ -161,15 +187,17 @@ public class PokemonEntity extends TamableAnimal {
     public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         Item item = itemstack.getItem();
-        if (this.level.isClientSide) {
+        if (!(this.level.isClientSide)) {
             if (pPlayer.isHolding((Registration.RARECANDY.get())) && this.isOwnedBy(pPlayer) && this.isTame()) {
                 itemstack.shrink(1);
-                level.addParticle(ParticleTypes.HEART, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.random.nextDouble() - 0.5D) * 2.0D, -this.random.nextDouble(), (this.random.nextDouble() - 0.5D) * 2.0D);
-                this.setSize(+1, false);
+                this.level.addParticle(ParticleTypes.HEART, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.random.nextDouble() - 0.5D) * 2.0D, -this.random.nextDouble(), (this.random.nextDouble() - 0.5D) * 2.0D);
+                this.setPokeLevel((this.entityData.get(POKEMON_LEVEL))+1, false);
+                this.level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.AMBIENT, 3.0F, 1.0F);
                 return InteractionResult.SUCCESS;
+            }
 
-
-
+            if (pPlayer.isHolding((Items.NAME_TAG))){
+                return InteractionResult.FAIL;
             }
         }
         return super.mobInteract(pPlayer, pHand);
