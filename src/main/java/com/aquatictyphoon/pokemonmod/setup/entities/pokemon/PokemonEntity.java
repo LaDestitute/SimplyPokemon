@@ -1,33 +1,49 @@
 package com.aquatictyphoon.pokemonmod.setup.entities.pokemon;
 
+import com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-import static net.minecraft.world.level.storage.loot.functions.SetNbtFunction.setTag;
-
 @SuppressWarnings("EntityConstructor")
 public class PokemonEntity extends TamableAnimal {
+
+    private static final EntityDataAccessor<Integer> ID_SIZE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> POKEMON_LEVEL = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
 
 
     public PokemonEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
+
+        String pokelevelstring = Integer.toString(this.entityData.get(POKEMON_LEVEL));
+
+        setCustomName(new TextComponent("Pokemon" + "Level" + pokelevelstring));
+
+        setCustomNameVisible(true);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -44,6 +60,7 @@ public class PokemonEntity extends TamableAnimal {
 
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.of(Registration.RARECANDY.get()), false));
         this.goalSelector.addGoal(5, new RandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, false));
@@ -64,13 +81,97 @@ public class PokemonEntity extends TamableAnimal {
         return null;
     }
 
+
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(ID_SIZE, 3);
+        this.entityData.define(POKEMON_LEVEL, 1);
+    }
+
+    protected void setPokeLevel(int pSize, boolean pResetHealth) {
+        int i = Mth.clamp(pSize, 1, 100);
+        this.entityData.set(POKEMON_LEVEL, i);
+    }
+
+
+    protected void setSize(int pSize, boolean pResetHealth) {
+        int i = Mth.clamp(pSize, 1, 5);
+        this.entityData.set(ID_SIZE, i);
+    }
+
+    public int getSize() {
+        return this.entityData.get(ID_SIZE);
+    }
+
+    public int getPokeLevel() {
+        return this.entityData.get(POKEMON_LEVEL);
+    }
+
+    public void addAdditionalSaveData(CompoundTag pCompound) {
+        super.addAdditionalSaveData(pCompound);
+        pCompound.putInt("Size", this.getSize() - 1);
+        pCompound.putInt("Level", this.getPokeLevel() - 1);
+    }
+
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        this.setSize(pCompound.getInt("Size") + 1, false);
+        this.setPokeLevel(pCompound.getInt("Level") + 1, false);
+        super.readAdditionalSaveData(pCompound);
+    }
+
+    public void onSyncedDataUpdated(EntityDataAccessor<?> pKey) {
+        if (ID_SIZE.equals(pKey)) {
+            this.refreshDimensions();
+        }
+        super.onSyncedDataUpdated(pKey);
+    }
+
+    public EntityDimensions getDimensions(Pose pPose) {
+        return super.getDimensions(pPose).scale(0.25F * (float) this.getSize());
+    }
+
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @javax.annotation.Nullable SpawnGroupData pSpawnData, @javax.annotation.Nullable CompoundTag pDataTag) {
         Random random = new Random();
-        CompoundTag nbt = new CompoundTag();
-        Integer UNIQUE_ID = random.nextInt(999999)+1;
-        nbt.putInt("UNIQUE_ID",UNIQUE_ID);
-        //this is where I add the tag but don't know how
+        Integer randomchance = random.nextInt(99) + 1;
+        Integer randomchance2 = random.nextInt(99) + 1;
+
+        if (randomchance < 50) {
+            this.setSize(3, false);
+        }
+        if ((randomchance > 50) && (randomchance < 75)) {
+            if (randomchance2 < 50) {
+                this.setSize(4, false);
+            } else {
+                this.setSize(2, false);
+            }
+
+        }
+        if ((randomchance > 75) && (randomchance < 100)) {
+            if (randomchance2 < 50) {
+                this.setSize(1, false);
+            } else {
+                this.setSize(5, false);
+            }
+        }
         return pSpawnData;
+    }
+
+
+    public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
+        ItemStack itemstack = pPlayer.getItemInHand(pHand);
+        Item item = itemstack.getItem();
+        if (this.level.isClientSide) {
+            if (pPlayer.isHolding((Registration.RARECANDY.get())) && this.isOwnedBy(pPlayer) && this.isTame()) {
+                itemstack.shrink(1);
+                level.addParticle(ParticleTypes.HEART, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.random.nextDouble() - 0.5D) * 2.0D, -this.random.nextDouble(), (this.random.nextDouble() - 0.5D) * 2.0D);
+                this.setSize(+1, false);
+                return InteractionResult.SUCCESS;
+
+
+
+            }
+        }
+        return super.mobInteract(pPlayer, pHand);
     }
 }

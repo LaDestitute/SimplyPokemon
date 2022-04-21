@@ -70,7 +70,7 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                 if ((containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame()) && !(target.getPersistentData().getDouble("UniqueID") == PokeballItem.getOrCreateTag().getDouble("UniqueID"))) {
                     Entity entity = getEntityFromNBT(PokeballItem, target.level, true);
                     BlockPos blockPos = this.blockPosition();
-                    entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
+                    entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(+1), 0, 0);
                     level.addFreshEntity(entity);
                     //System.out.println("RELEASE SUCCESS!");
                 }
