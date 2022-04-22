@@ -36,6 +36,7 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, PokemonModel> {
         this.shadowRadius = 0.4F * (float)pEntity.getSize();
         net.minecraftforge.client.event.RenderNameplateEvent renderNameplateEvent = new net.minecraftforge.client.event.RenderNameplateEvent(pEntity, pEntity.getDisplayName(), this, pMatrixStack, pBuffer, pPackedLight, pPartialTicks);
         this.renderLevel(pEntity, renderNameplateEvent.getContent(), pMatrixStack, pBuffer, pPackedLight);
+        this.renderSpecies(pEntity, renderNameplateEvent.getContent(), pMatrixStack, pBuffer, pPackedLight);
 
         super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
 
@@ -46,7 +47,8 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, PokemonModel> {
         pMatrixStack.scale(0.4F, 0.4F, 0.4F);
         pMatrixStack.translate(0.0D, (double)0.001F, 0.0D);
         float f1 = (float)pLivingEntity.getSize();
-        pMatrixStack.scale(f1, f1, f1);
+        float f2 = (float)pLivingEntity.getPokeLevel();
+        pMatrixStack.scale(f1+(f2/50), f1+(f2/50), f1+(f2/50));
     }
 
     protected void renderLevel(PokemonEntity pEntity,Component pDisplayName, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
@@ -64,7 +66,7 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, PokemonModel> {
             Font font = this.getFont();
             float displaywidth = (float)(-font.width("Lv" + (pEntity.getPokeLevel())) / 2);
             if (flag) {
-                font.drawInBatch("Lv" + (pEntity.getPokeLevel()), displaywidth, displayheight, -1, false, matrix4f, pBuffer, false, BackgroundOpacity, pPackedLight);
+                font.drawInBatch("Lv:" + (pEntity.getPokeLevel()), displaywidth, displayheight, -1, false, matrix4f, pBuffer, false, BackgroundOpacity, pPackedLight);
             }
             pMatrixStack.popPose();
         }

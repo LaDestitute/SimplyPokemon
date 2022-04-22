@@ -104,7 +104,7 @@ public class PokemonEntity extends TamableAnimal {
     }
 
     protected void setPokeSpecies(int pSize, boolean pResetHealth) {
-        int i = Mth.clamp(pSize, 1, 151);
+        int i = Mth.clamp(pSize, 0, 151);
         this.entityData.set(SPECIES, i);
     }
 
@@ -188,9 +188,9 @@ public class PokemonEntity extends TamableAnimal {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         Item item = itemstack.getItem();
         if (!(this.level.isClientSide)) {
-            if (pPlayer.isHolding((Registration.RARECANDY.get())) && this.isOwnedBy(pPlayer) && this.isTame()) {
+            if (pPlayer.isHolding((Registration.RARECANDY.get())) && this.isOwnedBy(pPlayer) && !(this.getPokeLevel() > 99 )) {
                 itemstack.shrink(1);
-                this.level.addParticle(ParticleTypes.HEART, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.random.nextDouble() - 0.5D) * 2.0D, -this.random.nextDouble(), (this.random.nextDouble() - 0.5D) * 2.0D);
+                this.level.addParticle(ParticleTypes.HEART, this.getX(), this.getY(), this.getZ(), 1.0D, 0.0D, 0.0D);
                 this.setPokeLevel((this.entityData.get(POKEMON_LEVEL))+1, false);
                 this.level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.AMBIENT, 3.0F, 1.0F);
                 return InteractionResult.SUCCESS;
