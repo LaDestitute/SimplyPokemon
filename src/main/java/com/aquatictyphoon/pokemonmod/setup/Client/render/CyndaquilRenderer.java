@@ -20,24 +20,27 @@ import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nullable;
 
+import static com.aquatictyphoon.pokemonmod.PokemonMod.MOD_ID;
+
 
 public class CyndaquilRenderer extends MobRenderer<PokemonEntity, EntityModel<PokemonEntity>>{
 
     private ResourceLocation ModelCyndaquil;
 
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "pokemon"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "pokemon"), "main");
 
-    private static final ResourceLocation EGG_TEXTURE = new ResourceLocation(PokemonMod.MOD_ID, "textures/entity/normal/egg.png");
-    private static final ResourceLocation CYNDAQUIL_TEXTURE = new ResourceLocation(PokemonMod.MOD_ID, "textures/entity/normal/cyndaquil1.png");
+    private static final ResourceLocation EGG_TEXTURE = new ResourceLocation(MOD_ID, "textures/entity/normal/egg.png");
+    private static final ResourceLocation CYNDAQUIL_TEXTURE = new ResourceLocation(MOD_ID, "textures/entity/normal/cyndaquil1.png");
+
 
     //In 1.18, we now pass a LAYER_LOCATION (see the explanation in PokemonModel) and bake it in
     //using the renderer's EntityRendererProvider.Context in the entity's renderer and pass it through to the constructor
 
-
     public CyndaquilRenderer(EntityRendererProvider.Context context) {
-        super(context, new ModelCyndaquil<EntityModel<PokemonEntity>>(context.getModelSet().bakeLayer(LAYER_LOCATION)), 0.5f);
+        super(context, new ModelEgg<>(context.getModelSet().bakeLayer(LAYER_LOCATION)), 0.5f);
     }
+
 
     @Nullable
     @Override
