@@ -104,7 +104,7 @@ public class PokemonEntity extends TamableAnimal {
     }
 
     protected void setPokeSpecies(int pSize, boolean pResetHealth) {
-        int i = Mth.clamp(pSize, 0, 151);
+        int i = Mth.clamp(pSize, -151, 151);
         this.entityData.set(SPECIES, i);
     }
 
@@ -133,15 +133,15 @@ public class PokemonEntity extends TamableAnimal {
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
-        pCompound.putInt("Size", this.getSize() - 1);
-        pCompound.putInt("Level", this.getPokeLevel() - 1);
-        pCompound.putInt("Species", this.getPokeSpecies() - 1);
+        pCompound.putInt("Size", this.getSize());
+        pCompound.putInt("Level", this.getPokeLevel());
+        pCompound.putInt("Species", this.getPokeSpecies());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
-        this.setSize(pCompound.getInt("Size") + 1, false);
-        this.setPokeLevel(pCompound.getInt("Level") + 1, false);
-        this.setPokeSpecies(pCompound.getInt("Species") + 1, false);
+        this.setSize(pCompound.getInt("Size"), false);
+        this.setPokeLevel(pCompound.getInt("Level"), false);
+        this.setPokeSpecies(pCompound.getInt("Species"), false);
         super.readAdditionalSaveData(pCompound);
     }
 

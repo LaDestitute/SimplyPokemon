@@ -1,39 +1,70 @@
 package com.aquatictyphoon.pokemonmod.setup.Client.render;
 
 import com.aquatictyphoon.pokemonmod.PokemonMod;
-import com.aquatictyphoon.pokemonmod.setup.Client.entitymodels.PokemonModel;
+import com.aquatictyphoon.pokemonmod.setup.Client.entitymodels.ModelCyndaquil;
+import com.aquatictyphoon.pokemonmod.setup.Client.entitymodels.ModelEgg;
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Matrix4f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nullable;
 
 
-public class PokemonRenderer extends MobRenderer<PokemonEntity, PokemonModel> {
+public class CyndaquilRenderer extends MobRenderer<PokemonEntity, EntityModel<PokemonEntity>>{
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(PokemonMod.MOD_ID, "textures/entity/egg.png");
+    private ResourceLocation ModelCyndaquil;
+
+
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "pokemon"), "main");
+
+    private static final ResourceLocation EGG_TEXTURE = new ResourceLocation(PokemonMod.MOD_ID, "textures/entity/normal/egg.png");
+    private static final ResourceLocation CYNDAQUIL_TEXTURE = new ResourceLocation(PokemonMod.MOD_ID, "textures/entity/normal/cyndaquil1.png");
 
     //In 1.18, we now pass a LAYER_LOCATION (see the explanation in PokemonModel) and bake it in
     //using the renderer's EntityRendererProvider.Context in the entity's renderer and pass it through to the constructor
-    public PokemonRenderer(EntityRendererProvider.Context context) {
-        super(context, new PokemonModel(context.getModelSet().bakeLayer(PokemonModel.LAYER_LOCATION)), 0.5f);
+
+
+    public CyndaquilRenderer(EntityRendererProvider.Context context) {
+        super(context, new ModelCyndaquil<EntityModel<PokemonEntity>>(context.getModelSet().bakeLayer(LAYER_LOCATION)), 0.5f);
     }
 
     @Nullable
     @Override
-    public ResourceLocation getTextureLocation(PokemonEntity entity) {
-        return TEXTURE;
+    public ResourceLocation getTextureLocation(PokemonEntity pEntity) {
+        int species = pEntity.getPokeSpecies();
+        if(species == 1){
+            return CYNDAQUIL_TEXTURE;
+        }else{
+            return EGG_TEXTURE;
+        }
     }
 
     public void render(PokemonEntity pEntity, float pEntityYaw, float pPartialTicks, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
-        this.shadowRadius = 0.4F * (float)pEntity.getSize();
+
+        int species = pEntity.getPokeSpecies();
+        if(species == 1){
+            this.model = new ModelCyndaquil(Minecraft.getInstance().getEntityModels().bakeLayer(LAYER_LOCATION));
+        }else{
+            this.model = new ModelEgg(Minecraft.getInstance().getEntityModels().bakeLayer(LAYER_LOCATION));
+        }
+
+
+        this.getTextureLocation(pEntity);
+
+
+
+        this.shadowRadius = 0.2F * (float)pEntity.getSize();
         net.minecraftforge.client.event.RenderNameplateEvent renderNameplateEvent = new net.minecraftforge.client.event.RenderNameplateEvent(pEntity, pEntity.getDisplayName(), this, pMatrixStack, pBuffer, pPackedLight, pPartialTicks);
         this.renderLevel(pEntity, renderNameplateEvent.getContent(), pMatrixStack, pBuffer, pPackedLight);
         this.renderSpecies(pEntity, renderNameplateEvent.getContent(), pMatrixStack, pBuffer, pPackedLight);
