@@ -1,10 +1,9 @@
 package com.aquatictyphoon.pokemonmod;
 
-import com.aquatictyphoon.pokemonmod.setup.Client.ClientEventBusSubscriber;
+import com.aquatictyphoon.pokemonmod.setup.client.ClientEventBusSubscriber;
 import com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration;
 import com.aquatictyphoon.pokemonmod.setup.entities.registration.EntityTypeInit;
 import com.aquatictyphoon.pokemonmod.util.CommonEventBusSubscriber;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;

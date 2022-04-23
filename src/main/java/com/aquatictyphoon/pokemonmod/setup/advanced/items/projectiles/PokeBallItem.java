@@ -36,15 +36,26 @@ public class PokeBallItem extends Item {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 
+    public static String name(ItemStack stack)
+    {
+        return stack.getOrCreateTag().getString("Nickname");
+    }
+
+    public static String species(ItemStack stack)
+    {
+        return stack.getOrCreateTag().getString("Species");
+    }
+
     @Override
     @Nonnull
     public TextComponent getName(@Nonnull ItemStack stack) {
         if (!containsEntity(stack))
             return new TextComponent(I18n.get("item.pokemonmod.pokeball"));
         else{
-        String s0 = "entity." + getID(stack);
+
+        String s0 = name(stack);
         String s1 = s0.replace(':','.');
-        return new TextComponent(I18n.get("item.pokemonmod.pokeball") +": "+ I18n.get(s1));}
+        return new TextComponent(species(stack) +": "+ I18n.get(s1));}
     }
 
     //Helper
@@ -54,9 +65,11 @@ public class PokeBallItem extends Item {
         return stack.getTag().contains("entity");
     }
 
-    public static String getID(ItemStack stack) {
+    public static String getID(ItemStack stack)
+    {
         return stack.getOrCreateTag().getString("entity");
     }
+
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pHand) {

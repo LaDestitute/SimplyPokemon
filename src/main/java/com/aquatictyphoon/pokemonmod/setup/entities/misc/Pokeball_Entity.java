@@ -1,8 +1,8 @@
 package com.aquatictyphoon.pokemonmod.setup.entities.misc;
 
+import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -65,28 +65,33 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
 
     protected void onHitEntity(EntityHitResult result) {
         Entity target = result.getEntity();
-        if (result.getType() == EntityHitResult.Type.ENTITY && (!(result.getEntity() instanceof Player)) && ((result.getEntity() instanceof TamableAnimal))){
+        if (result.getType() == EntityHitResult.Type.ENTITY && (!(result.getEntity() instanceof Player)) && ((result.getEntity() instanceof PokemonEntity))){
             if (!level.isClientSide) {
-                if ((containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame()) && !(target.getPersistentData().getDouble("UniqueID") == PokeballItem.getOrCreateTag().getDouble("UniqueID"))) {
+                if ((containsEntity(PokeballItem)) && (target.isAlive() && ((PokemonEntity) target).isTame()) && !(target.getPersistentData().getDouble("UniqueID") == PokeballItem.getOrCreateTag().getDouble("UniqueID"))) {
                     Entity entity = getEntityFromNBT(PokeballItem, target.level, true);
                     BlockPos blockPos = this.blockPosition();
                     entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(+1), 0, 0);
                     level.addFreshEntity(entity);
                     //System.out.println("RELEASE SUCCESS!");
                 }
-                if ((!containsEntity(PokeballItem)) && (target.isAlive() && !((TamableAnimal) target).isTame()))
+                if ((!containsEntity(PokeballItem)) && (target.isAlive() && !((PokemonEntity) target).isTame()))
                 {
                     Player player = (Player) this.getOwner();
                     if(player == null){
                         return;
                     }
-                    ((TamableAnimal) target).tame((Player) this.getOwner());
+                    ((PokemonEntity) target).tame((Player) this.getOwner());
                     CompoundTag nbt = new CompoundTag();
                     String entityID = EntityType.getKey(target.getType()).toString();
                     UUID TargetUUID = target.getUUID();
+                    String Name = (target.getPersistentData().getString("NICKNAME"));
+                    String Species = (target.getPersistentData().getString("Species"));
+
                     nbt.putString("UUID", String.valueOf(TargetUUID));
                     nbt.putString("entity", entityID);
                     nbt.putString("id", EntityType.getKey(target.getType()).toString());
+                    nbt.putString("Name", Name);
+                    nbt.putString("Species", Species);
                     target.save(nbt);
                     ItemStack owned_ball = new ItemStack(Registration.POKEBALL.get());
                     owned_ball.setTag(nbt);
@@ -96,19 +101,24 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     //System.out.println("CAPTURE SUCCESS!");
                 }
                 //Retrieval
-                if((containsEntity(PokeballItem)) && (target.isAlive() && ((TamableAnimal) target).isTame()) && (String.valueOf(target.getUUID()).equals(String.valueOf(PokeballItem.getOrCreateTag().getUUID("UUID")))))
+                if((containsEntity(PokeballItem)) && (target.isAlive() && ((PokemonEntity) target).isTame()) && (String.valueOf(target.getUUID()).equals(String.valueOf(PokeballItem.getOrCreateTag().getUUID("UUID")))))
                 {
                     //System.out.println("RECAPTURE SUCCESS!");
                     Player player = (Player) this.getOwner();
                     if(player == null){
                         return;
                     }
+                    String Species = (target.getPersistentData().getString("Species"));
+                    String Name = String.valueOf(target.getName());
                     CompoundTag nbt = new CompoundTag();
                     String entityID = EntityType.getKey(target.getType()).toString();
                     UUID TargetUUID = target.getUUID();
                     nbt.putString("UUID", String.valueOf(TargetUUID));
                     nbt.putString("entity", entityID);
                     nbt.putString("id", EntityType.getKey(target.getType()).toString());
+                    nbt.putString("Name", Name);
+                    nbt.putString("Species", Species);
+
                     target.save(nbt);
                     PokeballItem.setTag(nbt);
                     this.discard();

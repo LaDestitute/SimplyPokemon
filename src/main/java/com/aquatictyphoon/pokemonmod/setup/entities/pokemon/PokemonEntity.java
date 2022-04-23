@@ -36,6 +36,7 @@ public class PokemonEntity extends TamableAnimal {
     private static final EntityDataAccessor<Integer> ID_SIZE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> POKEMON_LEVEL = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> SPECIES = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<String> NICKNAME = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.STRING);
 
     public PokemonEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
@@ -101,6 +102,12 @@ public class PokemonEntity extends TamableAnimal {
         this.entityData.define(ID_SIZE, 3);
         this.entityData.define(POKEMON_LEVEL, 1);
         this.entityData.define(SPECIES, 1);
+        this.entityData.define(NICKNAME, getPokeName());
+    }
+
+
+    protected void setNickname(String string) {
+        this.entityData.set(NICKNAME,getPokeName());
     }
 
     protected void setPokeSpecies(int pSize, boolean pResetHealth) {
@@ -136,12 +143,14 @@ public class PokemonEntity extends TamableAnimal {
         pCompound.putInt("Size", this.getSize());
         pCompound.putInt("Level", this.getPokeLevel());
         pCompound.putInt("Species", this.getPokeSpecies());
+        pCompound.putString("Nickname", this.getPokeName());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
         this.setSize(pCompound.getInt("Size"), false);
         this.setPokeLevel(pCompound.getInt("Level"), false);
         this.setPokeSpecies(pCompound.getInt("Species"), false);
+        this.setNickname(pCompound.getString("Nickname"));
         super.readAdditionalSaveData(pCompound);
     }
 

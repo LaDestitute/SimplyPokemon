@@ -1,4 +1,4 @@
-package com.aquatictyphoon.pokemonmod.setup.Client.entitymodels;
+package com.aquatictyphoon.pokemonmod.setup.client.entitymodels;
 
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
