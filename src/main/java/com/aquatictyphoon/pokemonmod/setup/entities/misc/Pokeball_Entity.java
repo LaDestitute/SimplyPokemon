@@ -10,13 +10,13 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
@@ -25,10 +25,13 @@ import javax.annotation.Nonnull;
 import java.util.Objects;
 import java.util.UUID;
 
+
 import static com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration.POKEBALL;
 import static com.aquatictyphoon.pokemonmod.setup.entities.registration.EntityTypeInit.POKE_BALL;
 
+
 public class Pokeball_Entity extends ThrowableItemProjectile {
+
 
     public Pokeball_Entity(EntityType<Pokeball_Entity> type, Level level) {
         super(type, level);
@@ -37,11 +40,9 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
     public Pokeball_Entity(LivingEntity entity, Level level, InteractionHand pHand) {
         super(POKE_BALL.get(), entity, level);
         this.setOwner(entity);
-        PokeballItem = entity.getItemInHand(pHand);
     }
 
-    private static ItemStack PokeballItem = ItemStack.EMPTY;
-
+    private static final ItemStack PokeballItem = ItemStack.EMPTY;
 
     protected @NotNull Item getDefaultItem() {
         return (POKEBALL.get());
@@ -63,6 +64,8 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
         return entity;
     }
 
+
+
     protected void onHitEntity(EntityHitResult result) {
         Entity target = result.getEntity();
         if (result.getType() == EntityHitResult.Type.ENTITY && (!(result.getEntity() instanceof Player)) && ((result.getEntity() instanceof PokemonEntity))){
@@ -70,7 +73,7 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                 if ((containsEntity(PokeballItem)) && (target.isAlive() && ((PokemonEntity) target).isTame()) && !(target.getPersistentData().getDouble("UniqueID") == PokeballItem.getOrCreateTag().getDouble("UniqueID"))) {
                     Entity entity = getEntityFromNBT(PokeballItem, target.level, true);
                     BlockPos blockPos = this.blockPosition();
-                    entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(+1), 0, 0);
+                    entity.absMoveTo(blockPos.getX(), blockPos.getY(), BlockPos.getZ(+1), 0, 0);
                     level.addFreshEntity(entity);
                     //System.out.println("RELEASE SUCCESS!");
                 }
@@ -84,19 +87,19 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     CompoundTag nbt = new CompoundTag();
                     String entityID = EntityType.getKey(target.getType()).toString();
                     UUID TargetUUID = target.getUUID();
-                    String Name = (target.getPersistentData().getString("NICKNAME"));
+                    String Name = (target.getPersistentData().getString("Nickname"));
                     String Species = (target.getPersistentData().getString("Species"));
 
                     nbt.putString("UUID", String.valueOf(TargetUUID));
                     nbt.putString("entity", entityID);
                     nbt.putString("id", EntityType.getKey(target.getType()).toString());
-                    nbt.putString("Name", Name);
+                    nbt.putString("Nickname", Name);
                     nbt.putString("Species", Species);
                     target.save(nbt);
                     ItemStack owned_ball = new ItemStack(Registration.POKEBALL.get());
                     owned_ball.setTag(nbt);
-                    ItemEntity ball_drop = new ItemEntity(target.level, target.getX(), target.getY(), target.getZ(), owned_ball);
-                    level.addFreshEntity(ball_drop);
+                    owned_ball.setCount(1);
+                    ItemHandlerHelper.giveItemToPlayer(player, owned_ball);
                     target.discard();
                     //System.out.println("CAPTURE SUCCESS!");
                 }
@@ -116,7 +119,7 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     nbt.putString("UUID", String.valueOf(TargetUUID));
                     nbt.putString("entity", entityID);
                     nbt.putString("id", EntityType.getKey(target.getType()).toString());
-                    nbt.putString("Name", Name);
+                    nbt.putString("Nickname", Name);
                     nbt.putString("Species", Species);
 
                     target.save(nbt);
@@ -126,32 +129,24 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                 }
             }
         }
-//        if (result.getType() == EntityHitResult.Type.ENTITY && ((result.getEntity() instanceof Player))){
-//            if((containsEntity(PokeballItem))){
-//                //Need to program battles
-//            }
-//            else{
-//                //Do nothing
-//            }
-//        }
-
     }
+
+
 
     protected void onHitBlock(@NotNull BlockHitResult result) {
         if (!level.isClientSide) {
+            BlockPos blockPos = this.blockPosition();
+            Player player = (Player) this.getOwner();
+            if (player == null) {
+                return;
+            }
+            Entity entity = getEntityFromNBT(PokeballItem, player.level, true);
             if (containsEntity(PokeballItem)) {
-                Player player = (Player) this.getOwner();
-                if (player == null) {
-                    return;
-                }
-                Entity entity = getEntityFromNBT(PokeballItem, player.level, true);
-                BlockPos blockPos = this.blockPosition();
                 entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
                 level.addFreshEntity(entity);
                 //System.out.println("RELEASE SUCCESS!");
                 this.discard();
-            }
-            else {
+            } else{
                 this.discard();
             }
         }

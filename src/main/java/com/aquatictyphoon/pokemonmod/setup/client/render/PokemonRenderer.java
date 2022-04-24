@@ -3,10 +3,12 @@ package com.aquatictyphoon.pokemonmod.setup.client.render;
 import com.aquatictyphoon.pokemonmod.setup.client.entitymodels.ModelCyndaquil;
 import com.aquatictyphoon.pokemonmod.setup.client.entitymodels.ModelEgg;
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Matrix4f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -19,6 +21,7 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.client.renderer.entity.layers.SpiderEyesLayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.BossEvent;
 
 import javax.annotation.Nullable;
 
@@ -54,7 +57,7 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
     @Override
     public ResourceLocation getTextureLocation(PokemonEntity pEntity) {
         int species = pEntity.getPokeSpecies();
-        if(species == 1){
+        if(species == 155){
             return CYNDAQUIL_TEXTURE;
         }else{
             return EGG_TEXTURE;
@@ -62,24 +65,24 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
     }
 
 
+
+
+
     public void render(PokemonEntity pEntity, float pEntityYaw, float pPartialTicks, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
 
         int species = pEntity.getPokeSpecies();
-        if(species == 1){
+        if(species == 155){
             this.model = new ModelCyndaquil(Minecraft.getInstance().getEntityModels().bakeLayer(CYNDAQUIL_LAYER_LOCATION));
         }else{
             this.model = new ModelEgg(Minecraft.getInstance().getEntityModels().bakeLayer(EGG_LAYER_LOCATION));
         }
-
-
         this.getTextureLocation(pEntity);
-
-
-
         this.shadowRadius = 0.05F * (float)pEntity.getSize();
         net.minecraftforge.client.event.RenderNameplateEvent renderNameplateEvent = new net.minecraftforge.client.event.RenderNameplateEvent(pEntity, pEntity.getDisplayName(), this, pMatrixStack, pBuffer, pPackedLight, pPartialTicks);
         this.renderLevel(pEntity, renderNameplateEvent.getContent(), pMatrixStack, pBuffer, pPackedLight);
         this.renderSpecies(pEntity, renderNameplateEvent.getContent(), pMatrixStack, pBuffer, pPackedLight);
+        this.renderHP(pEntity, renderNameplateEvent.getContent(), pMatrixStack, pBuffer, pPackedLight);
+
 
         super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
 
@@ -116,11 +119,41 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
     }
 
 
+    protected void renderHP(PokemonEntity pEntity,Component pDisplayName, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight){
+        double d0 = this.entityRenderDispatcher.distanceToSqr(pEntity);
+        if (net.minecraftforge.client.ForgeHooksClient.isNameplateInRenderDistance(pEntity, d0)) {
+            boolean flag = !pEntity.isDiscrete();
+            float displayheight = pEntity.getBbHeight() + 0.4F;
+            pMatrixStack.pushPose();
+            pMatrixStack.translate(0.0D, displayheight, 0.0D);
+            pMatrixStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
+            pMatrixStack.scale(-0.0125F, -0.0125F, 0.0125F);
+            Font font = this.getFont();
+            float displaywidth = (float)(-font.width("" + (pEntity.getHealth())) / 2);
+            String s = "HP: " + ((pEntity.getHealth()) + 1);
+            if (flag) {
+                this.getFont().draw(pMatrixStack, s, displaywidth, displayheight, 8453920);
+            }
+            pMatrixStack.popPose();
+
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
     protected void renderSpecies(PokemonEntity pEntity, Component pDisplayName, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
         double d0 = this.entityRenderDispatcher.distanceToSqr(pEntity);
         if (net.minecraftforge.client.ForgeHooksClient.isNameplateInRenderDistance(pEntity, d0)) {
             boolean flag = !pEntity.isDiscrete();
-            float displayheight = pEntity.getBbHeight() + 0.5F;
+            float displayheight = pEntity.getBbHeight() + 0.6F;
             pMatrixStack.pushPose();
             pMatrixStack.translate(0.0D, displayheight, 0.0D);
             pMatrixStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
@@ -137,7 +170,6 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
             pMatrixStack.popPose();
         }
     }
-
 
 
 

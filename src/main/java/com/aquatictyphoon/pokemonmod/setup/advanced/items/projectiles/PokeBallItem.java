@@ -53,9 +53,9 @@ public class PokeBallItem extends Item {
             return new TextComponent(I18n.get("item.pokemonmod.pokeball"));
         else{
 
-        String s0 = name(stack);
+        String s0 = species(stack);
         String s1 = s0.replace(':','.');
-        return new TextComponent(species(stack) +": "+ I18n.get(s1));}
+        return new TextComponent(name(stack) +": "+ I18n.get(s1));}
     }
 
     //Helper
