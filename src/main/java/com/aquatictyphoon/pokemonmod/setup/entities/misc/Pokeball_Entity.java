@@ -40,9 +40,10 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
     public Pokeball_Entity(LivingEntity entity, Level level, InteractionHand pHand) {
         super(POKE_BALL.get(), entity, level);
         this.setOwner(entity);
+        PokeballItem = entity.getItemInHand(pHand);
     }
 
-    private static final ItemStack PokeballItem = ItemStack.EMPTY;
+    private static ItemStack PokeballItem = ItemStack.EMPTY;
 
     protected @NotNull Item getDefaultItem() {
         return (POKEBALL.get());

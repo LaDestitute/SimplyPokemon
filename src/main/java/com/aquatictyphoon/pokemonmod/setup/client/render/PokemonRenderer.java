@@ -123,16 +123,17 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
         double d0 = this.entityRenderDispatcher.distanceToSqr(pEntity);
         if (net.minecraftforge.client.ForgeHooksClient.isNameplateInRenderDistance(pEntity, d0)) {
             boolean flag = !pEntity.isDiscrete();
-            float displayheight = pEntity.getBbHeight() + 0.4F;
+            float displayheight = pEntity.getBbHeight() + 0.3F;
             pMatrixStack.pushPose();
             pMatrixStack.translate(0.0D, displayheight, 0.0D);
             pMatrixStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
             pMatrixStack.scale(-0.0125F, -0.0125F, 0.0125F);
             Font font = this.getFont();
-            float displaywidth = (float)(-font.width("" + (pEntity.getHealth())) / 2);
-            String s = "HP: " + ((pEntity.getHealth()) + 1);
+            float displaywidth = (-font.width("HP:" + (pEntity.getHealth())) / 2);
+            String s = "HP: " + ((pEntity.getHealth()));
             if (flag) {
                 this.getFont().draw(pMatrixStack, s, displaywidth, displayheight, 8453920);
+
             }
             pMatrixStack.popPose();
 
