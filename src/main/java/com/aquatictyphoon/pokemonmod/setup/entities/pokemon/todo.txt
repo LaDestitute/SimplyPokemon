@@ -85,6 +85,11 @@
     ELEKID(),
     MAGBY(),
     BLISSEY(),
+
+
+
+//End of alpha
+
     WURMPLE(),
     SILCOON(),
     BEAUTIFLY(),

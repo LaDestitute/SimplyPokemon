@@ -39,6 +39,14 @@ public class PokemonEntity extends TamableAnimal {
     private static final EntityDataAccessor<Integer> SPECIES = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<String> NICKNAME = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.STRING);
 
+    private static final EntityDataAccessor<Integer> HP = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> ATTACK = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> DEFENCE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> SP_ATTACK = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> SP_DEFENCE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> SPEED = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> NATURE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+
     public PokemonEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
         setCustomNameVisible(true);
@@ -80,15 +88,21 @@ public class PokemonEntity extends TamableAnimal {
     }
 
 
-    public String getPokeName(){
 
+    public String getPokeName(){
         int species = this.getPokeSpecies();
 
         if(species == 1) {
             return ("Bulbasaur");
         }
+        else if(species == 152) {
+            return ("Chikorita");
+        }
         else if(species == 155) {
             return ("Cyndaquil");
+        }
+        else if(species == 158) {
+            return ("Totodile");
         }
         else{
             return ("MissingNo");
