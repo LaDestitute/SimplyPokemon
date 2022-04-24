@@ -130,23 +130,22 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
             }
         }
     }
-
-
-
+    
     protected void onHitBlock(@NotNull BlockHitResult result) {
         if (!level.isClientSide) {
-            BlockPos blockPos = this.blockPosition();
-            Player player = (Player) this.getOwner();
-            if (player == null) {
-                return;
-            }
-            Entity entity = getEntityFromNBT(PokeballItem, player.level, true);
             if (containsEntity(PokeballItem)) {
+                Player player = (Player) this.getOwner();
+                if (player == null) {
+                    return;
+                }
+                Entity entity = getEntityFromNBT(PokeballItem, player.level, true);
+                BlockPos blockPos = this.blockPosition();
                 entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
                 level.addFreshEntity(entity);
                 //System.out.println("RELEASE SUCCESS!");
                 this.discard();
-            } else{
+            }
+            else {
                 this.discard();
             }
         }
