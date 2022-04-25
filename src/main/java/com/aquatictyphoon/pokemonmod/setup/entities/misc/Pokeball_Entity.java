@@ -161,10 +161,6 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
     }
 
 
-
-
-
-
     protected void onHitBlock(@NotNull BlockHitResult result) {
         if (!level.isClientSide) {
             if (containsEntity(PokeballItem)) {

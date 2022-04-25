@@ -167,14 +167,6 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
     }
 
 
-
-
-
-
-
-
-
-
     protected void renderSpecies(PokemonEntity pEntity, Component pDisplayName, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
         double d0 = this.entityRenderDispatcher.distanceToSqr(pEntity);
         if (net.minecraftforge.client.ForgeHooksClient.isNameplateInRenderDistance(pEntity, d0)) {
