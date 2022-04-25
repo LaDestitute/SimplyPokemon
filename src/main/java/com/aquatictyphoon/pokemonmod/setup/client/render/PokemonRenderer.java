@@ -15,7 +15,6 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
@@ -31,6 +30,7 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
 
 
     public static final ModelLayerLocation EGG_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "egg"), "main");
+
     public static final ModelLayerLocation CHIKORITA_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "chikorita"), "main");
     public static final ModelLayerLocation CYNDAQUIL_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "cyndaquil"), "main");
     public static final ModelLayerLocation TOTODILE_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "totodile"), "main");
@@ -38,10 +38,14 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
 
 
     private static final ResourceLocation EGG_TEXTURE = new ResourceLocation(MOD_ID, "textures/entity/normal/egg.png");
+
     private static final ResourceLocation CHIKORITA_TEXTURE = new ResourceLocation(MOD_ID, "textures/entity/normal/chikorita.png");
-    private static final ResourceLocation CYNDAQUIL_TEXTURE = new ResourceLocation(MOD_ID, "textures/entity/normal/cyndaquil1.png");
+    private static final ResourceLocation CYNDAQUIL_TEXTURE = new ResourceLocation(MOD_ID, "textures/entity/normal/cyndaquil.png");
     private static final ResourceLocation TOTODILE_TEXTURE = new ResourceLocation(MOD_ID, "textures/entity/normal/totodile.png");
 
+    private static final ResourceLocation CHIKORITA_TEXTURE_S = new ResourceLocation(MOD_ID, "textures/entity/shiny/shiny_chikorita.png");
+    private static final ResourceLocation CYNDAQUIL_TEXTURE_S = new ResourceLocation(MOD_ID, "textures/entity/shiny/shiny_cyndaquil.png");
+    private static final ResourceLocation TOTODILE_TEXTURE_S = new ResourceLocation(MOD_ID, "textures/entity/shiny/shiny_totodile.png");
 
     //In 1.18, we now pass a LAYER_LOCATION (see the explanation in PokemonModel) and bake it in
     //using the renderer's EntityRendererProvider.Context in the entity's renderer and pass it through to the constructor
@@ -56,21 +60,29 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
         });
     }
 
-
     @Nullable
     @Override
     public ResourceLocation getTextureLocation(PokemonEntity pEntity) {
         int species = pEntity.getPokeSpecies();
-        if(species == 155) {
-            return CYNDAQUIL_TEXTURE;
-        }else if(species == 152){
+        int shiny = pEntity.getShinyness();
+        if((shiny == 0)) {
+            if (species == 155) {
+                return CYNDAQUIL_TEXTURE;
+            } else if (species == 152) {
                 return CHIKORITA_TEXTURE;
-        }else if(species == 158){
-            return TOTODILE_TEXTURE;
-
+            } else if (species == 158) {
+                return TOTODILE_TEXTURE;
+            }
         }else{
-            return EGG_TEXTURE;
+            if (species == 155) {
+                return CYNDAQUIL_TEXTURE_S;
+            } else if (species == 152) {
+                return CHIKORITA_TEXTURE_S;
+            } else if (species == 158) {
+                return TOTODILE_TEXTURE_S;
+            }
         }
+        return EGG_TEXTURE;
     }
 
 
@@ -114,7 +126,7 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
         double d0 = this.entityRenderDispatcher.distanceToSqr(pEntity);
         if (net.minecraftforge.client.ForgeHooksClient.isNameplateInRenderDistance(pEntity, d0)) {
             boolean flag = !pEntity.isDiscrete();
-            float displayheight = pEntity.getBbHeight() + 0.8F;
+            float displayheight = pEntity.getBbHeight() + 0.9F;
             pMatrixStack.pushPose();
             pMatrixStack.translate(0.0D, displayheight, 0.0D);
             pMatrixStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
@@ -136,7 +148,7 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
         double d0 = this.entityRenderDispatcher.distanceToSqr(pEntity);
         if (net.minecraftforge.client.ForgeHooksClient.isNameplateInRenderDistance(pEntity, d0)) {
             boolean flag = !pEntity.isDiscrete();
-            float displayheight = pEntity.getBbHeight() + 0.4F;
+            float displayheight = pEntity.getBbHeight() + 0.5F;
             pMatrixStack.pushPose();
             pMatrixStack.translate(0.0D, displayheight, 0.0D);
             pMatrixStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
@@ -167,7 +179,7 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
         double d0 = this.entityRenderDispatcher.distanceToSqr(pEntity);
         if (net.minecraftforge.client.ForgeHooksClient.isNameplateInRenderDistance(pEntity, d0)) {
             boolean flag = !pEntity.isDiscrete();
-            float displayheight = pEntity.getBbHeight() + 0.7F;
+            float displayheight = pEntity.getBbHeight() + 0.8F;
             pMatrixStack.pushPose();
             pMatrixStack.translate(0.0D, displayheight, 0.0D);
             pMatrixStack.mulPose(this.entityRenderDispatcher.cameraOrientation());

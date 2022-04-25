@@ -35,9 +35,9 @@ public class ModelChikorita<T extends EntityModel> extends EntityModel<PokemonEn
         PartDefinition Body = partdefinition.addOrReplaceChild("Body", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -5.9F, -4.1F, 6.0F, 4.0F, 7.0F, new CubeDeformation(0.0F))
                 .texOffs(24, 21).addBox(-1.05F, -5.85F, 2.05F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
 
-        PartDefinition Head = partdefinition.addOrReplaceChild("Head", CubeListBuilder.create().texOffs(0, 11).addBox(-2.6F, -10.3F, -4.7F, 5.0F, 6.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+        PartDefinition Head = partdefinition.addOrReplaceChild("Head", CubeListBuilder.create().texOffs(0, 11).addBox(-2.6F, -5.3F, -1.7F, 5.0F, 6.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 19.0F, -3.0F));
 
-        PartDefinition bone = Head.addOrReplaceChild("bone", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, -10.0F, -1.0F, -0.2618F, 0.0F, 0.0F));
+        PartDefinition bone = Head.addOrReplaceChild("bone", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, -5.0F, 2.0F, -0.2618F, 0.0F, 0.0F));
 
         PartDefinition Leaf_r1 = bone.addOrReplaceChild("Leaf_r1", CubeListBuilder.create().texOffs(18, 11).addBox(-2.1F, -4.2604F, -0.8158F, 5.0F, 5.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-0.5F, -1.0F, 1.0F, -1.4835F, 0.0F, 0.0F));
 
@@ -53,9 +53,9 @@ public class ModelChikorita<T extends EntityModel> extends EntityModel<PokemonEn
 
         PartDefinition LeftLeg = partdefinition.addOrReplaceChild("LeftLeg", CubeListBuilder.create().texOffs(0, 21).addBox(-1.7F, -1.0F, -0.75F, 2.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(3.0F, 21.0F, 1.0F));
 
-        PartDefinition FrontRightLeg2 = partdefinition.addOrReplaceChild("FrontRightLeg2", CubeListBuilder.create().texOffs(19, 0).addBox(-0.1F, 1.0F, -0.75F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-3.0F, 21.0F, -3.0F));
+        PartDefinition FrontRightLeg2 = partdefinition.addOrReplaceChild("FrontRightLeg2", CubeListBuilder.create().texOffs(19, 0).addBox(-0.1F, -1.0F, -0.75F, 2.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-3.0F, 21.0F, -3.0F));
 
-        PartDefinition FrontRightLeg3 = partdefinition.addOrReplaceChild("FrontRightLeg3", CubeListBuilder.create().texOffs(18, 17).addBox(4.1F, 1.0F, -0.75F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-3.0F, 21.0F, -3.0F));
+        PartDefinition FrontRightLeg3 = partdefinition.addOrReplaceChild("FrontRightLeg3", CubeListBuilder.create().texOffs(18, 17).addBox(4.1F, -1.0F, -0.75F, 2.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-3.0F, 21.0F, -3.0F));
 
         return LayerDefinition.create(meshdefinition, 32, 32);
     }
