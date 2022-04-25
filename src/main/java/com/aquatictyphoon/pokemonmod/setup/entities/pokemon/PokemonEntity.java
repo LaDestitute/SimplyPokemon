@@ -325,7 +325,6 @@ public class PokemonEntity extends TamableAnimal {
                 return InteractionResult.SUCCESS;
 
             }
-
             if ((itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && getOwner().isShiftKeyDown()){
                 if (this.entityData.get(HAPPINESS) > 250) {
                     pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " couldn't possibly love you more!"), true);

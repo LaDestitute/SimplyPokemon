@@ -3,6 +3,7 @@ package com.aquatictyphoon.pokemonmod.setup.entities.misc;
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -131,7 +132,12 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
             }
         }
     }
-    
+
+
+
+
+
+
     protected void onHitBlock(@NotNull BlockHitResult result) {
         if (!level.isClientSide) {
             if (containsEntity(PokeballItem)) {
@@ -140,10 +146,29 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     return;
                 }
                 Entity entity = getEntityFromNBT(PokeballItem, player.level, true);
-                BlockPos blockPos = this.blockPosition();
-                entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
-                level.addFreshEntity(entity);
-                //System.out.println("RELEASE SUCCESS!");
+                UUID fromball = entity.getUUID();
+                Entity entityinworld = ((ServerLevel) level).getEntity(fromball);
+                if (!(entityinworld == null)) {
+
+                    String Species = (entityinworld.getPersistentData().getString("Species"));
+                    String Name = String.valueOf(entityinworld.getName());
+                    CompoundTag nbt = new CompoundTag();
+                    String entityID = EntityType.getKey(entityinworld.getType()).toString();
+                    UUID TargetUUID = entityinworld.getUUID();
+                    nbt.putString("UUID", String.valueOf(TargetUUID));
+                    nbt.putString("entity", entityID);
+                    nbt.putString("id", EntityType.getKey(entityinworld.getType()).toString());
+                    nbt.putString("Nickname", Name);
+                    nbt.putString("Species", Species);
+
+                    entityinworld.save(nbt);
+                    PokeballItem.setTag(nbt);
+                    entityinworld.discard();
+                }else{
+                    BlockPos blockPos = this.blockPosition();
+                    entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
+                    level.addFreshEntity(entity);
+                }
                 this.discard();
             }
             else {
@@ -151,4 +176,5 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
             }
         }
     }
+
 }
