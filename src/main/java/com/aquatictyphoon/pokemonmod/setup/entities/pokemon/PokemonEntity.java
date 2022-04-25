@@ -123,7 +123,7 @@ public class PokemonEntity extends TamableAnimal {
         this.entityData.define(SPECIES, 1);
         this.entityData.define(NICKNAME, getPokeName());
         this.entityData.define(SHINY, 0);
-        this.entityData.define(HAPPINESS, 300);
+        this.entityData.define(HAPPINESS, 100);
     }
 
 
@@ -246,7 +246,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(SHINY, 0);
         }
 
-        this.entityData.set(SHINY, 100);
+        this.entityData.set(HAPPINESS, 100);
 
         int randomchance = random.nextInt(99) + 1;
         int randomchance2 = random.nextInt(99) + 1;
@@ -321,7 +321,7 @@ public class PokemonEntity extends TamableAnimal {
                 this.setInLove(pPlayer);
                 this.setPokeLevel((this.entityData.get(POKEMON_LEVEL)) + 1);
                 this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.AMBIENT, 3.0F, 1.0F);
-                this.setHappiness(this.entityData.get(HAPPINESS) + 5);
+                this.setHappiness(this.entityData.get(HAPPINESS) + 4);
                 return InteractionResult.SUCCESS;
 
             }
@@ -341,6 +341,8 @@ public class PokemonEntity extends TamableAnimal {
                     pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " doesn't like you nor trust you."), true);
                 } else if ((this.entityData.get(HAPPINESS) > 0)) {
                     pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " absolutely hates you."), true);
+                }else{
+                    pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " is curious about you."), true);
                 }
                 return InteractionResult.SUCCESS;
             }
