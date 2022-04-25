@@ -42,6 +42,33 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
         super(POKE_BALL.get(), entity, level);
         this.setOwner(entity);
         PokeballItem = entity.getItemInHand(pHand);
+
+        Player player = (Player) this.getOwner();
+        if (!(player == null)) {
+            Entity pokemonfromball = getEntityFromNBT(PokeballItem, player.level, true);
+            UUID fromball = pokemonfromball.getUUID();
+            Entity entityinworld = ((ServerLevel) level).getEntity(fromball);
+
+            if (!(entityinworld == null)) {
+                String Species = (entityinworld.getPersistentData().getString("Species"));
+                String Name = String.valueOf(entityinworld.getName());
+                CompoundTag nbt = new CompoundTag();
+                String entityID = EntityType.getKey(entityinworld.getType()).toString();
+                UUID TargetUUID = entityinworld.getUUID();
+                nbt.putString("UUID", String.valueOf(TargetUUID));
+                nbt.putString("entity", entityID);
+                nbt.putString("id", EntityType.getKey(entityinworld.getType()).toString());
+                nbt.putString("Nickname", Name);
+                nbt.putString("Species", Species);
+                entityinworld.save(nbt);
+                PokeballItem.setTag(nbt);
+                entityinworld.discard();
+                this.discard();
+
+
+            }
+        }
+
     }
 
     private static ItemStack PokeballItem = ItemStack.EMPTY;
@@ -145,8 +172,8 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                 if (player == null) {
                     return;
                 }
-                Entity entity = getEntityFromNBT(PokeballItem, player.level, true);
-                UUID fromball = entity.getUUID();
+                Entity pokemonfromball = getEntityFromNBT(PokeballItem, player.level, true);
+                UUID fromball = pokemonfromball.getUUID();
                 Entity entityinworld = ((ServerLevel) level).getEntity(fromball);
                 if (!(entityinworld == null)) {
 
@@ -166,8 +193,8 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     entityinworld.discard();
                 }else{
                     BlockPos blockPos = this.blockPosition();
-                    entity.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
-                    level.addFreshEntity(entity);
+                    pokemonfromball.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
+                    level.addFreshEntity(pokemonfromball);
                 }
                 this.discard();
             }
