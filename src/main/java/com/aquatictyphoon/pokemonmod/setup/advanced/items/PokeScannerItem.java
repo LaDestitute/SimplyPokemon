@@ -46,9 +46,9 @@ public class PokeScannerItem extends Item {
             String nature = String.valueOf(((PokemonEntity) pInteractionTarget).getNatureName());
 
             if (!pPlayer.level.isClientSide && pInteractionTarget instanceof PokemonEntity) {
-                pPlayer.sendMessage(new TranslatableComponent("" + (nickname) + ", Level: " + (level)), pPlayer.getUUID());
+                pPlayer.sendMessage(new TranslatableComponent("" + (nickname) + ": Level: " + (level)), pPlayer.getUUID());
 
-                pPlayer.sendMessage(new TranslatableComponent("Type " + (type1) + ", " + (type2)), pPlayer.getUUID());
+                pPlayer.sendMessage(new TranslatableComponent("Type: " + (type1) + " / " + (type2)), pPlayer.getUUID());
                 pPlayer.sendMessage(new TranslatableComponent("Size: " + (size)), pPlayer.getUUID());
                 pPlayer.sendMessage(new TranslatableComponent("Nature: " + (nature)), pPlayer.getUUID());
             }

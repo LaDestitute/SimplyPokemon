@@ -1390,6 +1390,7 @@ public class PokemonEntity extends TamableAnimal {
         this.entityData.define(HAPPINESS, 100);
         this.entityData.define(TYPE1, 0);
         this.entityData.define(TYPE2, 0);
+        this.entityData.define(NATURE, 0);
     }
 
 
