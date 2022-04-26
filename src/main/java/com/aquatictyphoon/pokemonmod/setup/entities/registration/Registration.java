@@ -1,6 +1,7 @@
 package com.aquatictyphoon.pokemonmod.setup.entities.registration;
 
 
+import com.aquatictyphoon.pokemonmod.setup.advanced.items.PokeScannerItem;
 import com.aquatictyphoon.pokemonmod.setup.advanced.items.projectiles.PokeBallItem;
 import com.aquatictyphoon.pokemonmod.setup.advanced.items.RareCandyItem;
 import net.minecraft.world.food.FoodProperties;
@@ -95,4 +96,7 @@ public class Registration {
 
     public static final RegistryObject<Item> TUMBLESTONE = ITEMS.register("tumblestone",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<PokeScannerItem> POKESCANNER = ITEMS.register("pokescanner",
+            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 }

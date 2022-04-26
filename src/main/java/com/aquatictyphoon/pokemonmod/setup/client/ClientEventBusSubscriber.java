@@ -6,17 +6,13 @@ import com.aquatictyphoon.pokemonmod.setup.client.entitymodels.ModelCyndaquil;
 import com.aquatictyphoon.pokemonmod.setup.client.entitymodels.ModelEgg;
 import com.aquatictyphoon.pokemonmod.setup.client.entitymodels.ModelTotodile;
 import com.aquatictyphoon.pokemonmod.setup.client.render.PokemonRenderer;
-import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.aquatictyphoon.pokemonmod.setup.entities.registration.EntityTypeInit;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-
-import javax.swing.text.html.parser.Entity;
 
 import static com.aquatictyphoon.pokemonmod.setup.client.render.PokemonRenderer.*;
 

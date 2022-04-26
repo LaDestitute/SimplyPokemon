@@ -25,6 +25,7 @@
   "pokeball.cannot.catch": "You cannot catch a tamed pokemon!",
   "pokeball.cannot.catch.player": "They cannot be caught!",
   "entity.pokemonmod.pokemon":"pokemon",
-  "entity.tempstring": "Pokemon"
+  "entity.tempstring": "Pokemon",
+  "pokescanner.description": "A special device for retrieving pokemon information"
 
 }
