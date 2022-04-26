@@ -1,5 +1,6 @@
 package com.aquatictyphoon.pokemonmod.setup.entities.pokemon;
 
+import com.aquatictyphoon.pokemonmod.setup.capability.PokemonNature;
 import com.aquatictyphoon.pokemonmod.setup.capability.PokemonTypes;
 import com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration;
 import net.minecraft.core.particles.ParticleTypes;
@@ -102,12 +103,13 @@ public class PokemonEntity extends TamableAnimal {
         return null;
     }
 
-
+    @SuppressWarnings({"SpellCheckingInspection"})
     protected void setPokeStats(){
         int species = this.getPokeSpecies();
         if(species == 0) {
             this.entityData.set(TYPE1, PokemonTypes.NONE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NONE.ordinal());
+
             this.entityData.set(NICKNAME, "BadEgg");
         }
         else if(species == 1) {
@@ -1397,6 +1399,39 @@ public class PokemonEntity extends TamableAnimal {
 
     }
 
+    protected void setNature() {
+        Random random = new Random();
+        int natrueroll = random.nextInt(24) + 1;
+        switch (natrueroll) {
+            case 1 -> this.entityData.set(NATURE, PokemonNature.LONELY.ordinal());
+            case 2 -> this.entityData.set(NATURE, PokemonNature.BRAVE.ordinal());
+            case 3 -> this.entityData.set(NATURE, PokemonNature.ADAMANT.ordinal());
+            case 4 -> this.entityData.set(NATURE, PokemonNature.NAUGHTY.ordinal());
+            case 5 -> this.entityData.set(NATURE, PokemonNature.BOLD.ordinal());
+            case 6 -> this.entityData.set(NATURE, PokemonNature.DOCILE.ordinal());
+            case 7 -> this.entityData.set(NATURE, PokemonNature.RELAXED.ordinal());
+            case 8 -> this.entityData.set(NATURE, PokemonNature.IMPISH.ordinal());
+            case 9 -> this.entityData.set(NATURE, PokemonNature.LAX.ordinal());
+            case 10 -> this.entityData.set(NATURE, PokemonNature.TIMID.ordinal());
+            case 11 -> this.entityData.set(NATURE, PokemonNature.HASTY.ordinal());
+            case 12 -> this.entityData.set(NATURE, PokemonNature.SERIOUS.ordinal());
+            case 13 -> this.entityData.set(NATURE, PokemonNature.JOLLY.ordinal());
+            case 14 -> this.entityData.set(NATURE, PokemonNature.NAIVE.ordinal());
+            case 15 -> this.entityData.set(NATURE, PokemonNature.MODEST.ordinal());
+            case 16 -> this.entityData.set(NATURE, PokemonNature.MILD.ordinal());
+            case 17 -> this.entityData.set(NATURE, PokemonNature.QUIET.ordinal());
+            case 18 -> this.entityData.set(NATURE, PokemonNature.BASHFUL.ordinal());
+            case 19 -> this.entityData.set(NATURE, PokemonNature.RASH.ordinal());
+            case 20 -> this.entityData.set(NATURE, PokemonNature.CALM.ordinal());
+            case 21 -> this.entityData.set(NATURE, PokemonNature.GENTLE.ordinal());
+            case 22 -> this.entityData.set(NATURE, PokemonNature.SASSY.ordinal());
+            case 23 -> this.entityData.set(NATURE, PokemonNature.CAREFUL.ordinal());
+            case 24 -> this.entityData.set(NATURE, PokemonNature.QUIRKY.ordinal());
+            default -> this.entityData.set(NATURE, PokemonNature.HARDY.ordinal());
+        }
+
+    }
+
     protected void setHappiness(int pSize) {
         int i = Mth.clamp(pSize, 0, 250);
         this.entityData.set(HAPPINESS, i);
@@ -1471,6 +1506,10 @@ public class PokemonEntity extends TamableAnimal {
         return this.entityData.get(SHINY);
     }
 
+    public int getPokeNature() {
+        return this.entityData.get(NATURE);
+    }
+
     public void addAdditionalSaveData(@NotNull CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putInt("Size", this.getSize());
@@ -1485,6 +1524,7 @@ public class PokemonEntity extends TamableAnimal {
             pCompound.putUUID("LoveCause", this.loveCause);
         }
         pCompound.putInt("Happiness", this.getHappiness());
+
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
@@ -1492,6 +1532,7 @@ public class PokemonEntity extends TamableAnimal {
         this.setPokeLevel(pCompound.getInt("Level"));
         this.setPokeSpecies(pCompound.getInt("Species"));
         this.setPokeStats();
+        this.setNature();
         this.setShinyness(pCompound.getInt("Shiny"));
         this.inLove = pCompound.getInt("InLove");
         this.loveCause = pCompound.hasUUID("LoveCause") ? pCompound.getUUID("LoveCause") : null;
@@ -1510,6 +1551,102 @@ public class PokemonEntity extends TamableAnimal {
         return super.getDimensions(pPose).scale(0.25F * (float) this.getSize());
     }
 
+    public String getNatureName() {
+        int nature = this.getPokeNature();
+        return switch (nature) {
+            case 1 -> "Lonely";
+            case 2 -> "Brave";
+            case 3 -> "Adamant";
+            case 4 -> "Naughty";
+            case 5 -> "Bold";
+            case 6 -> "Docile";
+            case 7 -> "Relaxed";
+            case 8 -> "Impish";
+            case 9 -> "Lax";
+            case 10 -> "Timid";
+            case 11 -> "Hasty";
+            case 12 -> "Serious";
+            case 13 -> "Jolly";
+            case 14 -> "Naive";
+            case 15 -> "Modest";
+            case 16 -> "Mild";
+            case 17 -> "Quiet";
+            case 18 -> "Bashful";
+            case 19 -> "Rash";
+            case 20 -> "Calm";
+            case 21 -> "Gentle";
+            case 22 -> "Sassy";
+            case 23 -> "Careful";
+            case 24 -> "Quirky";
+            default -> "Hardy";
+        };
+
+    }
+
+    public String getType1Name(){
+            int type1 = this.getPokeType1();
+        return switch (type1) {
+            case 1 -> "Normal";
+            case 2 -> "Fire";
+            case 3 -> "Fighting";
+            case 4 -> "Water";
+            case 5 -> "Flying";
+            case 6 -> "Grass";
+            case 7 -> "Poison";
+            case 8 -> "Electric";
+            case 9 -> "Ground";
+            case 10 -> "Psychic";
+            case 11 -> "Rock";
+            case 12 -> "Ice";
+            case 13 -> "Bug";
+            case 14 -> "Dragon";
+            case 15 -> "Ghost";
+            case 16 -> "Dark";
+            case 17 -> "Steel";
+            case 18 -> "Fairy";
+            case 19 -> "Shadow";
+            default -> "None";
+        };
+    }
+    public String getType2Name(){
+        int type2 = this.getPokeType2();
+        return switch (type2) {
+            case 1 -> "Normal";
+            case 2 -> "Fire";
+            case 3 -> "Fighting";
+            case 4 -> "Water";
+            case 5 -> "Flying";
+            case 6 -> "Grass";
+            case 7 -> "Poison";
+            case 8 -> "Electric";
+            case 9 -> "Ground";
+            case 10 -> "Psychic";
+            case 11 -> "Rock";
+            case 12 -> "Ice";
+            case 13 -> "Bug";
+            case 14 -> "Dragon";
+            case 15 -> "Ghost";
+            case 16 -> "Dark";
+            case 17 -> "Steel";
+            case 18 -> "Fairy";
+            case 19 -> "Shadow";
+            default -> "None";
+        };
+    }
+
+    public String getSizeName(){
+            int size = this.getSize();
+        return switch (size) {
+            case 1 -> "Tiny";
+            case 2 -> "Small";
+            case 3 -> "Normal";
+            case 4 -> "Medium";
+            case 5 -> "Large";
+            case 6 -> "Giga";
+            default -> "Ant";
+        };
+    }
+
     @Override
     public SpawnGroupData finalizeSpawn(@NotNull ServerLevelAccessor pLevel, @NotNull DifficultyInstance pDifficulty, @NotNull MobSpawnType pReason, @javax.annotation.Nullable SpawnGroupData pSpawnData, @javax.annotation.Nullable CompoundTag pDataTag) {
         Random random = new Random();
@@ -1519,12 +1656,11 @@ public class PokemonEntity extends TamableAnimal {
         } else {
             this.entityData.set(SHINY, 0);
         }
-
         this.entityData.set(HAPPINESS, 100);
+
 
         int randomchance = random.nextInt(99) + 1;
         int randomchance2 = random.nextInt(99) + 1;
-
         if (randomchance < 50) {
             this.setSize(3);
         }
@@ -1534,7 +1670,6 @@ public class PokemonEntity extends TamableAnimal {
             } else {
                 this.setSize(2);
             }
-
         }
         if (randomchance > 75) {
             if (randomchance2 < 50) {
@@ -1551,7 +1686,6 @@ public class PokemonEntity extends TamableAnimal {
         if (pPlayer != null) {
             this.loveCause = pPlayer.getUUID();
         }
-
         this.level.broadcastEntityEvent(this, (byte) 18);
     }
 
@@ -1599,7 +1733,7 @@ public class PokemonEntity extends TamableAnimal {
                 return InteractionResult.SUCCESS;
 
             }
-            if ((itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && getOwner().isShiftKeyDown()){
+            if ((itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
                 if (this.entityData.get(HAPPINESS) > 250) {
                     pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " couldn't possibly love you more!"), true);
                 } else if ((this.entityData.get(HAPPINESS) > 200) && (this.entityData.get(HAPPINESS) < 250)) {
