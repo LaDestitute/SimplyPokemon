@@ -115,11 +115,11 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
 
     protected void scale(PokemonEntity pLivingEntity, PoseStack pMatrixStack, float pPartialTickTime) {
         float f = 0.999F;
-        pMatrixStack.scale(0.4F, 0.4F, 0.4F);
-        pMatrixStack.translate(0.0D, (double)0.001F, 0.0D);
+        pMatrixStack.scale(0.5F, 0.5F, 0.5F);
+        pMatrixStack.translate(0.0D, 0.0F, 0.0D);
         float f1 = (float)pLivingEntity.getSize();
         float f2 = (float)pLivingEntity.getPokeLevel();
-        pMatrixStack.scale(f1+(f2/50), f1+(f2/50), f1+(f2/50));
+        pMatrixStack.scale(f1+(f2/85), f1+(f2/85), f1+(f2/85));
     }
 
     protected void renderLevel(PokemonEntity pEntity,Component pDisplayName, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {

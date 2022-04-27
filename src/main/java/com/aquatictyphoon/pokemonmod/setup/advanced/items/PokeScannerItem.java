@@ -45,12 +45,31 @@ public class PokeScannerItem extends Item {
             String size = String.valueOf(((PokemonEntity) pInteractionTarget).getSizeName());
             String nature = String.valueOf(((PokemonEntity) pInteractionTarget).getNatureName());
 
+            String ivs_hp = String.valueOf(((PokemonEntity) pInteractionTarget).getIvsHP());
+            String ivs_attack = String.valueOf(((PokemonEntity) pInteractionTarget).getIvsAttack());
+            String ivs_sp_attack = String.valueOf(((PokemonEntity) pInteractionTarget).getIvsSPAttack());
+            String ivs_defence = String.valueOf(((PokemonEntity) pInteractionTarget).getIvsDefence());
+            String ivs_sp_defence = String.valueOf(((PokemonEntity) pInteractionTarget).getIvsSPDefence());
+            String ivs_speed = String.valueOf(((PokemonEntity) pInteractionTarget).getIvsSpeed());
+
+            String base_hp = String.valueOf(((PokemonEntity) pInteractionTarget).getBaseHP());
+            String base_attack = String.valueOf(((PokemonEntity) pInteractionTarget).getBaseAttack());
+            String base_sp_attack = String.valueOf(((PokemonEntity) pInteractionTarget).getBaseSPAttack());
+            String base_defence = String.valueOf(((PokemonEntity) pInteractionTarget).getBaseDefence());
+            String base_sp_defence = String.valueOf(((PokemonEntity) pInteractionTarget).getBaseSPDefence());
+            String base_speed = String.valueOf(((PokemonEntity) pInteractionTarget).getBaseSpeed());
+
+
+
             if (!pPlayer.level.isClientSide && pInteractionTarget instanceof PokemonEntity) {
                 pPlayer.sendMessage(new TranslatableComponent("" + (nickname) + ": Level: " + (level)), pPlayer.getUUID());
 
                 pPlayer.sendMessage(new TranslatableComponent("Type: " + (type1) + " / " + (type2)), pPlayer.getUUID());
-                pPlayer.sendMessage(new TranslatableComponent("Size: " + (size)), pPlayer.getUUID());
-                pPlayer.sendMessage(new TranslatableComponent("Nature: " + (nature)), pPlayer.getUUID());
+                pPlayer.sendMessage(new TranslatableComponent("Size: " + (size) + " Nature: " + (nature)), pPlayer.getUUID());
+
+                pPlayer.sendMessage(new TranslatableComponent("Hp Ivs: " + (ivs_hp) + " ,Attack Ivs: " + (ivs_attack) + " ,Defence Ivs: " + (ivs_defence) + " ,Special Attack Ivs: " + (ivs_sp_attack) + " ,Special Defence Ivs: " + (ivs_sp_defence)  + " ,Speed Ivs: " + (ivs_speed)), pPlayer.getUUID());
+                pPlayer.sendMessage(new TranslatableComponent("Hp Ivs: " + (base_hp) + " ,Attack Ivs: " + (base_attack) + " ,Defence Ivs: " + (base_defence) + " ,Special Attack Ivs: " + (base_sp_attack) + " ,Special Defence Ivs: " + (base_sp_defence)  + " ,Speed Ivs: " + (base_speed)), pPlayer.getUUID());
+
             }
         }
         return InteractionResult.PASS;

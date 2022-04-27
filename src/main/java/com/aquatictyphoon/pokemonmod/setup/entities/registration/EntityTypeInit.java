@@ -21,7 +21,7 @@ public class EntityTypeInit {
 
     public static final RegistryObject<EntityType<PokemonEntity>> POKEMON = ENTITIES.register("pokemon",
             () -> EntityType.Builder.<PokemonEntity>of(PokemonEntity::new, MobCategory.CREATURE)
-                    .sized(1F, 1F).build("pokemon"));
+                    .sized(0.5F, 0.8F).build("pokemon"));
 
 
     @SubscribeEvent
