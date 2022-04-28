@@ -121,2775 +121,2775 @@ public class PokemonEntity extends TamableAnimal {
         else if(species == 1) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 45);
+            this.entityData.set(BASE_ATTACK, 49);
+            this.entityData.set(BASE_DEFENCE, 49);
+            this.entityData.set(BASE_SP_ATTACK, 65);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Bulbasaur");
         }
         else if(species == 2) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 60);
+            this.entityData.set(BASE_ATTACK, 62);
+            this.entityData.set(BASE_DEFENCE, 63);
+            this.entityData.set(BASE_SP_ATTACK, 80);
+            this.entityData.set(BASE_SP_DEFENCE, 80);
+            this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Ivysaur");
         }
         else if(species == 3) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 80);
+            this.entityData.set(BASE_ATTACK, 82);
+            this.entityData.set(BASE_DEFENCE, 83);
+            this.entityData.set(BASE_SP_ATTACK, 100);
+            this.entityData.set(BASE_SP_DEFENCE, 100);
+            this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Venusaur");
         }
         else if(species == 4) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 39);
+            this.entityData.set(BASE_ATTACK, 52);
+            this.entityData.set(BASE_DEFENCE, 43);
+            this.entityData.set(BASE_SP_ATTACK, 60);
+            this.entityData.set(BASE_SP_DEFENCE, 50);
+            this.entityData.set(BASE_SPEED, 65);
             this.entityData.set(NICKNAME, "Charmander");
         }
         else if(species == 5) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 58);
+            this.entityData.set(BASE_ATTACK, 64);
+            this.entityData.set(BASE_DEFENCE, 58);
+            this.entityData.set(BASE_SP_ATTACK, 80);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Charmeleon");
         }
         else if(species == 6) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 78);
+            this.entityData.set(BASE_ATTACK, 84);
+            this.entityData.set(BASE_DEFENCE, 78);
+            this.entityData.set(BASE_SP_ATTACK, 109);
+            this.entityData.set(BASE_SP_DEFENCE, 85);
+            this.entityData.set(BASE_SPEED, 1000);
             this.entityData.set(NICKNAME, "Charizard");
         }
         else if(species == 7) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 44);
+            this.entityData.set(BASE_ATTACK, 48);
+            this.entityData.set(BASE_DEFENCE, 65);
+            this.entityData.set(BASE_SP_ATTACK, 50);
+            this.entityData.set(BASE_SP_DEFENCE, 64);
+            this.entityData.set(BASE_SPEED, 43);
             this.entityData.set(NICKNAME, "Squirtle");
         }
         else if(species == 8) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 59);
+            this.entityData.set(BASE_ATTACK, 63);
+            this.entityData.set(BASE_DEFENCE, 80);
+            this.entityData.set(BASE_SP_ATTACK, 65);
+            this.entityData.set(BASE_SP_DEFENCE, 80);
+            this.entityData.set(BASE_SPEED, 78);
             this.entityData.set(NICKNAME, "Wartortle");
         }
         else if(species == 9) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 79);
+            this.entityData.set(BASE_ATTACK, 83);
+            this.entityData.set(BASE_DEFENCE, 100);
+            this.entityData.set(BASE_SP_ATTACK, 85);
+            this.entityData.set(BASE_SP_DEFENCE, 108);
+            this.entityData.set(BASE_SPEED, 78);
             this.entityData.set(NICKNAME, "Blastoise");
         }
         else if(species == 10) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.BUG.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 45);
+            this.entityData.set(BASE_ATTACK, 30);
+            this.entityData.set(BASE_DEFENCE,35 );
+            this.entityData.set(BASE_SP_ATTACK,20 );
+            this.entityData.set(BASE_SP_DEFENCE,20 );
+            this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Caterpie");
         }
 
         else if(species == 11) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.BUG.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,50 );
+            this.entityData.set(BASE_ATTACK,20 );
+            this.entityData.set(BASE_DEFENCE, 55);
+            this.entityData.set(BASE_SP_ATTACK, 25);
+            this.entityData.set(BASE_SP_DEFENCE,25 );
+            this.entityData.set(BASE_SPEED,30 );
             this.entityData.set(NICKNAME, "Metapod");
         }
         else if(species == 12) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,60 );
+            this.entityData.set(BASE_ATTACK, 45);
+            this.entityData.set(BASE_DEFENCE,50 );
+            this.entityData.set(BASE_SP_ATTACK,90 );
+            this.entityData.set(BASE_SP_DEFENCE,80 );
+            this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Butterfree");
         }
         else if(species == 13) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 40);
+            this.entityData.set(BASE_ATTACK,35 );
+            this.entityData.set(BASE_DEFENCE,30 );
+            this.entityData.set(BASE_SP_ATTACK, 20);
+            this.entityData.set(BASE_SP_DEFENCE,20 );
+            this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Weedle");
         }
         else if(species == 14) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,45 );
+            this.entityData.set(BASE_ATTACK,25 );
+            this.entityData.set(BASE_DEFENCE,50 );
+            this.entityData.set(BASE_SP_ATTACK, 25);
+            this.entityData.set(BASE_SP_DEFENCE, 25);
+            this.entityData.set(BASE_SPEED,35 );
             this.entityData.set(NICKNAME, "Kakuna");
         }
         else if(species == 15) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,65 );
+            this.entityData.set(BASE_ATTACK,90 );
+            this.entityData.set(BASE_DEFENCE,40 );
+            this.entityData.set(BASE_SP_ATTACK, 45);
+            this.entityData.set(BASE_SP_DEFENCE, 80);
+            this.entityData.set(BASE_SPEED,75 );
             this.entityData.set(NICKNAME, "Beedrill");
         }
         else if(species == 16) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,40 );
+            this.entityData.set(BASE_ATTACK,45 );
+            this.entityData.set(BASE_DEFENCE,40 );
+            this.entityData.set(BASE_SP_ATTACK,35 );
+            this.entityData.set(BASE_SP_DEFENCE,35 );
+            this.entityData.set(BASE_SPEED,56 );
             this.entityData.set(NICKNAME, "Pidgey");
         }
         else if(species == 17) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,63 );
+            this.entityData.set(BASE_ATTACK,60 );
+            this.entityData.set(BASE_DEFENCE, 55);
+            this.entityData.set(BASE_SP_ATTACK,50 );
+            this.entityData.set(BASE_SP_DEFENCE,50 );
+            this.entityData.set(BASE_SPEED,71 );
             this.entityData.set(NICKNAME, "Pidgeotto");
         }
         else if(species == 18) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,83 );
+            this.entityData.set(BASE_ATTACK, 80);
+            this.entityData.set(BASE_DEFENCE, 75);
+            this.entityData.set(BASE_SP_ATTACK, 70);
+            this.entityData.set(BASE_SP_DEFENCE, 70);
+            this.entityData.set(BASE_SPEED,101 );
             this.entityData.set(NICKNAME, "Pidgeot");
         }
         else if(species ==19) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 30);
+            this.entityData.set(BASE_ATTACK, 56);
+            this.entityData.set(BASE_DEFENCE,35 );
+            this.entityData.set(BASE_SP_ATTACK, 25);
+            this.entityData.set(BASE_SP_DEFENCE,35 );
+            this.entityData.set(BASE_SPEED, 72);
             this.entityData.set(NICKNAME, "Rattata");
         }
         else if(species == 20) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 55);
+            this.entityData.set(BASE_ATTACK,81 );
+            this.entityData.set(BASE_DEFENCE,60 );
+            this.entityData.set(BASE_SP_ATTACK, 50);
+            this.entityData.set(BASE_SP_DEFENCE,70 );
+            this.entityData.set(BASE_SPEED, 97);
             this.entityData.set(NICKNAME, "Raticate");
         }
         else if(species == 21) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 40);
+            this.entityData.set(BASE_ATTACK, 60);
+            this.entityData.set(BASE_DEFENCE, 30);
+            this.entityData.set(BASE_SP_ATTACK, 31);
+            this.entityData.set(BASE_SP_DEFENCE,31);
+            this.entityData.set(BASE_SPEED,70 );
             this.entityData.set(NICKNAME, "Spearow");
         }
         else if(species == 22) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK,90 );
+            this.entityData.set(BASE_DEFENCE,65 );
+            this.entityData.set(BASE_SP_ATTACK,61 );
+            this.entityData.set(BASE_SP_DEFENCE, 61);
+            this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Fearow");
         }
         else if(species == 23) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 35);
+            this.entityData.set(BASE_ATTACK,60 );
+            this.entityData.set(BASE_DEFENCE,44 );
+            this.entityData.set(BASE_SP_ATTACK,40 );
+            this.entityData.set(BASE_SP_DEFENCE, 54);
+            this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Ekans");
         }
         else if(species == 24) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 60);
+            this.entityData.set(BASE_ATTACK, 95);
+            this.entityData.set(BASE_DEFENCE, 69);
+            this.entityData.set(BASE_SP_ATTACK,65 );
+            this.entityData.set(BASE_SP_DEFENCE,79 );
+            this.entityData.set(BASE_SPEED,80 );
             this.entityData.set(NICKNAME, "Arbok");
         }
         else if(species == 25) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ELECTRIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,35 );
+            this.entityData.set(BASE_ATTACK,55 );
+            this.entityData.set(BASE_DEFENCE,40 );
+            this.entityData.set(BASE_SP_ATTACK, 50);
+            this.entityData.set(BASE_SP_DEFENCE,50 );
+            this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Pikachu");
         }
         else if(species == 26) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ELECTRIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,60 );
+            this.entityData.set(BASE_ATTACK,90 );
+            this.entityData.set(BASE_DEFENCE,55 );
+            this.entityData.set(BASE_SP_ATTACK, 90);
+            this.entityData.set(BASE_SP_DEFENCE,80 );
+            this.entityData.set(BASE_SPEED, 110);
             this.entityData.set(NICKNAME, "Raichu");
         }
         else if(species == 27) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,50 );
+            this.entityData.set(BASE_ATTACK,75 );
+            this.entityData.set(BASE_DEFENCE, 85);
+            this.entityData.set(BASE_SP_ATTACK,20 );
+            this.entityData.set(BASE_SP_DEFENCE,30 );
+            this.entityData.set(BASE_SPEED,40 );
             this.entityData.set(NICKNAME, "Sandshrew");
         }
         else if(species == 28) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,75 );
+            this.entityData.set(BASE_ATTACK, 100);
+            this.entityData.set(BASE_DEFENCE, 110);
+            this.entityData.set(BASE_SP_ATTACK,45 );
+            this.entityData.set(BASE_SP_DEFENCE,55 );
+            this.entityData.set(BASE_SPEED,65 );
             this.entityData.set(NICKNAME, "Sandslash");
         }
         else if(species == 29) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,55 );
+            this.entityData.set(BASE_ATTACK,47 );
+            this.entityData.set(BASE_DEFENCE,52 );
+            this.entityData.set(BASE_SP_ATTACK,40 );
+            this.entityData.set(BASE_SP_DEFENCE,40 );
+            this.entityData.set(BASE_SPEED,41 );
             this.entityData.set(NICKNAME, "Nidoran ♀");
         }
         else if(species == 30) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,70 );
+            this.entityData.set(BASE_ATTACK,62 );
+            this.entityData.set(BASE_DEFENCE, 67);
+            this.entityData.set(BASE_SP_ATTACK,55 );
+            this.entityData.set(BASE_SP_DEFENCE,55 );
+            this.entityData.set(BASE_SPEED,56 );
             this.entityData.set(NICKNAME, "Nidorina");
         }
 
         else if(species == 31) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK, 92);
+            this.entityData.set(BASE_DEFENCE, 87);
+            this.entityData.set(BASE_SP_ATTACK,75 );
+            this.entityData.set(BASE_SP_DEFENCE,85 );
+            this.entityData.set(BASE_SPEED,76 );
             this.entityData.set(NICKNAME, "Nidoqueen");
         }
         else if(species == 32) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 46);
+            this.entityData.set(BASE_ATTACK,57 );
+            this.entityData.set(BASE_DEFENCE,40 );
+            this.entityData.set(BASE_SP_ATTACK,40 );
+            this.entityData.set(BASE_SP_DEFENCE,40 );
+            this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Nidoran ♂");
         }
         else if(species == 33) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,61 );
+            this.entityData.set(BASE_ATTACK,72 );
+            this.entityData.set(BASE_DEFENCE, 57);
+            this.entityData.set(BASE_SP_ATTACK,55 );
+            this.entityData.set(BASE_SP_DEFENCE, 55);
+            this.entityData.set(BASE_SPEED,65 );
             this.entityData.set(NICKNAME, "Nidorino");
         }
         else if(species == 34) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 81);
+            this.entityData.set(BASE_ATTACK,102 );
+            this.entityData.set(BASE_DEFENCE,77 );
+            this.entityData.set(BASE_SP_ATTACK,85 );
+            this.entityData.set(BASE_SP_DEFENCE,75 );
+            this.entityData.set(BASE_SPEED,85 );
             this.entityData.set(NICKNAME, "Nidoking");
         }
         else if(species == 35) {
             this.entityData.set(TYPE1, PokemonTypes.FAIRY.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FAIRY.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,70 );
+            this.entityData.set(BASE_ATTACK,45 );
+            this.entityData.set(BASE_DEFENCE, 48);
+            this.entityData.set(BASE_SP_ATTACK, 60);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Clefairy");
         }
         else if(species == 36) {
             this.entityData.set(TYPE1, PokemonTypes.FAIRY.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FAIRY.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 95);
+            this.entityData.set(BASE_ATTACK, 70);
+            this.entityData.set(BASE_DEFENCE,73 );
+            this.entityData.set(BASE_SP_ATTACK,95 );
+            this.entityData.set(BASE_SP_DEFENCE,90 );
+            this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Clefable");
         }
         else if(species == 37) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,38 );
+            this.entityData.set(BASE_ATTACK,41 );
+            this.entityData.set(BASE_DEFENCE, 40);
+            this.entityData.set(BASE_SP_ATTACK,50 );
+            this.entityData.set(BASE_SP_DEFENCE,65 );
+            this.entityData.set(BASE_SPEED,65 );
             this.entityData.set(NICKNAME, "Vulpix");
         }
         else if(species == 38) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,73 );
+            this.entityData.set(BASE_ATTACK,76 );
+            this.entityData.set(BASE_DEFENCE,75 );
+            this.entityData.set(BASE_SP_ATTACK,81 );
+            this.entityData.set(BASE_SP_DEFENCE,100 );
+            this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Ninetales");
         }
         else if(species == 39) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FAIRY.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 115);
+            this.entityData.set(BASE_ATTACK,45 );
+            this.entityData.set(BASE_DEFENCE,20 );
+            this.entityData.set(BASE_SP_ATTACK,45 );
+            this.entityData.set(BASE_SP_DEFENCE,25 );
+            this.entityData.set(BASE_SPEED,20 );
             this.entityData.set(NICKNAME, "Jigglypuff");
         }
         else if(species == 40) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FAIRY.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 140);
+            this.entityData.set(BASE_ATTACK, 70);
+            this.entityData.set(BASE_DEFENCE,45 );
+            this.entityData.set(BASE_SP_ATTACK, 85);
+            this.entityData.set(BASE_SP_DEFENCE, 50);
+            this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Wigglytuff");
         }
         else if(species == 41) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,40 );
+            this.entityData.set(BASE_ATTACK,45 );
+            this.entityData.set(BASE_DEFENCE,35 );
+            this.entityData.set(BASE_SP_ATTACK,30 );
+            this.entityData.set(BASE_SP_DEFENCE,40 );
+            this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Zubat");
         }
         else if(species == 42) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 75);
+            this.entityData.set(BASE_ATTACK, 80);
+            this.entityData.set(BASE_DEFENCE,70 );
+            this.entityData.set(BASE_SP_ATTACK,65 );
+            this.entityData.set(BASE_SP_DEFENCE,75 );
+            this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Golbat");
         }
         else if(species == 43) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,45 );
+            this.entityData.set(BASE_ATTACK,50 );
+            this.entityData.set(BASE_DEFENCE, 55);
+            this.entityData.set(BASE_SP_ATTACK, 75);
+            this.entityData.set(BASE_SP_DEFENCE,65 );
+            this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Oddish");
         }
         else if(species == 44) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 60);
+            this.entityData.set(BASE_ATTACK,65 );
+            this.entityData.set(BASE_DEFENCE,70 );
+            this.entityData.set(BASE_SP_ATTACK,85 );
+            this.entityData.set(BASE_SP_DEFENCE, 75);
+            this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Gloom");
         }
         else if(species == 45) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,75 );
+            this.entityData.set(BASE_ATTACK,80 );
+            this.entityData.set(BASE_DEFENCE,85 );
+            this.entityData.set(BASE_SP_ATTACK,110 );
+            this.entityData.set(BASE_SP_DEFENCE,90 );
+            this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Vileplume");
         }
         else if(species == 46) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GRASS.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,35 );
+            this.entityData.set(BASE_ATTACK, 70);
+            this.entityData.set(BASE_DEFENCE, 55);
+            this.entityData.set(BASE_SP_ATTACK,45 );
+            this.entityData.set(BASE_SP_DEFENCE,55 );
+            this.entityData.set(BASE_SPEED, 25);
             this.entityData.set(NICKNAME, "Paras");
         }
         else if(species == 47) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GRASS.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,60 );
+            this.entityData.set(BASE_ATTACK, 95);
+            this.entityData.set(BASE_DEFENCE, 80);
+            this.entityData.set(BASE_SP_ATTACK, 60);
+            this.entityData.set(BASE_SP_DEFENCE, 80);
+            this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Parasect");
         }
         else if(species == 48) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 60);
+            this.entityData.set(BASE_ATTACK, 55);
+            this.entityData.set(BASE_DEFENCE, 50);
+            this.entityData.set(BASE_SP_ATTACK,40 );
+            this.entityData.set(BASE_SP_DEFENCE, 55);
+            this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Venonat");
         }
         else if(species == 49) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 70);
+            this.entityData.set(BASE_ATTACK, 65);
+            this.entityData.set(BASE_DEFENCE, 60);
+            this.entityData.set(BASE_SP_ATTACK, 90);
+            this.entityData.set(BASE_SP_DEFENCE, 75);
+            this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Venomoth");
         }
         else if(species == 50) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,10 );
+            this.entityData.set(BASE_ATTACK,55 );
+            this.entityData.set(BASE_DEFENCE, 25);
+            this.entityData.set(BASE_SP_ATTACK,35 );
+            this.entityData.set(BASE_SP_DEFENCE,45 );
+            this.entityData.set(BASE_SPEED,95 );
             this.entityData.set(NICKNAME, "Diglett");
         }
         else if(species == 51) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 35);
+            this.entityData.set(BASE_ATTACK,100 );
+            this.entityData.set(BASE_DEFENCE, 50);
+            this.entityData.set(BASE_SP_ATTACK, 50);
+            this.entityData.set(BASE_SP_DEFENCE, 70);
+            this.entityData.set(BASE_SPEED,120 );
             this.entityData.set(NICKNAME, "Dugtrio");
         }
         else if(species == 52) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 40);
+            this.entityData.set(BASE_ATTACK,45 );
+            this.entityData.set(BASE_DEFENCE,35 );
+            this.entityData.set(BASE_SP_ATTACK, 40);
+            this.entityData.set(BASE_SP_DEFENCE,40 );
+            this.entityData.set(BASE_SPEED, 90);
             this.entityData.set(NICKNAME, "Meowth");
         }
         else if(species == 53) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK, 70);
+            this.entityData.set(BASE_DEFENCE,60 );
+            this.entityData.set(BASE_SP_ATTACK, 65);
+            this.entityData.set(BASE_SP_DEFENCE,65 );
+            this.entityData.set(BASE_SPEED, 115);
             this.entityData.set(NICKNAME, "Persian");
         }
         else if(species == 54) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,50 );
+            this.entityData.set(BASE_ATTACK,52 );
+            this.entityData.set(BASE_DEFENCE, 48);
+            this.entityData.set(BASE_SP_ATTACK,65 );
+            this.entityData.set(BASE_SP_DEFENCE,50 );
+            this.entityData.set(BASE_SPEED,55 );
             this.entityData.set(NICKNAME, "Psyduck");
         }
         else if(species == 55) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,80 );
+            this.entityData.set(BASE_ATTACK,82 );
+            this.entityData.set(BASE_DEFENCE, 78);
+            this.entityData.set(BASE_SP_ATTACK, 95);
+            this.entityData.set(BASE_SP_DEFENCE,80 );
+            this.entityData.set(BASE_SPEED,85 );
             this.entityData.set(NICKNAME, "Golduck");
         }
         else if(species == 56) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIGHTING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,40 );
+            this.entityData.set(BASE_ATTACK,80 );
+            this.entityData.set(BASE_DEFENCE, 35);
+            this.entityData.set(BASE_SP_ATTACK, 35);
+            this.entityData.set(BASE_SP_DEFENCE,45 );
+            this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Mankey");
         }
         else if(species == 57) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIGHTING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK,105 );
+            this.entityData.set(BASE_DEFENCE, 60);
+            this.entityData.set(BASE_SP_ATTACK,60 );
+            this.entityData.set(BASE_SP_DEFENCE, 70);
+            this.entityData.set(BASE_SPEED, 95);
             this.entityData.set(NICKNAME, "Primape");
         }
         else if(species == 58) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 55);
+            this.entityData.set(BASE_ATTACK, 70);
+            this.entityData.set(BASE_DEFENCE, 45);
+            this.entityData.set(BASE_SP_ATTACK, 70);
+            this.entityData.set(BASE_SP_DEFENCE, 50);
+            this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Growlthie");
         }
         else if(species == 59) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK, 110);
+            this.entityData.set(BASE_DEFENCE, 80);
+            this.entityData.set(BASE_SP_ATTACK, 100);
+            this.entityData.set(BASE_SP_DEFENCE, 80);
+            this.entityData.set(BASE_SPEED,95 );
             this.entityData.set(NICKNAME, "Arcanine");
         }
         else if(species == 60) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 40);
+            this.entityData.set(BASE_ATTACK, 50);
+            this.entityData.set(BASE_DEFENCE,40 );
+            this.entityData.set(BASE_SP_ATTACK,40 );
+            this.entityData.set(BASE_SP_DEFENCE,40 );
+            this.entityData.set(BASE_SPEED, 90);
             this.entityData.set(NICKNAME, "Poliwag");
         }
         else if(species == 61) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK,65 );
+            this.entityData.set(BASE_DEFENCE,65 );
+            this.entityData.set(BASE_SP_ATTACK,50 );
+            this.entityData.set(BASE_SP_DEFENCE,50 );
+            this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Poliwhirl");
         }
         else if(species == 62) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIGHTING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK,95 );
+            this.entityData.set(BASE_DEFENCE,95 );
+            this.entityData.set(BASE_SP_ATTACK,70 );
+            this.entityData.set(BASE_SP_DEFENCE,90 );
+            this.entityData.set(BASE_SPEED,70 );
             this.entityData.set(NICKNAME, "Poliwrath");
         }
         else if(species == 63) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 25);
+            this.entityData.set(BASE_ATTACK, 20);
+            this.entityData.set(BASE_DEFENCE, 15);
+            this.entityData.set(BASE_SP_ATTACK,105 );
+            this.entityData.set(BASE_SP_DEFENCE,55 );
+            this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Abra");
         }
         else if(species == 64) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 25);
+            this.entityData.set(BASE_ATTACK,20 );
+            this.entityData.set(BASE_DEFENCE,15 );
+            this.entityData.set(BASE_SP_ATTACK,105 );
+            this.entityData.set(BASE_SP_DEFENCE,55 );
+            this.entityData.set(BASE_SPEED, 90);
             this.entityData.set(NICKNAME, "Kadabra");
         }
         else if(species == 65) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,50 );
+            this.entityData.set(BASE_ATTACK,50 );
+            this.entityData.set(BASE_DEFENCE, 45);
+            this.entityData.set(BASE_SP_ATTACK,135 );
+            this.entityData.set(BASE_SP_DEFENCE,95 );
+            this.entityData.set(BASE_SPEED, 120);
             this.entityData.set(NICKNAME, "Alakazam");
         }
         else if(species == 66) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIGHTING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 70);
+            this.entityData.set(BASE_ATTACK,80 );
+            this.entityData.set(BASE_DEFENCE, 50);
+            this.entityData.set(BASE_SP_ATTACK,35 );
+            this.entityData.set(BASE_SP_DEFENCE, 35);
+            this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Machop");
         }
         else if(species == 67) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIGHTING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 80);
+            this.entityData.set(BASE_ATTACK, 100);
+            this.entityData.set(BASE_DEFENCE, 70);
+            this.entityData.set(BASE_SP_ATTACK, 50);
+            this.entityData.set(BASE_SP_DEFENCE,60 );
+            this.entityData.set(BASE_SPEED,45 );
             this.entityData.set(NICKNAME, "Machoke");
         }
         else if(species == 68) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIGHTING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK, 130);
+            this.entityData.set(BASE_DEFENCE,80 );
+            this.entityData.set(BASE_SP_ATTACK,65 );
+            this.entityData.set(BASE_SP_DEFENCE,85 );
+            this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Machamp");
         }
         else if(species == 69) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 50);
+            this.entityData.set(BASE_ATTACK, 75);
+            this.entityData.set(BASE_DEFENCE, 35);
+            this.entityData.set(BASE_SP_ATTACK,70 );
+            this.entityData.set(BASE_SP_DEFENCE, 30);
+            this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Bellsprout");
         }
         else if(species == 70) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,65 );
+            this.entityData.set(BASE_ATTACK,90 );
+            this.entityData.set(BASE_DEFENCE, 50);
+            this.entityData.set(BASE_SP_ATTACK, 85);
+            this.entityData.set(BASE_SP_DEFENCE, 45);
+            this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Weepinbell");
         }
 
         else if(species == 71) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,80 );
+            this.entityData.set(BASE_ATTACK,105 );
+            this.entityData.set(BASE_DEFENCE,65 );
+            this.entityData.set(BASE_SP_ATTACK, 100);
+            this.entityData.set(BASE_SP_DEFENCE, 70);
+            this.entityData.set(BASE_SPEED,70 );
             this.entityData.set(NICKNAME, "Victreebel");
         }
         else if(species == 72) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,40 );
+            this.entityData.set(BASE_ATTACK, 40);
+            this.entityData.set(BASE_DEFENCE, 35);
+            this.entityData.set(BASE_SP_ATTACK,50 );
+            this.entityData.set(BASE_SP_DEFENCE,100 );
+            this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Tentacool");
         }
         else if(species == 73) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,80 );
+            this.entityData.set(BASE_ATTACK,70 );
+            this.entityData.set(BASE_DEFENCE, 65);
+            this.entityData.set(BASE_SP_ATTACK,80 );
+            this.entityData.set(BASE_SP_DEFENCE,120 );
+            this.entityData.set(BASE_SPEED,100 );
             this.entityData.set(NICKNAME, "Tentacrule");
         }
         else if(species == 74) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,40 );
+            this.entityData.set(BASE_ATTACK, 80);
+            this.entityData.set(BASE_DEFENCE, 100);
+            this.entityData.set(BASE_SP_ATTACK,30 );
+            this.entityData.set(BASE_SP_DEFENCE,30 );
+            this.entityData.set(BASE_SPEED, 20);
             this.entityData.set(NICKNAME, "Geodude");
         }
         else if(species == 75) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 55);
+            this.entityData.set(BASE_ATTACK, 95);
+            this.entityData.set(BASE_DEFENCE, 115);
+            this.entityData.set(BASE_SP_ATTACK,45 );
+            this.entityData.set(BASE_SP_DEFENCE, 45);
+            this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Graveler");
         }
         else if(species == 76) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,80 );
+            this.entityData.set(BASE_ATTACK,120 );
+            this.entityData.set(BASE_DEFENCE,130 );
+            this.entityData.set(BASE_SP_ATTACK, 55);
+            this.entityData.set(BASE_SP_DEFENCE,65 );
+            this.entityData.set(BASE_SPEED,45 );
             this.entityData.set(NICKNAME, "Golem");
         }
         else if(species == 77) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,50 );
+            this.entityData.set(BASE_ATTACK,85 );
+            this.entityData.set(BASE_DEFENCE,55 );
+            this.entityData.set(BASE_SP_ATTACK,65 );
+            this.entityData.set(BASE_SP_DEFENCE,65 );
+            this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Ponyta");
         }
         else if(species == 78) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,65 );
+            this.entityData.set(BASE_ATTACK, 100);
+            this.entityData.set(BASE_DEFENCE, 70);
+            this.entityData.set(BASE_SP_ATTACK, 80);
+            this.entityData.set(BASE_SP_DEFENCE,80 );
+            this.entityData.set(BASE_SPEED, 105);
             this.entityData.set(NICKNAME, "Rapidash");
         }
         else if(species == 79) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK,65 );
+            this.entityData.set(BASE_DEFENCE, 65);
+            this.entityData.set(BASE_SP_ATTACK,40 );
+            this.entityData.set(BASE_SP_DEFENCE, 40);
+            this.entityData.set(BASE_SPEED,15 );
             this.entityData.set(NICKNAME, "Slowpoke");
         }
         else if(species == 80) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 95);
+            this.entityData.set(BASE_ATTACK, 75);
+            this.entityData.set(BASE_DEFENCE, 110);
+            this.entityData.set(BASE_SP_ATTACK, 100);
+            this.entityData.set(BASE_SP_DEFENCE, 80);
+            this.entityData.set(BASE_SPEED,30 );
             this.entityData.set(NICKNAME, "Slowbro");
         }
         else if(species == 81) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.STEEL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,25 );
+            this.entityData.set(BASE_ATTACK, 35);
+            this.entityData.set(BASE_DEFENCE,70 );
+            this.entityData.set(BASE_SP_ATTACK,95 );
+            this.entityData.set(BASE_SP_DEFENCE,55 );
+            this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Magnemite");
         }
         else if(species == 82) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.STEEL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 50);
+            this.entityData.set(BASE_ATTACK,60 );
+            this.entityData.set(BASE_DEFENCE,95 );
+            this.entityData.set(BASE_SP_ATTACK,120 );
+            this.entityData.set(BASE_SP_DEFENCE,70 );
+            this.entityData.set(BASE_SPEED,70 );
             this.entityData.set(NICKNAME, "Magneton");
         }
         else if(species == 83) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 52);
+            this.entityData.set(BASE_ATTACK, 90);
+            this.entityData.set(BASE_DEFENCE,55 );
+            this.entityData.set(BASE_SP_ATTACK,58 );
+            this.entityData.set(BASE_SP_DEFENCE,62 );
+            this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Farfetch'd");
         }
         else if(species == 84) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 35);
+            this.entityData.set(BASE_ATTACK,85 );
+            this.entityData.set(BASE_DEFENCE,45 );
+            this.entityData.set(BASE_SP_ATTACK, 35);
+            this.entityData.set(BASE_SP_DEFENCE, 35);
+            this.entityData.set(BASE_SPEED,75);
             this.entityData.set(NICKNAME, "Doduo");
         }
         else if(species == 85) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,60 );
+            this.entityData.set(BASE_ATTACK,110 );
+            this.entityData.set(BASE_DEFENCE,70 );
+            this.entityData.set(BASE_SP_ATTACK,60 );
+            this.entityData.set(BASE_SP_DEFENCE,60 );
+            this.entityData.set(BASE_SPEED, 110);
             this.entityData.set(NICKNAME, "Dodrio");
         }
         else if(species == 86) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,65 );
+            this.entityData.set(BASE_ATTACK,45 );
+            this.entityData.set(BASE_DEFENCE, 55);
+            this.entityData.set(BASE_SP_ATTACK,45 );
+            this.entityData.set(BASE_SP_DEFENCE,70 );
+            this.entityData.set(BASE_SPEED,45 );
             this.entityData.set(NICKNAME, "Seel");
         }
         else if(species == 87) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ICE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK,70 );
+            this.entityData.set(BASE_DEFENCE,80 );
+            this.entityData.set(BASE_SP_ATTACK, 70);
+            this.entityData.set(BASE_SP_DEFENCE,95 );
+            this.entityData.set(BASE_SPEED,70 );
             this.entityData.set(NICKNAME, "Dewgong");
         }
         else if(species == 88) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,80 );
+            this.entityData.set(BASE_ATTACK,80 );
+            this.entityData.set(BASE_DEFENCE,50 );
+            this.entityData.set(BASE_SP_ATTACK,40 );
+            this.entityData.set(BASE_SP_DEFENCE,50 );
+            this.entityData.set(BASE_SPEED,25 );
             this.entityData.set(NICKNAME, "Grimer");
         }
         else if(species == 89) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,105 );
+            this.entityData.set(BASE_ATTACK,105 );
+            this.entityData.set(BASE_DEFENCE,75 );
+            this.entityData.set(BASE_SP_ATTACK,65 );
+            this.entityData.set(BASE_SP_DEFENCE, 100);
+            this.entityData.set(BASE_SPEED,50 );
             this.entityData.set(NICKNAME, "Muk");
         }
         else if(species == 90) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,30 );
+            this.entityData.set(BASE_ATTACK,65 );
+            this.entityData.set(BASE_DEFENCE, 100);
+            this.entityData.set(BASE_SP_ATTACK, 45);
+            this.entityData.set(BASE_SP_DEFENCE,25 );
+            this.entityData.set(BASE_SPEED,40 );
             this.entityData.set(NICKNAME, "Shellder");
         }
         else if(species == 91) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ICE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 50);
+            this.entityData.set(BASE_ATTACK, 95);
+            this.entityData.set(BASE_DEFENCE,180 );
+            this.entityData.set(BASE_SP_ATTACK,85 );
+            this.entityData.set(BASE_SP_DEFENCE, 45);
+            this.entityData.set(BASE_SPEED,70 );
             this.entityData.set(NICKNAME, "Cloyster");
         }
         else if(species == 92) {
             this.entityData.set(TYPE1, PokemonTypes.GHOST.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 30);
+            this.entityData.set(BASE_ATTACK,35 );
+            this.entityData.set(BASE_DEFENCE, 30);
+            this.entityData.set(BASE_SP_ATTACK,100 );
+            this.entityData.set(BASE_SP_DEFENCE,35 );
+            this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Gastly");
         }
         else if(species == 93) {
             this.entityData.set(TYPE1, PokemonTypes.GHOST.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 45);
+            this.entityData.set(BASE_ATTACK,50 );
+            this.entityData.set(BASE_DEFENCE, 45);
+            this.entityData.set(BASE_SP_ATTACK,115 );
+            this.entityData.set(BASE_SP_DEFENCE, 55);
+            this.entityData.set(BASE_SPEED, 95);
             this.entityData.set(NICKNAME, "Haunter");
         }
         else if(species == 94) {
             this.entityData.set(TYPE1, PokemonTypes.GHOST.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,60 );
+            this.entityData.set(BASE_ATTACK, 65);
+            this.entityData.set(BASE_DEFENCE,60 );
+            this.entityData.set(BASE_SP_ATTACK,130 );
+            this.entityData.set(BASE_SP_DEFENCE,75 );
+            this.entityData.set(BASE_SPEED,110 );
             this.entityData.set(NICKNAME, "Gengar");
         }
         else if(species == 95) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,35 );
+            this.entityData.set(BASE_ATTACK, 45);
+            this.entityData.set(BASE_DEFENCE, 160);
+            this.entityData.set(BASE_SP_ATTACK, 30);
+            this.entityData.set(BASE_SP_DEFENCE,45 );
+            this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Onix");
         }
         else if(species == 96) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,60 );
+            this.entityData.set(BASE_ATTACK, 48);
+            this.entityData.set(BASE_DEFENCE, 45);
+            this.entityData.set(BASE_SP_ATTACK,43 );
+            this.entityData.set(BASE_SP_DEFENCE,90 );
+            this.entityData.set(BASE_SPEED, 42);
             this.entityData.set(NICKNAME, "Drowzee");
         }
         else if(species == 97) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 85);
+            this.entityData.set(BASE_ATTACK,73 );
+            this.entityData.set(BASE_DEFENCE,70 );
+            this.entityData.set(BASE_SP_ATTACK,73 );
+            this.entityData.set(BASE_SP_DEFENCE,115 );
+            this.entityData.set(BASE_SPEED, 67);
             this.entityData.set(NICKNAME, "Hypno");
         }
         else if(species == 98) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,30 );
+            this.entityData.set(BASE_ATTACK,105 );
+            this.entityData.set(BASE_DEFENCE, 90);
+            this.entityData.set(BASE_SP_ATTACK,25 );
+            this.entityData.set(BASE_SP_DEFENCE,25 );
+            this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Krabby");
         }
         else if(species == 99) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,55 );
+            this.entityData.set(BASE_ATTACK,130 );
+            this.entityData.set(BASE_DEFENCE,115 );
+            this.entityData.set(BASE_SP_ATTACK,50 );
+            this.entityData.set(BASE_SP_DEFENCE,50 );
+            this.entityData.set(BASE_SPEED,75 );
             this.entityData.set(NICKNAME, "Kingler");
         }
         else if(species == 100) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ELECTRIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,40 );
+            this.entityData.set(BASE_ATTACK,30 );
+            this.entityData.set(BASE_DEFENCE, 50);
+            this.entityData.set(BASE_SP_ATTACK, 55);
+            this.entityData.set(BASE_SP_DEFENCE, 55);
+            this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Voltob");
         }
 
         else if(species == 101) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ELECTRIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,60 );
+            this.entityData.set(BASE_ATTACK,50 );
+            this.entityData.set(BASE_DEFENCE,70 );
+            this.entityData.set(BASE_SP_ATTACK,80 );
+            this.entityData.set(BASE_SP_DEFENCE,80 );
+            this.entityData.set(BASE_SPEED, 150);
             this.entityData.set(NICKNAME, "Electrode");
         }
         else if(species == 102) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,60 );
+            this.entityData.set(BASE_ATTACK,40 );
+            this.entityData.set(BASE_DEFENCE, 80);
+            this.entityData.set(BASE_SP_ATTACK,60 );
+            this.entityData.set(BASE_SP_DEFENCE,45 );
+            this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Exeggcute");
         }
         else if(species == 103) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,95 );
+            this.entityData.set(BASE_ATTACK,95 );
+            this.entityData.set(BASE_DEFENCE,85 );
+            this.entityData.set(BASE_SP_ATTACK, 125);
+            this.entityData.set(BASE_SP_DEFENCE, 75);
+            this.entityData.set(BASE_SPEED,55 );
             this.entityData.set(NICKNAME, "Exeggutor");
         }
         else if(species == 104) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 50);
+            this.entityData.set(BASE_ATTACK,50 );
+            this.entityData.set(BASE_DEFENCE, 95);
+            this.entityData.set(BASE_SP_ATTACK,40 );
+            this.entityData.set(BASE_SP_DEFENCE, 50);
+            this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Cubone");
         }
         else if(species == 105) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,60 );
+            this.entityData.set(BASE_ATTACK, 80);
+            this.entityData.set(BASE_DEFENCE,110 );
+            this.entityData.set(BASE_SP_ATTACK,50 );
+            this.entityData.set(BASE_SP_DEFENCE,80 );
+            this.entityData.set(BASE_SPEED,45 );
             this.entityData.set(NICKNAME, "Marowak");
         }
         else if(species == 106) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIGHTING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 50);
+            this.entityData.set(BASE_ATTACK,120 );
+            this.entityData.set(BASE_DEFENCE,53 );
+            this.entityData.set(BASE_SP_ATTACK,35 );
+            this.entityData.set(BASE_SP_DEFENCE, 110);
+            this.entityData.set(BASE_SPEED,87 );
             this.entityData.set(NICKNAME, "Hitmonlee");
         }
         else if(species == 107) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIGHTING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,50 );
+            this.entityData.set(BASE_ATTACK,120 );
+            this.entityData.set(BASE_DEFENCE, 53);
+            this.entityData.set(BASE_SP_ATTACK, 35);
+            this.entityData.set(BASE_SP_DEFENCE,110 );
+            this.entityData.set(BASE_SPEED,87 );
             this.entityData.set(NICKNAME, "Hitmonchan");
         }
         else if(species == 108) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK,55 );
+            this.entityData.set(BASE_DEFENCE,75 );
+            this.entityData.set(BASE_SP_ATTACK,60 );
+            this.entityData.set(BASE_SP_DEFENCE,75 );
+            this.entityData.set(BASE_SPEED,30 );
             this.entityData.set(NICKNAME, "Lickitung");
         }
         else if(species == 109) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,40 );
+            this.entityData.set(BASE_ATTACK,65 );
+            this.entityData.set(BASE_DEFENCE, 95);
+            this.entityData.set(BASE_SP_ATTACK,60 );
+            this.entityData.set(BASE_SP_DEFENCE,45 );
+            this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Koffing");
         }
         else if(species == 110) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,65 );
+            this.entityData.set(BASE_ATTACK, 90);
+            this.entityData.set(BASE_DEFENCE,120 );
+            this.entityData.set(BASE_SP_ATTACK,85 );
+            this.entityData.set(BASE_SP_DEFENCE,70 );
+            this.entityData.set(BASE_SPEED,60 );
             this.entityData.set(NICKNAME, "Weezing");
         }
 
         else if(species == 111) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,80 );
+            this.entityData.set(BASE_ATTACK,85 );
+            this.entityData.set(BASE_DEFENCE, 95);
+            this.entityData.set(BASE_SP_ATTACK,30 );
+            this.entityData.set(BASE_SP_DEFENCE,30 );
+            this.entityData.set(BASE_SPEED,25 );
             this.entityData.set(NICKNAME, "Rhyhorn");
         }
         else if(species == 112) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,105 );
+            this.entityData.set(BASE_ATTACK,130 );
+            this.entityData.set(BASE_DEFENCE, 120);
+            this.entityData.set(BASE_SP_ATTACK,45 );
+            this.entityData.set(BASE_SP_DEFENCE,45 );
+            this.entityData.set(BASE_SPEED,40 );
             this.entityData.set(NICKNAME, "Rhydon");
         }
         else if(species == 113) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,250 );
+            this.entityData.set(BASE_ATTACK, 5);
+            this.entityData.set(BASE_DEFENCE,5 );
+            this.entityData.set(BASE_SP_ATTACK, 35);
+            this.entityData.set(BASE_SP_DEFENCE, 105);
+            this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Chansey");
         }
         else if(species == 114) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GRASS.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,65 );
+            this.entityData.set(BASE_ATTACK,55 );
+            this.entityData.set(BASE_DEFENCE,155 );
+            this.entityData.set(BASE_SP_ATTACK,100 );
+            this.entityData.set(BASE_SP_DEFENCE, 40);
+            this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Tangela");
         }
         else if(species == 115) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 105);
+            this.entityData.set(BASE_ATTACK,95 );
+            this.entityData.set(BASE_DEFENCE,80 );
+            this.entityData.set(BASE_SP_ATTACK, 40);
+            this.entityData.set(BASE_SP_DEFENCE, 80);
+            this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Kangaskhan");
         }
         else if(species == 116) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,30 );
+            this.entityData.set(BASE_ATTACK, 40);
+            this.entityData.set(BASE_DEFENCE, 70);
+            this.entityData.set(BASE_SP_ATTACK,70 );
+            this.entityData.set(BASE_SP_DEFENCE,25 );
+            this.entityData.set(BASE_SPEED,60 );
             this.entityData.set(NICKNAME, "Horsea");
         }
         else if(species == 117) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 55);
+            this.entityData.set(BASE_ATTACK,65 );
+            this.entityData.set(BASE_DEFENCE,95 );
+            this.entityData.set(BASE_SP_ATTACK, 95);
+            this.entityData.set(BASE_SP_DEFENCE, 45);
+            this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Seadra");
         }
         else if(species == 118) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,45 );
+            this.entityData.set(BASE_ATTACK,67 );
+            this.entityData.set(BASE_DEFENCE,60 );
+            this.entityData.set(BASE_SP_ATTACK, 35);
+            this.entityData.set(BASE_SP_DEFENCE, 50);
+            this.entityData.set(BASE_SPEED, 63);
             this.entityData.set(NICKNAME, "Goldeen");
         }
         else if(species == 119) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 80);
+            this.entityData.set(BASE_ATTACK, 92);
+            this.entityData.set(BASE_DEFENCE,65 );
+            this.entityData.set(BASE_SP_ATTACK,65 );
+            this.entityData.set(BASE_SP_DEFENCE,80 );
+            this.entityData.set(BASE_SPEED, 68);
             this.entityData.set(NICKNAME, "Seeking");
         }
         else if(species == 120) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 30);
+            this.entityData.set(BASE_ATTACK,45 );
+            this.entityData.set(BASE_DEFENCE,55 );
+            this.entityData.set(BASE_SP_ATTACK,70 );
+            this.entityData.set(BASE_SP_DEFENCE,55 );
+            this.entityData.set(BASE_SPEED,85 );
             this.entityData.set(NICKNAME, "Staryu");
         }
         else if(species == 121) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,60 );
+            this.entityData.set(BASE_ATTACK,75 );
+            this.entityData.set(BASE_DEFENCE,85 );
+            this.entityData.set(BASE_SP_ATTACK,100 );
+            this.entityData.set(BASE_SP_DEFENCE,85 );
+            this.entityData.set(BASE_SPEED,115 );
             this.entityData.set(NICKNAME, "Starmie");
         }
         else if(species == 122) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FAIRY.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,40 );
+            this.entityData.set(BASE_ATTACK, 45);
+            this.entityData.set(BASE_DEFENCE, 65);
+            this.entityData.set(BASE_SP_ATTACK,100 );
+            this.entityData.set(BASE_SP_DEFENCE,120 );
+            this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Mr. Mime");
         }
         else if(species == 123) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,70 );
+            this.entityData.set(BASE_ATTACK,110 );
+            this.entityData.set(BASE_DEFENCE,80 );
+            this.entityData.set(BASE_SP_ATTACK,55 );
+            this.entityData.set(BASE_SP_DEFENCE,80 );
+            this.entityData.set(BASE_SPEED, 105);
             this.entityData.set(NICKNAME, "Scyther");
         }
         else if(species == 124) {
             this.entityData.set(TYPE1, PokemonTypes.ICE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,65 );
+            this.entityData.set(BASE_ATTACK, 50);
+            this.entityData.set(BASE_DEFENCE,35 );
+            this.entityData.set(BASE_SP_ATTACK,115 );
+            this.entityData.set(BASE_SP_DEFENCE,95 );
+            this.entityData.set(BASE_SPEED,95 );
             this.entityData.set(NICKNAME, "Jynx");
         }
         else if(species == 125) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ELECTRIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK, 83);
+            this.entityData.set(BASE_DEFENCE,57 );
+            this.entityData.set(BASE_SP_ATTACK,95 );
+            this.entityData.set(BASE_SP_DEFENCE,85 );
+            this.entityData.set(BASE_SPEED,105 );
             this.entityData.set(NICKNAME, "Electabuzz");
         }
         else if(species == 126) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK, 95);
+            this.entityData.set(BASE_DEFENCE, 57);
+            this.entityData.set(BASE_SP_ATTACK, 100);
+            this.entityData.set(BASE_SP_DEFENCE,85 );
+            this.entityData.set(BASE_SPEED, 93);
             this.entityData.set(NICKNAME, "Magmar");
         }
         else if(species == 127) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.BUG.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK, 125);
+            this.entityData.set(BASE_DEFENCE, 100);
+            this.entityData.set(BASE_SP_ATTACK, 55);
+            this.entityData.set(BASE_SP_DEFENCE, 70);
+            this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Pinsir");
         }
         else if(species == 128) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,75 );
+            this.entityData.set(BASE_ATTACK,100 );
+            this.entityData.set(BASE_DEFENCE, 95);
+            this.entityData.set(BASE_SP_ATTACK,40 );
+            this.entityData.set(BASE_SP_DEFENCE, 70);
+            this.entityData.set(BASE_SPEED,110 );
             this.entityData.set(NICKNAME, "Tauros");
         }
         else if(species == 129) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 20);
+            this.entityData.set(BASE_ATTACK, 10);
+            this.entityData.set(BASE_DEFENCE, 55);
+            this.entityData.set(BASE_SP_ATTACK,15 );
+            this.entityData.set(BASE_SP_DEFENCE,20 );
+            this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Magikarp");
         }
         else if(species == 130) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,95 );
+            this.entityData.set(BASE_ATTACK,125 );
+            this.entityData.set(BASE_DEFENCE, 79);
+            this.entityData.set(BASE_SP_ATTACK,60 );
+            this.entityData.set(BASE_SP_DEFENCE,100 );
+            this.entityData.set(BASE_SPEED, 81);
             this.entityData.set(NICKNAME, "Gyarados");
         }
 
         else if(species == 131) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ICE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 130);
+            this.entityData.set(BASE_ATTACK, 85);
+            this.entityData.set(BASE_DEFENCE,80 );
+            this.entityData.set(BASE_SP_ATTACK,85 );
+            this.entityData.set(BASE_SP_DEFENCE,95 );
+            this.entityData.set(BASE_SPEED,60 );
             this.entityData.set(NICKNAME, "Lapras");
         }
         else if(species == 132) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,48 );
+            this.entityData.set(BASE_ATTACK, 48);
+            this.entityData.set(BASE_DEFENCE, 48);
+            this.entityData.set(BASE_SP_ATTACK,48 );
+            this.entityData.set(BASE_SP_DEFENCE,48 );
+            this.entityData.set(BASE_SPEED,48 );
             this.entityData.set(NICKNAME, "Ditto");
         }
         else if(species == 133) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 55);
+            this.entityData.set(BASE_ATTACK,55 );
+            this.entityData.set(BASE_DEFENCE, 50);
+            this.entityData.set(BASE_SP_ATTACK,45 );
+            this.entityData.set(BASE_SP_DEFENCE,65 );
+            this.entityData.set(BASE_SPEED,55 );
             this.entityData.set(NICKNAME, "Eevee");
         }
         else if(species == 134) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 130);
+            this.entityData.set(BASE_ATTACK,65 );
+            this.entityData.set(BASE_DEFENCE, 60);
+            this.entityData.set(BASE_SP_ATTACK,110 );
+            this.entityData.set(BASE_SP_DEFENCE, 95);
+            this.entityData.set(BASE_SPEED,65 );
             this.entityData.set(NICKNAME, "Vaporeon");
         }
         else if(species == 135) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ELECTRIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,65 );
+            this.entityData.set(BASE_ATTACK,65 );
+            this.entityData.set(BASE_DEFENCE, 60);
+            this.entityData.set(BASE_SP_ATTACK, 110);
+            this.entityData.set(BASE_SP_DEFENCE,95 );
+            this.entityData.set(BASE_SPEED,130 );
             this.entityData.set(NICKNAME, "Jolteon");
         }
         else if(species == 136) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK,130 );
+            this.entityData.set(BASE_DEFENCE,60 );
+            this.entityData.set(BASE_SP_ATTACK, 95);
+            this.entityData.set(BASE_SP_DEFENCE,110 );
+            this.entityData.set(BASE_SPEED,65 );
             this.entityData.set(NICKNAME, "Flareon");
         }
         else if(species == 137) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,65 );
+            this.entityData.set(BASE_ATTACK,60 );
+            this.entityData.set(BASE_DEFENCE, 70);
+            this.entityData.set(BASE_SP_ATTACK, 85);
+            this.entityData.set(BASE_SP_DEFENCE,75 );
+            this.entityData.set(BASE_SPEED,40 );
             this.entityData.set(NICKNAME, "Porygon");
         }
         else if(species == 138) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 35);
+            this.entityData.set(BASE_ATTACK,40 );
+            this.entityData.set(BASE_DEFENCE, 400);
+            this.entityData.set(BASE_SP_ATTACK,90 );
+            this.entityData.set(BASE_SP_DEFENCE, 55);
+            this.entityData.set(BASE_SPEED,35 );
             this.entityData.set(NICKNAME, "Omanyte");
         }
         else if(species == 139) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,70 );
+            this.entityData.set(BASE_ATTACK,60 );
+            this.entityData.set(BASE_DEFENCE,125 );
+            this.entityData.set(BASE_SP_ATTACK,155 );
+            this.entityData.set(BASE_SP_DEFENCE, 70);
+            this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Omastar");
         }
         else if(species == 140) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,30 );
+            this.entityData.set(BASE_ATTACK,80 );
+            this.entityData.set(BASE_DEFENCE,90 );
+            this.entityData.set(BASE_SP_ATTACK,55 );
+            this.entityData.set(BASE_SP_DEFENCE,45 );
+            this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Kabuto");
         }
         else if(species == 141) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 60);
+            this.entityData.set(BASE_ATTACK, 115);
+            this.entityData.set(BASE_DEFENCE, 105);
+            this.entityData.set(BASE_SP_ATTACK, 65);
+            this.entityData.set(BASE_SP_DEFENCE, 70);
+            this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Kabutops");
         }
         else if(species == 142) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 80);
+            this.entityData.set(BASE_ATTACK,105 );
+            this.entityData.set(BASE_DEFENCE, 65);
+            this.entityData.set(BASE_SP_ATTACK,60 );
+            this.entityData.set(BASE_SP_DEFENCE,75 );
+            this.entityData.set(BASE_SPEED,130 );
             this.entityData.set(NICKNAME, "Aerodactyl");
         }
         else if(species == 143) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 160);
+            this.entityData.set(BASE_ATTACK,110 );
+            this.entityData.set(BASE_DEFENCE, 65);
+            this.entityData.set(BASE_SP_ATTACK, 65);
+            this.entityData.set(BASE_SP_DEFENCE,110 );
+            this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Snorlax");
         }
         else if(species == 144) {
             this.entityData.set(TYPE1, PokemonTypes.ICE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK,85 );
+            this.entityData.set(BASE_DEFENCE,100 );
+            this.entityData.set(BASE_SP_ATTACK,95 );
+            this.entityData.set(BASE_SP_DEFENCE,125 );
+            this.entityData.set(BASE_SPEED,85 );
             this.entityData.set(NICKNAME, "Articuno");
         }
         else if(species == 145) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,90 );
+            this.entityData.set(BASE_ATTACK,90 );
+            this.entityData.set(BASE_DEFENCE, 85);
+            this.entityData.set(BASE_SP_ATTACK,125 );
+            this.entityData.set(BASE_SP_DEFENCE,90 );
+            this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Zapdos");
         }
         else if(species == 146) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,90 );
+            this.entityData.set(BASE_ATTACK,100 );
+            this.entityData.set(BASE_DEFENCE,90 );
+            this.entityData.set(BASE_SP_ATTACK,125 );
+            this.entityData.set(BASE_SP_DEFENCE,85 );
+            this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Moltres");
         }
         else if(species == 147) {
             this.entityData.set(TYPE1, PokemonTypes.DRAGON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.DRAGON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,41 );
+            this.entityData.set(BASE_ATTACK,64 );
+            this.entityData.set(BASE_DEFENCE,45 );
+            this.entityData.set(BASE_SP_ATTACK,50);
+            this.entityData.set(BASE_SP_DEFENCE, 50);
+            this.entityData.set(BASE_SPEED,50 );
             this.entityData.set(NICKNAME, "Dratini");
         }
         else if(species == 148) {
             this.entityData.set(TYPE1, PokemonTypes.DRAGON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.DRAGON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,61 );
+            this.entityData.set(BASE_ATTACK,84 );
+            this.entityData.set(BASE_DEFENCE,65 );
+            this.entityData.set(BASE_SP_ATTACK,70 );
+            this.entityData.set(BASE_SP_DEFENCE,70 );
+            this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Dragonair");
         }
         else if(species == 149) {
             this.entityData.set(TYPE1, PokemonTypes.DRAGON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,91);
+            this.entityData.set(BASE_ATTACK,134 );
+            this.entityData.set(BASE_DEFENCE, 95);
+            this.entityData.set(BASE_SP_ATTACK, 100);
+            this.entityData.set(BASE_SP_DEFENCE,100 );
+            this.entityData.set(BASE_SPEED,80 );
             this.entityData.set(NICKNAME, "Dragonite");
         }
         else if(species == 150) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,106 );
+            this.entityData.set(BASE_ATTACK, 110);
+            this.entityData.set(BASE_DEFENCE, 90);
+            this.entityData.set(BASE_SP_ATTACK,154 );
+            this.entityData.set(BASE_SP_DEFENCE,90 );
+            this.entityData.set(BASE_SPEED,130 );
             this.entityData.set(NICKNAME, "Mewtwo");
         }
         else if(species == 151) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP,100 );
+            this.entityData.set(BASE_ATTACK,100 );
+            this.entityData.set(BASE_DEFENCE, 100);
+            this.entityData.set(BASE_SP_ATTACK,100 );
+            this.entityData.set(BASE_SP_DEFENCE,100 );
+            this.entityData.set(BASE_SPEED,100 );
             this.entityData.set(NICKNAME, "Mew");
         }
         else if(species == 152) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GRASS.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 25);
+            this.entityData.set(BASE_ATTACK, 49);
+            this.entityData.set(BASE_DEFENCE, 65);
+            this.entityData.set(BASE_SP_ATTACK, 49);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Chikorita");
         }
         else if(species == 153) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GRASS.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 60);
+            this.entityData.set(BASE_ATTACK, 62);
+            this.entityData.set(BASE_DEFENCE, 80);
+            this.entityData.set(BASE_SP_ATTACK, 63);
+            this.entityData.set(BASE_SP_DEFENCE, 80);
+            this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Bayleef");
         }
         else if(species == 154) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GRASS.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 80);
+            this.entityData.set(BASE_ATTACK, 82);
+            this.entityData.set(BASE_DEFENCE, 100);
+            this.entityData.set(BASE_SP_ATTACK, 83);
+            this.entityData.set(BASE_SP_DEFENCE, 100);
+            this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Maganium");
         }
         else if(species == 155) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 39);
+            this.entityData.set(BASE_ATTACK, 52);
+            this.entityData.set(BASE_DEFENCE, 43);
+            this.entityData.set(BASE_SP_ATTACK, 60);
+            this.entityData.set(BASE_SP_DEFENCE, 50);
+            this.entityData.set(BASE_SPEED, 65);
             this.entityData.set(NICKNAME, "Cyndaquil");
         }
         else if(species == 156) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 58);
+            this.entityData.set(BASE_ATTACK, 64);
+            this.entityData.set(BASE_DEFENCE, 58);
+            this.entityData.set(BASE_SP_ATTACK, 80);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Quilava");
         }
         else if(species == 157) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 78);
+            this.entityData.set(BASE_ATTACK, 84);
+            this.entityData.set(BASE_DEFENCE, 78);
+            this.entityData.set(BASE_SP_ATTACK, 109);
+            this.entityData.set(BASE_SP_DEFENCE, 85);
+            this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Typhlosion");
         }
         else if(species == 158) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 50);
+            this.entityData.set(BASE_ATTACK, 65);
+            this.entityData.set(BASE_DEFENCE, 64);
+            this.entityData.set(BASE_SP_ATTACK, 44);
+            this.entityData.set(BASE_SP_DEFENCE, 48);
+            this.entityData.set(BASE_SPEED, 43);
             this.entityData.set(NICKNAME, "Totodile");
         }
         else if(species == 159) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK, 80);
+            this.entityData.set(BASE_DEFENCE, 80);
+            this.entityData.set(BASE_SP_ATTACK, 59);
+            this.entityData.set(BASE_SP_DEFENCE, 63);
+            this.entityData.set(BASE_SPEED, 58);
             this.entityData.set(NICKNAME, "Crocanaaw");
         }
         else if(species == 160) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 85);
+            this.entityData.set(BASE_ATTACK, 105);
+            this.entityData.set(BASE_DEFENCE, 100);
+            this.entityData.set(BASE_SP_ATTACK, 79);
+            this.entityData.set(BASE_SP_DEFENCE, 83);
+            this.entityData.set(BASE_SPEED, 78);
             this.entityData.set(NICKNAME, "Feraligatr");
         }
         else if(species == 161) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 35);
+            this.entityData.set(BASE_ATTACK, 46);
+            this.entityData.set(BASE_DEFENCE, 34);
+            this.entityData.set(BASE_SP_ATTACK, 35);
+            this.entityData.set(BASE_SP_DEFENCE, 45);
+            this.entityData.set(BASE_SPEED, 20);
             this.entityData.set(NICKNAME, "Sentret");
         }
         else if(species == 162) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 85);
+            this.entityData.set(BASE_ATTACK, 76);
+            this.entityData.set(BASE_DEFENCE, 64);
+            this.entityData.set(BASE_SP_ATTACK, 45);
+            this.entityData.set(BASE_SP_DEFENCE, 55);
+            this.entityData.set(BASE_SPEED, 90);
             this.entityData.set(NICKNAME, "Furret");
         }
         else if(species == 163) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 60);
+            this.entityData.set(BASE_ATTACK, 30);
+            this.entityData.set(BASE_DEFENCE, 30);
+            this.entityData.set(BASE_SP_ATTACK, 36);
+            this.entityData.set(BASE_SP_DEFENCE, 56);
+            this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Hoothoot");
         }
         else if(species == 164) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 100);
+            this.entityData.set(BASE_ATTACK, 50);
+            this.entityData.set(BASE_DEFENCE, 50);
+            this.entityData.set(BASE_SP_ATTACK, 86);
+            this.entityData.set(BASE_SP_DEFENCE, 96);
+            this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Noctowl");
         }
         else if(species == 165) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 40);
+            this.entityData.set(BASE_ATTACK, 20);
+            this.entityData.set(BASE_DEFENCE, 30);
+            this.entityData.set(BASE_SP_ATTACK, 40);
+            this.entityData.set(BASE_SP_DEFENCE, 80);
+            this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Ledyba");
         }
         else if(species == 166) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 55);
+            this.entityData.set(BASE_ATTACK, 35);
+            this.entityData.set(BASE_DEFENCE, 50);
+            this.entityData.set(BASE_SP_ATTACK, 55);
+            this.entityData.set(BASE_SP_DEFENCE, 110);
+            this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Ledian");
         }
         else if(species == 167) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 40);
+            this.entityData.set(BASE_ATTACK, 60);
+            this.entityData.set(BASE_DEFENCE, 40);
+            this.entityData.set(BASE_SP_ATTACK, 40);
+            this.entityData.set(BASE_SP_DEFENCE, 40);
+            this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Spinarak");
         }
         else if(species == 168) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 70);
+            this.entityData.set(BASE_ATTACK, 90);
+            this.entityData.set(BASE_DEFENCE, 70);
+            this.entityData.set(BASE_SP_ATTACK, 60);
+            this.entityData.set(BASE_SP_DEFENCE, 70);
+            this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Ariados");
         }
         else if(species == 169) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 85);
+            this.entityData.set(BASE_ATTACK, 90);
+            this.entityData.set(BASE_DEFENCE, 80);
+            this.entityData.set(BASE_SP_ATTACK, 70);
+            this.entityData.set(BASE_SP_DEFENCE, 80);
+            this.entityData.set(BASE_SPEED, 130);
             this.entityData.set(NICKNAME, "Crobat");
         }
         else if(species == 170) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ELECTRIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 75);
+            this.entityData.set(BASE_ATTACK, 38);
+            this.entityData.set(BASE_DEFENCE, 38);
+            this.entityData.set(BASE_SP_ATTACK, 56);
+            this.entityData.set(BASE_SP_DEFENCE, 56);
+            this.entityData.set(BASE_SPEED, 67);
             this.entityData.set(NICKNAME, "Chinchou");
         }
         else if(species == 171) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ELECTRIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 125);
+            this.entityData.set(BASE_ATTACK, 58);
+            this.entityData.set(BASE_DEFENCE, 58);
+            this.entityData.set(BASE_SP_ATTACK, 76);
+            this.entityData.set(BASE_SP_DEFENCE, 76);
+            this.entityData.set(BASE_SPEED, 67);
             this.entityData.set(NICKNAME, "Lanturn");
         }
 
         else if(species == 172) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ELECTRIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 24);
+            this.entityData.set(BASE_ATTACK, 40);
+            this.entityData.set(BASE_DEFENCE, 15);
+            this.entityData.set(BASE_SP_ATTACK, 35);
+            this.entityData.set(BASE_SP_DEFENCE, 35);
+            this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Pichu");
         }
         else if(species == 173) {
             this.entityData.set(TYPE1, PokemonTypes.FAIRY.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FAIRY.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 50);
+            this.entityData.set(BASE_ATTACK, 25);
+            this.entityData.set(BASE_DEFENCE, 28);
+            this.entityData.set(BASE_SP_ATTACK, 45);
+            this.entityData.set(BASE_SP_DEFENCE, 55);
+            this.entityData.set(BASE_SPEED, 15);
             this.entityData.set(NICKNAME, "Cleffa");
         }
         else if(species == 174) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FAIRY.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK, 30);
+            this.entityData.set(BASE_DEFENCE, 15);
+            this.entityData.set(BASE_SP_ATTACK, 40);
+            this.entityData.set(BASE_SP_DEFENCE, 20);
+            this.entityData.set(BASE_SPEED, 15);
             this.entityData.set(NICKNAME, "Igglybuff");
         }
         else if(species == 175) {
             this.entityData.set(TYPE1, PokemonTypes.FAIRY.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FAIRY.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 35);
+            this.entityData.set(BASE_ATTACK, 20);
+            this.entityData.set(BASE_DEFENCE, 65);
+            this.entityData.set(BASE_SP_ATTACK, 40);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 20);
             this.entityData.set(NICKNAME, "Togepi");
         }
         else if(species == 176) {
             this.entityData.set(TYPE1, PokemonTypes.FAIRY.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 55);
+            this.entityData.set(BASE_ATTACK, 40);
+            this.entityData.set(BASE_DEFENCE, 85);
+            this.entityData.set(BASE_SP_ATTACK, 80);
+            this.entityData.set(BASE_SP_DEFENCE, 105);
+            this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Togetic");
         }
         else if(species == 177) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FAIRY.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 40);
+            this.entityData.set(BASE_ATTACK, 50);
+            this.entityData.set(BASE_DEFENCE, 45);
+            this.entityData.set(BASE_SP_ATTACK, 70);
+            this.entityData.set(BASE_SP_DEFENCE, 45);
+            this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Natu");
         }
         else if(species == 178) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FAIRY.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK, 75);
+            this.entityData.set(BASE_DEFENCE, 70);
+            this.entityData.set(BASE_SP_ATTACK, 95);
+            this.entityData.set(BASE_SP_DEFENCE, 70);
+            this.entityData.set(BASE_SPEED, 95);
             this.entityData.set(NICKNAME, "Xatu");
         }
         else if(species == 179) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ELECTRIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 55);
+            this.entityData.set(BASE_ATTACK, 40);
+            this.entityData.set(BASE_DEFENCE, 40);
+            this.entityData.set(BASE_SP_ATTACK, 65);
+            this.entityData.set(BASE_SP_DEFENCE, 45);
+            this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Mareep");
         }
         else if(species == 180) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ELECTRIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 70);
+            this.entityData.set(BASE_ATTACK, 55);
+            this.entityData.set(BASE_DEFENCE, 55);
+            this.entityData.set(BASE_SP_ATTACK, 80);
+            this.entityData.set(BASE_SP_DEFENCE, 60);
+            this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Flaaffy");
         }
         else if(species == 181) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ELECTRIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK, 75);
+            this.entityData.set(BASE_DEFENCE, 85);
+            this.entityData.set(BASE_SP_ATTACK, 115);
+            this.entityData.set(BASE_SP_DEFENCE, 90);
+            this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Ampharos");
         }
         else if(species == 182) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GRASS.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 75);
+            this.entityData.set(BASE_ATTACK, 80);
+            this.entityData.set(BASE_DEFENCE, 95);
+            this.entityData.set(BASE_SP_ATTACK, 90);
+            this.entityData.set(BASE_SP_DEFENCE, 100);
+            this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Bellossom");
         }
         else if(species == 183) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FAIRY.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 70);
+            this.entityData.set(BASE_ATTACK, 20);
+            this.entityData.set(BASE_DEFENCE, 50);
+            this.entityData.set(BASE_SP_ATTACK, 20);
+            this.entityData.set(BASE_SP_DEFENCE, 50);
+            this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Marill");
         }
         else if(species == 184) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FAIRY.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 100);
+            this.entityData.set(BASE_ATTACK, 50);
+            this.entityData.set(BASE_DEFENCE, 80);
+            this.entityData.set(BASE_SP_ATTACK, 60);
+            this.entityData.set(BASE_SP_DEFENCE, 80);
+            this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Azumarill");
         }
         else if(species == 185) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ROCK.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 70);
+            this.entityData.set(BASE_ATTACK, 100);
+            this.entityData.set(BASE_DEFENCE, 115);
+            this.entityData.set(BASE_SP_ATTACK, 30);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Sudowoodo");
         }
         else if(species == 186) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK, 75);
+            this.entityData.set(BASE_DEFENCE, 75);
+            this.entityData.set(BASE_SP_ATTACK, 90);
+            this.entityData.set(BASE_SP_DEFENCE, 100);
+            this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Politoed");
         }
         else if(species == 187) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 35);
+            this.entityData.set(BASE_ATTACK, 35);
+            this.entityData.set(BASE_DEFENCE, 40);
+            this.entityData.set(BASE_SP_ATTACK, 35);
+            this.entityData.set(BASE_SP_DEFENCE, 55);
+            this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Hoppip");
         }
         else if(species == 188) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 55);
+            this.entityData.set(BASE_ATTACK, 45);
+            this.entityData.set(BASE_DEFENCE, 50);
+            this.entityData.set(BASE_SP_ATTACK, 45);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Skiploom");
         }
         else if(species == 189) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 75);
+            this.entityData.set(BASE_ATTACK, 55);
+            this.entityData.set(BASE_DEFENCE, 70);
+            this.entityData.set(BASE_SP_ATTACK, 55);
+            this.entityData.set(BASE_SP_DEFENCE, 95);
+            this.entityData.set(BASE_SPEED, 110);
             this.entityData.set(NICKNAME, "Jumpluff");
         }
         else if(species == 190) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 55);
+            this.entityData.set(BASE_ATTACK, 70);
+            this.entityData.set(BASE_DEFENCE, 55);
+            this.entityData.set(BASE_SP_ATTACK, 40);
+            this.entityData.set(BASE_SP_DEFENCE, 55);
+            this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Aipom");
         }
         else if(species == 191) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GRASS.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 30);
+            this.entityData.set(BASE_ATTACK, 30);
+            this.entityData.set(BASE_DEFENCE, 30);
+            this.entityData.set(BASE_SP_ATTACK, 30);
+            this.entityData.set(BASE_SP_DEFENCE, 30);
+            this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Sunkern");
         }
         else if(species == 192) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GRASS.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 75);
+            this.entityData.set(BASE_ATTACK, 75);
+            this.entityData.set(BASE_DEFENCE, 55);
+            this.entityData.set(BASE_SP_ATTACK, 105);
+            this.entityData.set(BASE_SP_DEFENCE, 85);
+            this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Sunflora");
         }
         else if(species == 193) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK, 65);
+            this.entityData.set(BASE_DEFENCE, 45);
+            this.entityData.set(BASE_SP_ATTACK, 75);
+            this.entityData.set(BASE_SP_DEFENCE, 45);
+            this.entityData.set(BASE_SPEED, 95);
             this.entityData.set(NICKNAME, "Yanma");
         }
         else if(species == 194) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 55);
+            this.entityData.set(BASE_ATTACK, 45);
+            this.entityData.set(BASE_DEFENCE, 45);
+            this.entityData.set(BASE_SP_ATTACK, 25);
+            this.entityData.set(BASE_SP_DEFENCE, 25);
+            this.entityData.set(BASE_SPEED, 15);
             this.entityData.set(NICKNAME, "Wooper");
         }
         else if(species == 195) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 95);
+            this.entityData.set(BASE_ATTACK, 85);
+            this.entityData.set(BASE_DEFENCE, 85);
+            this.entityData.set(BASE_SP_ATTACK, 65);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Quagsire");
         }
         else if(species == 196) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK, 65);
+            this.entityData.set(BASE_DEFENCE, 60);
+            this.entityData.set(BASE_SP_ATTACK, 130);
+            this.entityData.set(BASE_SP_DEFENCE, 95);
+            this.entityData.set(BASE_SPEED, 110);
             this.entityData.set(NICKNAME, "Espeon");
         }
         else if(species == 197) {
             this.entityData.set(TYPE1, PokemonTypes.DARK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.DARK.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 95);
+            this.entityData.set(BASE_ATTACK, 65);
+            this.entityData.set(BASE_DEFENCE, 110);
+            this.entityData.set(BASE_SP_ATTACK, 60);
+            this.entityData.set(BASE_SP_DEFENCE, 130);
+            this.entityData.set(BASE_SPEED, 65);
             this.entityData.set(NICKNAME, "Umbreon");
         }
         else if(species == 198) {
             this.entityData.set(TYPE1, PokemonTypes.DARK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 60);
+            this.entityData.set(BASE_ATTACK, 85);
+            this.entityData.set(BASE_DEFENCE, 42);
+            this.entityData.set(BASE_SP_ATTACK, 85);
+            this.entityData.set(BASE_SP_DEFENCE, 42);
+            this.entityData.set(BASE_SPEED, 91);
             this.entityData.set(NICKNAME, "Murkrow");
         }
         else if(species == 199) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 95);
+            this.entityData.set(BASE_ATTACK, 75);
+            this.entityData.set(BASE_DEFENCE, 80);
+            this.entityData.set(BASE_SP_ATTACK, 100);
+            this.entityData.set(BASE_SP_DEFENCE, 110);
+            this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Slowing");
         }
         else if(species == 200) {
             this.entityData.set(TYPE1, PokemonTypes.GHOST.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GHOST.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 60);
+            this.entityData.set(BASE_ATTACK, 60);
+            this.entityData.set(BASE_DEFENCE, 60);
+            this.entityData.set(BASE_SP_ATTACK, 85);
+            this.entityData.set(BASE_SP_DEFENCE, 85);
+            this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Misdreavus");
         }
         else if(species == 201) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 48);
+            this.entityData.set(BASE_ATTACK, 72);
+            this.entityData.set(BASE_DEFENCE, 48);
+            this.entityData.set(BASE_SP_ATTACK, 72);
+            this.entityData.set(BASE_SP_DEFENCE, 48);
+            this.entityData.set(BASE_SPEED, 48);
             this.entityData.set(NICKNAME, "Unown");
         }
 
         else if(species == 202) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 190);
+            this.entityData.set(BASE_ATTACK, 33);
+            this.entityData.set(BASE_DEFENCE, 58);
+            this.entityData.set(BASE_SP_ATTACK, 33);
+            this.entityData.set(BASE_SP_DEFENCE, 58);
+            this.entityData.set(BASE_SPEED, 33);
             this.entityData.set(NICKNAME, "Wobbuffet");
         }
         else if(species == 203) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 70);
+            this.entityData.set(BASE_ATTACK, 80);
+            this.entityData.set(BASE_DEFENCE, 65);
+            this.entityData.set(BASE_SP_ATTACK, 90);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Girafarig");
         }
         else if(species == 204) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.BUG.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 50);
+            this.entityData.set(BASE_ATTACK, 65);
+            this.entityData.set(BASE_DEFENCE, 90);
+            this.entityData.set(BASE_SP_ATTACK, 35);
+            this.entityData.set(BASE_SP_DEFENCE, 35);
+            this.entityData.set(BASE_SPEED, 15);
             this.entityData.set(NICKNAME, "Pineco");
         }
         else if(species == 205) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.STEEL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 75);
+            this.entityData.set(BASE_ATTACK, 90);
+            this.entityData.set(BASE_DEFENCE, 140);
+            this.entityData.set(BASE_SP_ATTACK, 60);
+            this.entityData.set(BASE_SP_DEFENCE, 60);
+            this.entityData.set(BASE_SPEED, 4);
             this.entityData.set(NICKNAME, "Forretress");
         }
         else if(species == 206) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 100);
+            this.entityData.set(BASE_ATTACK, 70);
+            this.entityData.set(BASE_DEFENCE, 70);
+            this.entityData.set(BASE_SP_ATTACK, 65);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Dunsparce");
         }
-
         else if(species == 207) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK, 75);
+            this.entityData.set(BASE_DEFENCE, 105);
+            this.entityData.set(BASE_SP_ATTACK, 35);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Gligar");
         }
         else if(species == 208) {
             this.entityData.set(TYPE1, PokemonTypes.STEEL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 75);
+            this.entityData.set(BASE_ATTACK, 85);
+            this.entityData.set(BASE_DEFENCE, 200);
+            this.entityData.set(BASE_SP_ATTACK, 55);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Steelix");
         }
         else if(species == 209) {
             this.entityData.set(TYPE1, PokemonTypes.FAIRY.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FAIRY.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 60);
+            this.entityData.set(BASE_ATTACK, 80);
+            this.entityData.set(BASE_DEFENCE, 50);
+            this.entityData.set(BASE_SP_ATTACK, 40);
+            this.entityData.set(BASE_SP_DEFENCE, 40);
+            this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Snubbull");
         }
         else if(species == 210) {
             this.entityData.set(TYPE1, PokemonTypes.FAIRY.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FAIRY.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK, 120);
+            this.entityData.set(BASE_DEFENCE, 75);
+            this.entityData.set(BASE_SP_ATTACK, 60);
+            this.entityData.set(BASE_SP_DEFENCE, 60);
+            this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Granbull");
         }
 
         else if(species == 211) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.POISON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK, 95);
+            this.entityData.set(BASE_DEFENCE, 85);
+            this.entityData.set(BASE_SP_ATTACK, 55);
+            this.entityData.set(BASE_SP_DEFENCE, 55);
+            this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Qwilfish");
         }
         else if(species == 212) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.STEEL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 70);
+            this.entityData.set(BASE_ATTACK, 130);
+            this.entityData.set(BASE_DEFENCE, 100);
+            this.entityData.set(BASE_SP_ATTACK, 55);
+            this.entityData.set(BASE_SP_DEFENCE, 80);
+            this.entityData.set(BASE_SPEED, 65);
             this.entityData.set(NICKNAME, "Scizor");
         }
         else if(species == 213) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ROCK.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 20);
+            this.entityData.set(BASE_ATTACK, 10);
+            this.entityData.set(BASE_DEFENCE, 230);
+            this.entityData.set(BASE_SP_ATTACK, 10);
+            this.entityData.set(BASE_SP_DEFENCE, 230);
+            this.entityData.set(BASE_SPEED, 5);
             this.entityData.set(NICKNAME, "Shuckle");
         }
         else if(species == 214) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIGHTING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 80);
+            this.entityData.set(BASE_ATTACK, 125);
+            this.entityData.set(BASE_DEFENCE, 75);
+            this.entityData.set(BASE_SP_ATTACK, 40);
+            this.entityData.set(BASE_SP_DEFENCE, 95);
+            this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Heracross");
         }
         else if(species == 215) {
             this.entityData.set(TYPE1, PokemonTypes.DARK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ICE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 55);
+            this.entityData.set(BASE_ATTACK, 95);
+            this.entityData.set(BASE_DEFENCE, 55);
+            this.entityData.set(BASE_SP_ATTACK, 35);
+            this.entityData.set(BASE_SP_DEFENCE, 75);
+            this.entityData.set(BASE_SPEED, 115);
             this.entityData.set(NICKNAME, "Sneasel");
         }
         else if(species == 216) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 60);
+            this.entityData.set(BASE_ATTACK, 80);
+            this.entityData.set(BASE_DEFENCE, 50);
+            this.entityData.set(BASE_SP_ATTACK, 50);
+            this.entityData.set(BASE_SP_DEFENCE, 50);
+            this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Teddiursa");
         }
         else if(species == 217) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK, 130);
+            this.entityData.set(BASE_DEFENCE, 75);
+            this.entityData.set(BASE_SP_ATTACK, 75);
+            this.entityData.set(BASE_SP_DEFENCE, 75);
+            this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Ursaring");
         }
         else if(species == 218) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 40);
+            this.entityData.set(BASE_ATTACK, 40);
+            this.entityData.set(BASE_DEFENCE, 40);
+            this.entityData.set(BASE_SP_ATTACK, 70);
+            this.entityData.set(BASE_SP_DEFENCE, 40);
+            this.entityData.set(BASE_SPEED, 20);
             this.entityData.set(NICKNAME, "Slugma");
         }
         else if(species == 219) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ROCK.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 60);
+            this.entityData.set(BASE_ATTACK, 50);
+            this.entityData.set(BASE_DEFENCE, 120);
+            this.entityData.set(BASE_SP_ATTACK, 90);
+            this.entityData.set(BASE_SP_DEFENCE, 80);
+            this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Magcargo");
         }
         else if(species == 220) {
             this.entityData.set(TYPE1, PokemonTypes.ICE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 50);
+            this.entityData.set(BASE_ATTACK, 50);
+            this.entityData.set(BASE_DEFENCE, 40);
+            this.entityData.set(BASE_SP_ATTACK, 30);
+            this.entityData.set(BASE_SP_DEFENCE, 30);
+            this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Swinub");
         }
         else if(species == 221) {
             this.entityData.set(TYPE1, PokemonTypes.ICE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 100);
+            this.entityData.set(BASE_ATTACK, 100);
+            this.entityData.set(BASE_DEFENCE, 80);
+            this.entityData.set(BASE_SP_ATTACK, 60);
+            this.entityData.set(BASE_SP_DEFENCE, 60);
+            this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Piloswine");
         }
         else if(species == 222) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ROCK.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK, 55);
+            this.entityData.set(BASE_DEFENCE, 95);
+            this.entityData.set(BASE_SP_ATTACK, 65);
+            this.entityData.set(BASE_SP_DEFENCE, 95);
+            this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Corsola");
         }
         else if(species == 223) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 35);
+            this.entityData.set(BASE_ATTACK, 65);
+            this.entityData.set(BASE_DEFENCE, 35);
+            this.entityData.set(BASE_SP_ATTACK, 65);
+            this.entityData.set(BASE_SP_DEFENCE, 35);
+            this.entityData.set(BASE_SPEED, 65);
             this.entityData.set(NICKNAME, "Remoraid");
         }
         else if(species == 224) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 75);
+            this.entityData.set(BASE_ATTACK, 105);
+            this.entityData.set(BASE_DEFENCE, 75);
+            this.entityData.set(BASE_SP_ATTACK, 105);
+            this.entityData.set(BASE_SP_DEFENCE, 75);
+            this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Octillery");
         }
         else if(species == 225) {
             this.entityData.set(TYPE1, PokemonTypes.ICE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 45);
+            this.entityData.set(BASE_ATTACK, 55);
+            this.entityData.set(BASE_DEFENCE, 45);
+            this.entityData.set(BASE_SP_ATTACK, 65);
+            this.entityData.set(BASE_SP_DEFENCE, 45);
+            this.entityData.set(BASE_SPEED, 75);
             this.entityData.set(NICKNAME, "Delibird");
         }
         else if(species == 226) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 85);
+            this.entityData.set(BASE_ATTACK, 40);
+            this.entityData.set(BASE_DEFENCE, 70);
+            this.entityData.set(BASE_SP_ATTACK, 80);
+            this.entityData.set(BASE_SP_DEFENCE, 140);
+            this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Mantine");
         }
         else if(species == 227) {
             this.entityData.set(TYPE1, PokemonTypes.STEEL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 65);
+            this.entityData.set(BASE_ATTACK, 80);
+            this.entityData.set(BASE_DEFENCE, 140);
+            this.entityData.set(BASE_SP_ATTACK, 40);
+            this.entityData.set(BASE_SP_DEFENCE, 70);
+            this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Skarmory");
         }
         else if(species == 228) {
             this.entityData.set(TYPE1, PokemonTypes.DARK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 45);
+            this.entityData.set(BASE_ATTACK, 60);
+            this.entityData.set(BASE_DEFENCE, 30);
+            this.entityData.set(BASE_SP_ATTACK, 80);
+            this.entityData.set(BASE_SP_DEFENCE, 50);
+            this.entityData.set(BASE_SPEED, 65);
             this.entityData.set(NICKNAME, "Houndour");
         }
         else if(species == 229) {
             this.entityData.set(TYPE1, PokemonTypes.DARK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 75);
+            this.entityData.set(BASE_ATTACK, 90);
+            this.entityData.set(BASE_DEFENCE, 50);
+            this.entityData.set(BASE_SP_ATTACK, 110);
+            this.entityData.set(BASE_SP_DEFENCE, 80);
+            this.entityData.set(BASE_SPEED, 95);
             this.entityData.set(NICKNAME, "Houndoom");
         }
         else if(species == 230) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.DRAGON.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 75);
+            this.entityData.set(BASE_ATTACK, 95);
+            this.entityData.set(BASE_DEFENCE, 95);
+            this.entityData.set(BASE_SP_ATTACK, 95);
+            this.entityData.set(BASE_SP_DEFENCE, 95);
+            this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Kingdra");
         }
 
         else if(species == 231) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK, 60);
+            this.entityData.set(BASE_DEFENCE, 60);
+            this.entityData.set(BASE_SP_ATTACK, 40);
+            this.entityData.set(BASE_SP_DEFENCE, 40);
+            this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Phanpy");
         }
         else if(species == 232) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK, 120);
+            this.entityData.set(BASE_DEFENCE, 120);
+            this.entityData.set(BASE_SP_ATTACK, 60);
+            this.entityData.set(BASE_SP_DEFENCE, 60);
+            this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Donphan");
         }
         else if(species == 233) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 85);
+            this.entityData.set(BASE_ATTACK, 80);
+            this.entityData.set(BASE_DEFENCE, 90);
+            this.entityData.set(BASE_SP_ATTACK, 105);
+            this.entityData.set(BASE_SP_DEFENCE, 95);
+            this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Porygon 2");
         }
         else if(species == 234) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 73);
+            this.entityData.set(BASE_ATTACK, 95);
+            this.entityData.set(BASE_DEFENCE, 62);
+            this.entityData.set(BASE_SP_ATTACK, 85);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Stantler");
         }
         else if(species == 235) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 55);
+            this.entityData.set(BASE_ATTACK, 20);
+            this.entityData.set(BASE_DEFENCE, 35);
+            this.entityData.set(BASE_SP_ATTACK, 20);
+            this.entityData.set(BASE_SP_DEFENCE, 45);
+            this.entityData.set(BASE_SPEED, 75);
             this.entityData.set(NICKNAME, "Smeargle");
         }
         else if(species == 236) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIGHTING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 35);
+            this.entityData.set(BASE_ATTACK, 35);
+            this.entityData.set(BASE_DEFENCE, 35);
+            this.entityData.set(BASE_SP_ATTACK, 35);
+            this.entityData.set(BASE_SP_DEFENCE, 35);
+            this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Tyrogue");
         }
         else if(species == 237) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIGHTING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 50);
+            this.entityData.set(BASE_ATTACK, 95);
+            this.entityData.set(BASE_DEFENCE, 95);
+            this.entityData.set(BASE_SP_ATTACK, 35);
+            this.entityData.set(BASE_SP_DEFENCE, 110);
+            this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Hitmontop");
         }
         else if(species == 238) {
             this.entityData.set(TYPE1, PokemonTypes.ICE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.PSYCHIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 45);
+            this.entityData.set(BASE_ATTACK, 30);
+            this.entityData.set(BASE_DEFENCE, 15);
+            this.entityData.set(BASE_SP_ATTACK, 85);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 65);
             this.entityData.set(NICKNAME, "Smoochum");
         }
         else if(species == 239) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ELECTRIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 45);
+            this.entityData.set(BASE_ATTACK, 63);
+            this.entityData.set(BASE_DEFENCE, 37);
+            this.entityData.set(BASE_SP_ATTACK, 65);
+            this.entityData.set(BASE_SP_DEFENCE, 55);
+            this.entityData.set(BASE_SPEED, 95);
             this.entityData.set(NICKNAME, "Elekid");
         }
         else if(species == 240) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 45);
+            this.entityData.set(BASE_ATTACK, 75);
+            this.entityData.set(BASE_DEFENCE, 37);
+            this.entityData.set(BASE_SP_ATTACK, 70);
+            this.entityData.set(BASE_SP_DEFENCE, 55);
+            this.entityData.set(BASE_SPEED, 83);
             this.entityData.set(NICKNAME, "Magby");
         }
         else if(species == 241) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 95);
+            this.entityData.set(BASE_ATTACK, 80);
+            this.entityData.set(BASE_DEFENCE, 105);
+            this.entityData.set(BASE_SP_ATTACK, 40);
+            this.entityData.set(BASE_SP_DEFENCE, 70);
+            this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Miltank");
         }
         else if(species == 242) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NORMAL.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 255);
+            this.entityData.set(BASE_ATTACK, 10);
+            this.entityData.set(BASE_DEFENCE, 10);
+            this.entityData.set(BASE_SP_ATTACK, 75);
+            this.entityData.set(BASE_SP_DEFENCE, 135);
+            this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Blissey");
         }
         else if(species == 243) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.ELECTRIC.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 90);
+            this.entityData.set(BASE_ATTACK, 85);
+            this.entityData.set(BASE_DEFENCE, 75);
+            this.entityData.set(BASE_SP_ATTACK, 115);
+            this.entityData.set(BASE_SP_DEFENCE, 100);
+            this.entityData.set(BASE_SPEED, 115);
             this.entityData.set(NICKNAME, "Raikou");
         }
         else if(species == 244) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FIRE.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 115);
+            this.entityData.set(BASE_ATTACK, 115);
+            this.entityData.set(BASE_DEFENCE, 85);
+            this.entityData.set(BASE_SP_ATTACK, 90);
+            this.entityData.set(BASE_SP_DEFENCE, 75);
+            this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Entei");
         }
         else if(species == 245) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.WATER.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 100);
+            this.entityData.set(BASE_ATTACK, 75);
+            this.entityData.set(BASE_DEFENCE, 115);
+            this.entityData.set(BASE_SP_ATTACK, 90);
+            this.entityData.set(BASE_SP_DEFENCE, 115);
+            this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Suicune");
         }
         else if(species == 246) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 50);
+            this.entityData.set(BASE_ATTACK, 64);
+            this.entityData.set(BASE_DEFENCE, 50);
+            this.entityData.set(BASE_SP_ATTACK, 45);
+            this.entityData.set(BASE_SP_DEFENCE, 50);
+            this.entityData.set(BASE_SPEED, 41);
             this.entityData.set(NICKNAME, "Larvitar");
         }
         else if(species == 247) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GROUND.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 70);
+            this.entityData.set(BASE_ATTACK, 84);
+            this.entityData.set(BASE_DEFENCE, 70);
+            this.entityData.set(BASE_SP_ATTACK, 65);
+            this.entityData.set(BASE_SP_DEFENCE, 70);
+            this.entityData.set(BASE_SPEED, 51);
             this.entityData.set(NICKNAME, "Pupitar");
         }
         else if(species == 248) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.DARK.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 100);
+            this.entityData.set(BASE_ATTACK, 134);
+            this.entityData.set(BASE_DEFENCE, 110);
+            this.entityData.set(BASE_SP_ATTACK, 95);
+            this.entityData.set(BASE_SP_DEFENCE, 100);
+            this.entityData.set(BASE_SPEED, 61);
             this.entityData.set(NICKNAME, "Tyranitar");
         }
         else if(species == 249) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 106);
+            this.entityData.set(BASE_ATTACK, 90);
+            this.entityData.set(BASE_DEFENCE, 130);
+            this.entityData.set(BASE_SP_ATTACK, 90);
+            this.entityData.set(BASE_SP_DEFENCE, 154);
+            this.entityData.set(BASE_SPEED, 110);
             this.entityData.set(NICKNAME, "Lugia");
         }
         else if(species == 250) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.FLYING.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 106);
+            this.entityData.set(BASE_ATTACK, 130);
+            this.entityData.set(BASE_DEFENCE, 90);
+            this.entityData.set(BASE_SP_ATTACK, 110);
+            this.entityData.set(BASE_SP_DEFENCE, 154);
+            this.entityData.set(BASE_SPEED, 90);
             this.entityData.set(NICKNAME, "Ho-Ho");
         }
         else if(species == 251) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.GRASS.ordinal());
-            this.entityData.set(BASE_HP, 0);
-            this.entityData.set(BASE_ATTACK, 0);
-            this.entityData.set(BASE_DEFENCE, 0);
-            this.entityData.set(BASE_SP_ATTACK, 0);
-            this.entityData.set(BASE_SP_DEFENCE, 0);
-            this.entityData.set(BASE_SPEED, 0);
+            this.entityData.set(BASE_HP, 100);
+            this.entityData.set(BASE_ATTACK, 100);
+            this.entityData.set(BASE_DEFENCE, 100);
+            this.entityData.set(BASE_SP_ATTACK, 100);
+            this.entityData.set(BASE_SP_DEFENCE, 100);
+            this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Celebi");
         }
+
     }
 
     protected void defineSynchedData() {
