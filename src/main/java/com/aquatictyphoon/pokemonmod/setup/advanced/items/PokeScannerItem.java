@@ -60,6 +60,13 @@ public class PokeScannerItem extends Item {
             String base_speed = String.valueOf(((PokemonEntity) pInteractionTarget).getBaseSpeed());
 
 
+            String true_hp = String.valueOf(((PokemonEntity) pInteractionTarget).getTrueHP());
+            String true_attack = String.valueOf(((PokemonEntity) pInteractionTarget).getTrueAttack());
+            String true_sp_attack = String.valueOf(((PokemonEntity) pInteractionTarget).getTrueSPAttack());
+            String true_defence = String.valueOf(((PokemonEntity) pInteractionTarget).getTrueDefence());
+            String true_sp_defence = String.valueOf(((PokemonEntity) pInteractionTarget).getTrueSPDefence());
+            String true_speed = String.valueOf(((PokemonEntity) pInteractionTarget).getTrueSpeed());
+
 
             if (!pPlayer.level.isClientSide && pInteractionTarget instanceof PokemonEntity) {
                 pPlayer.sendMessage(new TranslatableComponent("" + (nickname) + ": Level: " + (level)), pPlayer.getUUID());
@@ -70,6 +77,7 @@ public class PokeScannerItem extends Item {
                 pPlayer.sendMessage(new TranslatableComponent("Hp Ivs: " + (ivs_hp) + " ,Attack Ivs: " + (ivs_attack) + " ,Defence Ivs: " + (ivs_defence) + " ,Special Attack Ivs: " + (ivs_sp_attack) + " ,Special Defence Ivs: " + (ivs_sp_defence)  + " ,Speed Ivs: " + (ivs_speed)), pPlayer.getUUID());
                 pPlayer.sendMessage(new TranslatableComponent("Base Hp : " + (base_hp) + " ,Base Attack: " + (base_attack) + " ,Base Defence: " + (base_defence) + " ,Base Special Attack: " + (base_sp_attack) + " ,Base Special Defence: " + (base_sp_defence)  + " ,Base Speed: " + (base_speed)), pPlayer.getUUID());
 
+                pPlayer.sendMessage(new TranslatableComponent("Hp : " + (true_hp) + " ,Attack: " + (true_attack) + " ,Defence: " + (true_defence) + " ,Special Attack: " + (true_sp_attack) + " ,Special Defence: " + (true_sp_defence)  + " ,Speed: " + (true_speed)), pPlayer.getUUID());
             }
         }
         return InteractionResult.PASS;

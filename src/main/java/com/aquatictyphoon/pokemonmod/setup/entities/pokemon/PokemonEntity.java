@@ -53,6 +53,13 @@ public class PokemonEntity extends TamableAnimal {
     private static final EntityDataAccessor<Integer> NATURE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
 
 
+    private static final EntityDataAccessor<Integer> EVS_HP = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> EVS_ATTACK = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> EVS_DEFENCE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> EVS_SP_ATTACK = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> EVS_SP_DEFENCE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> EVS_SPEED = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+
     private static final EntityDataAccessor<Integer> IVS_HP = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> IVS_ATTACK = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> IVS_DEFENCE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
@@ -67,6 +74,13 @@ public class PokemonEntity extends TamableAnimal {
     private static final EntityDataAccessor<Integer> BASE_SP_DEFENCE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> BASE_SPEED = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
 
+    private static final EntityDataAccessor<Integer> TRUE_HP = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> TRUE_ATTACK = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> TRUE_DEFENCE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> TRUE_SP_ATTACK = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> TRUE_SP_DEFENCE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> TRUE_SPEED = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+
     private static final EntityDataAccessor<Integer> TYPE1 = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> TYPE2 = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
 
@@ -76,16 +90,9 @@ public class PokemonEntity extends TamableAnimal {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MOVEMENT_SPEED, 0.3F).add(Attributes.MAX_HEALTH, 8.0D).add(Attributes.ATTACK_DAMAGE, 2.0D);
+        return Mob.createMobAttributes().add(Attributes.MOVEMENT_SPEED, 0.3F).add(Attributes.MAX_HEALTH, 1).add(Attributes.ATTACK_DAMAGE, 2.0D);
     }
 
-    public void setTame(boolean p_30443_) {
-        super.setTame(p_30443_);
-        if (p_30443_) {
-            Objects.requireNonNull(this.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(8.0D);
-            this.setHealth(17.0F);
-        }
-    }
 
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
@@ -116,6 +123,12 @@ public class PokemonEntity extends TamableAnimal {
         if(species == 0) {
             this.entityData.set(TYPE1, PokemonTypes.NONE.ordinal());
             this.entityData.set(TYPE2, PokemonTypes.NONE.ordinal());
+            this.entityData.set(BASE_HP, 45);
+            this.entityData.set(BASE_ATTACK, 49);
+            this.entityData.set(BASE_DEFENCE, 49);
+            this.entityData.set(BASE_SP_ATTACK, 65);
+            this.entityData.set(BASE_SP_DEFENCE, 65);
+            this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "BadEgg");
         }
         else if(species == 1) {
@@ -2896,7 +2909,7 @@ public class PokemonEntity extends TamableAnimal {
         super.defineSynchedData();
         this.entityData.define(ID_SIZE, 3);
         this.entityData.define(POKEMON_LEVEL, 1);
-        this.entityData.define(SPECIES, 1);
+        this.entityData.define(SPECIES, 152);
         this.entityData.define(NICKNAME, "MissingNo");
         this.entityData.define(SHINY, 0);
         this.entityData.define(HAPPINESS, 100);
@@ -2917,45 +2930,26 @@ public class PokemonEntity extends TamableAnimal {
         this.entityData.define(BASE_SP_DEFENCE, 83);
         this.entityData.define(BASE_SPEED, 78);
 
+        this.entityData.define(TRUE_HP, 80);
+        this.entityData.define(TRUE_ATTACK, 0);
+        this.entityData.define(TRUE_DEFENCE, 0);
+        this.entityData.define(TRUE_SP_ATTACK, 0);
+        this.entityData.define(TRUE_SP_DEFENCE, 0);
+        this.entityData.define(TRUE_SPEED, 0);
+
+        this.entityData.define(EVS_HP, 0);
+        this.entityData.define(EVS_ATTACK, 0);
+        this.entityData.define(EVS_DEFENCE, 0);
+        this.entityData.define(EVS_SP_ATTACK, 0);
+        this.entityData.define(EVS_SP_DEFENCE, 0);
+        this.entityData.define(EVS_SPEED, 78);
+
     }
 
 
     protected void setShinyness(int pSize) {
         int i = Mth.clamp(pSize, 0, 1);
         this.entityData.set(SHINY, i);
-
-    }
-
-    protected void setNature() {
-        Random random = new Random();
-        int natrueroll = random.nextInt(24) + 1;
-        switch (natrueroll) {
-            case 1 -> this.entityData.set(NATURE, PokemonNature.LONELY.ordinal());
-            case 2 -> this.entityData.set(NATURE, PokemonNature.BRAVE.ordinal());
-            case 3 -> this.entityData.set(NATURE, PokemonNature.ADAMANT.ordinal());
-            case 4 -> this.entityData.set(NATURE, PokemonNature.NAUGHTY.ordinal());
-            case 5 -> this.entityData.set(NATURE, PokemonNature.BOLD.ordinal());
-            case 6 -> this.entityData.set(NATURE, PokemonNature.DOCILE.ordinal());
-            case 7 -> this.entityData.set(NATURE, PokemonNature.RELAXED.ordinal());
-            case 8 -> this.entityData.set(NATURE, PokemonNature.IMPISH.ordinal());
-            case 9 -> this.entityData.set(NATURE, PokemonNature.LAX.ordinal());
-            case 10 -> this.entityData.set(NATURE, PokemonNature.TIMID.ordinal());
-            case 11 -> this.entityData.set(NATURE, PokemonNature.HASTY.ordinal());
-            case 12 -> this.entityData.set(NATURE, PokemonNature.SERIOUS.ordinal());
-            case 13 -> this.entityData.set(NATURE, PokemonNature.JOLLY.ordinal());
-            case 14 -> this.entityData.set(NATURE, PokemonNature.NAIVE.ordinal());
-            case 15 -> this.entityData.set(NATURE, PokemonNature.MODEST.ordinal());
-            case 16 -> this.entityData.set(NATURE, PokemonNature.MILD.ordinal());
-            case 17 -> this.entityData.set(NATURE, PokemonNature.QUIET.ordinal());
-            case 18 -> this.entityData.set(NATURE, PokemonNature.BASHFUL.ordinal());
-            case 19 -> this.entityData.set(NATURE, PokemonNature.RASH.ordinal());
-            case 20 -> this.entityData.set(NATURE, PokemonNature.CALM.ordinal());
-            case 21 -> this.entityData.set(NATURE, PokemonNature.GENTLE.ordinal());
-            case 22 -> this.entityData.set(NATURE, PokemonNature.SASSY.ordinal());
-            case 23 -> this.entityData.set(NATURE, PokemonNature.CAREFUL.ordinal());
-            case 24 -> this.entityData.set(NATURE, PokemonNature.QUIRKY.ordinal());
-            default -> this.entityData.set(NATURE, PokemonNature.HARDY.ordinal());
-        }
 
     }
 
@@ -3006,6 +3000,114 @@ public class PokemonEntity extends TamableAnimal {
         this.entityData.set(SPECIES, i);
     }
 
+    public void setNature(int maxnature) {
+        int nature = Mth.clamp(maxnature, 0, 24);
+        this.entityData.set(NATURE, nature);
+    }
+
+
+
+
+
+    public void setIvsHp(int maxhp) {
+        int hp = Mth.clamp(maxhp, 0, 31);
+        this.entityData.set(IVS_HP, hp);
+    }
+    public void setIvsAttack(int maxattack) {
+        int attack = Mth.clamp(maxattack, 0, 31);
+        this.entityData.set(IVS_ATTACK, attack);
+    }
+    public void setIvsSpAttack(int maxspattack) {
+        int spattack = Mth.clamp(maxspattack, 0, 31);
+        this.entityData.set(IVS_SP_ATTACK, spattack);
+    }
+    public void setIvsDefence(int maxdefence) {
+        int defence = Mth.clamp(maxdefence, 0, 31);
+        this.entityData.set(IVS_DEFENCE, defence);
+    }
+    public void setIvsSpDefence(int maxspdefence) {
+        int spdefence = Mth.clamp(maxspdefence, 0, 31);
+        this.entityData.set(IVS_SP_DEFENCE, spdefence);
+    }
+    public void setIvsSpeed(int maxspeed ) {
+        int speed = Mth.clamp(maxspeed, 0, 31);
+        this.entityData.set(IVS_SPEED, speed);
+    }
+
+    public void setTrueHp() {
+        int true_hp = (int) (Math.floor(0.01 * (2 * (getBaseHP()) + (getIvsHP()) + Math.floor(0.25 * (getEvsHP()))) * (getPokeLevel())) + (getPokeLevel()) + 10);
+        this.entityData.set(TRUE_HP, true_hp);
+    }
+    public void setTrueAttack() {
+        int attack;
+        int prenature_attack = (int) (Math.floor(0.01 * (2 * (getBaseAttack()) + (getIvsAttack()) + Math.floor(0.25 * (getEvsAttack()))) * (getPokeLevel())) + (getPokeLevel()) + 5);
+        if((getPokeNature() == 2)||(getPokeNature() == 3)||(getPokeNature() == 4)||(getPokeNature() == 5)){
+            attack = (int) (prenature_attack * 1.1);
+            this.entityData.set(TRUE_ATTACK, attack);
+        }else if((getPokeNature() == 1)||(getPokeNature() == 7)||(getPokeNature() == 13)||(getPokeNature() == 19)||(getPokeNature() == 25)){
+            attack = prenature_attack;
+            this.entityData.set(TRUE_ATTACK, attack);
+        }else{
+            attack = (int) (prenature_attack * 0.9);
+            this.entityData.set(TRUE_ATTACK, attack);
+        }
+    }
+    public void setTrueSpAttack() {
+        int sp_attack;
+        int prenature_sp_attack = (int) (Math.floor(0.01 * (2 * (getBaseSPAttack()) + (getIvsSPAttack()) + Math.floor(0.25 * (getEvsSPAttack()))) * (getPokeLevel())) + (getPokeLevel()) + 5);
+        if((getPokeNature() == 16)||(getPokeNature() == 17)||(getPokeNature() == 18)||(getPokeNature() == 20)){
+            sp_attack = (int) (prenature_sp_attack * 1.1);
+            this.entityData.set(TRUE_SP_ATTACK, sp_attack);
+        }else if((getPokeNature() == 1)||(getPokeNature() == 7)||(getPokeNature() == 13)||(getPokeNature() == 19)||(getPokeNature() == 25)){
+            sp_attack = prenature_sp_attack;
+            this.entityData.set(TRUE_SP_ATTACK, sp_attack);
+        }else{
+            sp_attack = (int) (prenature_sp_attack * 0.9);
+            this.entityData.set(TRUE_SP_ATTACK, sp_attack);
+        }
+    }
+    public void setTrueDefence() {
+        int defence;
+        int prenature_defence = (int) (Math.floor(0.01 * (2 * (getBaseDefence()) + (getIvsDefence()) + Math.floor(0.25 * (getEvsDefence()))) * (getPokeLevel())) + (getPokeLevel()) + 5);
+        if((getPokeNature() == 6)||(getPokeNature() == 8)||(getPokeNature() == 9)||(getPokeNature() == 10)){
+            defence = (int) (prenature_defence * 1.1);
+            this.entityData.set(TRUE_DEFENCE, defence);
+        }else if((getPokeNature() == 1)||(getPokeNature() == 7)||(getPokeNature() == 13)||(getPokeNature() == 19)||(getPokeNature() == 25)){
+            defence = prenature_defence;
+            this.entityData.set(TRUE_DEFENCE, defence);
+        }else{
+            defence = (int) (prenature_defence * 0.9);
+            this.entityData.set(TRUE_DEFENCE, defence);
+        }
+    }
+    public void setTrueSpDefence() {
+        int sp_defence;
+        int prenature_sp_defence = (int) (Math.floor(0.01 * (2 * (getBaseSPDefence()) + (getIvsSPDefence()) + Math.floor(0.25 * (getEvsSPDefence()))) * (getPokeLevel())) + (getPokeLevel()) + 5);
+        if((getPokeNature() == 21)||(getPokeNature() == 22)||(getPokeNature() == 23)||(getPokeNature() == 24)){
+            sp_defence = (int) (prenature_sp_defence * 1.1);
+            this.entityData.set(TRUE_SP_DEFENCE, sp_defence);
+        }else if((getPokeNature() == 1)||(getPokeNature() == 7)||(getPokeNature() == 13)||(getPokeNature() == 19)||(getPokeNature() == 25)){
+            sp_defence = prenature_sp_defence;
+            this.entityData.set(TRUE_SP_DEFENCE, sp_defence);
+        }else{
+            sp_defence = (int) (prenature_sp_defence * 0.9);
+            this.entityData.set(TRUE_SP_DEFENCE, sp_defence);
+        }
+    }
+    public void setTrueSpeed() {
+        int speed;
+        int prenature_speed = (int) (Math.floor(0.01 * (2 * (getBaseSpeed()) + (getIvsSpeed()) + Math.floor(0.25 * (getEvsSpeed()))) * (getPokeLevel())) + (getPokeLevel()) + 5);
+        if((getPokeNature() == 11)||(getPokeNature() == 12)||(getPokeNature() == 14)||(getPokeNature() == 15)){
+            speed = (int) (prenature_speed * 1.1);
+            this.entityData.set(TRUE_SPEED, speed);
+        }else if((getPokeNature() == 1)||(getPokeNature() == 7)||(getPokeNature() == 13)||(getPokeNature() == 19)||(getPokeNature() == 25)){
+            speed = prenature_speed;
+            this.entityData.set(TRUE_SPEED, speed);
+        }else{
+            speed = (int) (prenature_speed * 0.9);
+            this.entityData.set(TRUE_SPEED, speed);
+        }
+    }
 
     protected void setPokeLevel(int level) {
         int i = Mth.clamp(level, 1, 100);
@@ -3020,6 +3122,7 @@ public class PokemonEntity extends TamableAnimal {
         int i = Mth.clamp(pSize, 1, 5);
         this.entityData.set(ID_SIZE, i);
     }
+
 
     public int getSize() {
         return this.entityData.get(ID_SIZE);
@@ -3043,7 +3146,6 @@ public class PokemonEntity extends TamableAnimal {
     public int getIvsSPAttack() {
         return this.entityData.get(IVS_SP_ATTACK);
     }
-
     public int getIvsDefence() {
         return this.entityData.get(IVS_DEFENCE);
     }
@@ -3064,7 +3166,6 @@ public class PokemonEntity extends TamableAnimal {
     public int getBaseSPAttack() {
         return this.entityData.get(BASE_SP_ATTACK);
     }
-
     public int getBaseDefence() {
         return this.entityData.get(BASE_DEFENCE);
     }
@@ -3078,7 +3179,43 @@ public class PokemonEntity extends TamableAnimal {
         return this.entityData.get(BASE_HP);
     }
 
+    public int getTrueAttack() {
+        return this.entityData.get(TRUE_ATTACK);
+    }
+    public int getTrueSPAttack() {
+        return this.entityData.get(TRUE_SP_ATTACK);
+    }
+    public int getTrueDefence() {
+        return this.entityData.get(TRUE_DEFENCE);
+    }
+    public int getTrueSPDefence() {
+        return this.entityData.get(TRUE_SP_DEFENCE);
+    }
+    public int getTrueSpeed() {
+        return this.entityData.get(TRUE_SPEED);
+    }
+    public int getTrueHP() {
+        return this.entityData.get(TRUE_HP);
+    }
 
+    public int getEvsAttack() {
+        return this.entityData.get(EVS_ATTACK);
+    }
+    public int getEvsSPAttack() {
+        return this.entityData.get(EVS_SP_ATTACK);
+    }
+    public int getEvsDefence() {
+        return this.entityData.get(EVS_DEFENCE);
+    }
+    public int getEvsSPDefence() {
+        return this.entityData.get(IVS_SP_DEFENCE);
+    }
+    public int getEvsSpeed() {
+        return this.entityData.get(IVS_SPEED);
+    }
+    public int getEvsHP() {
+        return this.entityData.get(IVS_HP);
+    }
 
     public void addAdditionalSaveData(@NotNull CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
@@ -3090,6 +3227,8 @@ public class PokemonEntity extends TamableAnimal {
         pCompound.putInt("Type2", this.getPokeType2());
         pCompound.putInt("Shiny", this.getShinyness());
 
+
+        pCompound.putInt("Nature", this.getPokeNature());
         pCompound.putInt("Ivs_Hp", this.getIvsHP());
         pCompound.putInt("Ivs_Attack", this.getIvsAttack());
         pCompound.putInt("Ivs_Defence", this.getIvsDefence());
@@ -3104,6 +3243,13 @@ public class PokemonEntity extends TamableAnimal {
         pCompound.putInt("Base_SP_Defence", this.getBaseSPDefence());
         pCompound.putInt("Base_Speed", this.getBaseSpeed());
 
+        pCompound.putInt("Hp", this.getTrueHP());
+        pCompound.putInt("Attack", this.getTrueAttack());
+        pCompound.putInt("Defence", this.getTrueDefence());
+        pCompound.putInt("SP_Attack", this.getTrueSPAttack());
+        pCompound.putInt("SP_Defence", this.getTrueSPDefence());
+        pCompound.putInt("Speed", this.getTrueSpeed());
+
 
         pCompound.putInt("InLove", this.inLove);
         if (this.loveCause != null) {
@@ -3117,15 +3263,34 @@ public class PokemonEntity extends TamableAnimal {
         this.setSize(pCompound.getInt("Size"));
         this.setPokeLevel(pCompound.getInt("Level"));
         this.setPokeSpecies(pCompound.getInt("Species"));
+
+        this.setNature(pCompound.getInt("Nature"));
+
+        this.setIvsHp(pCompound.getInt("Ivs_Hp"));
+        this.setIvsAttack(pCompound.getInt("Ivs_Attack"));
+        this.setIvsSpAttack(pCompound.getInt("Ivs_SP_Attack"));
+        this.setIvsDefence(pCompound.getInt("Ivs_Defence"));
+        this.setIvsSpDefence(pCompound.getInt("Ivs_SP_Defence"));
+        this.setIvsSpeed(pCompound.getInt("Ivs_Speed"));
+
+        this.setTrueHp();
+        this.setTrueAttack();
+        this.setTrueSpAttack();
+        this.setTrueDefence();
+        this.setTrueSpDefence();
+        this.setTrueSpeed();
+
         this.setPokeStats();
-        this.setNature();
         this.setShinyness(pCompound.getInt("Shiny"));
         this.inLove = pCompound.getInt("InLove");
         this.loveCause = pCompound.hasUUID("LoveCause") ? pCompound.getUUID("LoveCause") : null;
         this.setHappiness(pCompound.getInt("Happiness"));
 
+
         super.readAdditionalSaveData(pCompound);
     }
+
+
 
     public void onSyncedDataUpdated(@NotNull EntityDataAccessor<?> pKey) {
         if (ID_SIZE.equals(pKey)) {
@@ -3244,7 +3409,6 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(SHINY, 0);
         }
         this.entityData.set(HAPPINESS, 100);
-
         switch (random.nextInt(8)) {
             case 0:
                 setSize(1);
@@ -3262,7 +3426,6 @@ public class PokemonEntity extends TamableAnimal {
                 setSize(3);
                 break;
         }
-
         int ivsroll_hp = random.nextInt(30) + 1;
         int ivsroll_attack = random.nextInt(30) + 1;
         int ivsroll_defence = random.nextInt(30) + 1;
@@ -3277,8 +3440,39 @@ public class PokemonEntity extends TamableAnimal {
         this.entityData.set(IVS_SP_DEFENCE, ivsroll_sp_defence);
         this.entityData.set(IVS_SPEED, ivsroll_speed);
 
-
+        int natrueroll = random.nextInt(24) + 1;
+        switch (natrueroll) {
+            case 1 -> this.entityData.set(NATURE, PokemonNature.LONELY.ordinal());
+            case 2 -> this.entityData.set(NATURE, PokemonNature.BRAVE.ordinal());
+            case 3 -> this.entityData.set(NATURE, PokemonNature.ADAMANT.ordinal());
+            case 4 -> this.entityData.set(NATURE, PokemonNature.NAUGHTY.ordinal());
+            case 5 -> this.entityData.set(NATURE, PokemonNature.BOLD.ordinal());
+            case 6 -> this.entityData.set(NATURE, PokemonNature.DOCILE.ordinal());
+            case 7 -> this.entityData.set(NATURE, PokemonNature.RELAXED.ordinal());
+            case 8 -> this.entityData.set(NATURE, PokemonNature.IMPISH.ordinal());
+            case 9 -> this.entityData.set(NATURE, PokemonNature.LAX.ordinal());
+            case 10 -> this.entityData.set(NATURE, PokemonNature.TIMID.ordinal());
+            case 11 -> this.entityData.set(NATURE, PokemonNature.HASTY.ordinal());
+            case 12 -> this.entityData.set(NATURE, PokemonNature.SERIOUS.ordinal());
+            case 13 -> this.entityData.set(NATURE, PokemonNature.JOLLY.ordinal());
+            case 14 -> this.entityData.set(NATURE, PokemonNature.NAIVE.ordinal());
+            case 15 -> this.entityData.set(NATURE, PokemonNature.MODEST.ordinal());
+            case 16 -> this.entityData.set(NATURE, PokemonNature.MILD.ordinal());
+            case 17 -> this.entityData.set(NATURE, PokemonNature.QUIET.ordinal());
+            case 18 -> this.entityData.set(NATURE, PokemonNature.BASHFUL.ordinal());
+            case 19 -> this.entityData.set(NATURE, PokemonNature.RASH.ordinal());
+            case 20 -> this.entityData.set(NATURE, PokemonNature.CALM.ordinal());
+            case 21 -> this.entityData.set(NATURE, PokemonNature.GENTLE.ordinal());
+            case 22 -> this.entityData.set(NATURE, PokemonNature.SASSY.ordinal());
+            case 23 -> this.entityData.set(NATURE, PokemonNature.CAREFUL.ordinal());
+            case 24 -> this.entityData.set(NATURE, PokemonNature.QUIRKY.ordinal());
+            default -> this.entityData.set(NATURE, PokemonNature.HARDY.ordinal());
+        }
         return pSpawnData;
+    }
+
+    public void setTame(boolean p_30443_) {
+        super.setTame(p_30443_);
     }
 
     public void setInLove(@javax.annotation.Nullable Player pPlayer) {
