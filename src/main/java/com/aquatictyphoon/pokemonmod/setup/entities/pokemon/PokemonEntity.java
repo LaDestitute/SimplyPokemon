@@ -3037,6 +3037,7 @@ public class PokemonEntity extends TamableAnimal {
     public void setTrueHp() {
         int true_hp = (int) (Math.floor(0.01 * (2 * (getBaseHP()) + (getIvsHP()) + Math.floor(0.25 * (getEvsHP()))) * (getPokeLevel())) + (getPokeLevel()) + 10);
         this.entityData.set(TRUE_HP, true_hp);
+        this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(true_hp);
     }
     public void setTrueAttack() {
         int attack;
@@ -3468,6 +3469,9 @@ public class PokemonEntity extends TamableAnimal {
             case 24 -> this.entityData.set(NATURE, PokemonNature.QUIRKY.ordinal());
             default -> this.entityData.set(NATURE, PokemonNature.HARDY.ordinal());
         }
+        int true_hp = (int) (Math.floor(0.01 * (2 * (getBaseHP()) + (getIvsHP()) + Math.floor(0.25 * (getEvsHP()))) * (getPokeLevel())) + (getPokeLevel()) + 10);
+        this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(true_hp);
+        this.setHealth(true_hp);
         return pSpawnData;
     }
 
@@ -3522,6 +3526,14 @@ public class PokemonEntity extends TamableAnimal {
                 itemstack.shrink(1);
                 this.setInLove(pPlayer);
                 this.setPokeLevel((this.entityData.get(POKEMON_LEVEL)) + 1);
+                this.setTrueHp();
+                this.setTrueAttack();
+                this.setTrueDefence();
+                this.setTrueSpAttack();
+                this.setTrueSpDefence();
+                this.setTrueSpeed();
+
+
                 this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.AMBIENT, 3.0F, 1.0F);
                 this.setHappiness(this.entityData.get(HAPPINESS) + 4);
                 return InteractionResult.SUCCESS;
