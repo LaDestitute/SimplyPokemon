@@ -36,7 +36,7 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.UUID;
 
-@SuppressWarnings("EntityConstructor")
+@SuppressWarnings("ALL")
 public class PokemonEntity extends TamableAnimal {
 
     private int inLove;
@@ -81,6 +81,49 @@ public class PokemonEntity extends TamableAnimal {
     private static final EntityDataAccessor<Integer> TRUE_SP_DEFENCE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> TRUE_SPEED = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
 
+
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_1 = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_2 = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_3 = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_4 = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_1_CURRENT_PP = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_2_CURRENT_PP = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_3_CURRENT_PP = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_4_CURRENT_PP = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_1_MAX_PP = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_2_MAX_PP = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_3_MAX_PP = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_4_MAX_PP = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_1_TYPE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_2_TYPE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_3_TYPE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_4_TYPE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_1_CATEGORY = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_2_CATEGORY = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_3_CATEGORY = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_4_CATEGORY = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_1_POWER = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_2_POWER = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_3_POWER = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_4_POWER = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_1_ACCURACY = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_2_ACCURACY = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_3_ACCURACY = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MOVE_SLOT_4_ACCURACY = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+
+    private static final EntityDataAccessor<String> MOVE_SLOT_1_NAME = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.STRING);
+    private static final EntityDataAccessor<String> MOVE_SLOT_2_NAME = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.STRING);
+    private static final EntityDataAccessor<String> MOVE_SLOT_3_NAME = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.STRING);
+    private static final EntityDataAccessor<String> MOVE_SLOT_4_NAME = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.STRING);
+
+
+
     private static final EntityDataAccessor<Integer> TYPE1 = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> TYPE2 = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
 
@@ -115,6 +158,1253 @@ public class PokemonEntity extends TamableAnimal {
     @Override
     public AgeableMob getBreedOffspring(@NotNull ServerLevel level, @NotNull AgeableMob parent) {
         return null;
+    }
+
+    protected void setMoveSlot1(){
+        //Category; 0 is physical, 1 is special, 2 is status
+        int move = this.getMoveSlot1();
+        int inf = (int) Math.pow(99999, 999999999);
+        if(move == 0) {
+            this.entityData.set(MOVE_SLOT_1_NAME , "Struggle");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10000);
+            this.entityData.set(MOVE_SLOT_1_POWER , 50 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NONE.ordinal());
+        }else if(move == 7  ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Fire Punch");
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_POWER , 75 );
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIRE.ordinal());
+        }else if(move == 8  ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Ice Punch");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 75 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ICE.ordinal());
+        }else if(move == 9  ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Thunder Punch");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 75 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ELECTRIC.ordinal());
+        }else if(move == 14 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Thunder Punch");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , inf );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 33 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Tackle");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 35);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 38 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Double-Edge");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 120 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 40 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Poison Sting");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 35);
+            this.entityData.set(MOVE_SLOT_1_POWER , 15 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 42 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Poison Sting");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 35);
+            this.entityData.set(MOVE_SLOT_1_POWER , 15 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 44 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Pin Missile");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 25 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 95);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.BUG.ordinal());
+        }else if(move == 52 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Bite");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 25);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.DARK.ordinal());
+        }else if(move == 53 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Ember");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 25);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIRE.ordinal());
+        }else if(move == 56 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Flamethrower");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 90 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIRE.ordinal());
+        }else if(move == 58 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Hydro Pump");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 90 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ICE.ordinal());
+        }else if(move == 59 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Blizzard");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 110 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 70);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ICE.ordinal());
+        }else if(move == 63 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Hyper Beam");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 120 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 9);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 71 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Absorb");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 30 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GRASS.ordinal());
+        }else if(move == 77 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Poision Powder");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 80);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.POISON.ordinal());
+        }else if(move == 78 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Stun Spore");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 80);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GRASS.ordinal());
+        }else if(move == 79 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Sleep Powder");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 80);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GRASS.ordinal());
+        }else if(move == 80 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Petal Dance");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 90 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 85);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GRASS.ordinal());
+        }else if(move == 84 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Thundershock");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 25);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ELECTRIC.ordinal());
+        }else if(move == 85 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Thunderbolt");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ELECTRIC.ordinal());
+        }else if(move == 86 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Thunder Wave");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ELECTRIC.ordinal());
+        }else if(move == 87 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Thunder");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 100 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 75);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ELECTRIC.ordinal());
+        }else if(move == 93 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Confusion");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 50 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.PSYCHIC.ordinal());
+        }else if(move == 94 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Psychic");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.PSYCHIC.ordinal());
+        }else if(move == 95 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Hypnosis");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 70);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.PSYCHIC.ordinal());
+        }else if(move == 98 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Quick Attack");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 30);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 100 ){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Teleport");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.PSYCHIC.ordinal());
+        }else if(move == 102){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Mimic");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 105){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Recover");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 116){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Focus Energy");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 120){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Self-Destruct");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 150 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 120);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 126){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Fire-Blast");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 100 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 85);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIRE.ordinal());
+        }else if(move == 129){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Swift");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIRE.ordinal());
+        }else if(move == 135){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Soft-Boiled");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIRE.ordinal());
+        }else if(move == 139){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Poison Gas");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 3);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.POISON.ordinal());
+        }else if(move == 141){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Leech Life");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 75 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.BUG.ordinal());
+        }else if(move == 145){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Bubble");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 25);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.WATER.ordinal());
+        }else if(move == 147){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Spore");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GRASS.ordinal());
+        }else if(move == 150){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Slash");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 40);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 151){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Acid Armor");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.POISON.ordinal());
+        }else if(move == 156){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Rest");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.PSYCHIC.ordinal());
+        }else if(move == 157){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Rock Slide");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 75 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ROCK.ordinal());
+        }else if(move == 161){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Tri Attack");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 163){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Slash");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 70 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 165){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Struggle");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , inf);
+            this.entityData.set(MOVE_SLOT_1_POWER , 50 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 172){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Flame Wheel");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 25);
+            this.entityData.set(MOVE_SLOT_1_POWER , 90 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIRE.ordinal());
+        }else if(move == 181){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Powder Snow");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 25);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ICE.ordinal());
+        }else if(move == 183){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Mach Punch");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIGHTING.ordinal());
+        }else if(move == 188){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Sludge Bomb");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.POISON.ordinal());
+        }else if(move == 189){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Mud Slap");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 30 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GROUND.ordinal());
+        }else if(move == 190){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Octazooka");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 65 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 85);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.WATER.ordinal());
+        }else if(move == 191){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Spikes");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GROUND.ordinal());
+        }else if(move == 196){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Icy Wind");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ICE.ordinal());
+        }else if(move == 200){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Outrage");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 90 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 85);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.DRAGON.ordinal());
+        }else if(move == 205){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Rollout");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 30 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ROCK.ordinal());
+        }else if(move == 206){
+            this.entityData.set(MOVE_SLOT_1_NAME , "False Swipe");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 30);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 209){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Spark");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 30);
+            this.entityData.set(MOVE_SLOT_1_POWER , 65 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ELECTRIC.ordinal());
+        }else if(move == 224){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Megahorn");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 100 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 85);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.BUG.ordinal());
+        }else if(move == 231){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Iron Tail");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 100 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 75);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.STEEL.ordinal());
+        }else if(move == 237){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Hidden Power");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 50 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 239){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Twister");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 25);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.DRAGON.ordinal());
+        }else if(move == 242){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Crunch");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.DARK.ordinal());
+        }else if(move == 246){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Ancient Power");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ROCK.ordinal());
+        }else if(move == 247){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Shadow Ball");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 120 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GHOST.ordinal());
+        }else if(move == 249){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Rock Smash");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ROCK.ordinal());
+        }else if(move == 301){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Ice Ball");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ICE.ordinal());
+        }else if(move == 310){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Astonish");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 30 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GHOST.ordinal());
+        }else if(move == 314){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Air Cutter");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 95);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FLYING.ordinal());
+        }else if(move == 315){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Overheat");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 195 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIRE.ordinal());
+        }else if(move == 318){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Silver Wind");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 45);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.BUG.ordinal());
+        }else if(move == 326){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Extrasensory");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 70 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.PSYCHIC.ordinal());
+        }else if(move == 332){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Aerial Ace ");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 75);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FLYING.ordinal());
+        }else if(move == 334){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Iron Defence");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.STEEL.ordinal());
+        }else if(move == 337){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Dragon Claw");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.DRAGON.ordinal());
+        }else if(move == 339){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Bulk Up");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIGHTING.ordinal());
+        }else if(move == 344){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Volt Tackle");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 120 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ELECTRIC.ordinal());
+        }else if(move == 345){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Magical Leaf");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 75);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.DRAGON.ordinal());
+        }else if(move == 347){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Calm Mind");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.PSYCHIC.ordinal());
+        }else if(move == 348){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Leaf Blade");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 85 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GRASS.ordinal());
+        }else if(move == 352){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Water Pulse");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GRASS.ordinal());
+        }else if(move == 355){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Roost");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FLYING.ordinal());
+        }else if(move == 370){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Close Combat");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 100 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIGHTING.ordinal());
+        }else if(move == 394){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Flare Blitz");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 100 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIRE.ordinal());
+        }else if(move == 396){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Aura Sphere");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIGHTING.ordinal());
+        }else if(move == 398){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Poision Jab");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.POISON.ordinal());
+        }else if(move == 399){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Dark Pulse");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.POISON.ordinal());
+        }else if(move == 400){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Night Slash");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 70 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.DARK.ordinal());
+        }else if(move == 401){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Aqua Tail");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 85 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.WATER.ordinal());
+        }else if(move == 403){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Air Slash");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 75 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 95);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FLYING.ordinal());
+        }else if(move == 404){
+            this.entityData.set(MOVE_SLOT_1_NAME , "X-Scizor");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.BUG.ordinal());
+        }else if(move == 405){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Bug Buzz");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.BUG.ordinal());
+        }else if(move == 406){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Dragon Pulse");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.DRAGON.ordinal());
+        }else if(move == 408){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Power Gem");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.BUG.ordinal());
+        }else if(move == 409){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Drain Punch");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 75 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIGHTING.ordinal());
+        }else if(move == 412){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Energy Ball");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GRASS.ordinal());
+        }else if(move == 413){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Brave Bird");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FLYING.ordinal());
+        }else if(move == 414){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Earth Power");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GROUND.ordinal());
+        }else if(move == 416){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Giga Impact");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 120 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 417){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Nasty Plot");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.DARK.ordinal());
+        }else if(move == 418){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Bullet Punch");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIGHTING.ordinal());
+        }else if(move == 420){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Ice Shard");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ICE.ordinal());
+        }else if(move == 421){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Shadow Claw");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 70 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GHOST.ordinal());
+        }else if(move == 422){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Thunder Fang");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 65 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 95);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ELECTRIC.ordinal());
+        }else if(move == 423){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Ice Fang");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 65 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 95);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ICE.ordinal());
+        }else if(move == 424){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Fire Fang");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 65 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 95);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIRE.ordinal());
+        }else if(move == 425){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Shadow Sneak");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GHOST.ordinal());
+        }else if(move == 426){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Mud Bomb");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 65 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 85);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GROUND.ordinal());
+        }else if(move == 427){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Psycho Cut");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 70 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.PSYCHIC.ordinal());
+        }else if(move == 428){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Zen Headbutt");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.PSYCHIC.ordinal());
+        }else if(move == 430){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Flash Cannon");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.STEEL.ordinal());
+        }else if(move == 434){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Draco Meteor");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 110 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.DRAGON.ordinal());
+        }else if(move == 437){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Leaf Storm");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 110 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GRASS.ordinal());
+        }else if(move == 440){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Cross Poison");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 70 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.POISON.ordinal());
+        }else if(move == 442){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Iron Head");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.STEEL.ordinal());
+        }else if(move == 444){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Stone Edge");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 100 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 80);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ROCK.ordinal());
+        }else if(move == 446){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Stealth Rock");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 80);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ROCK.ordinal());
+        }else if(move == 449){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Judgement");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 100 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 451){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Charge Beams");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 50 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ELECTRIC.ordinal());
+        }else if(move == 452){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Wood Hammer");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 100 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GRASS.ordinal());
+        }else if(move == 453){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Aqua Jet");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.WATER.ordinal());
+        }else if(move == 457){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Head Smash");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 120 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 80);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ROCK.ordinal());
+        }else if(move == 458){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Double Hit");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 459){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Roar of Time");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 120 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.DRAGON.ordinal());
+        }else if(move == 460){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Spacial Rend");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 90 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 95);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.DRAGON.ordinal());
+        }else if(move == 462){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Crush Grip");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 100 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.NORMAL.ordinal());
+        }else if(move == 463){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Magma Storm");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 90 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 75);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIRE.ordinal());
+        }else if(move == 464){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Dark Void");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.DARK.ordinal());
+        }else if(move == 465){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Seed Flare");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 100 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 85);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GRASS.ordinal());
+        }else if(move == 466){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Ominous Wind");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 90 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GHOST.ordinal());
+        }else if(move == 467){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Shadow Force");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 100 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 120);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GHOST.ordinal());
+        }else if(move == 474){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Venoshock");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 65 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.POISON.ordinal());
+        }else if(move == 491){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Acid Spray");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.POISON.ordinal());
+        }else if(move == 506){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Hex");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 65 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GHOST.ordinal());
+        }else if(move == 522){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Struggle Bug");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.BUG.ordinal());
+        }else if(move == 523){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Bulldoze");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GROUND.ordinal());
+        }else if(move == 528){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Wild Charge");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 90);
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ELECTRIC.ordinal());
+        }else if(move == 542){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Hurricane");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 100 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 75);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FLYING.ordinal());
+        }else if(move == 555){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Snarl");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.DARK.ordinal());
+        }else if(move == 556){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Icicle Crash");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ICE.ordinal());
+        }else if(move == 577){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Draining Kiss");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 50 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FAIRY.ordinal());
+        }else if(move == 583){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Play Rough");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 85 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FAIRY.ordinal());
+        }else if(move == 584){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Fairy Wind");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 25);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FAIRY.ordinal());
+        }else if(move == 585){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Moonblast");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FAIRY.ordinal());
+        }else if(move == 595){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Mystical Fire");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 70 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIRE.ordinal());
+        }else if(move == 605){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Dazzling Gleam");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 75 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FAIRY.ordinal());
+        }else if(move == 608){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Baby Doll Eyes");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 20);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FAIRY.ordinal());
+        }else if(move == 667){
+            this.entityData.set(MOVE_SLOT_1_NAME , "High Horsepower");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 85 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GROUND.ordinal());
+        }else if(move == 670){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Leafage");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 25);
+            this.entityData.set(MOVE_SLOT_1_POWER , 40 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GRASS.ordinal());
+        }else if(move == 710){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Liquidation");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 80 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.WATER.ordinal());
+        }else if(move == 796){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Steel Beam");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 120 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 95);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.STEEL.ordinal());
+        }else if(move == 827){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Dire Claw");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.POISON.ordinal());
+        }else if(move == 828){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Psyshield Bash");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 70 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.PSYCHIC.ordinal());
+        }else if(move == 829){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Power Shift");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.POISON.ordinal());
+        }else if(move == 830){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Stone Axe");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 65 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ROCK.ordinal());
+        }else if(move == 831){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Springtide Storm");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 95 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 115);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FAIRY.ordinal());
+        }else if(move == 832){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Mystical Power");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 70 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FAIRY.ordinal());
+        }else if(move == 833){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Raging Fury");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 95 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIRE.ordinal());
+        }else if(move == 834){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Wave Crash");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 70 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.WATER.ordinal());
+        }else if(move == 835){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Chloroblast");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 120 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 95);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GRASS.ordinal());
+        }else if(move == 836){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Mountain Gale");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 95 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ICE.ordinal());
+        }else if(move == 837){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Victory Dance");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIGHTING.ordinal());
+        }else if(move == 838){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Headlong Rush");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 100 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GROUND.ordinal());
+        }else if(move == 839){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Barb Barrage");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.POISON.ordinal());
+        }else if(move == 840){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Esper Wing");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 75 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.PSYCHIC.ordinal());
+        }else if(move == 841){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Bitter Malice");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 60 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GHOST.ordinal());
+        }else if(move == 842){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Shelter");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 2);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.STEEL.ordinal());
+        }else if(move == 843){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Triple Arrow");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 50 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FIGHTING.ordinal());
+        }else if(move == 844){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Infernal Parade");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 90 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 100);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GHOST.ordinal());
+        }else if(move == 845){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Ceaseless Edge");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 15);
+            this.entityData.set(MOVE_SLOT_1_POWER , 65 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 90);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 0);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.STEEL.ordinal());
+        }else if(move == 846){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Bleakwind Storm");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 95 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 80);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.FLYING.ordinal());
+        }else if(move == 847){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Wildbolt Storm");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 95 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 80);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.ELECTRIC.ordinal());
+        }else if(move == 848){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Sandsear Storm");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 5);
+            this.entityData.set(MOVE_SLOT_1_POWER , 95 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , 80);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.GROUND.ordinal());
+        }else if(move == 849){
+            this.entityData.set(MOVE_SLOT_1_NAME , "Lunar Blessing");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.PSYCHIC.ordinal());
+        }else if(move == 850) {
+            this.entityData.set(MOVE_SLOT_1_NAME , "Take Heart");
+            this.entityData.set(MOVE_SLOT_1_MAX_PP , 10);
+            this.entityData.set(MOVE_SLOT_1_POWER , 0 );
+            this.entityData.set(MOVE_SLOT_1_ACCURACY , inf);
+            this.entityData.set(MOVE_SLOT_1_CATEGORY , 1);
+            this.entityData.set(MOVE_SLOT_1_TYPE , PokemonTypes.PSYCHIC.ordinal());
+        }
+
     }
 
     @SuppressWarnings({"SpellCheckingInspection"})
@@ -3115,6 +4405,22 @@ public class PokemonEntity extends TamableAnimal {
         return this.entityData.get(SPECIES);
     }
 
+    public int getMoveSlot1() {
+        return this.entityData.get(MOVE_SLOT_1);
+    }
+
+    public int getMoveSlot2() {
+        return this.entityData.get(MOVE_SLOT_2);
+    }
+
+    public int getMoveSlot3() {
+        return this.entityData.get(MOVE_SLOT_3);
+    }
+
+    public int getMoveSlot4() {
+        return this.entityData.get(MOVE_SLOT_4);
+    }
+
     protected void setSize(int pSize) {
         int i = Mth.clamp(pSize, 1, 5);
         this.entityData.set(ID_SIZE, i);
@@ -3223,8 +4529,6 @@ public class PokemonEntity extends TamableAnimal {
         pCompound.putInt("Type1", this.getPokeType1());
         pCompound.putInt("Type2", this.getPokeType2());
         pCompound.putInt("Shiny", this.getShinyness());
-
-
         pCompound.putInt("Nature", this.getPokeNature());
         pCompound.putInt("Ivs_Hp", this.getIvsHP());
         pCompound.putInt("Ivs_Attack", this.getIvsAttack());
@@ -3232,20 +4536,23 @@ public class PokemonEntity extends TamableAnimal {
         pCompound.putInt("Ivs_SP_Attack", this.getIvsSPAttack());
         pCompound.putInt("Ivs_SP_Defence", this.getIvsSPDefence());
         pCompound.putInt("Ivs_Speed", this.getIvsSpeed());
-
         pCompound.putInt("Base_Hp", this.getBaseHP());
         pCompound.putInt("Base_Attack", this.getBaseAttack());
         pCompound.putInt("Base_Defence", this.getBaseDefence());
         pCompound.putInt("Base_SP_Attack", this.getBaseSPAttack());
         pCompound.putInt("Base_SP_Defence", this.getBaseSPDefence());
         pCompound.putInt("Base_Speed", this.getBaseSpeed());
-
         pCompound.putInt("Hp", this.getTrueHP());
         pCompound.putInt("Attack", this.getTrueAttack());
         pCompound.putInt("Defence", this.getTrueDefence());
         pCompound.putInt("SP_Attack", this.getTrueSPAttack());
         pCompound.putInt("SP_Defence", this.getTrueSPDefence());
         pCompound.putInt("Speed", this.getTrueSpeed());
+
+        pCompound.putInt("Move1", this.getMoveSlot1());
+        pCompound.putInt("Move2", this.getMoveSlot2());
+        pCompound.putInt("Move3", this.getMoveSlot3());
+        pCompound.putInt("Move4", this.getMoveSlot4());
 
 
         pCompound.putInt("InLove", this.inLove);
@@ -3260,34 +4567,26 @@ public class PokemonEntity extends TamableAnimal {
         this.setSize(pCompound.getInt("Size"));
         this.setPokeLevel(pCompound.getInt("Level"));
         this.setPokeSpecies(pCompound.getInt("Species"));
-
         this.setNature(pCompound.getInt("Nature"));
-
         this.setIvsHp(pCompound.getInt("Ivs_Hp"));
         this.setIvsAttack(pCompound.getInt("Ivs_Attack"));
         this.setIvsSpAttack(pCompound.getInt("Ivs_SP_Attack"));
         this.setIvsDefence(pCompound.getInt("Ivs_Defence"));
         this.setIvsSpDefence(pCompound.getInt("Ivs_SP_Defence"));
         this.setIvsSpeed(pCompound.getInt("Ivs_Speed"));
-
         this.setTrueHp();
         this.setTrueAttack();
         this.setTrueSpAttack();
         this.setTrueDefence();
         this.setTrueSpDefence();
         this.setTrueSpeed();
-
         this.setPokeStats();
         this.setShinyness(pCompound.getInt("Shiny"));
         this.inLove = pCompound.getInt("InLove");
         this.loveCause = pCompound.hasUUID("LoveCause") ? pCompound.getUUID("LoveCause") : null;
         this.setHappiness(pCompound.getInt("Happiness"));
-
-
         super.readAdditionalSaveData(pCompound);
     }
-
-
 
     public void onSyncedDataUpdated(@NotNull EntityDataAccessor<?> pKey) {
         if (ID_SIZE.equals(pKey)) {
@@ -3523,18 +4822,88 @@ public class PokemonEntity extends TamableAnimal {
                 this.setInLove(pPlayer);
                 this.setPokeLevel((this.entityData.get(POKEMON_LEVEL)) + 1);
                 this.setTrueHp();
+                this.setHealth(Math.round((this.getTrueHP()) / this.getHealth()) * this.getHealth());
                 this.setTrueAttack();
                 this.setTrueDefence();
                 this.setTrueSpAttack();
                 this.setTrueSpDefence();
                 this.setTrueSpeed();
-
-
                 this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.AMBIENT, 3.0F, 1.0F);
                 this.setHappiness(this.entityData.get(HAPPINESS) + 4);
                 return InteractionResult.SUCCESS;
 
             }
+            if (pPlayer.isHolding((Registration.ORANBERRY.get())) && this.isOwnedBy(pPlayer)) {
+                itemstack.shrink(1);
+                this.setHealth(this.getHealth() + 10);
+                this.setInLove(pPlayer);
+                this.setTrueHp();
+                this.setTrueAttack();
+                this.setTrueDefence();
+                this.setTrueSpAttack();
+                this.setTrueSpDefence();
+                this.setTrueSpeed();
+                this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EAT, SoundSource.AMBIENT, 3.0F, 1.0F);
+                this.setHappiness(this.entityData.get(HAPPINESS) + 2);
+                return InteractionResult.SUCCESS;
+            }
+            if (pPlayer.isHolding((Registration.POTION.get())) && this.isOwnedBy(pPlayer)) {
+                itemstack.shrink(1);
+                this.setHealth(this.getHealth() + 60);
+                this.setInLove(pPlayer);
+                this.setTrueHp();
+                this.setTrueAttack();
+                this.setTrueDefence();
+                this.setTrueSpAttack();
+                this.setTrueSpDefence();
+                this.setTrueSpeed();
+                this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_DRINK, SoundSource.AMBIENT, 3.0F, 1.0F);
+                this.setHappiness(this.entityData.get(HAPPINESS) + 1);
+                return InteractionResult.SUCCESS;
+            }
+            if (pPlayer.isHolding((Registration.SUPERPOTION.get())) && this.isOwnedBy(pPlayer)) {
+                itemstack.shrink(1);
+                this.setHealth(this.getHealth() + 100);
+                this.setInLove(pPlayer);
+                this.setTrueHp();
+                this.setTrueAttack();
+                this.setTrueDefence();
+                this.setTrueSpAttack();
+                this.setTrueSpDefence();
+                this.setTrueSpeed();
+                this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_DRINK, SoundSource.AMBIENT, 3.0F, 1.0F);
+                this.setHappiness(this.entityData.get(HAPPINESS) + 3);
+                return InteractionResult.SUCCESS;
+            }
+            if (pPlayer.isHolding((Registration.HYPERPOTION.get())) && this.isOwnedBy(pPlayer)) {
+                itemstack.shrink(1);
+                this.setHealth(this.getHealth() + 150);
+                this.setInLove(pPlayer);
+                this.setTrueHp();
+                this.setTrueAttack();
+                this.setTrueDefence();
+                this.setTrueSpAttack();
+                this.setTrueSpDefence();
+                this.setTrueSpeed();
+                this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_DRINK, SoundSource.AMBIENT, 3.0F, 1.0F);
+                this.setHappiness(this.entityData.get(HAPPINESS) + 3);
+                return InteractionResult.SUCCESS;
+            }
+            if (pPlayer.isHolding((Registration.MAXPOTION.get())) && this.isOwnedBy(pPlayer)) {
+                itemstack.shrink(1);
+                this.setHealth(this.getMaxHealth());
+                this.setInLove(pPlayer);
+                this.setTrueHp();
+                this.setTrueAttack();
+                this.setTrueDefence();
+                this.setTrueSpAttack();
+                this.setTrueSpDefence();
+                this.setTrueSpeed();
+                this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_DRINK, SoundSource.AMBIENT, 3.0F, 1.0F);
+                this.setHappiness(this.entityData.get(HAPPINESS) + 4);
+                return InteractionResult.SUCCESS;
+            }
+
             if ((itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
                 if(this.entityData.get(HAPPINESS) > 250){
                     pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " couldn't possibly love you more!"), true);

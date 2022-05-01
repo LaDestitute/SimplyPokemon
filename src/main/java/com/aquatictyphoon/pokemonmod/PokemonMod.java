@@ -32,4 +32,5 @@ public class PokemonMod {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEventBusSubscriber::initRenders);
 
     }
+
 }
