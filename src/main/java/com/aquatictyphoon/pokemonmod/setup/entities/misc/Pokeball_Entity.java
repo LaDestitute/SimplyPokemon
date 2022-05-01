@@ -3,6 +3,7 @@ package com.aquatictyphoon.pokemonmod.setup.entities.misc;
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.nbt.CompoundTag;
@@ -24,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 
 import java.util.Objects;
+import java.util.Random;
 import java.util.UUID;
 
 
@@ -97,6 +99,8 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
 
     protected void onHitEntity(EntityHitResult result) {
         Entity target = result.getEntity();
+        Random random = new Random();
+        int catchrate = ((PokemonEntity) target).getCatchRate();
         if (result.getType() == EntityHitResult.Type.ENTITY && (!(result.getEntity() instanceof Player)) && ((result.getEntity() instanceof PokemonEntity))){
             if (!level.isClientSide) {
                 if ((containsEntity(PokeballItem)) && (target.isAlive() && ((PokemonEntity) target).isTame()) && !(target.getPersistentData().getDouble("UniqueID") == PokeballItem.getOrCreateTag().getDouble("UniqueID"))) {
@@ -106,12 +110,13 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     level.addFreshEntity(entity);
                     //System.out.println("RELEASE SUCCESS!");
                 }
-                if ((!containsEntity(PokeballItem)) && (target.isAlive() && !((PokemonEntity) target).isTame()))
+                if ((!containsEntity(PokeballItem)) && (target.isAlive() && !((PokemonEntity) target).isTame()) && random.nextInt(256) <= Math.round((catchrate / 1.5873)))
                 {
                     Player player = (Player) this.getOwner();
                     if(player == null){
                         return;
                     }
+
                     ((PokemonEntity) target).tame((Player) this.getOwner());
                     CompoundTag nbt = new CompoundTag();
                     String entityID = EntityType.getKey(target.getType()).toString();
@@ -133,8 +138,6 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     nbt.putInt("Ivs_SP_Defence", IvsSpDefence);
                     nbt.putInt("Ivs_Speed", IvsSpeed);
 
-
-
                     nbt.putString("UUID", String.valueOf(TargetUUID));
                     nbt.putString("entity", entityID);
                     nbt.putString("id", EntityType.getKey(target.getType()).toString());
@@ -147,6 +150,15 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     ItemHandlerHelper.giveItemToPlayer(player, owned_ball);
                     target.discard();
                     //System.out.println("CAPTURE SUCCESS!");
+                }
+                if ((!containsEntity(PokeballItem)) && (target.isAlive() && !((PokemonEntity) target).isTame()) && random.nextInt(256) >= Math.round((catchrate / 1.5873))){
+                    Player player = (Player) this.getOwner();
+                    if(player == null){
+                        return;
+                    }
+                    player.sendMessage(new TranslatableComponent("Oh no! The Pokémon broke free!"), player.getUUID());
+                    this.discard();
+
                 }
                 //Retrieval
                 if((containsEntity(PokeballItem)) && (target.isAlive() && ((PokemonEntity) target).isTame()) && (String.valueOf(target.getUUID()).equals(String.valueOf(PokeballItem.getOrCreateTag().getUUID("UUID")))))

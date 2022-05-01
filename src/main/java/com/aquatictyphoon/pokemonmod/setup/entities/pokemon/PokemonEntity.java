@@ -122,7 +122,7 @@ public class PokemonEntity extends TamableAnimal {
     private static final EntityDataAccessor<String> MOVE_SLOT_3_NAME = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.STRING);
     private static final EntityDataAccessor<String> MOVE_SLOT_4_NAME = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.STRING);
 
-
+    private static final EntityDataAccessor<Integer> CATCHRATE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
 
     private static final EntityDataAccessor<Integer> TYPE1 = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> TYPE2 = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
@@ -1407,6 +1407,23 @@ public class PokemonEntity extends TamableAnimal {
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @SuppressWarnings({"SpellCheckingInspection"})
     protected void setPokeStats(){
         int species = this.getPokeSpecies();
@@ -1420,6 +1437,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "BadEgg");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 1) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -1431,6 +1449,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Bulbasaur");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 2) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -1442,6 +1461,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Ivysaur");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 3) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -1453,6 +1473,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Venusaur");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 4) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -1464,6 +1485,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 65);
             this.entityData.set(NICKNAME, "Charmander");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 5) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -1475,6 +1497,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Charmeleon");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 6) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -1484,8 +1507,9 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_DEFENCE, 78);
             this.entityData.set(BASE_SP_ATTACK, 109);
             this.entityData.set(BASE_SP_DEFENCE, 85);
-            this.entityData.set(BASE_SPEED, 1000);
+            this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Charizard");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 7) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -1497,6 +1521,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 64);
             this.entityData.set(BASE_SPEED, 43);
             this.entityData.set(NICKNAME, "Squirtle");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 8) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -1508,6 +1533,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 78);
             this.entityData.set(NICKNAME, "Wartortle");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 9) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -1519,6 +1545,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 108);
             this.entityData.set(BASE_SPEED, 78);
             this.entityData.set(NICKNAME, "Blastoise");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 10) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -1530,6 +1557,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,20 );
             this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Caterpie");
+            this.entityData.set(CATCHRATE, 255);
         }
 
         else if(species == 11) {
@@ -1542,6 +1570,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,25 );
             this.entityData.set(BASE_SPEED,30 );
             this.entityData.set(NICKNAME, "Metapod");
+            this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 12) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -1553,6 +1582,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Butterfree");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 13) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -1564,6 +1594,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,20 );
             this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Weedle");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 14) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -1575,6 +1606,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 25);
             this.entityData.set(BASE_SPEED,35 );
             this.entityData.set(NICKNAME, "Kakuna");
+            this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 15) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -1586,6 +1618,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED,75 );
             this.entityData.set(NICKNAME, "Beedrill");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 16) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -1597,6 +1630,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,35 );
             this.entityData.set(BASE_SPEED,56 );
             this.entityData.set(NICKNAME, "Pidgey");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 17) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -1608,6 +1642,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,50 );
             this.entityData.set(BASE_SPEED,71 );
             this.entityData.set(NICKNAME, "Pidgeotto");
+            this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 18) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -1619,6 +1654,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED,101 );
             this.entityData.set(NICKNAME, "Pidgeot");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species ==19) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -1630,6 +1666,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,35 );
             this.entityData.set(BASE_SPEED, 72);
             this.entityData.set(NICKNAME, "Rattata");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 20) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -1641,6 +1678,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,70 );
             this.entityData.set(BASE_SPEED, 97);
             this.entityData.set(NICKNAME, "Raticate");
+            this.entityData.set(CATCHRATE, 127);
         }
         else if(species == 21) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -1652,6 +1690,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,31);
             this.entityData.set(BASE_SPEED,70 );
             this.entityData.set(NICKNAME, "Spearow");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 22) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -1663,6 +1702,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 61);
             this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Fearow");
+            this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 23) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
@@ -1674,6 +1714,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 54);
             this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Ekans");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 24) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
@@ -1685,6 +1726,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,79 );
             this.entityData.set(BASE_SPEED,80 );
             this.entityData.set(NICKNAME, "Arbok");
+            this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 25) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
@@ -1696,6 +1738,8 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,50 );
             this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Pikachu");
+            this.entityData.set(CATCHRATE, 190);
+
         }
         else if(species == 26) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
@@ -1707,6 +1751,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED, 110);
             this.entityData.set(NICKNAME, "Raichu");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 27) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
@@ -1718,6 +1763,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,30 );
             this.entityData.set(BASE_SPEED,40 );
             this.entityData.set(NICKNAME, "Sandshrew");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 28) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
@@ -1729,6 +1775,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,55 );
             this.entityData.set(BASE_SPEED,65 );
             this.entityData.set(NICKNAME, "Sandslash");
+            this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 29) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
@@ -1740,6 +1787,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,40 );
             this.entityData.set(BASE_SPEED,41 );
             this.entityData.set(NICKNAME, "Nidoran ♀");
+            this.entityData.set(CATCHRATE, 235);
         }
         else if(species == 30) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
@@ -1751,6 +1799,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,55 );
             this.entityData.set(BASE_SPEED,56 );
             this.entityData.set(NICKNAME, "Nidorina");
+            this.entityData.set(CATCHRATE, 120);
         }
 
         else if(species == 31) {
@@ -1763,6 +1812,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,85 );
             this.entityData.set(BASE_SPEED,76 );
             this.entityData.set(NICKNAME, "Nidoqueen");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 32) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
@@ -1774,6 +1824,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,40 );
             this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Nidoran ♂");
+            this.entityData.set(CATCHRATE, 235);
         }
         else if(species == 33) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
@@ -1785,6 +1836,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED,65 );
             this.entityData.set(NICKNAME, "Nidorino");
+            this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 34) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
@@ -1796,6 +1848,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,75 );
             this.entityData.set(BASE_SPEED,85 );
             this.entityData.set(NICKNAME, "Nidoking");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 35) {
             this.entityData.set(TYPE1, PokemonTypes.FAIRY.ordinal());
@@ -1807,6 +1860,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Clefairy");
+            this.entityData.set(CATCHRATE, 150);
         }
         else if(species == 36) {
             this.entityData.set(TYPE1, PokemonTypes.FAIRY.ordinal());
@@ -1818,6 +1872,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,90 );
             this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Clefable");
+            this.entityData.set(CATCHRATE, 25);
         }
         else if(species == 37) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -1829,6 +1884,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,65 );
             this.entityData.set(BASE_SPEED,65 );
             this.entityData.set(NICKNAME, "Vulpix");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 38) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -1840,6 +1896,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,100 );
             this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Ninetales");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 39) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -1851,6 +1908,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,25 );
             this.entityData.set(BASE_SPEED,20 );
             this.entityData.set(NICKNAME, "Jigglypuff");
+            this.entityData.set(CATCHRATE, 170);
         }
         else if(species == 40) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -1862,6 +1920,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Wigglytuff");
+            this.entityData.set(CATCHRATE, 50);
         }
         else if(species == 41) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
@@ -1873,6 +1932,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,40 );
             this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Zubat");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 42) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
@@ -1884,6 +1944,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,75 );
             this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Golbat");
+            this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 43) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -1895,6 +1956,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,65 );
             this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Oddish");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 44) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -1906,6 +1968,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 75);
             this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Gloom");
+            this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 45) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -1917,6 +1980,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,90 );
             this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Vileplume");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 46) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -1928,6 +1992,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,55 );
             this.entityData.set(BASE_SPEED, 25);
             this.entityData.set(NICKNAME, "Paras");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 47) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -1939,6 +2004,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Parasect");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 48) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -1950,6 +2016,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Venonat");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 49) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -1961,6 +2028,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 75);
             this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Venomoth");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 50) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
@@ -1972,6 +2040,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,45 );
             this.entityData.set(BASE_SPEED,95 );
             this.entityData.set(NICKNAME, "Diglett");
+            this.entityData.set(CATCHRATE, 50);
         }
         else if(species == 51) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
@@ -1983,6 +2052,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED,120 );
             this.entityData.set(NICKNAME, "Dugtrio");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 52) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -1994,6 +2064,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,40 );
             this.entityData.set(BASE_SPEED, 90);
             this.entityData.set(NICKNAME, "Meowth");
+            this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 53) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -2005,6 +2076,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,65 );
             this.entityData.set(BASE_SPEED, 115);
             this.entityData.set(NICKNAME, "Persian");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 54) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2016,6 +2088,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,50 );
             this.entityData.set(BASE_SPEED,55 );
             this.entityData.set(NICKNAME, "Psyduck");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 55) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2027,6 +2100,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED,85 );
             this.entityData.set(NICKNAME, "Golduck");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 56) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
@@ -2038,6 +2112,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,45 );
             this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Mankey");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 57) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
@@ -2049,6 +2124,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 95);
             this.entityData.set(NICKNAME, "Primape");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 58) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -2060,6 +2136,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Growlthie");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 59) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -2071,6 +2148,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED,95 );
             this.entityData.set(NICKNAME, "Arcanine");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 60) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2082,6 +2160,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,40 );
             this.entityData.set(BASE_SPEED, 90);
             this.entityData.set(NICKNAME, "Poliwag");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 61) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2093,6 +2172,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,50 );
             this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Poliwhirl");
+            this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 62) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2104,6 +2184,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,90 );
             this.entityData.set(BASE_SPEED,70 );
             this.entityData.set(NICKNAME, "Poliwrath");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 63) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
@@ -2115,6 +2196,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,55 );
             this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Abra");
+            this.entityData.set(CATCHRATE, 200);
         }
         else if(species == 64) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
@@ -2126,6 +2208,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,55 );
             this.entityData.set(BASE_SPEED, 90);
             this.entityData.set(NICKNAME, "Kadabra");
+            this.entityData.set(CATCHRATE, 100);
         }
         else if(species == 65) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
@@ -2137,6 +2220,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,95 );
             this.entityData.set(BASE_SPEED, 120);
             this.entityData.set(NICKNAME, "Alakazam");
+            this.entityData.set(CATCHRATE, 50);
         }
         else if(species == 66) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
@@ -2148,6 +2232,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 35);
             this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Machop");
+            this.entityData.set(CATCHRATE, 180);
         }
         else if(species == 67) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
@@ -2159,6 +2244,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,60 );
             this.entityData.set(BASE_SPEED,45 );
             this.entityData.set(NICKNAME, "Machoke");
+            this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 68) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
@@ -2170,6 +2256,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,85 );
             this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Machamp");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 69) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -2181,6 +2268,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 30);
             this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Bellsprout");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 70) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -2192,6 +2280,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Weepinbell");
+            this.entityData.set(CATCHRATE, 120);
         }
 
         else if(species == 71) {
@@ -2204,6 +2293,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED,70 );
             this.entityData.set(NICKNAME, "Victreebel");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 72) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2215,6 +2305,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,100 );
             this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Tentacool");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 73) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2226,6 +2317,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,120 );
             this.entityData.set(BASE_SPEED,100 );
             this.entityData.set(NICKNAME, "Tentacrule");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 74) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
@@ -2237,6 +2329,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,30 );
             this.entityData.set(BASE_SPEED, 20);
             this.entityData.set(NICKNAME, "Geodude");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 75) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
@@ -2248,6 +2341,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Graveler");
+            this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 76) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
@@ -2259,6 +2353,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,65 );
             this.entityData.set(BASE_SPEED,45 );
             this.entityData.set(NICKNAME, "Golem");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 77) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -2270,6 +2365,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,65 );
             this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Ponyta");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 78) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -2281,6 +2377,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED, 105);
             this.entityData.set(NICKNAME, "Rapidash");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 79) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2292,6 +2389,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 40);
             this.entityData.set(BASE_SPEED,15 );
             this.entityData.set(NICKNAME, "Slowpoke");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 80) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2303,6 +2401,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED,30 );
             this.entityData.set(NICKNAME, "Slowbro");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 81) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
@@ -2314,6 +2413,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,55 );
             this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Magnemite");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 82) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
@@ -2325,6 +2425,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,70 );
             this.entityData.set(BASE_SPEED,70 );
             this.entityData.set(NICKNAME, "Magneton");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 83) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -2336,6 +2437,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,62 );
             this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Farfetch'd");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 84) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -2347,6 +2449,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 35);
             this.entityData.set(BASE_SPEED,75);
             this.entityData.set(NICKNAME, "Doduo");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 85) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -2358,6 +2461,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,60 );
             this.entityData.set(BASE_SPEED, 110);
             this.entityData.set(NICKNAME, "Dodrio");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 86) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2369,6 +2473,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,70 );
             this.entityData.set(BASE_SPEED,45 );
             this.entityData.set(NICKNAME, "Seel");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 87) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2380,6 +2485,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,95 );
             this.entityData.set(BASE_SPEED,70 );
             this.entityData.set(NICKNAME, "Dewgong");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 88) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
@@ -2391,6 +2497,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,50 );
             this.entityData.set(BASE_SPEED,25 );
             this.entityData.set(NICKNAME, "Grimer");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 89) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
@@ -2402,6 +2509,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED,50 );
             this.entityData.set(NICKNAME, "Muk");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 90) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2413,6 +2521,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,25 );
             this.entityData.set(BASE_SPEED,40 );
             this.entityData.set(NICKNAME, "Shellder");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 91) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2424,6 +2533,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED,70 );
             this.entityData.set(NICKNAME, "Cloyster");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 92) {
             this.entityData.set(TYPE1, PokemonTypes.GHOST.ordinal());
@@ -2435,6 +2545,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,35 );
             this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Gastly");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 93) {
             this.entityData.set(TYPE1, PokemonTypes.GHOST.ordinal());
@@ -2446,6 +2557,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 95);
             this.entityData.set(NICKNAME, "Haunter");
+            this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 94) {
             this.entityData.set(TYPE1, PokemonTypes.GHOST.ordinal());
@@ -2457,6 +2569,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,75 );
             this.entityData.set(BASE_SPEED,110 );
             this.entityData.set(NICKNAME, "Gengar");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 95) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
@@ -2468,6 +2581,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,45 );
             this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Onix");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 96) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
@@ -2479,6 +2593,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,90 );
             this.entityData.set(BASE_SPEED, 42);
             this.entityData.set(NICKNAME, "Drowzee");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 97) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
@@ -2490,6 +2605,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,115 );
             this.entityData.set(BASE_SPEED, 67);
             this.entityData.set(NICKNAME, "Hypno");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 98) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2501,6 +2617,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,25 );
             this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Krabby");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 99) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2512,6 +2629,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,50 );
             this.entityData.set(BASE_SPEED,75 );
             this.entityData.set(NICKNAME, "Kingler");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 100) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
@@ -2523,6 +2641,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Voltob");
+            this.entityData.set(CATCHRATE, 190);
         }
 
         else if(species == 101) {
@@ -2535,6 +2654,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED, 150);
             this.entityData.set(NICKNAME, "Electrode");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 102) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -2546,6 +2666,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,45 );
             this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Exeggcute");
+            this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 103) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -2557,6 +2678,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 75);
             this.entityData.set(BASE_SPEED,55 );
             this.entityData.set(NICKNAME, "Exeggutor");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 104) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
@@ -2568,6 +2690,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Cubone");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 105) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
@@ -2579,6 +2702,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED,45 );
             this.entityData.set(NICKNAME, "Marowak");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 106) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
@@ -2590,6 +2714,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 110);
             this.entityData.set(BASE_SPEED,87 );
             this.entityData.set(NICKNAME, "Hitmonlee");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 107) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
@@ -2601,6 +2726,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,110 );
             this.entityData.set(BASE_SPEED,87 );
             this.entityData.set(NICKNAME, "Hitmonchan");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 108) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -2612,6 +2738,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,75 );
             this.entityData.set(BASE_SPEED,30 );
             this.entityData.set(NICKNAME, "Lickitung");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 109) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
@@ -2623,6 +2750,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,45 );
             this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Koffing");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 110) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
@@ -2634,6 +2762,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,70 );
             this.entityData.set(BASE_SPEED,60 );
             this.entityData.set(NICKNAME, "Weezing");
+            this.entityData.set(CATCHRATE, 60);
         }
 
         else if(species == 111) {
@@ -2646,6 +2775,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,30 );
             this.entityData.set(BASE_SPEED,25 );
             this.entityData.set(NICKNAME, "Rhyhorn");
+            this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 112) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
@@ -2657,6 +2787,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,45 );
             this.entityData.set(BASE_SPEED,40 );
             this.entityData.set(NICKNAME, "Rhydon");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 113) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -2668,6 +2799,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 105);
             this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Chansey");
+            this.entityData.set(CATCHRATE, 30);
         }
         else if(species == 114) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -2679,6 +2811,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 40);
             this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Tangela");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 115) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -2690,6 +2823,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Kangaskhan");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 116) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2701,6 +2835,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,25 );
             this.entityData.set(BASE_SPEED,60 );
             this.entityData.set(NICKNAME, "Horsea");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 117) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2712,6 +2847,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Seadra");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 118) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2723,6 +2859,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 63);
             this.entityData.set(NICKNAME, "Goldeen");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 119) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2734,6 +2871,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED, 68);
             this.entityData.set(NICKNAME, "Seeking");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 120) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2745,6 +2883,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,55 );
             this.entityData.set(BASE_SPEED,85 );
             this.entityData.set(NICKNAME, "Staryu");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 121) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2756,6 +2895,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,85 );
             this.entityData.set(BASE_SPEED,115 );
             this.entityData.set(NICKNAME, "Starmie");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 122) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
@@ -2767,6 +2907,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,120 );
             this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Mr. Mime");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 123) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -2778,6 +2919,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED, 105);
             this.entityData.set(NICKNAME, "Scyther");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 124) {
             this.entityData.set(TYPE1, PokemonTypes.ICE.ordinal());
@@ -2789,6 +2931,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,95 );
             this.entityData.set(BASE_SPEED,95 );
             this.entityData.set(NICKNAME, "Jynx");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 125) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
@@ -2800,6 +2943,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,85 );
             this.entityData.set(BASE_SPEED,105 );
             this.entityData.set(NICKNAME, "Electabuzz");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 126) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -2811,6 +2955,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,85 );
             this.entityData.set(BASE_SPEED, 93);
             this.entityData.set(NICKNAME, "Magmar");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 127) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -2822,6 +2967,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Pinsir");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 128) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -2833,6 +2979,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED,110 );
             this.entityData.set(NICKNAME, "Tauros");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 129) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2844,6 +2991,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,20 );
             this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Magikarp");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 130) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2855,6 +3003,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,100 );
             this.entityData.set(BASE_SPEED, 81);
             this.entityData.set(NICKNAME, "Gyarados");
+            this.entityData.set(CATCHRATE, 45);
         }
 
         else if(species == 131) {
@@ -2867,6 +3016,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,95 );
             this.entityData.set(BASE_SPEED,60 );
             this.entityData.set(NICKNAME, "Lapras");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 132) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -2878,6 +3028,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,48 );
             this.entityData.set(BASE_SPEED,48 );
             this.entityData.set(NICKNAME, "Ditto");
+            this.entityData.set(CATCHRATE, 35);
         }
         else if(species == 133) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -2889,6 +3040,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,65 );
             this.entityData.set(BASE_SPEED,55 );
             this.entityData.set(NICKNAME, "Eevee");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 134) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -2900,6 +3052,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 95);
             this.entityData.set(BASE_SPEED,65 );
             this.entityData.set(NICKNAME, "Vaporeon");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 135) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
@@ -2911,6 +3064,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,95 );
             this.entityData.set(BASE_SPEED,130 );
             this.entityData.set(NICKNAME, "Jolteon");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 136) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -2922,6 +3076,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,110 );
             this.entityData.set(BASE_SPEED,65 );
             this.entityData.set(NICKNAME, "Flareon");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 137) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -2933,6 +3088,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,75 );
             this.entityData.set(BASE_SPEED,40 );
             this.entityData.set(NICKNAME, "Porygon");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 138) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
@@ -2944,6 +3100,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED,35 );
             this.entityData.set(NICKNAME, "Omanyte");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 139) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
@@ -2955,6 +3112,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Omastar");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 140) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
@@ -2966,6 +3124,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,45 );
             this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Kabuto");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 141) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
@@ -2977,6 +3136,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Kabutops");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 142) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
@@ -2988,6 +3148,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,75 );
             this.entityData.set(BASE_SPEED,130 );
             this.entityData.set(NICKNAME, "Aerodactyl");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 143) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -2999,6 +3160,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,110 );
             this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Snorlax");
+            this.entityData.set(CATCHRATE, 25);
         }
         else if(species == 144) {
             this.entityData.set(TYPE1, PokemonTypes.ICE.ordinal());
@@ -3010,6 +3172,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,125 );
             this.entityData.set(BASE_SPEED,85 );
             this.entityData.set(NICKNAME, "Articuno");
+            this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 145) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
@@ -3021,6 +3184,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,90 );
             this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Zapdos");
+            this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 146) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -3032,6 +3196,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,85 );
             this.entityData.set(BASE_SPEED,90 );
             this.entityData.set(NICKNAME, "Moltres");
+            this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 147) {
             this.entityData.set(TYPE1, PokemonTypes.DRAGON.ordinal());
@@ -3043,6 +3208,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED,50 );
             this.entityData.set(NICKNAME, "Dratini");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 148) {
             this.entityData.set(TYPE1, PokemonTypes.DRAGON.ordinal());
@@ -3054,6 +3220,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,70 );
             this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Dragonair");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 149) {
             this.entityData.set(TYPE1, PokemonTypes.DRAGON.ordinal());
@@ -3065,6 +3232,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,100 );
             this.entityData.set(BASE_SPEED,80 );
             this.entityData.set(NICKNAME, "Dragonite");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 150) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
@@ -3076,6 +3244,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,90 );
             this.entityData.set(BASE_SPEED,130 );
             this.entityData.set(NICKNAME, "Mewtwo");
+            this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 151) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
@@ -3087,6 +3256,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE,100 );
             this.entityData.set(BASE_SPEED,100 );
             this.entityData.set(NICKNAME, "Mew");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 152) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -3098,6 +3268,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Chikorita");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 153) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -3109,6 +3280,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Bayleef");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 154) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -3120,6 +3292,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Maganium");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 155) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -3131,6 +3304,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 65);
             this.entityData.set(NICKNAME, "Cyndaquil");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 156) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -3142,6 +3316,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Quilava");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 157) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -3153,6 +3328,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 85);
             this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Typhlosion");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 158) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3164,6 +3340,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 48);
             this.entityData.set(BASE_SPEED, 43);
             this.entityData.set(NICKNAME, "Totodile");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 159) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3175,6 +3352,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 63);
             this.entityData.set(BASE_SPEED, 58);
             this.entityData.set(NICKNAME, "Crocanaaw");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 160) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3186,6 +3364,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 83);
             this.entityData.set(BASE_SPEED, 78);
             this.entityData.set(NICKNAME, "Feraligatr");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 161) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -3197,6 +3376,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 20);
             this.entityData.set(NICKNAME, "Sentret");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 162) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -3208,6 +3388,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 90);
             this.entityData.set(NICKNAME, "Furret");
+            this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 163) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -3219,6 +3400,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 56);
             this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Hoothoot");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 164) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -3230,6 +3412,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 96);
             this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Noctowl");
+            this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 165) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -3241,6 +3424,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Ledyba");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 166) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -3252,6 +3436,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 110);
             this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Ledian");
+            this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 167) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -3263,6 +3448,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 40);
             this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Spinarak");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 168) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -3274,6 +3460,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Ariados");
+            this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 169) {
             this.entityData.set(TYPE1, PokemonTypes.POISON.ordinal());
@@ -3285,6 +3472,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 130);
             this.entityData.set(NICKNAME, "Crobat");
+            this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 170) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3296,6 +3484,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 56);
             this.entityData.set(BASE_SPEED, 67);
             this.entityData.set(NICKNAME, "Chinchou");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 171) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3307,6 +3496,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 76);
             this.entityData.set(BASE_SPEED, 67);
             this.entityData.set(NICKNAME, "Lanturn");
+            this.entityData.set(CATCHRATE, 150);
         }
 
         else if(species == 172) {
@@ -3319,6 +3509,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 35);
             this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Pichu");
+            this.entityData.set(CATCHRATE, 170);
         }
         else if(species == 173) {
             this.entityData.set(TYPE1, PokemonTypes.FAIRY.ordinal());
@@ -3330,6 +3521,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 15);
             this.entityData.set(NICKNAME, "Cleffa");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 174) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -3341,6 +3533,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 20);
             this.entityData.set(BASE_SPEED, 15);
             this.entityData.set(NICKNAME, "Igglybuff");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 175) {
             this.entityData.set(TYPE1, PokemonTypes.FAIRY.ordinal());
@@ -3352,6 +3545,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 20);
             this.entityData.set(NICKNAME, "Togepi");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 176) {
             this.entityData.set(TYPE1, PokemonTypes.FAIRY.ordinal());
@@ -3363,6 +3557,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 105);
             this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Togetic");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 177) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
@@ -3374,6 +3569,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Natu");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 178) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
@@ -3385,6 +3581,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 95);
             this.entityData.set(NICKNAME, "Xatu");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 179) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
@@ -3396,6 +3593,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Mareep");
+            this.entityData.set(CATCHRATE, 235);
         }
         else if(species == 180) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
@@ -3407,6 +3605,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 60);
             this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Flaaffy");
+            this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 181) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
@@ -3418,6 +3617,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 90);
             this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Ampharos");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 182) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -3429,6 +3629,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Bellossom");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 183) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3440,6 +3641,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Marill");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 184) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3451,6 +3653,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Azumarill");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 185) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
@@ -3462,6 +3665,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Sudowoodo");
+            this.entityData.set(CATCHRATE, 65);
         }
         else if(species == 186) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3473,6 +3677,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Politoed");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 187) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -3484,6 +3689,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Hoppip");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 188) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -3495,6 +3701,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 80);
             this.entityData.set(NICKNAME, "Skiploom");
+            this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 189) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -3506,6 +3713,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 95);
             this.entityData.set(BASE_SPEED, 110);
             this.entityData.set(NICKNAME, "Jumpluff");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 190) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -3517,6 +3725,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Aipom");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 191) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -3528,6 +3737,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 30);
             this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Sunkern");
+            this.entityData.set(CATCHRATE, 235);
         }
         else if(species == 192) {
             this.entityData.set(TYPE1, PokemonTypes.GRASS.ordinal());
@@ -3539,6 +3749,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 85);
             this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Sunflora");
+            this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 193) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -3550,6 +3761,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 95);
             this.entityData.set(NICKNAME, "Yanma");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 194) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3561,6 +3773,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 25);
             this.entityData.set(BASE_SPEED, 15);
             this.entityData.set(NICKNAME, "Wooper");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 195) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3572,6 +3785,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Quagsire");
+            this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 196) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
@@ -3583,6 +3797,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 95);
             this.entityData.set(BASE_SPEED, 110);
             this.entityData.set(NICKNAME, "Espeon");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 197) {
             this.entityData.set(TYPE1, PokemonTypes.DARK.ordinal());
@@ -3594,6 +3809,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 130);
             this.entityData.set(BASE_SPEED, 65);
             this.entityData.set(NICKNAME, "Umbreon");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 198) {
             this.entityData.set(TYPE1, PokemonTypes.DARK.ordinal());
@@ -3605,6 +3821,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 42);
             this.entityData.set(BASE_SPEED, 91);
             this.entityData.set(NICKNAME, "Murkrow");
+            this.entityData.set(CATCHRATE, 30);
         }
         else if(species == 199) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3616,6 +3833,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 110);
             this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Slowing");
+            this.entityData.set(CATCHRATE, 70);
         }
         else if(species == 200) {
             this.entityData.set(TYPE1, PokemonTypes.GHOST.ordinal());
@@ -3627,6 +3845,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 85);
             this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Misdreavus");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 201) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
@@ -3638,6 +3857,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 48);
             this.entityData.set(BASE_SPEED, 48);
             this.entityData.set(NICKNAME, "Unown");
+            this.entityData.set(CATCHRATE, 255);
         }
 
         else if(species == 202) {
@@ -3650,6 +3870,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 58);
             this.entityData.set(BASE_SPEED, 33);
             this.entityData.set(NICKNAME, "Wobbuffet");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 203) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -3661,6 +3882,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Girafarig");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 204) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -3672,6 +3894,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 35);
             this.entityData.set(BASE_SPEED, 15);
             this.entityData.set(NICKNAME, "Pineco");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 205) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -3683,6 +3906,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 60);
             this.entityData.set(BASE_SPEED, 4);
             this.entityData.set(NICKNAME, "Forretress");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 206) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -3694,6 +3918,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Dunsparce");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 207) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
@@ -3705,6 +3930,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Gligar");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 208) {
             this.entityData.set(TYPE1, PokemonTypes.STEEL.ordinal());
@@ -3716,6 +3942,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Steelix");
+            this.entityData.set(CATCHRATE, 25);
         }
         else if(species == 209) {
             this.entityData.set(TYPE1, PokemonTypes.FAIRY.ordinal());
@@ -3727,6 +3954,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 40);
             this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Snubbull");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 210) {
             this.entityData.set(TYPE1, PokemonTypes.FAIRY.ordinal());
@@ -3738,6 +3966,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 60);
             this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Granbull");
+            this.entityData.set(CATCHRATE, 75);
         }
 
         else if(species == 211) {
@@ -3750,6 +3979,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Qwilfish");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 212) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -3761,6 +3991,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 65);
             this.entityData.set(NICKNAME, "Scizor");
+            this.entityData.set(CATCHRATE, 25);
         }
         else if(species == 213) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -3772,6 +4003,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 230);
             this.entityData.set(BASE_SPEED, 5);
             this.entityData.set(NICKNAME, "Shuckle");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 214) {
             this.entityData.set(TYPE1, PokemonTypes.BUG.ordinal());
@@ -3783,6 +4015,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 95);
             this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Heracross");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 215) {
             this.entityData.set(TYPE1, PokemonTypes.DARK.ordinal());
@@ -3794,6 +4027,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 75);
             this.entityData.set(BASE_SPEED, 115);
             this.entityData.set(NICKNAME, "Sneasel");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 216) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -3805,6 +4039,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Teddiursa");
+            this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 217) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -3816,6 +4051,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 75);
             this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Ursaring");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 218) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -3827,6 +4063,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 40);
             this.entityData.set(BASE_SPEED, 20);
             this.entityData.set(NICKNAME, "Slugma");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 219) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -3838,6 +4075,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 30);
             this.entityData.set(NICKNAME, "Magcargo");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 220) {
             this.entityData.set(TYPE1, PokemonTypes.ICE.ordinal());
@@ -3849,6 +4087,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 30);
             this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Swinub");
+            this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 221) {
             this.entityData.set(TYPE1, PokemonTypes.ICE.ordinal());
@@ -3860,6 +4099,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 60);
             this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Piloswine");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 222) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3871,6 +4111,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 95);
             this.entityData.set(BASE_SPEED, 35);
             this.entityData.set(NICKNAME, "Corsola");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 223) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3882,6 +4123,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 35);
             this.entityData.set(BASE_SPEED, 65);
             this.entityData.set(NICKNAME, "Remoraid");
+            this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 224) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3893,6 +4135,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 75);
             this.entityData.set(BASE_SPEED, 45);
             this.entityData.set(NICKNAME, "Octillery");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 225) {
             this.entityData.set(TYPE1, PokemonTypes.ICE.ordinal());
@@ -3904,6 +4147,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 75);
             this.entityData.set(NICKNAME, "Delibird");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 226) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3915,6 +4159,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 140);
             this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Mantine");
+            this.entityData.set(CATCHRATE, 25);
         }
         else if(species == 227) {
             this.entityData.set(TYPE1, PokemonTypes.STEEL.ordinal());
@@ -3926,6 +4171,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Skarmory");
+            this.entityData.set(CATCHRATE, 25);
         }
         else if(species == 228) {
             this.entityData.set(TYPE1, PokemonTypes.DARK.ordinal());
@@ -3937,6 +4183,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 65);
             this.entityData.set(NICKNAME, "Houndour");
+            this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 229) {
             this.entityData.set(TYPE1, PokemonTypes.DARK.ordinal());
@@ -3948,6 +4195,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 95);
             this.entityData.set(NICKNAME, "Houndoom");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 230) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -3959,6 +4207,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 95);
             this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Kingdra");
+            this.entityData.set(CATCHRATE, 45);
         }
 
         else if(species == 231) {
@@ -3971,6 +4220,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 40);
             this.entityData.set(BASE_SPEED, 40);
             this.entityData.set(NICKNAME, "Phanpy");
+            this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 232) {
             this.entityData.set(TYPE1, PokemonTypes.GROUND.ordinal());
@@ -3982,6 +4232,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 60);
             this.entityData.set(BASE_SPEED, 50);
             this.entityData.set(NICKNAME, "Donphan");
+            this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 233) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -3993,6 +4244,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 95);
             this.entityData.set(BASE_SPEED, 60);
             this.entityData.set(NICKNAME, "Porygon 2");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 234) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -4004,6 +4256,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Stantler");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 235) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -4015,6 +4268,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 75);
             this.entityData.set(NICKNAME, "Smeargle");
+            this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 236) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
@@ -4037,6 +4291,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 110);
             this.entityData.set(BASE_SPEED, 70);
             this.entityData.set(NICKNAME, "Hitmontop");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 238) {
             this.entityData.set(TYPE1, PokemonTypes.ICE.ordinal());
@@ -4048,6 +4303,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 65);
             this.entityData.set(NICKNAME, "Smoochum");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 239) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
@@ -4059,6 +4315,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 95);
             this.entityData.set(NICKNAME, "Elekid");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 240) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -4070,6 +4327,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 83);
             this.entityData.set(NICKNAME, "Magby");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 241) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -4081,6 +4339,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Miltank");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 242) {
             this.entityData.set(TYPE1, PokemonTypes.NORMAL.ordinal());
@@ -4092,6 +4351,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 135);
             this.entityData.set(BASE_SPEED, 55);
             this.entityData.set(NICKNAME, "Blissey");
+            this.entityData.set(CATCHRATE, 30);
         }
         else if(species == 243) {
             this.entityData.set(TYPE1, PokemonTypes.ELECTRIC.ordinal());
@@ -4103,6 +4363,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED, 115);
             this.entityData.set(NICKNAME, "Raikou");
+            this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 244) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -4114,6 +4375,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 75);
             this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Entei");
+            this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 245) {
             this.entityData.set(TYPE1, PokemonTypes.WATER.ordinal());
@@ -4125,6 +4387,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 115);
             this.entityData.set(BASE_SPEED, 85);
             this.entityData.set(NICKNAME, "Suicune");
+            this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 246) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
@@ -4136,6 +4399,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 41);
             this.entityData.set(NICKNAME, "Larvitar");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 247) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
@@ -4147,6 +4411,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 51);
             this.entityData.set(NICKNAME, "Pupitar");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 248) {
             this.entityData.set(TYPE1, PokemonTypes.ROCK.ordinal());
@@ -4158,6 +4423,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED, 61);
             this.entityData.set(NICKNAME, "Tyranitar");
+            this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 249) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
@@ -4169,6 +4435,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 154);
             this.entityData.set(BASE_SPEED, 110);
             this.entityData.set(NICKNAME, "Lugia");
+            this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 250) {
             this.entityData.set(TYPE1, PokemonTypes.FIRE.ordinal());
@@ -4180,6 +4447,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 154);
             this.entityData.set(BASE_SPEED, 90);
             this.entityData.set(NICKNAME, "Ho-Ho");
+            this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 251) {
             this.entityData.set(TYPE1, PokemonTypes.PSYCHIC.ordinal());
@@ -4191,6 +4459,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED, 100);
             this.entityData.set(NICKNAME, "Celebi");
+            this.entityData.set(CATCHRATE, 45);
         }
 
     }
@@ -4234,6 +4503,42 @@ public class PokemonEntity extends TamableAnimal {
         this.entityData.define(EVS_SP_DEFENCE, 0);
         this.entityData.define(EVS_SPEED, 78);
 
+
+        this.entityData.define(MOVE_SLOT_1, 0);
+        this.entityData.define(MOVE_SLOT_1_NAME, "None");
+        this.entityData.define(MOVE_SLOT_1_TYPE, 0);
+        this.entityData.define(MOVE_SLOT_1_ACCURACY, 0);
+        this.entityData.define(MOVE_SLOT_1_POWER, 0);
+        this.entityData.define(MOVE_SLOT_1_CURRENT_PP, 0);
+        this.entityData.define(MOVE_SLOT_1_MAX_PP, 0);
+
+
+        this.entityData.define(MOVE_SLOT_2, 0);
+        this.entityData.define(MOVE_SLOT_2_NAME, "None");
+        this.entityData.define(MOVE_SLOT_2_TYPE, 0);
+        this.entityData.define(MOVE_SLOT_2_ACCURACY, 0);
+        this.entityData.define(MOVE_SLOT_2_POWER, 0);
+        this.entityData.define(MOVE_SLOT_2_CURRENT_PP, 0);
+        this.entityData.define(MOVE_SLOT_2_MAX_PP, 0);
+
+        this.entityData.define(MOVE_SLOT_3, 0);
+        this.entityData.define(MOVE_SLOT_3_NAME, "None");
+        this.entityData.define(MOVE_SLOT_3_TYPE, 0);
+        this.entityData.define(MOVE_SLOT_3_ACCURACY, 0);
+        this.entityData.define(MOVE_SLOT_3_POWER, 0);
+        this.entityData.define(MOVE_SLOT_3_CURRENT_PP, 0);
+        this.entityData.define(MOVE_SLOT_3_MAX_PP, 0);
+
+        this.entityData.define(MOVE_SLOT_4, 0);
+        this.entityData.define(MOVE_SLOT_4_NAME, "None");
+        this.entityData.define(MOVE_SLOT_4_TYPE, 0);
+        this.entityData.define(MOVE_SLOT_4_ACCURACY, 0);
+        this.entityData.define(MOVE_SLOT_4_POWER, 0);
+        this.entityData.define(MOVE_SLOT_4_CURRENT_PP, 0);
+        this.entityData.define(MOVE_SLOT_4_MAX_PP, 0);
+
+        this.entityData.define(CATCHRATE, 45);
+
     }
 
 
@@ -4263,6 +4568,10 @@ public class PokemonEntity extends TamableAnimal {
 
     public int getPokeType2() {
         return this.entityData.get(TYPE2);
+    }
+
+    public int getCatchRate() {
+        return this.entityData.get(CATCHRATE);
     }
 
     public void aiStep() {
@@ -4553,6 +4862,7 @@ public class PokemonEntity extends TamableAnimal {
         pCompound.putInt("Move2", this.getMoveSlot2());
         pCompound.putInt("Move3", this.getMoveSlot3());
         pCompound.putInt("Move4", this.getMoveSlot4());
+        pCompound.putInt("CatchRate", this.getCatchRate());
 
 
         pCompound.putInt("InLove", this.inLove);
