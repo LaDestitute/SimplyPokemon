@@ -156,7 +156,7 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     if(player == null){
                         return;
                     }
-                    player.sendMessage(new TranslatableComponent("Oh no! The Pokémon broke free!"), player.getUUID());
+                    player.sendMessage(new TranslatableComponent("Oh no! The " + ((PokemonEntity) target).getPokeName() + " broke free!"), player.getUUID());
                     this.discard();
 
                 }

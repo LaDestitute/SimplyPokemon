@@ -5118,7 +5118,7 @@ public class PokemonEntity extends TamableAnimal {
         if (this.isInvulnerableTo(pSource)) {
             return false;
         } else {
-            this.setHappiness(this.entityData.get(HAPPINESS) + 5);
+            this.setHappiness(this.entityData.get(HAPPINESS) - 5);
             return super.hurt(pSource, pAmount);
         }
     }
@@ -5215,7 +5215,7 @@ public class PokemonEntity extends TamableAnimal {
             }
 
             if ((itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
-                if(this.entityData.get(HAPPINESS) > 250){
+                if(this.entityData.get(HAPPINESS) > 250 ||this.entityData.get(HAPPINESS) == 250 ){
                     pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " couldn't possibly love you more!"), true);
                 }else if ((this.entityData.get(HAPPINESS) > 200) && (this.entityData.get(HAPPINESS) < 250)){
                     pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " is very friendly with you!"), true);
