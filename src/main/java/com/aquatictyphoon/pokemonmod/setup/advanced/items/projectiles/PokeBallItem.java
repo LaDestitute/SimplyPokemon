@@ -1,6 +1,8 @@
 package com.aquatictyphoon.pokemonmod.setup.advanced.items.projectiles;
 
 import com.aquatictyphoon.pokemonmod.setup.entities.misc.Pokeball_Entity;
+import com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration;
+import com.google.common.collect.Lists;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -9,18 +11,25 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class PokeBallItem extends Item {
     public PokeBallItem(Properties pProperties) {
+
         super(pProperties);
     }
 
@@ -77,6 +86,7 @@ public class PokeBallItem extends Item {
         pPlayer.getCooldowns().addCooldown(this, 10);
         ItemStack PokeballItem = pPlayer.getItemInHand(pHand);
 
+
         if ((!pLevel.isClientSide) && !(getID(pPlayer.getItemInHand(pHand)).isEmpty()))
         {
             Pokeball_Entity projectile = new Pokeball_Entity(pPlayer, pLevel, pHand);
@@ -96,5 +106,7 @@ public class PokeBallItem extends Item {
         return InteractionResultHolder.sidedSuccess(PokeballItem, pLevel.isClientSide());
 
     }
+
+
 
 }

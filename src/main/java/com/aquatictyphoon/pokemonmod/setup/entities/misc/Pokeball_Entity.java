@@ -66,8 +66,6 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                 PokeballItem.setTag(nbt);
                 entityinworld.discard();
                 this.discard();
-
-
             }
         }
 
@@ -123,13 +121,13 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     UUID TargetUUID = target.getUUID();
                     String Name = (target.getPersistentData().getString("Nickname"));
                     String Species = (target.getPersistentData().getString("Species"));
-                    Integer Nature = (target.getPersistentData().getInt("Nature"));
-                    Integer IvsHp = (target.getPersistentData().getInt("Ivs_Hp"));
-                    Integer IvsAttack = (target.getPersistentData().getInt("Ivs_Attack"));
-                    Integer IvsSpAttack = (target.getPersistentData().getInt("Ivs_SP_Attack"));
-                    Integer IvsDefence = (target.getPersistentData().getInt("Ivs_Defence"));
-                    Integer IvsSpDefence = (target.getPersistentData().getInt("Ivs_SP_Defence"));
-                    Integer IvsSpeed = (target.getPersistentData().getInt("Ivs_Speed"));
+                    int Nature = (target.getPersistentData().getInt("Nature"));
+                    int IvsHp = (target.getPersistentData().getInt("Ivs_Hp"));
+                    int IvsAttack = (target.getPersistentData().getInt("Ivs_Attack"));
+                    int IvsSpAttack = (target.getPersistentData().getInt("Ivs_SP_Attack"));
+                    int IvsDefence = (target.getPersistentData().getInt("Ivs_Defence"));
+                    int IvsSpDefence = (target.getPersistentData().getInt("Ivs_SP_Defence"));
+                    int IvsSpeed = (target.getPersistentData().getInt("Ivs_Speed"));
                     nbt.putInt("Nature", Nature);
                     nbt.putInt("Ivs_Hp", IvsHp);
                     nbt.putInt("Ivs_Attack", IvsAttack);
@@ -137,7 +135,6 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     nbt.putInt("Ivs_Defence", IvsDefence);
                     nbt.putInt("Ivs_SP_Defence", IvsSpDefence);
                     nbt.putInt("Ivs_Speed", IvsSpeed);
-
                     nbt.putString("UUID", String.valueOf(TargetUUID));
                     nbt.putString("entity", entityID);
                     nbt.putString("id", EntityType.getKey(target.getType()).toString());
@@ -178,13 +175,13 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     nbt.putString("id", EntityType.getKey(target.getType()).toString());
                     nbt.putString("Nickname", Name);
                     nbt.putString("Species", Species);
-                    Integer Nature = (target.getPersistentData().getInt("Nature"));
-                    Integer IvsHp = (target.getPersistentData().getInt("Ivs_Hp"));
-                    Integer IvsAttack = (target.getPersistentData().getInt("Ivs_Attack"));
-                    Integer IvsSpAttack = (target.getPersistentData().getInt("Ivs_SP_Attack"));
-                    Integer IvsDefence = (target.getPersistentData().getInt("Ivs_Defence"));
-                    Integer IvsSpDefence = (target.getPersistentData().getInt("Ivs_SP_Defence"));
-                    Integer IvsSpeed = (target.getPersistentData().getInt("Ivs_Speed"));
+                    int Nature = (target.getPersistentData().getInt("Nature"));
+                    int IvsHp = (target.getPersistentData().getInt("Ivs_Hp"));
+                    int IvsAttack = (target.getPersistentData().getInt("Ivs_Attack"));
+                    int IvsSpAttack = (target.getPersistentData().getInt("Ivs_SP_Attack"));
+                    int IvsDefence = (target.getPersistentData().getInt("Ivs_Defence"));
+                    int IvsSpDefence = (target.getPersistentData().getInt("Ivs_SP_Defence"));
+                    int IvsSpeed = (target.getPersistentData().getInt("Ivs_Speed"));
                     nbt.putInt("Nature", Nature);
                     nbt.putInt("Ivs_Hp", IvsHp);
                     nbt.putInt("Ivs_Attack", IvsAttack);
@@ -225,13 +222,13 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     nbt.putString("id", EntityType.getKey(entityinworld.getType()).toString());
                     nbt.putString("Nickname", Name);
                     nbt.putString("Species", Species);
-                    Integer Nature = (entityinworld.getPersistentData().getInt("Nature"));
-                    Integer IvsHp = (entityinworld.getPersistentData().getInt("IvsHp"));
-                    Integer IvsAttack = (entityinworld.getPersistentData().getInt("IvsAttack"));
-                    Integer IvsSpAttack = (entityinworld.getPersistentData().getInt("IvsSpAttack"));
-                    Integer IvsDefence = (entityinworld.getPersistentData().getInt("IvsDefence"));
-                    Integer IvsSpDefence = (entityinworld.getPersistentData().getInt("IvsSpDefence"));
-                    Integer IvsSpeed = (entityinworld.getPersistentData().getInt("IvsSpeed"));
+                    int Nature = (entityinworld.getPersistentData().getInt("Nature"));
+                    int IvsHp = (entityinworld.getPersistentData().getInt("IvsHp"));
+                    int IvsAttack = (entityinworld.getPersistentData().getInt("IvsAttack"));
+                    int IvsSpAttack = (entityinworld.getPersistentData().getInt("IvsSpAttack"));
+                    int IvsDefence = (entityinworld.getPersistentData().getInt("IvsDefence"));
+                    int IvsSpDefence = (entityinworld.getPersistentData().getInt("IvsSpDefence"));
+                    int IvsSpeed = (entityinworld.getPersistentData().getInt("IvsSpeed"));
                     nbt.putInt("Nature", Nature);
                     nbt.putInt("Ivs_Hp", IvsHp);
                     nbt.putInt("Ivs_Attack", IvsAttack);

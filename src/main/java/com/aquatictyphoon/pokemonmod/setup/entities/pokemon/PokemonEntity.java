@@ -4562,6 +4562,14 @@ public class PokemonEntity extends TamableAnimal {
         return this.entityData.get(NICKNAME);
     }
 
+    public UUID getPokeUUID() {
+        return this.getUUID();
+    }
+
+    public EntityType getEntityType() {
+        return this.getEntityType();
+    }
+
     public int getPokeType1() {
         return this.entityData.get(TYPE1);
     }
@@ -4734,7 +4742,6 @@ public class PokemonEntity extends TamableAnimal {
         int i = Mth.clamp(pSize, 1, 5);
         this.entityData.set(ID_SIZE, i);
     }
-
 
     public int getSize() {
         return this.entityData.get(ID_SIZE);
@@ -5123,6 +5130,20 @@ public class PokemonEntity extends TamableAnimal {
         }
     }
 
+    public ItemStack getPickResult() {
+        Player player = (Player) this.getOwner();
+        if(!(player == null)){
+        CompoundTag nbt = new CompoundTag();
+        ItemStack PokeballItem = new ItemStack(Registration.POKEBALL.get());
+        String Name = String.valueOf((this.getPokeName()));
+        nbt.putUUID("UUID", getPokeUUID());
+        PokeballItem.setTag(nbt);
+        return PokeballItem;
+        }else{
+            return null;
+        }
+    }
+
 
     public @NotNull InteractionResult mobInteract(Player pPlayer, @NotNull InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
@@ -5141,7 +5162,6 @@ public class PokemonEntity extends TamableAnimal {
                 this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.AMBIENT, 3.0F, 1.0F);
                 this.setHappiness(this.entityData.get(HAPPINESS) + 4);
                 return InteractionResult.SUCCESS;
-
             }
             if (pPlayer.isHolding((Registration.ORANBERRY.get())) && this.isOwnedBy(pPlayer)) {
                 itemstack.shrink(1);
@@ -5215,20 +5235,22 @@ public class PokemonEntity extends TamableAnimal {
             }
 
             if ((itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
-                if(this.entityData.get(HAPPINESS) > 250 ||this.entityData.get(HAPPINESS) == 250 ){
+                if(this.entityData.get(HAPPINESS) > 250){
                     pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " couldn't possibly love you more!"), true);
-                }else if ((this.entityData.get(HAPPINESS) > 200) && (this.entityData.get(HAPPINESS) < 250)){
+                }else if(this.entityData.get(HAPPINESS) == 250){
+                    pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " couldn't possibly love you more!"),true);
+                }else if ((this.entityData.get(HAPPINESS) > 200) && (this.entityData.get(HAPPINESS) < 249)){
                     pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " is very friendly with you!"), true);
-                }else if ((this.entityData.get(HAPPINESS) > 150) && (this.entityData.get(HAPPINESS) < 200)){
+                }else if ((this.entityData.get(HAPPINESS) > 150) && (this.entityData.get(HAPPINESS) < 199)){
                     pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " is friendly with you, but wants more attention!"), true);
                 }
-                else if ((this.entityData.get(HAPPINESS) > 100) && (this.entityData.get(HAPPINESS) < 150)){
+                else if ((this.entityData.get(HAPPINESS) > 100) && (this.entityData.get(HAPPINESS) < 149)){
                     pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " is getting used to you, but it believes in you!"), true);
                 }
-                else if ((this.entityData.get(HAPPINESS) > 50) && (this.entityData.get(HAPPINESS) < 100)){
+                else if ((this.entityData.get(HAPPINESS) > 50) && (this.entityData.get(HAPPINESS) < 99)){
                     pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " does not have strong feelings to you"), true);
                 }
-                else if ((this.entityData.get(HAPPINESS) > 1) && (this.entityData.get(HAPPINESS) < 50)){
+                else if ((this.entityData.get(HAPPINESS) > 1) && (this.entityData.get(HAPPINESS) < 49)){
                     pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " doesn't like you nor trust you."), true);
                 }else{
                     pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " absolutely hates you."), true);
