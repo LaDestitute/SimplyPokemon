@@ -5,12 +5,10 @@ import com.aquatictyphoon.pokemonmod.setup.capability.PokemonTypes;
 import com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -40,12 +38,19 @@ import java.util.UUID;
 public class PokemonEntity extends TamableAnimal {
 
     private int inLove;
+    boolean isday = this.level.isDay();
+
     @javax.annotation.Nullable
-    private UUID loveCause;
+
+
+    private static final EntityDataAccessor<Float> EVOLUTIONTIMER = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Integer> EVOLVING = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> HASNICKNAME = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
 
     private static final EntityDataAccessor<Integer> ID_SIZE = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> POKEMON_LEVEL = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> SPECIES = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<String> SPECIESNAME = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.STRING);
     private static final EntityDataAccessor<String> NICKNAME = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.STRING);
     private static final EntityDataAccessor<Integer> SHINY = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> HAPPINESS = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
@@ -1436,7 +1441,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 65);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 45);
-            this.entityData.set(NICKNAME, "BadEgg");
+            this.entityData.set(SPECIESNAME, "BadEgg");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 1) {
@@ -1448,7 +1453,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 65);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 45);
-            this.entityData.set(NICKNAME, "Bulbasaur");
+            this.entityData.set(SPECIESNAME, "Bulbasaur");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 2) {
@@ -1460,7 +1465,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 80);
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 60);
-            this.entityData.set(NICKNAME, "Ivysaur");
+            this.entityData.set(SPECIESNAME, "Ivysaur");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 3) {
@@ -1472,7 +1477,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 100);
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED, 80);
-            this.entityData.set(NICKNAME, "Venusaur");
+            this.entityData.set(SPECIESNAME, "Venusaur");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 4) {
@@ -1484,7 +1489,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 60);
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 65);
-            this.entityData.set(NICKNAME, "Charmander");
+            this.entityData.set(SPECIESNAME, "Charmander");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 5) {
@@ -1496,7 +1501,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 80);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 80);
-            this.entityData.set(NICKNAME, "Charmeleon");
+            this.entityData.set(SPECIESNAME, "Charmeleon");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 6) {
@@ -1508,7 +1513,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 109);
             this.entityData.set(BASE_SP_DEFENCE, 85);
             this.entityData.set(BASE_SPEED, 100);
-            this.entityData.set(NICKNAME, "Charizard");
+            this.entityData.set(SPECIESNAME, "Charizard");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 7) {
@@ -1520,7 +1525,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 50);
             this.entityData.set(BASE_SP_DEFENCE, 64);
             this.entityData.set(BASE_SPEED, 43);
-            this.entityData.set(NICKNAME, "Squirtle");
+            this.entityData.set(SPECIESNAME, "Squirtle");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 8) {
@@ -1532,7 +1537,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 65);
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 78);
-            this.entityData.set(NICKNAME, "Wartortle");
+            this.entityData.set(SPECIESNAME, "Wartortle");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 9) {
@@ -1544,7 +1549,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 85);
             this.entityData.set(BASE_SP_DEFENCE, 108);
             this.entityData.set(BASE_SPEED, 78);
-            this.entityData.set(NICKNAME, "Blastoise");
+            this.entityData.set(SPECIESNAME, "Blastoise");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 10) {
@@ -1556,7 +1561,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,20 );
             this.entityData.set(BASE_SP_DEFENCE,20 );
             this.entityData.set(BASE_SPEED, 45);
-            this.entityData.set(NICKNAME, "Caterpie");
+            this.entityData.set(SPECIESNAME, "Caterpie");
             this.entityData.set(CATCHRATE, 255);
         }
 
@@ -1569,7 +1574,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 25);
             this.entityData.set(BASE_SP_DEFENCE,25 );
             this.entityData.set(BASE_SPEED,30 );
-            this.entityData.set(NICKNAME, "Metapod");
+            this.entityData.set(SPECIESNAME, "Metapod");
             this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 12) {
@@ -1581,7 +1586,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,90 );
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED, 70);
-            this.entityData.set(NICKNAME, "Butterfree");
+            this.entityData.set(SPECIESNAME, "Butterfree");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 13) {
@@ -1593,7 +1598,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 20);
             this.entityData.set(BASE_SP_DEFENCE,20 );
             this.entityData.set(BASE_SPEED, 50);
-            this.entityData.set(NICKNAME, "Weedle");
+            this.entityData.set(SPECIESNAME, "Weedle");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 14) {
@@ -1605,7 +1610,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 25);
             this.entityData.set(BASE_SP_DEFENCE, 25);
             this.entityData.set(BASE_SPEED,35 );
-            this.entityData.set(NICKNAME, "Kakuna");
+            this.entityData.set(SPECIESNAME, "Kakuna");
             this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 15) {
@@ -1617,7 +1622,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 45);
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED,75 );
-            this.entityData.set(NICKNAME, "Beedrill");
+            this.entityData.set(SPECIESNAME, "Beedrill");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 16) {
@@ -1629,7 +1634,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,35 );
             this.entityData.set(BASE_SP_DEFENCE,35 );
             this.entityData.set(BASE_SPEED,56 );
-            this.entityData.set(NICKNAME, "Pidgey");
+            this.entityData.set(SPECIESNAME, "Pidgey");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 17) {
@@ -1641,7 +1646,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,50 );
             this.entityData.set(BASE_SP_DEFENCE,50 );
             this.entityData.set(BASE_SPEED,71 );
-            this.entityData.set(NICKNAME, "Pidgeotto");
+            this.entityData.set(SPECIESNAME, "Pidgeotto");
             this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 18) {
@@ -1653,7 +1658,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 70);
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED,101 );
-            this.entityData.set(NICKNAME, "Pidgeot");
+            this.entityData.set(SPECIESNAME, "Pidgeot");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species ==19) {
@@ -1665,7 +1670,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 25);
             this.entityData.set(BASE_SP_DEFENCE,35 );
             this.entityData.set(BASE_SPEED, 72);
-            this.entityData.set(NICKNAME, "Rattata");
+            this.entityData.set(SPECIESNAME, "Rattata");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 20) {
@@ -1677,7 +1682,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 50);
             this.entityData.set(BASE_SP_DEFENCE,70 );
             this.entityData.set(BASE_SPEED, 97);
-            this.entityData.set(NICKNAME, "Raticate");
+            this.entityData.set(SPECIESNAME, "Raticate");
             this.entityData.set(CATCHRATE, 127);
         }
         else if(species == 21) {
@@ -1689,7 +1694,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 31);
             this.entityData.set(BASE_SP_DEFENCE,31);
             this.entityData.set(BASE_SPEED,70 );
-            this.entityData.set(NICKNAME, "Spearow");
+            this.entityData.set(SPECIESNAME, "Spearow");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 22) {
@@ -1701,7 +1706,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,61 );
             this.entityData.set(BASE_SP_DEFENCE, 61);
             this.entityData.set(BASE_SPEED, 100);
-            this.entityData.set(NICKNAME, "Fearow");
+            this.entityData.set(SPECIESNAME, "Fearow");
             this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 23) {
@@ -1713,7 +1718,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,40 );
             this.entityData.set(BASE_SP_DEFENCE, 54);
             this.entityData.set(BASE_SPEED, 55);
-            this.entityData.set(NICKNAME, "Ekans");
+            this.entityData.set(SPECIESNAME, "Ekans");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 24) {
@@ -1725,7 +1730,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,65 );
             this.entityData.set(BASE_SP_DEFENCE,79 );
             this.entityData.set(BASE_SPEED,80 );
-            this.entityData.set(NICKNAME, "Arbok");
+            this.entityData.set(SPECIESNAME, "Arbok");
             this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 25) {
@@ -1737,7 +1742,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 50);
             this.entityData.set(BASE_SP_DEFENCE,50 );
             this.entityData.set(BASE_SPEED,90 );
-            this.entityData.set(NICKNAME, "Pikachu");
+            this.entityData.set(SPECIESNAME, "Pikachu");
             this.entityData.set(CATCHRATE, 190);
 
         }
@@ -1750,7 +1755,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 90);
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED, 110);
-            this.entityData.set(NICKNAME, "Raichu");
+            this.entityData.set(SPECIESNAME, "Raichu");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 27) {
@@ -1762,7 +1767,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,20 );
             this.entityData.set(BASE_SP_DEFENCE,30 );
             this.entityData.set(BASE_SPEED,40 );
-            this.entityData.set(NICKNAME, "Sandshrew");
+            this.entityData.set(SPECIESNAME, "Sandshrew");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 28) {
@@ -1774,7 +1779,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,45 );
             this.entityData.set(BASE_SP_DEFENCE,55 );
             this.entityData.set(BASE_SPEED,65 );
-            this.entityData.set(NICKNAME, "Sandslash");
+            this.entityData.set(SPECIESNAME, "Sandslash");
             this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 29) {
@@ -1786,7 +1791,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,40 );
             this.entityData.set(BASE_SP_DEFENCE,40 );
             this.entityData.set(BASE_SPEED,41 );
-            this.entityData.set(NICKNAME, "Nidoran ♀");
+            this.entityData.set(SPECIESNAME, "Nidoran ♀");
             this.entityData.set(CATCHRATE, 235);
         }
         else if(species == 30) {
@@ -1798,7 +1803,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,55 );
             this.entityData.set(BASE_SP_DEFENCE,55 );
             this.entityData.set(BASE_SPEED,56 );
-            this.entityData.set(NICKNAME, "Nidorina");
+            this.entityData.set(SPECIESNAME, "Nidorina");
             this.entityData.set(CATCHRATE, 120);
         }
 
@@ -1811,7 +1816,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,75 );
             this.entityData.set(BASE_SP_DEFENCE,85 );
             this.entityData.set(BASE_SPEED,76 );
-            this.entityData.set(NICKNAME, "Nidoqueen");
+            this.entityData.set(SPECIESNAME, "Nidoqueen");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 32) {
@@ -1823,7 +1828,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,40 );
             this.entityData.set(BASE_SP_DEFENCE,40 );
             this.entityData.set(BASE_SPEED, 50);
-            this.entityData.set(NICKNAME, "Nidoran ♂");
+            this.entityData.set(SPECIESNAME, "Nidoran ♂");
             this.entityData.set(CATCHRATE, 235);
         }
         else if(species == 33) {
@@ -1835,7 +1840,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,55 );
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED,65 );
-            this.entityData.set(NICKNAME, "Nidorino");
+            this.entityData.set(SPECIESNAME, "Nidorino");
             this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 34) {
@@ -1847,7 +1852,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,85 );
             this.entityData.set(BASE_SP_DEFENCE,75 );
             this.entityData.set(BASE_SPEED,85 );
-            this.entityData.set(NICKNAME, "Nidoking");
+            this.entityData.set(SPECIESNAME, "Nidoking");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 35) {
@@ -1859,7 +1864,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 60);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 35);
-            this.entityData.set(NICKNAME, "Clefairy");
+            this.entityData.set(SPECIESNAME, "Clefairy");
             this.entityData.set(CATCHRATE, 150);
         }
         else if(species == 36) {
@@ -1871,7 +1876,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,95 );
             this.entityData.set(BASE_SP_DEFENCE,90 );
             this.entityData.set(BASE_SPEED, 60);
-            this.entityData.set(NICKNAME, "Clefable");
+            this.entityData.set(SPECIESNAME, "Clefable");
             this.entityData.set(CATCHRATE, 25);
         }
         else if(species == 37) {
@@ -1883,7 +1888,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,50 );
             this.entityData.set(BASE_SP_DEFENCE,65 );
             this.entityData.set(BASE_SPEED,65 );
-            this.entityData.set(NICKNAME, "Vulpix");
+            this.entityData.set(SPECIESNAME, "Vulpix");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 38) {
@@ -1895,7 +1900,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,81 );
             this.entityData.set(BASE_SP_DEFENCE,100 );
             this.entityData.set(BASE_SPEED, 100);
-            this.entityData.set(NICKNAME, "Ninetales");
+            this.entityData.set(SPECIESNAME, "Ninetales");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 39) {
@@ -1907,7 +1912,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,45 );
             this.entityData.set(BASE_SP_DEFENCE,25 );
             this.entityData.set(BASE_SPEED,20 );
-            this.entityData.set(NICKNAME, "Jigglypuff");
+            this.entityData.set(SPECIESNAME, "Jigglypuff");
             this.entityData.set(CATCHRATE, 170);
         }
         else if(species == 40) {
@@ -1919,7 +1924,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 85);
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 45);
-            this.entityData.set(NICKNAME, "Wigglytuff");
+            this.entityData.set(SPECIESNAME, "Wigglytuff");
             this.entityData.set(CATCHRATE, 50);
         }
         else if(species == 41) {
@@ -1931,7 +1936,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,30 );
             this.entityData.set(BASE_SP_DEFENCE,40 );
             this.entityData.set(BASE_SPEED, 55);
-            this.entityData.set(NICKNAME, "Zubat");
+            this.entityData.set(SPECIESNAME, "Zubat");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 42) {
@@ -1943,7 +1948,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,65 );
             this.entityData.set(BASE_SP_DEFENCE,75 );
             this.entityData.set(BASE_SPEED,90 );
-            this.entityData.set(NICKNAME, "Golbat");
+            this.entityData.set(SPECIESNAME, "Golbat");
             this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 43) {
@@ -1955,7 +1960,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 75);
             this.entityData.set(BASE_SP_DEFENCE,65 );
             this.entityData.set(BASE_SPEED, 30);
-            this.entityData.set(NICKNAME, "Oddish");
+            this.entityData.set(SPECIESNAME, "Oddish");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 44) {
@@ -1967,7 +1972,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,85 );
             this.entityData.set(BASE_SP_DEFENCE, 75);
             this.entityData.set(BASE_SPEED, 40);
-            this.entityData.set(NICKNAME, "Gloom");
+            this.entityData.set(SPECIESNAME, "Gloom");
             this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 45) {
@@ -1979,7 +1984,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,110 );
             this.entityData.set(BASE_SP_DEFENCE,90 );
             this.entityData.set(BASE_SPEED, 50);
-            this.entityData.set(NICKNAME, "Vileplume");
+            this.entityData.set(SPECIESNAME, "Vileplume");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 46) {
@@ -1991,7 +1996,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,45 );
             this.entityData.set(BASE_SP_DEFENCE,55 );
             this.entityData.set(BASE_SPEED, 25);
-            this.entityData.set(NICKNAME, "Paras");
+            this.entityData.set(SPECIESNAME, "Paras");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 47) {
@@ -2003,7 +2008,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 60);
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 30);
-            this.entityData.set(NICKNAME, "Parasect");
+            this.entityData.set(SPECIESNAME, "Parasect");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 48) {
@@ -2015,7 +2020,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,40 );
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 45);
-            this.entityData.set(NICKNAME, "Venonat");
+            this.entityData.set(SPECIESNAME, "Venonat");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 49) {
@@ -2027,7 +2032,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 90);
             this.entityData.set(BASE_SP_DEFENCE, 75);
             this.entityData.set(BASE_SPEED,90 );
-            this.entityData.set(NICKNAME, "Venomoth");
+            this.entityData.set(SPECIESNAME, "Venomoth");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 50) {
@@ -2039,7 +2044,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,35 );
             this.entityData.set(BASE_SP_DEFENCE,45 );
             this.entityData.set(BASE_SPEED,95 );
-            this.entityData.set(NICKNAME, "Diglett");
+            this.entityData.set(SPECIESNAME, "Diglett");
             this.entityData.set(CATCHRATE, 50);
         }
         else if(species == 51) {
@@ -2051,7 +2056,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 50);
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED,120 );
-            this.entityData.set(NICKNAME, "Dugtrio");
+            this.entityData.set(SPECIESNAME, "Dugtrio");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 52) {
@@ -2063,7 +2068,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 40);
             this.entityData.set(BASE_SP_DEFENCE,40 );
             this.entityData.set(BASE_SPEED, 90);
-            this.entityData.set(NICKNAME, "Meowth");
+            this.entityData.set(SPECIESNAME, "Meowth");
             this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 53) {
@@ -2075,7 +2080,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 65);
             this.entityData.set(BASE_SP_DEFENCE,65 );
             this.entityData.set(BASE_SPEED, 115);
-            this.entityData.set(NICKNAME, "Persian");
+            this.entityData.set(SPECIESNAME, "Persian");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 54) {
@@ -2087,7 +2092,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,65 );
             this.entityData.set(BASE_SP_DEFENCE,50 );
             this.entityData.set(BASE_SPEED,55 );
-            this.entityData.set(NICKNAME, "Psyduck");
+            this.entityData.set(SPECIESNAME, "Psyduck");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 55) {
@@ -2099,7 +2104,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 95);
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED,85 );
-            this.entityData.set(NICKNAME, "Golduck");
+            this.entityData.set(SPECIESNAME, "Golduck");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 56) {
@@ -2111,7 +2116,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 35);
             this.entityData.set(BASE_SP_DEFENCE,45 );
             this.entityData.set(BASE_SPEED, 70);
-            this.entityData.set(NICKNAME, "Mankey");
+            this.entityData.set(SPECIESNAME, "Mankey");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 57) {
@@ -2123,7 +2128,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,60 );
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 95);
-            this.entityData.set(NICKNAME, "Primape");
+            this.entityData.set(SPECIESNAME, "Primape");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 58) {
@@ -2135,7 +2140,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 70);
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 60);
-            this.entityData.set(NICKNAME, "Growlthie");
+            this.entityData.set(SPECIESNAME, "Growlthie");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 59) {
@@ -2147,7 +2152,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 100);
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED,95 );
-            this.entityData.set(NICKNAME, "Arcanine");
+            this.entityData.set(SPECIESNAME, "Arcanine");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 60) {
@@ -2159,7 +2164,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,40 );
             this.entityData.set(BASE_SP_DEFENCE,40 );
             this.entityData.set(BASE_SPEED, 90);
-            this.entityData.set(NICKNAME, "Poliwag");
+            this.entityData.set(SPECIESNAME, "Poliwag");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 61) {
@@ -2171,7 +2176,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,50 );
             this.entityData.set(BASE_SP_DEFENCE,50 );
             this.entityData.set(BASE_SPEED,90 );
-            this.entityData.set(NICKNAME, "Poliwhirl");
+            this.entityData.set(SPECIESNAME, "Poliwhirl");
             this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 62) {
@@ -2183,7 +2188,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,70 );
             this.entityData.set(BASE_SP_DEFENCE,90 );
             this.entityData.set(BASE_SPEED,70 );
-            this.entityData.set(NICKNAME, "Poliwrath");
+            this.entityData.set(SPECIESNAME, "Poliwrath");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 63) {
@@ -2195,7 +2200,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,105 );
             this.entityData.set(BASE_SP_DEFENCE,55 );
             this.entityData.set(BASE_SPEED,90 );
-            this.entityData.set(NICKNAME, "Abra");
+            this.entityData.set(SPECIESNAME, "Abra");
             this.entityData.set(CATCHRATE, 200);
         }
         else if(species == 64) {
@@ -2207,7 +2212,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,105 );
             this.entityData.set(BASE_SP_DEFENCE,55 );
             this.entityData.set(BASE_SPEED, 90);
-            this.entityData.set(NICKNAME, "Kadabra");
+            this.entityData.set(SPECIESNAME, "Kadabra");
             this.entityData.set(CATCHRATE, 100);
         }
         else if(species == 65) {
@@ -2219,7 +2224,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,135 );
             this.entityData.set(BASE_SP_DEFENCE,95 );
             this.entityData.set(BASE_SPEED, 120);
-            this.entityData.set(NICKNAME, "Alakazam");
+            this.entityData.set(SPECIESNAME, "Alakazam");
             this.entityData.set(CATCHRATE, 50);
         }
         else if(species == 66) {
@@ -2231,7 +2236,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,35 );
             this.entityData.set(BASE_SP_DEFENCE, 35);
             this.entityData.set(BASE_SPEED, 35);
-            this.entityData.set(NICKNAME, "Machop");
+            this.entityData.set(SPECIESNAME, "Machop");
             this.entityData.set(CATCHRATE, 180);
         }
         else if(species == 67) {
@@ -2243,7 +2248,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 50);
             this.entityData.set(BASE_SP_DEFENCE,60 );
             this.entityData.set(BASE_SPEED,45 );
-            this.entityData.set(NICKNAME, "Machoke");
+            this.entityData.set(SPECIESNAME, "Machoke");
             this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 68) {
@@ -2255,7 +2260,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,65 );
             this.entityData.set(BASE_SP_DEFENCE,85 );
             this.entityData.set(BASE_SPEED, 55);
-            this.entityData.set(NICKNAME, "Machamp");
+            this.entityData.set(SPECIESNAME, "Machamp");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 69) {
@@ -2267,7 +2272,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,70 );
             this.entityData.set(BASE_SP_DEFENCE, 30);
             this.entityData.set(BASE_SPEED, 40);
-            this.entityData.set(NICKNAME, "Bellsprout");
+            this.entityData.set(SPECIESNAME, "Bellsprout");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 70) {
@@ -2279,7 +2284,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 85);
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 55);
-            this.entityData.set(NICKNAME, "Weepinbell");
+            this.entityData.set(SPECIESNAME, "Weepinbell");
             this.entityData.set(CATCHRATE, 120);
         }
 
@@ -2292,7 +2297,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 100);
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED,70 );
-            this.entityData.set(NICKNAME, "Victreebel");
+            this.entityData.set(SPECIESNAME, "Victreebel");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 72) {
@@ -2304,7 +2309,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,50 );
             this.entityData.set(BASE_SP_DEFENCE,100 );
             this.entityData.set(BASE_SPEED, 70);
-            this.entityData.set(NICKNAME, "Tentacool");
+            this.entityData.set(SPECIESNAME, "Tentacool");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 73) {
@@ -2316,7 +2321,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,80 );
             this.entityData.set(BASE_SP_DEFENCE,120 );
             this.entityData.set(BASE_SPEED,100 );
-            this.entityData.set(NICKNAME, "Tentacrule");
+            this.entityData.set(SPECIESNAME, "Tentacrule");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 74) {
@@ -2328,7 +2333,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,30 );
             this.entityData.set(BASE_SP_DEFENCE,30 );
             this.entityData.set(BASE_SPEED, 20);
-            this.entityData.set(NICKNAME, "Geodude");
+            this.entityData.set(SPECIESNAME, "Geodude");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 75) {
@@ -2340,7 +2345,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,45 );
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 35);
-            this.entityData.set(NICKNAME, "Graveler");
+            this.entityData.set(SPECIESNAME, "Graveler");
             this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 76) {
@@ -2352,7 +2357,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 55);
             this.entityData.set(BASE_SP_DEFENCE,65 );
             this.entityData.set(BASE_SPEED,45 );
-            this.entityData.set(NICKNAME, "Golem");
+            this.entityData.set(SPECIESNAME, "Golem");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 77) {
@@ -2364,7 +2369,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,65 );
             this.entityData.set(BASE_SP_DEFENCE,65 );
             this.entityData.set(BASE_SPEED,90 );
-            this.entityData.set(NICKNAME, "Ponyta");
+            this.entityData.set(SPECIESNAME, "Ponyta");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 78) {
@@ -2376,7 +2381,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 80);
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED, 105);
-            this.entityData.set(NICKNAME, "Rapidash");
+            this.entityData.set(SPECIESNAME, "Rapidash");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 79) {
@@ -2388,7 +2393,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,40 );
             this.entityData.set(BASE_SP_DEFENCE, 40);
             this.entityData.set(BASE_SPEED,15 );
-            this.entityData.set(NICKNAME, "Slowpoke");
+            this.entityData.set(SPECIESNAME, "Slowpoke");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 80) {
@@ -2400,7 +2405,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 100);
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED,30 );
-            this.entityData.set(NICKNAME, "Slowbro");
+            this.entityData.set(SPECIESNAME, "Slowbro");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 81) {
@@ -2412,7 +2417,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,95 );
             this.entityData.set(BASE_SP_DEFENCE,55 );
             this.entityData.set(BASE_SPEED, 45);
-            this.entityData.set(NICKNAME, "Magnemite");
+            this.entityData.set(SPECIESNAME, "Magnemite");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 82) {
@@ -2424,7 +2429,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,120 );
             this.entityData.set(BASE_SP_DEFENCE,70 );
             this.entityData.set(BASE_SPEED,70 );
-            this.entityData.set(NICKNAME, "Magneton");
+            this.entityData.set(SPECIESNAME, "Magneton");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 83) {
@@ -2436,7 +2441,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,58 );
             this.entityData.set(BASE_SP_DEFENCE,62 );
             this.entityData.set(BASE_SPEED, 60);
-            this.entityData.set(NICKNAME, "Farfetch'd");
+            this.entityData.set(SPECIESNAME, "Farfetch'd");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 84) {
@@ -2448,7 +2453,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 35);
             this.entityData.set(BASE_SP_DEFENCE, 35);
             this.entityData.set(BASE_SPEED,75);
-            this.entityData.set(NICKNAME, "Doduo");
+            this.entityData.set(SPECIESNAME, "Doduo");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 85) {
@@ -2460,7 +2465,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,60 );
             this.entityData.set(BASE_SP_DEFENCE,60 );
             this.entityData.set(BASE_SPEED, 110);
-            this.entityData.set(NICKNAME, "Dodrio");
+            this.entityData.set(SPECIESNAME, "Dodrio");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 86) {
@@ -2472,7 +2477,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,45 );
             this.entityData.set(BASE_SP_DEFENCE,70 );
             this.entityData.set(BASE_SPEED,45 );
-            this.entityData.set(NICKNAME, "Seel");
+            this.entityData.set(SPECIESNAME, "Seel");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 87) {
@@ -2484,7 +2489,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 70);
             this.entityData.set(BASE_SP_DEFENCE,95 );
             this.entityData.set(BASE_SPEED,70 );
-            this.entityData.set(NICKNAME, "Dewgong");
+            this.entityData.set(SPECIESNAME, "Dewgong");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 88) {
@@ -2496,7 +2501,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,40 );
             this.entityData.set(BASE_SP_DEFENCE,50 );
             this.entityData.set(BASE_SPEED,25 );
-            this.entityData.set(NICKNAME, "Grimer");
+            this.entityData.set(SPECIESNAME, "Grimer");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 89) {
@@ -2508,7 +2513,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,65 );
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED,50 );
-            this.entityData.set(NICKNAME, "Muk");
+            this.entityData.set(SPECIESNAME, "Muk");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 90) {
@@ -2520,7 +2525,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 45);
             this.entityData.set(BASE_SP_DEFENCE,25 );
             this.entityData.set(BASE_SPEED,40 );
-            this.entityData.set(NICKNAME, "Shellder");
+            this.entityData.set(SPECIESNAME, "Shellder");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 91) {
@@ -2532,7 +2537,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,85 );
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED,70 );
-            this.entityData.set(NICKNAME, "Cloyster");
+            this.entityData.set(SPECIESNAME, "Cloyster");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 92) {
@@ -2544,7 +2549,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,100 );
             this.entityData.set(BASE_SP_DEFENCE,35 );
             this.entityData.set(BASE_SPEED, 80);
-            this.entityData.set(NICKNAME, "Gastly");
+            this.entityData.set(SPECIESNAME, "Gastly");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 93) {
@@ -2556,7 +2561,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,115 );
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 95);
-            this.entityData.set(NICKNAME, "Haunter");
+            this.entityData.set(SPECIESNAME, "Haunter");
             this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 94) {
@@ -2568,7 +2573,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,130 );
             this.entityData.set(BASE_SP_DEFENCE,75 );
             this.entityData.set(BASE_SPEED,110 );
-            this.entityData.set(NICKNAME, "Gengar");
+            this.entityData.set(SPECIESNAME, "Gengar");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 95) {
@@ -2580,7 +2585,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 30);
             this.entityData.set(BASE_SP_DEFENCE,45 );
             this.entityData.set(BASE_SPEED, 70);
-            this.entityData.set(NICKNAME, "Onix");
+            this.entityData.set(SPECIESNAME, "Onix");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 96) {
@@ -2592,7 +2597,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,43 );
             this.entityData.set(BASE_SP_DEFENCE,90 );
             this.entityData.set(BASE_SPEED, 42);
-            this.entityData.set(NICKNAME, "Drowzee");
+            this.entityData.set(SPECIESNAME, "Drowzee");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 97) {
@@ -2604,7 +2609,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,73 );
             this.entityData.set(BASE_SP_DEFENCE,115 );
             this.entityData.set(BASE_SPEED, 67);
-            this.entityData.set(NICKNAME, "Hypno");
+            this.entityData.set(SPECIESNAME, "Hypno");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 98) {
@@ -2616,7 +2621,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,25 );
             this.entityData.set(BASE_SP_DEFENCE,25 );
             this.entityData.set(BASE_SPEED, 50);
-            this.entityData.set(NICKNAME, "Krabby");
+            this.entityData.set(SPECIESNAME, "Krabby");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 99) {
@@ -2628,7 +2633,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,50 );
             this.entityData.set(BASE_SP_DEFENCE,50 );
             this.entityData.set(BASE_SPEED,75 );
-            this.entityData.set(NICKNAME, "Kingler");
+            this.entityData.set(SPECIESNAME, "Kingler");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 100) {
@@ -2640,7 +2645,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 55);
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 100);
-            this.entityData.set(NICKNAME, "Voltob");
+            this.entityData.set(SPECIESNAME, "Voltob");
             this.entityData.set(CATCHRATE, 190);
         }
 
@@ -2653,7 +2658,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,80 );
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED, 150);
-            this.entityData.set(NICKNAME, "Electrode");
+            this.entityData.set(SPECIESNAME, "Electrode");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 102) {
@@ -2665,7 +2670,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,60 );
             this.entityData.set(BASE_SP_DEFENCE,45 );
             this.entityData.set(BASE_SPEED, 40);
-            this.entityData.set(NICKNAME, "Exeggcute");
+            this.entityData.set(SPECIESNAME, "Exeggcute");
             this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 103) {
@@ -2677,7 +2682,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 125);
             this.entityData.set(BASE_SP_DEFENCE, 75);
             this.entityData.set(BASE_SPEED,55 );
-            this.entityData.set(NICKNAME, "Exeggutor");
+            this.entityData.set(SPECIESNAME, "Exeggutor");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 104) {
@@ -2689,7 +2694,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,40 );
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 35);
-            this.entityData.set(NICKNAME, "Cubone");
+            this.entityData.set(SPECIESNAME, "Cubone");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 105) {
@@ -2701,7 +2706,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,50 );
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED,45 );
-            this.entityData.set(NICKNAME, "Marowak");
+            this.entityData.set(SPECIESNAME, "Marowak");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 106) {
@@ -2713,7 +2718,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,35 );
             this.entityData.set(BASE_SP_DEFENCE, 110);
             this.entityData.set(BASE_SPEED,87 );
-            this.entityData.set(NICKNAME, "Hitmonlee");
+            this.entityData.set(SPECIESNAME, "Hitmonlee");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 107) {
@@ -2725,7 +2730,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 35);
             this.entityData.set(BASE_SP_DEFENCE,110 );
             this.entityData.set(BASE_SPEED,87 );
-            this.entityData.set(NICKNAME, "Hitmonchan");
+            this.entityData.set(SPECIESNAME, "Hitmonchan");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 108) {
@@ -2737,7 +2742,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,60 );
             this.entityData.set(BASE_SP_DEFENCE,75 );
             this.entityData.set(BASE_SPEED,30 );
-            this.entityData.set(NICKNAME, "Lickitung");
+            this.entityData.set(SPECIESNAME, "Lickitung");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 109) {
@@ -2749,7 +2754,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,60 );
             this.entityData.set(BASE_SP_DEFENCE,45 );
             this.entityData.set(BASE_SPEED, 35);
-            this.entityData.set(NICKNAME, "Koffing");
+            this.entityData.set(SPECIESNAME, "Koffing");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 110) {
@@ -2761,7 +2766,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,85 );
             this.entityData.set(BASE_SP_DEFENCE,70 );
             this.entityData.set(BASE_SPEED,60 );
-            this.entityData.set(NICKNAME, "Weezing");
+            this.entityData.set(SPECIESNAME, "Weezing");
             this.entityData.set(CATCHRATE, 60);
         }
 
@@ -2774,7 +2779,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,30 );
             this.entityData.set(BASE_SP_DEFENCE,30 );
             this.entityData.set(BASE_SPEED,25 );
-            this.entityData.set(NICKNAME, "Rhyhorn");
+            this.entityData.set(SPECIESNAME, "Rhyhorn");
             this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 112) {
@@ -2786,7 +2791,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,45 );
             this.entityData.set(BASE_SP_DEFENCE,45 );
             this.entityData.set(BASE_SPEED,40 );
-            this.entityData.set(NICKNAME, "Rhydon");
+            this.entityData.set(SPECIESNAME, "Rhydon");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 113) {
@@ -2798,7 +2803,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 35);
             this.entityData.set(BASE_SP_DEFENCE, 105);
             this.entityData.set(BASE_SPEED, 50);
-            this.entityData.set(NICKNAME, "Chansey");
+            this.entityData.set(SPECIESNAME, "Chansey");
             this.entityData.set(CATCHRATE, 30);
         }
         else if(species == 114) {
@@ -2810,7 +2815,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,100 );
             this.entityData.set(BASE_SP_DEFENCE, 40);
             this.entityData.set(BASE_SPEED, 60);
-            this.entityData.set(NICKNAME, "Tangela");
+            this.entityData.set(SPECIESNAME, "Tangela");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 115) {
@@ -2822,7 +2827,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 40);
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED,90 );
-            this.entityData.set(NICKNAME, "Kangaskhan");
+            this.entityData.set(SPECIESNAME, "Kangaskhan");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 116) {
@@ -2834,7 +2839,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,70 );
             this.entityData.set(BASE_SP_DEFENCE,25 );
             this.entityData.set(BASE_SPEED,60 );
-            this.entityData.set(NICKNAME, "Horsea");
+            this.entityData.set(SPECIESNAME, "Horsea");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 117) {
@@ -2846,7 +2851,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 95);
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 85);
-            this.entityData.set(NICKNAME, "Seadra");
+            this.entityData.set(SPECIESNAME, "Seadra");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 118) {
@@ -2858,7 +2863,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 35);
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 63);
-            this.entityData.set(NICKNAME, "Goldeen");
+            this.entityData.set(SPECIESNAME, "Goldeen");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 119) {
@@ -2870,7 +2875,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,65 );
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED, 68);
-            this.entityData.set(NICKNAME, "Seeking");
+            this.entityData.set(SPECIESNAME, "Seeking");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 120) {
@@ -2882,7 +2887,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,70 );
             this.entityData.set(BASE_SP_DEFENCE,55 );
             this.entityData.set(BASE_SPEED,85 );
-            this.entityData.set(NICKNAME, "Staryu");
+            this.entityData.set(SPECIESNAME, "Staryu");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 121) {
@@ -2894,7 +2899,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,100 );
             this.entityData.set(BASE_SP_DEFENCE,85 );
             this.entityData.set(BASE_SPEED,115 );
-            this.entityData.set(NICKNAME, "Starmie");
+            this.entityData.set(SPECIESNAME, "Starmie");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 122) {
@@ -2906,7 +2911,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,100 );
             this.entityData.set(BASE_SP_DEFENCE,120 );
             this.entityData.set(BASE_SPEED,90 );
-            this.entityData.set(NICKNAME, "Mr. Mime");
+            this.entityData.set(SPECIESNAME, "Mr. Mime");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 123) {
@@ -2918,7 +2923,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,55 );
             this.entityData.set(BASE_SP_DEFENCE,80 );
             this.entityData.set(BASE_SPEED, 105);
-            this.entityData.set(NICKNAME, "Scyther");
+            this.entityData.set(SPECIESNAME, "Scyther");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 124) {
@@ -2930,7 +2935,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,115 );
             this.entityData.set(BASE_SP_DEFENCE,95 );
             this.entityData.set(BASE_SPEED,95 );
-            this.entityData.set(NICKNAME, "Jynx");
+            this.entityData.set(SPECIESNAME, "Jynx");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 125) {
@@ -2942,7 +2947,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,95 );
             this.entityData.set(BASE_SP_DEFENCE,85 );
             this.entityData.set(BASE_SPEED,105 );
-            this.entityData.set(NICKNAME, "Electabuzz");
+            this.entityData.set(SPECIESNAME, "Electabuzz");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 126) {
@@ -2954,7 +2959,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 100);
             this.entityData.set(BASE_SP_DEFENCE,85 );
             this.entityData.set(BASE_SPEED, 93);
-            this.entityData.set(NICKNAME, "Magmar");
+            this.entityData.set(SPECIESNAME, "Magmar");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 127) {
@@ -2966,7 +2971,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 55);
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 85);
-            this.entityData.set(NICKNAME, "Pinsir");
+            this.entityData.set(SPECIESNAME, "Pinsir");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 128) {
@@ -2978,7 +2983,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,40 );
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED,110 );
-            this.entityData.set(NICKNAME, "Tauros");
+            this.entityData.set(SPECIESNAME, "Tauros");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 129) {
@@ -2990,7 +2995,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,15 );
             this.entityData.set(BASE_SP_DEFENCE,20 );
             this.entityData.set(BASE_SPEED, 80);
-            this.entityData.set(NICKNAME, "Magikarp");
+            this.entityData.set(SPECIESNAME, "Magikarp");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 130) {
@@ -3002,7 +3007,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,60 );
             this.entityData.set(BASE_SP_DEFENCE,100 );
             this.entityData.set(BASE_SPEED, 81);
-            this.entityData.set(NICKNAME, "Gyarados");
+            this.entityData.set(SPECIESNAME, "Gyarados");
             this.entityData.set(CATCHRATE, 45);
         }
 
@@ -3015,7 +3020,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,85 );
             this.entityData.set(BASE_SP_DEFENCE,95 );
             this.entityData.set(BASE_SPEED,60 );
-            this.entityData.set(NICKNAME, "Lapras");
+            this.entityData.set(SPECIESNAME, "Lapras");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 132) {
@@ -3027,7 +3032,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,48 );
             this.entityData.set(BASE_SP_DEFENCE,48 );
             this.entityData.set(BASE_SPEED,48 );
-            this.entityData.set(NICKNAME, "Ditto");
+            this.entityData.set(SPECIESNAME, "Ditto");
             this.entityData.set(CATCHRATE, 35);
         }
         else if(species == 133) {
@@ -3039,7 +3044,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,45 );
             this.entityData.set(BASE_SP_DEFENCE,65 );
             this.entityData.set(BASE_SPEED,55 );
-            this.entityData.set(NICKNAME, "Eevee");
+            this.entityData.set(SPECIESNAME, "Eevee");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 134) {
@@ -3051,7 +3056,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,110 );
             this.entityData.set(BASE_SP_DEFENCE, 95);
             this.entityData.set(BASE_SPEED,65 );
-            this.entityData.set(NICKNAME, "Vaporeon");
+            this.entityData.set(SPECIESNAME, "Vaporeon");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 135) {
@@ -3063,7 +3068,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 110);
             this.entityData.set(BASE_SP_DEFENCE,95 );
             this.entityData.set(BASE_SPEED,130 );
-            this.entityData.set(NICKNAME, "Jolteon");
+            this.entityData.set(SPECIESNAME, "Jolteon");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 136) {
@@ -3075,7 +3080,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 95);
             this.entityData.set(BASE_SP_DEFENCE,110 );
             this.entityData.set(BASE_SPEED,65 );
-            this.entityData.set(NICKNAME, "Flareon");
+            this.entityData.set(SPECIESNAME, "Flareon");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 137) {
@@ -3087,7 +3092,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 85);
             this.entityData.set(BASE_SP_DEFENCE,75 );
             this.entityData.set(BASE_SPEED,40 );
-            this.entityData.set(NICKNAME, "Porygon");
+            this.entityData.set(SPECIESNAME, "Porygon");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 138) {
@@ -3099,7 +3104,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,90 );
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED,35 );
-            this.entityData.set(NICKNAME, "Omanyte");
+            this.entityData.set(SPECIESNAME, "Omanyte");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 139) {
@@ -3111,7 +3116,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,155 );
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 55);
-            this.entityData.set(NICKNAME, "Omastar");
+            this.entityData.set(SPECIESNAME, "Omastar");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 140) {
@@ -3123,7 +3128,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,55 );
             this.entityData.set(BASE_SP_DEFENCE,45 );
             this.entityData.set(BASE_SPEED, 55);
-            this.entityData.set(NICKNAME, "Kabuto");
+            this.entityData.set(SPECIESNAME, "Kabuto");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 141) {
@@ -3135,7 +3140,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 65);
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 80);
-            this.entityData.set(NICKNAME, "Kabutops");
+            this.entityData.set(SPECIESNAME, "Kabutops");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 142) {
@@ -3147,7 +3152,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,60 );
             this.entityData.set(BASE_SP_DEFENCE,75 );
             this.entityData.set(BASE_SPEED,130 );
-            this.entityData.set(NICKNAME, "Aerodactyl");
+            this.entityData.set(SPECIESNAME, "Aerodactyl");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 143) {
@@ -3159,7 +3164,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 65);
             this.entityData.set(BASE_SP_DEFENCE,110 );
             this.entityData.set(BASE_SPEED, 30);
-            this.entityData.set(NICKNAME, "Snorlax");
+            this.entityData.set(SPECIESNAME, "Snorlax");
             this.entityData.set(CATCHRATE, 25);
         }
         else if(species == 144) {
@@ -3171,7 +3176,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,95 );
             this.entityData.set(BASE_SP_DEFENCE,125 );
             this.entityData.set(BASE_SPEED,85 );
-            this.entityData.set(NICKNAME, "Articuno");
+            this.entityData.set(SPECIESNAME, "Articuno");
             this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 145) {
@@ -3183,7 +3188,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,125 );
             this.entityData.set(BASE_SP_DEFENCE,90 );
             this.entityData.set(BASE_SPEED, 100);
-            this.entityData.set(NICKNAME, "Zapdos");
+            this.entityData.set(SPECIESNAME, "Zapdos");
             this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 146) {
@@ -3195,7 +3200,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,125 );
             this.entityData.set(BASE_SP_DEFENCE,85 );
             this.entityData.set(BASE_SPEED,90 );
-            this.entityData.set(NICKNAME, "Moltres");
+            this.entityData.set(SPECIESNAME, "Moltres");
             this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 147) {
@@ -3207,7 +3212,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,50);
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED,50 );
-            this.entityData.set(NICKNAME, "Dratini");
+            this.entityData.set(SPECIESNAME, "Dratini");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 148) {
@@ -3219,7 +3224,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,70 );
             this.entityData.set(BASE_SP_DEFENCE,70 );
             this.entityData.set(BASE_SPEED, 70);
-            this.entityData.set(NICKNAME, "Dragonair");
+            this.entityData.set(SPECIESNAME, "Dragonair");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 149) {
@@ -3231,7 +3236,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 100);
             this.entityData.set(BASE_SP_DEFENCE,100 );
             this.entityData.set(BASE_SPEED,80 );
-            this.entityData.set(NICKNAME, "Dragonite");
+            this.entityData.set(SPECIESNAME, "Dragonite");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 150) {
@@ -3243,7 +3248,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,154 );
             this.entityData.set(BASE_SP_DEFENCE,90 );
             this.entityData.set(BASE_SPEED,130 );
-            this.entityData.set(NICKNAME, "Mewtwo");
+            this.entityData.set(SPECIESNAME, "Mewtwo");
             this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 151) {
@@ -3255,7 +3260,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK,100 );
             this.entityData.set(BASE_SP_DEFENCE,100 );
             this.entityData.set(BASE_SPEED,100 );
-            this.entityData.set(NICKNAME, "Mew");
+            this.entityData.set(SPECIESNAME, "Mew");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 152) {
@@ -3267,7 +3272,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 49);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 45);
-            this.entityData.set(NICKNAME, "Chikorita");
+            this.entityData.set(SPECIESNAME, "Chikorita");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 153) {
@@ -3279,7 +3284,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 63);
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 60);
-            this.entityData.set(NICKNAME, "Bayleef");
+            this.entityData.set(SPECIESNAME, "Bayleef");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 154) {
@@ -3291,7 +3296,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 83);
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED, 80);
-            this.entityData.set(NICKNAME, "Maganium");
+            this.entityData.set(SPECIESNAME, "Maganium");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 155) {
@@ -3303,7 +3308,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 60);
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 65);
-            this.entityData.set(NICKNAME, "Cyndaquil");
+            this.entityData.set(SPECIESNAME, "Cyndaquil");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 156) {
@@ -3315,7 +3320,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 80);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 80);
-            this.entityData.set(NICKNAME, "Quilava");
+            this.entityData.set(SPECIESNAME, "Quilava");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 157) {
@@ -3327,7 +3332,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 109);
             this.entityData.set(BASE_SP_DEFENCE, 85);
             this.entityData.set(BASE_SPEED, 100);
-            this.entityData.set(NICKNAME, "Typhlosion");
+            this.entityData.set(SPECIESNAME, "Typhlosion");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 158) {
@@ -3339,7 +3344,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 44);
             this.entityData.set(BASE_SP_DEFENCE, 48);
             this.entityData.set(BASE_SPEED, 43);
-            this.entityData.set(NICKNAME, "Totodile");
+            this.entityData.set(SPECIESNAME, "Totodile");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 159) {
@@ -3351,7 +3356,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 59);
             this.entityData.set(BASE_SP_DEFENCE, 63);
             this.entityData.set(BASE_SPEED, 58);
-            this.entityData.set(NICKNAME, "Crocanaaw");
+            this.entityData.set(SPECIESNAME, "Crocanaaw");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 160) {
@@ -3363,7 +3368,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 79);
             this.entityData.set(BASE_SP_DEFENCE, 83);
             this.entityData.set(BASE_SPEED, 78);
-            this.entityData.set(NICKNAME, "Feraligatr");
+            this.entityData.set(SPECIESNAME, "Feraligatr");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 161) {
@@ -3375,7 +3380,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 35);
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 20);
-            this.entityData.set(NICKNAME, "Sentret");
+            this.entityData.set(SPECIESNAME, "Sentret");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 162) {
@@ -3387,7 +3392,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 45);
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 90);
-            this.entityData.set(NICKNAME, "Furret");
+            this.entityData.set(SPECIESNAME, "Furret");
             this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 163) {
@@ -3399,7 +3404,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 36);
             this.entityData.set(BASE_SP_DEFENCE, 56);
             this.entityData.set(BASE_SPEED, 50);
-            this.entityData.set(NICKNAME, "Hoothoot");
+            this.entityData.set(SPECIESNAME, "Hoothoot");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 164) {
@@ -3411,7 +3416,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 86);
             this.entityData.set(BASE_SP_DEFENCE, 96);
             this.entityData.set(BASE_SPEED, 70);
-            this.entityData.set(NICKNAME, "Noctowl");
+            this.entityData.set(SPECIESNAME, "Noctowl");
             this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 165) {
@@ -3423,7 +3428,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 40);
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 55);
-            this.entityData.set(NICKNAME, "Ledyba");
+            this.entityData.set(SPECIESNAME, "Ledyba");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 166) {
@@ -3435,7 +3440,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 55);
             this.entityData.set(BASE_SP_DEFENCE, 110);
             this.entityData.set(BASE_SPEED, 85);
-            this.entityData.set(NICKNAME, "Ledian");
+            this.entityData.set(SPECIESNAME, "Ledian");
             this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 167) {
@@ -3447,7 +3452,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 40);
             this.entityData.set(BASE_SP_DEFENCE, 40);
             this.entityData.set(BASE_SPEED, 30);
-            this.entityData.set(NICKNAME, "Spinarak");
+            this.entityData.set(SPECIESNAME, "Spinarak");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 168) {
@@ -3459,7 +3464,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 60);
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 40);
-            this.entityData.set(NICKNAME, "Ariados");
+            this.entityData.set(SPECIESNAME, "Ariados");
             this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 169) {
@@ -3471,7 +3476,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 70);
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 130);
-            this.entityData.set(NICKNAME, "Crobat");
+            this.entityData.set(SPECIESNAME, "Crobat");
             this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 170) {
@@ -3483,7 +3488,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 56);
             this.entityData.set(BASE_SP_DEFENCE, 56);
             this.entityData.set(BASE_SPEED, 67);
-            this.entityData.set(NICKNAME, "Chinchou");
+            this.entityData.set(SPECIESNAME, "Chinchou");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 171) {
@@ -3495,7 +3500,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 76);
             this.entityData.set(BASE_SP_DEFENCE, 76);
             this.entityData.set(BASE_SPEED, 67);
-            this.entityData.set(NICKNAME, "Lanturn");
+            this.entityData.set(SPECIESNAME, "Lanturn");
             this.entityData.set(CATCHRATE, 150);
         }
 
@@ -3508,7 +3513,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 35);
             this.entityData.set(BASE_SP_DEFENCE, 35);
             this.entityData.set(BASE_SPEED, 60);
-            this.entityData.set(NICKNAME, "Pichu");
+            this.entityData.set(SPECIESNAME, "Pichu");
             this.entityData.set(CATCHRATE, 170);
         }
         else if(species == 173) {
@@ -3520,7 +3525,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 45);
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 15);
-            this.entityData.set(NICKNAME, "Cleffa");
+            this.entityData.set(SPECIESNAME, "Cleffa");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 174) {
@@ -3532,7 +3537,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 40);
             this.entityData.set(BASE_SP_DEFENCE, 20);
             this.entityData.set(BASE_SPEED, 15);
-            this.entityData.set(NICKNAME, "Igglybuff");
+            this.entityData.set(SPECIESNAME, "Igglybuff");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 175) {
@@ -3544,7 +3549,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 40);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 20);
-            this.entityData.set(NICKNAME, "Togepi");
+            this.entityData.set(SPECIESNAME, "Togepi");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 176) {
@@ -3556,7 +3561,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 80);
             this.entityData.set(BASE_SP_DEFENCE, 105);
             this.entityData.set(BASE_SPEED, 40);
-            this.entityData.set(NICKNAME, "Togetic");
+            this.entityData.set(SPECIESNAME, "Togetic");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 177) {
@@ -3568,7 +3573,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 70);
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 70);
-            this.entityData.set(NICKNAME, "Natu");
+            this.entityData.set(SPECIESNAME, "Natu");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 178) {
@@ -3580,7 +3585,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 95);
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 95);
-            this.entityData.set(NICKNAME, "Xatu");
+            this.entityData.set(SPECIESNAME, "Xatu");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 179) {
@@ -3592,7 +3597,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 65);
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 35);
-            this.entityData.set(NICKNAME, "Mareep");
+            this.entityData.set(SPECIESNAME, "Mareep");
             this.entityData.set(CATCHRATE, 235);
         }
         else if(species == 180) {
@@ -3604,7 +3609,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 80);
             this.entityData.set(BASE_SP_DEFENCE, 60);
             this.entityData.set(BASE_SPEED, 45);
-            this.entityData.set(NICKNAME, "Flaaffy");
+            this.entityData.set(SPECIESNAME, "Flaaffy");
             this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 181) {
@@ -3616,7 +3621,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 115);
             this.entityData.set(BASE_SP_DEFENCE, 90);
             this.entityData.set(BASE_SPEED, 55);
-            this.entityData.set(NICKNAME, "Ampharos");
+            this.entityData.set(SPECIESNAME, "Ampharos");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 182) {
@@ -3628,7 +3633,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 90);
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED, 50);
-            this.entityData.set(NICKNAME, "Bellossom");
+            this.entityData.set(SPECIESNAME, "Bellossom");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 183) {
@@ -3640,7 +3645,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 20);
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 40);
-            this.entityData.set(NICKNAME, "Marill");
+            this.entityData.set(SPECIESNAME, "Marill");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 184) {
@@ -3652,7 +3657,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 60);
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 50);
-            this.entityData.set(NICKNAME, "Azumarill");
+            this.entityData.set(SPECIESNAME, "Azumarill");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 185) {
@@ -3664,7 +3669,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 30);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 30);
-            this.entityData.set(NICKNAME, "Sudowoodo");
+            this.entityData.set(SPECIESNAME, "Sudowoodo");
             this.entityData.set(CATCHRATE, 65);
         }
         else if(species == 186) {
@@ -3676,7 +3681,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 90);
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED, 70);
-            this.entityData.set(NICKNAME, "Politoed");
+            this.entityData.set(SPECIESNAME, "Politoed");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 187) {
@@ -3688,7 +3693,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 35);
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 50);
-            this.entityData.set(NICKNAME, "Hoppip");
+            this.entityData.set(SPECIESNAME, "Hoppip");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 188) {
@@ -3700,7 +3705,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 45);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 80);
-            this.entityData.set(NICKNAME, "Skiploom");
+            this.entityData.set(SPECIESNAME, "Skiploom");
             this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 189) {
@@ -3712,7 +3717,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 55);
             this.entityData.set(BASE_SP_DEFENCE, 95);
             this.entityData.set(BASE_SPEED, 110);
-            this.entityData.set(NICKNAME, "Jumpluff");
+            this.entityData.set(SPECIESNAME, "Jumpluff");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 190) {
@@ -3724,7 +3729,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 40);
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 85);
-            this.entityData.set(NICKNAME, "Aipom");
+            this.entityData.set(SPECIESNAME, "Aipom");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 191) {
@@ -3736,7 +3741,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 30);
             this.entityData.set(BASE_SP_DEFENCE, 30);
             this.entityData.set(BASE_SPEED, 30);
-            this.entityData.set(NICKNAME, "Sunkern");
+            this.entityData.set(SPECIESNAME, "Sunkern");
             this.entityData.set(CATCHRATE, 235);
         }
         else if(species == 192) {
@@ -3748,7 +3753,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 105);
             this.entityData.set(BASE_SP_DEFENCE, 85);
             this.entityData.set(BASE_SPEED, 30);
-            this.entityData.set(NICKNAME, "Sunflora");
+            this.entityData.set(SPECIESNAME, "Sunflora");
             this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 193) {
@@ -3760,7 +3765,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 75);
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 95);
-            this.entityData.set(NICKNAME, "Yanma");
+            this.entityData.set(SPECIESNAME, "Yanma");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 194) {
@@ -3772,7 +3777,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 25);
             this.entityData.set(BASE_SP_DEFENCE, 25);
             this.entityData.set(BASE_SPEED, 15);
-            this.entityData.set(NICKNAME, "Wooper");
+            this.entityData.set(SPECIESNAME, "Wooper");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 195) {
@@ -3784,7 +3789,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 65);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 35);
-            this.entityData.set(NICKNAME, "Quagsire");
+            this.entityData.set(SPECIESNAME, "Quagsire");
             this.entityData.set(CATCHRATE, 90);
         }
         else if(species == 196) {
@@ -3796,7 +3801,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 130);
             this.entityData.set(BASE_SP_DEFENCE, 95);
             this.entityData.set(BASE_SPEED, 110);
-            this.entityData.set(NICKNAME, "Espeon");
+            this.entityData.set(SPECIESNAME, "Espeon");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 197) {
@@ -3808,7 +3813,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 60);
             this.entityData.set(BASE_SP_DEFENCE, 130);
             this.entityData.set(BASE_SPEED, 65);
-            this.entityData.set(NICKNAME, "Umbreon");
+            this.entityData.set(SPECIESNAME, "Umbreon");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 198) {
@@ -3820,7 +3825,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 85);
             this.entityData.set(BASE_SP_DEFENCE, 42);
             this.entityData.set(BASE_SPEED, 91);
-            this.entityData.set(NICKNAME, "Murkrow");
+            this.entityData.set(SPECIESNAME, "Murkrow");
             this.entityData.set(CATCHRATE, 30);
         }
         else if(species == 199) {
@@ -3832,7 +3837,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 100);
             this.entityData.set(BASE_SP_DEFENCE, 110);
             this.entityData.set(BASE_SPEED, 30);
-            this.entityData.set(NICKNAME, "Slowing");
+            this.entityData.set(SPECIESNAME, "Slowing");
             this.entityData.set(CATCHRATE, 70);
         }
         else if(species == 200) {
@@ -3844,7 +3849,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 85);
             this.entityData.set(BASE_SP_DEFENCE, 85);
             this.entityData.set(BASE_SPEED, 85);
-            this.entityData.set(NICKNAME, "Misdreavus");
+            this.entityData.set(SPECIESNAME, "Misdreavus");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 201) {
@@ -3856,7 +3861,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 72);
             this.entityData.set(BASE_SP_DEFENCE, 48);
             this.entityData.set(BASE_SPEED, 48);
-            this.entityData.set(NICKNAME, "Unown");
+            this.entityData.set(SPECIESNAME, "Unown");
             this.entityData.set(CATCHRATE, 255);
         }
 
@@ -3869,7 +3874,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 33);
             this.entityData.set(BASE_SP_DEFENCE, 58);
             this.entityData.set(BASE_SPEED, 33);
-            this.entityData.set(NICKNAME, "Wobbuffet");
+            this.entityData.set(SPECIESNAME, "Wobbuffet");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 203) {
@@ -3881,7 +3886,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 90);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 85);
-            this.entityData.set(NICKNAME, "Girafarig");
+            this.entityData.set(SPECIESNAME, "Girafarig");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 204) {
@@ -3893,7 +3898,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 35);
             this.entityData.set(BASE_SP_DEFENCE, 35);
             this.entityData.set(BASE_SPEED, 15);
-            this.entityData.set(NICKNAME, "Pineco");
+            this.entityData.set(SPECIESNAME, "Pineco");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 205) {
@@ -3905,7 +3910,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 60);
             this.entityData.set(BASE_SP_DEFENCE, 60);
             this.entityData.set(BASE_SPEED, 4);
-            this.entityData.set(NICKNAME, "Forretress");
+            this.entityData.set(SPECIESNAME, "Forretress");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 206) {
@@ -3917,7 +3922,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 65);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 45);
-            this.entityData.set(NICKNAME, "Dunsparce");
+            this.entityData.set(SPECIESNAME, "Dunsparce");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 207) {
@@ -3929,7 +3934,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 35);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 85);
-            this.entityData.set(NICKNAME, "Gligar");
+            this.entityData.set(SPECIESNAME, "Gligar");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 208) {
@@ -3941,7 +3946,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 55);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 30);
-            this.entityData.set(NICKNAME, "Steelix");
+            this.entityData.set(SPECIESNAME, "Steelix");
             this.entityData.set(CATCHRATE, 25);
         }
         else if(species == 209) {
@@ -3953,7 +3958,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 40);
             this.entityData.set(BASE_SP_DEFENCE, 40);
             this.entityData.set(BASE_SPEED, 30);
-            this.entityData.set(NICKNAME, "Snubbull");
+            this.entityData.set(SPECIESNAME, "Snubbull");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 210) {
@@ -3965,7 +3970,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 60);
             this.entityData.set(BASE_SP_DEFENCE, 60);
             this.entityData.set(BASE_SPEED, 45);
-            this.entityData.set(NICKNAME, "Granbull");
+            this.entityData.set(SPECIESNAME, "Granbull");
             this.entityData.set(CATCHRATE, 75);
         }
 
@@ -3978,7 +3983,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 55);
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 85);
-            this.entityData.set(NICKNAME, "Qwilfish");
+            this.entityData.set(SPECIESNAME, "Qwilfish");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 212) {
@@ -3990,7 +3995,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 55);
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 65);
-            this.entityData.set(NICKNAME, "Scizor");
+            this.entityData.set(SPECIESNAME, "Scizor");
             this.entityData.set(CATCHRATE, 25);
         }
         else if(species == 213) {
@@ -4002,7 +4007,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 10);
             this.entityData.set(BASE_SP_DEFENCE, 230);
             this.entityData.set(BASE_SPEED, 5);
-            this.entityData.set(NICKNAME, "Shuckle");
+            this.entityData.set(SPECIESNAME, "Shuckle");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 214) {
@@ -4014,7 +4019,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 40);
             this.entityData.set(BASE_SP_DEFENCE, 95);
             this.entityData.set(BASE_SPEED, 85);
-            this.entityData.set(NICKNAME, "Heracross");
+            this.entityData.set(SPECIESNAME, "Heracross");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 215) {
@@ -4026,7 +4031,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 35);
             this.entityData.set(BASE_SP_DEFENCE, 75);
             this.entityData.set(BASE_SPEED, 115);
-            this.entityData.set(NICKNAME, "Sneasel");
+            this.entityData.set(SPECIESNAME, "Sneasel");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 216) {
@@ -4038,7 +4043,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 50);
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 40);
-            this.entityData.set(NICKNAME, "Teddiursa");
+            this.entityData.set(SPECIESNAME, "Teddiursa");
             this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 217) {
@@ -4050,7 +4055,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 75);
             this.entityData.set(BASE_SP_DEFENCE, 75);
             this.entityData.set(BASE_SPEED, 55);
-            this.entityData.set(NICKNAME, "Ursaring");
+            this.entityData.set(SPECIESNAME, "Ursaring");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 218) {
@@ -4062,7 +4067,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 70);
             this.entityData.set(BASE_SP_DEFENCE, 40);
             this.entityData.set(BASE_SPEED, 20);
-            this.entityData.set(NICKNAME, "Slugma");
+            this.entityData.set(SPECIESNAME, "Slugma");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 219) {
@@ -4074,7 +4079,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 90);
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 30);
-            this.entityData.set(NICKNAME, "Magcargo");
+            this.entityData.set(SPECIESNAME, "Magcargo");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 220) {
@@ -4086,7 +4091,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 30);
             this.entityData.set(BASE_SP_DEFENCE, 30);
             this.entityData.set(BASE_SPEED, 50);
-            this.entityData.set(NICKNAME, "Swinub");
+            this.entityData.set(SPECIESNAME, "Swinub");
             this.entityData.set(CATCHRATE, 255);
         }
         else if(species == 221) {
@@ -4098,7 +4103,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 60);
             this.entityData.set(BASE_SP_DEFENCE, 60);
             this.entityData.set(BASE_SPEED, 50);
-            this.entityData.set(NICKNAME, "Piloswine");
+            this.entityData.set(SPECIESNAME, "Piloswine");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 222) {
@@ -4110,7 +4115,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 65);
             this.entityData.set(BASE_SP_DEFENCE, 95);
             this.entityData.set(BASE_SPEED, 35);
-            this.entityData.set(NICKNAME, "Corsola");
+            this.entityData.set(SPECIESNAME, "Corsola");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 223) {
@@ -4122,7 +4127,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 65);
             this.entityData.set(BASE_SP_DEFENCE, 35);
             this.entityData.set(BASE_SPEED, 65);
-            this.entityData.set(NICKNAME, "Remoraid");
+            this.entityData.set(SPECIESNAME, "Remoraid");
             this.entityData.set(CATCHRATE, 190);
         }
         else if(species == 224) {
@@ -4134,7 +4139,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 105);
             this.entityData.set(BASE_SP_DEFENCE, 75);
             this.entityData.set(BASE_SPEED, 45);
-            this.entityData.set(NICKNAME, "Octillery");
+            this.entityData.set(SPECIESNAME, "Octillery");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 225) {
@@ -4146,7 +4151,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 65);
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 75);
-            this.entityData.set(NICKNAME, "Delibird");
+            this.entityData.set(SPECIESNAME, "Delibird");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 226) {
@@ -4158,7 +4163,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 80);
             this.entityData.set(BASE_SP_DEFENCE, 140);
             this.entityData.set(BASE_SPEED, 70);
-            this.entityData.set(NICKNAME, "Mantine");
+            this.entityData.set(SPECIESNAME, "Mantine");
             this.entityData.set(CATCHRATE, 25);
         }
         else if(species == 227) {
@@ -4170,7 +4175,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 40);
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 70);
-            this.entityData.set(NICKNAME, "Skarmory");
+            this.entityData.set(SPECIESNAME, "Skarmory");
             this.entityData.set(CATCHRATE, 25);
         }
         else if(species == 228) {
@@ -4182,7 +4187,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 80);
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 65);
-            this.entityData.set(NICKNAME, "Houndour");
+            this.entityData.set(SPECIESNAME, "Houndour");
             this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 229) {
@@ -4194,7 +4199,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 110);
             this.entityData.set(BASE_SP_DEFENCE, 80);
             this.entityData.set(BASE_SPEED, 95);
-            this.entityData.set(NICKNAME, "Houndoom");
+            this.entityData.set(SPECIESNAME, "Houndoom");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 230) {
@@ -4206,7 +4211,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 95);
             this.entityData.set(BASE_SP_DEFENCE, 95);
             this.entityData.set(BASE_SPEED, 85);
-            this.entityData.set(NICKNAME, "Kingdra");
+            this.entityData.set(SPECIESNAME, "Kingdra");
             this.entityData.set(CATCHRATE, 45);
         }
 
@@ -4219,7 +4224,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 40);
             this.entityData.set(BASE_SP_DEFENCE, 40);
             this.entityData.set(BASE_SPEED, 40);
-            this.entityData.set(NICKNAME, "Phanpy");
+            this.entityData.set(SPECIESNAME, "Phanpy");
             this.entityData.set(CATCHRATE, 120);
         }
         else if(species == 232) {
@@ -4231,7 +4236,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 60);
             this.entityData.set(BASE_SP_DEFENCE, 60);
             this.entityData.set(BASE_SPEED, 50);
-            this.entityData.set(NICKNAME, "Donphan");
+            this.entityData.set(SPECIESNAME, "Donphan");
             this.entityData.set(CATCHRATE, 60);
         }
         else if(species == 233) {
@@ -4243,7 +4248,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 105);
             this.entityData.set(BASE_SP_DEFENCE, 95);
             this.entityData.set(BASE_SPEED, 60);
-            this.entityData.set(NICKNAME, "Porygon 2");
+            this.entityData.set(SPECIESNAME, "Porygon 2");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 234) {
@@ -4255,7 +4260,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 85);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 85);
-            this.entityData.set(NICKNAME, "Stantler");
+            this.entityData.set(SPECIESNAME, "Stantler");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 235) {
@@ -4267,7 +4272,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 20);
             this.entityData.set(BASE_SP_DEFENCE, 45);
             this.entityData.set(BASE_SPEED, 75);
-            this.entityData.set(NICKNAME, "Smeargle");
+            this.entityData.set(SPECIESNAME, "Smeargle");
             this.entityData.set(CATCHRATE, 75);
         }
         else if(species == 236) {
@@ -4279,7 +4284,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 35);
             this.entityData.set(BASE_SP_DEFENCE, 35);
             this.entityData.set(BASE_SPEED, 35);
-            this.entityData.set(NICKNAME, "Tyrogue");
+            this.entityData.set(SPECIESNAME, "Tyrogue");
         }
         else if(species == 237) {
             this.entityData.set(TYPE1, PokemonTypes.FIGHTING.ordinal());
@@ -4290,7 +4295,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 35);
             this.entityData.set(BASE_SP_DEFENCE, 110);
             this.entityData.set(BASE_SPEED, 70);
-            this.entityData.set(NICKNAME, "Hitmontop");
+            this.entityData.set(SPECIESNAME, "Hitmontop");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 238) {
@@ -4302,7 +4307,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 85);
             this.entityData.set(BASE_SP_DEFENCE, 65);
             this.entityData.set(BASE_SPEED, 65);
-            this.entityData.set(NICKNAME, "Smoochum");
+            this.entityData.set(SPECIESNAME, "Smoochum");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 239) {
@@ -4314,7 +4319,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 65);
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 95);
-            this.entityData.set(NICKNAME, "Elekid");
+            this.entityData.set(SPECIESNAME, "Elekid");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 240) {
@@ -4326,7 +4331,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 70);
             this.entityData.set(BASE_SP_DEFENCE, 55);
             this.entityData.set(BASE_SPEED, 83);
-            this.entityData.set(NICKNAME, "Magby");
+            this.entityData.set(SPECIESNAME, "Magby");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 241) {
@@ -4338,7 +4343,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 40);
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 100);
-            this.entityData.set(NICKNAME, "Miltank");
+            this.entityData.set(SPECIESNAME, "Miltank");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 242) {
@@ -4350,7 +4355,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 75);
             this.entityData.set(BASE_SP_DEFENCE, 135);
             this.entityData.set(BASE_SPEED, 55);
-            this.entityData.set(NICKNAME, "Blissey");
+            this.entityData.set(SPECIESNAME, "Blissey");
             this.entityData.set(CATCHRATE, 30);
         }
         else if(species == 243) {
@@ -4362,7 +4367,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 115);
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED, 115);
-            this.entityData.set(NICKNAME, "Raikou");
+            this.entityData.set(SPECIESNAME, "Raikou");
             this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 244) {
@@ -4374,7 +4379,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 90);
             this.entityData.set(BASE_SP_DEFENCE, 75);
             this.entityData.set(BASE_SPEED, 100);
-            this.entityData.set(NICKNAME, "Entei");
+            this.entityData.set(SPECIESNAME, "Entei");
             this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 245) {
@@ -4386,7 +4391,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 90);
             this.entityData.set(BASE_SP_DEFENCE, 115);
             this.entityData.set(BASE_SPEED, 85);
-            this.entityData.set(NICKNAME, "Suicune");
+            this.entityData.set(SPECIESNAME, "Suicune");
             this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 246) {
@@ -4398,7 +4403,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 45);
             this.entityData.set(BASE_SP_DEFENCE, 50);
             this.entityData.set(BASE_SPEED, 41);
-            this.entityData.set(NICKNAME, "Larvitar");
+            this.entityData.set(SPECIESNAME, "Larvitar");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 247) {
@@ -4410,7 +4415,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 65);
             this.entityData.set(BASE_SP_DEFENCE, 70);
             this.entityData.set(BASE_SPEED, 51);
-            this.entityData.set(NICKNAME, "Pupitar");
+            this.entityData.set(SPECIESNAME, "Pupitar");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 248) {
@@ -4422,7 +4427,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 95);
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED, 61);
-            this.entityData.set(NICKNAME, "Tyranitar");
+            this.entityData.set(SPECIESNAME, "Tyranitar");
             this.entityData.set(CATCHRATE, 45);
         }
         else if(species == 249) {
@@ -4434,7 +4439,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 90);
             this.entityData.set(BASE_SP_DEFENCE, 154);
             this.entityData.set(BASE_SPEED, 110);
-            this.entityData.set(NICKNAME, "Lugia");
+            this.entityData.set(SPECIESNAME, "Lugia");
             this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 250) {
@@ -4446,7 +4451,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 110);
             this.entityData.set(BASE_SP_DEFENCE, 154);
             this.entityData.set(BASE_SPEED, 90);
-            this.entityData.set(NICKNAME, "Ho-Ho");
+            this.entityData.set(SPECIESNAME, "Ho-Ho");
             this.entityData.set(CATCHRATE, 3);
         }
         else if(species == 251) {
@@ -4458,7 +4463,7 @@ public class PokemonEntity extends TamableAnimal {
             this.entityData.set(BASE_SP_ATTACK, 100);
             this.entityData.set(BASE_SP_DEFENCE, 100);
             this.entityData.set(BASE_SPEED, 100);
-            this.entityData.set(NICKNAME, "Celebi");
+            this.entityData.set(SPECIESNAME, "Celebi");
             this.entityData.set(CATCHRATE, 45);
         }
 
@@ -4469,7 +4474,7 @@ public class PokemonEntity extends TamableAnimal {
         this.entityData.define(ID_SIZE, 3);
         this.entityData.define(POKEMON_LEVEL, 1);
         this.entityData.define(SPECIES, 152);
-        this.entityData.define(NICKNAME, "MissingNo");
+        this.entityData.define(SPECIESNAME, "MissingNo");
         this.entityData.define(SHINY, 0);
         this.entityData.define(HAPPINESS, 100);
         this.entityData.define(TYPE1, 0);
@@ -4538,6 +4543,10 @@ public class PokemonEntity extends TamableAnimal {
         this.entityData.define(MOVE_SLOT_4_MAX_PP, 0);
 
         this.entityData.define(CATCHRATE, 45);
+        this.entityData.define(EVOLVING, 0);
+        this.entityData.define(EVOLUTIONTIMER, (float)0);
+        this.entityData.define(HASNICKNAME, 0);
+        this.entityData.define(NICKNAME, "None");
 
     }
 
@@ -4547,6 +4556,13 @@ public class PokemonEntity extends TamableAnimal {
         this.entityData.set(SHINY, i);
 
     }
+
+    protected void setHasNickname(int pSize) {
+        int i = Mth.clamp(pSize, 0, 1);
+        this.entityData.set(HASNICKNAME, i);
+
+    }
+
 
     protected void setHappiness(int pSize) {
         int i = Mth.clamp(pSize, 0, 250);
@@ -4558,7 +4574,11 @@ public class PokemonEntity extends TamableAnimal {
         return this.entityData.get(HAPPINESS);
     }
 
-    public String getPokeName() {
+    public String getPokeSpeciesName() {
+        return this.entityData.get(SPECIESNAME);
+    }
+
+    public String getPokeNickname() {
         return this.entityData.get(NICKNAME);
     }
 
@@ -4584,11 +4604,20 @@ public class PokemonEntity extends TamableAnimal {
 
     public void aiStep() {
         int shiny = this.getShinyness();
+        int evolve = this.getEvolving();
         if (this.level.isClientSide && (shiny == 1)) {
             for (int i = 0; i < 1; ++i) {
                 this.level.addParticle(ParticleTypes.ELECTRIC_SPARK, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.random.nextDouble() - 0.5D) * 2.0D, -this.random.nextDouble(), (this.random.nextDouble() - 0.5D) * 2.0D);
             }
         }
+
+        if (this.level.isClientSide && (evolve == 1)) {
+            for (int i = 0; i < 1; ++i) {
+                this.level.addParticle(ParticleTypes.INSTANT_EFFECT, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.random.nextDouble() - 0.5D) * 2.0D, -this.random.nextDouble(), (this.random.nextDouble() - 0.5D) * 2.0D);
+                this.level.addParticle(ParticleTypes.INSTANT_EFFECT, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(1D), (this.random.nextDouble() - 0.5D) * 4.0D, -this.random.nextDouble(), (this.random.nextDouble() - 0.5D) * 4.0D);
+            }
+        }
+
         if (this.inLove > 0) {
             --this.inLove;
             if (this.inLove % 10 == 0) {
@@ -4598,7 +4627,23 @@ public class PokemonEntity extends TamableAnimal {
                 this.level.addParticle(ParticleTypes.HEART, this.getRandomX(1.0D), this.getRandomY() + 0.5D, this.getRandomZ(1.0D), d0, d1, d2);
             }
         }
+
+
         super.aiStep();
+    }
+
+    protected void setPokeName(){
+        if(this.getHasNickname() == 1){
+            String name = this.getPokeNickname();
+            this.entityData.set(NICKNAME, name);
+        }else{
+            String name = this.getPokeSpeciesName();
+            this.entityData.set(NICKNAME, name);
+        }
+    }
+
+    public String getPokeName() {
+        return this.entityData.get(NICKNAME);
     }
 
 
@@ -4836,12 +4881,15 @@ public class PokemonEntity extends TamableAnimal {
         return this.entityData.get(IVS_HP);
     }
 
+    public int getHasNickname() {
+        return this.entityData.get(HASNICKNAME);
+    }
+
     public void addAdditionalSaveData(@NotNull CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putInt("Size", this.getSize());
         pCompound.putInt("Level", this.getPokeLevel());
         pCompound.putInt("Species", this.getPokeSpecies());
-        pCompound.putString("Nickname", this.getPokeName());
         pCompound.putInt("Type1", this.getPokeType1());
         pCompound.putInt("Type2", this.getPokeType2());
         pCompound.putInt("Shiny", this.getShinyness());
@@ -4864,23 +4912,20 @@ public class PokemonEntity extends TamableAnimal {
         pCompound.putInt("SP_Attack", this.getTrueSPAttack());
         pCompound.putInt("SP_Defence", this.getTrueSPDefence());
         pCompound.putInt("Speed", this.getTrueSpeed());
-
         pCompound.putInt("Move1", this.getMoveSlot1());
         pCompound.putInt("Move2", this.getMoveSlot2());
         pCompound.putInt("Move3", this.getMoveSlot3());
         pCompound.putInt("Move4", this.getMoveSlot4());
         pCompound.putInt("CatchRate", this.getCatchRate());
-
-
         pCompound.putInt("InLove", this.inLove);
-        if (this.loveCause != null) {
-            pCompound.putUUID("LoveCause", this.loveCause);
-        }
         pCompound.putInt("Happiness", this.getHappiness());
-
+        pCompound.putInt("HasNickname", this.getHasNickname());
+        pCompound.putString("Nickname", this.getPokeNickname());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
+        if (pCompound.contains("Fuse", 99)) {
+        }
         this.setSize(pCompound.getInt("Size"));
         this.setPokeLevel(pCompound.getInt("Level"));
         this.setPokeSpecies(pCompound.getInt("Species"));
@@ -4900,9 +4945,11 @@ public class PokemonEntity extends TamableAnimal {
         this.setPokeStats();
         this.setShinyness(pCompound.getInt("Shiny"));
         this.inLove = pCompound.getInt("InLove");
-        this.loveCause = pCompound.hasUUID("LoveCause") ? pCompound.getUUID("LoveCause") : null;
         this.setHappiness(pCompound.getInt("Happiness"));
+        this.setHasNickname(pCompound.getInt("HasNickname"));
+        this.setPokeName();
         super.readAdditionalSaveData(pCompound);
+
     }
 
     public void onSyncedDataUpdated(@NotNull EntityDataAccessor<?> pKey) {
@@ -5091,35 +5138,26 @@ public class PokemonEntity extends TamableAnimal {
         super.setTame(p_30443_);
     }
 
-    public void setInLove(@javax.annotation.Nullable Player pPlayer) {
+    public void setInLove() {
         this.inLove = 200;
-        if (pPlayer != null) {
-            this.loveCause = pPlayer.getUUID();
-        }
         this.level.broadcastEntityEvent(this, (byte) 18);
     }
+
 
     public void setInLoveTime(int pTicks) {
         this.inLove = pTicks;
     }
 
+
     public int getInLoveTime() {
         return this.inLove;
     }
 
-    @javax.annotation.Nullable
-    public ServerPlayer getLoveCause() {
-        if (this.loveCause == null) {
-            return null;
-        } else {
-            Player player = this.level.getPlayerByUUID(this.loveCause);
-            return player instanceof ServerPlayer ? (ServerPlayer) player : null;
-        }
-    }
 
     public boolean isInLove() {
         return this.inLove > 0;
     }
+
 
     public boolean hurt(@NotNull DamageSource pSource, float pAmount) {
         if (this.isInvulnerableTo(pSource)) {
@@ -5150,7 +5188,7 @@ public class PokemonEntity extends TamableAnimal {
         if (!(this.level.isClientSide)) {
             if (pPlayer.isHolding((Registration.RARECANDY.get())) && this.isOwnedBy(pPlayer) && !(this.getPokeLevel() > 99)) {
                 itemstack.shrink(1);
-                this.setInLove(pPlayer);
+                this.setInLove();
                 this.setPokeLevel((this.entityData.get(POKEMON_LEVEL)) + 1);
                 this.setTrueHp();
                 this.setHealth(Math.round((this.getTrueHP()) / this.getHealth()) * this.getHealth());
@@ -5166,7 +5204,7 @@ public class PokemonEntity extends TamableAnimal {
             if (pPlayer.isHolding((Registration.ORANBERRY.get())) && this.isOwnedBy(pPlayer)) {
                 itemstack.shrink(1);
                 this.setHealth(this.getHealth() + 10);
-                this.setInLove(pPlayer);
+                this.setInLove();
                 this.setTrueHp();
                 this.setTrueAttack();
                 this.setTrueDefence();
@@ -5180,7 +5218,7 @@ public class PokemonEntity extends TamableAnimal {
             if (pPlayer.isHolding((Registration.POTION.get())) && this.isOwnedBy(pPlayer)) {
                 itemstack.shrink(1);
                 this.setHealth(this.getHealth() + 60);
-                this.setInLove(pPlayer);
+                this.setInLove();
                 this.setTrueHp();
                 this.setTrueAttack();
                 this.setTrueDefence();
@@ -5194,7 +5232,7 @@ public class PokemonEntity extends TamableAnimal {
             if (pPlayer.isHolding((Registration.SUPERPOTION.get())) && this.isOwnedBy(pPlayer)) {
                 itemstack.shrink(1);
                 this.setHealth(this.getHealth() + 100);
-                this.setInLove(pPlayer);
+                this.setInLove();
                 this.setTrueHp();
                 this.setTrueAttack();
                 this.setTrueDefence();
@@ -5208,7 +5246,7 @@ public class PokemonEntity extends TamableAnimal {
             if (pPlayer.isHolding((Registration.HYPERPOTION.get())) && this.isOwnedBy(pPlayer)) {
                 itemstack.shrink(1);
                 this.setHealth(this.getHealth() + 150);
-                this.setInLove(pPlayer);
+                this.setInLove();
                 this.setTrueHp();
                 this.setTrueAttack();
                 this.setTrueDefence();
@@ -5222,7 +5260,7 @@ public class PokemonEntity extends TamableAnimal {
             if (pPlayer.isHolding((Registration.MAXPOTION.get())) && this.isOwnedBy(pPlayer)) {
                 itemstack.shrink(1);
                 this.setHealth(this.getMaxHealth());
-                this.setInLove(pPlayer);
+                this.setInLove();
                 this.setTrueHp();
                 this.setTrueAttack();
                 this.setTrueDefence();
@@ -5234,28 +5272,286 @@ public class PokemonEntity extends TamableAnimal {
                 return InteractionResult.SUCCESS;
             }
 
+
+
+
             if ((itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
-                if(this.entityData.get(HAPPINESS) > 250){
-                    pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " couldn't possibly love you more!"), true);
-                }else if(this.entityData.get(HAPPINESS) == 250){
-                    pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " couldn't possibly love you more!"),true);
-                }else if ((this.entityData.get(HAPPINESS) > 200) && (this.entityData.get(HAPPINESS) < 249)){
-                    pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " is very friendly with you!"), true);
-                }else if ((this.entityData.get(HAPPINESS) > 150) && (this.entityData.get(HAPPINESS) < 199)){
-                    pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " is friendly with you, but wants more attention!"), true);
+                int species = this.getPokeSpecies();
+                int level = this.getPokeLevel();
+                int happiness = this.getHappiness();
+
+                if(species == 1 && level >= 16){
+                    setEvolving(1);
                 }
-                else if ((this.entityData.get(HAPPINESS) > 100) && (this.entityData.get(HAPPINESS) < 149)){
-                    pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " is getting used to you, but it believes in you!"), true);
+                if(species == 2 && level >= 13){
+                    setEvolving(1);
                 }
-                else if ((this.entityData.get(HAPPINESS) > 50) && (this.entityData.get(HAPPINESS) < 99)){
-                    pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " does not have strong feelings to you"), true);
+                if(species == 4 && level >= 16){
+                    setEvolving(1);
                 }
-                else if ((this.entityData.get(HAPPINESS) > 1) && (this.entityData.get(HAPPINESS) < 49)){
-                    pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " doesn't like you nor trust you."), true);
-                }else{
-                    pPlayer.displayClientMessage(new TranslatableComponent(getPokeName() + " absolutely hates you."), true);
+                if(species == 5 && level >= 36){
+                    setEvolving(1);
+                }
+                if(species == 7 && level >= 16){
+                    setEvolving(1);
+                }
+                if(species == 8 && level >= 36){
+                    setEvolving(1);
+                }
+                if(species == 10 && level >= 7){
+                    setEvolving(1);
+                }
+                if(species == 11 && level >= 10){
+                    setEvolving(1);
+                }
+                if(species == 13 && level >= 7){
+                    setEvolving(1);
+                }
+                if(species == 14 && level >= 10){
+                    setEvolving(1);
+                }
+                if(species == 16 && level >= 18){
+                    setEvolving(1);
+                }
+                if(species == 17 && level >= 36){
+                    setEvolving(1);
+                }
+                if(species == 19 && level >= 20){
+                    setEvolving(1);
+                }
+                if(species == 21 && level >= 20){
+                    setEvolving(1);
+                }
+                if(species == 23 && level >= 22){
+                    setEvolving(1);
+                }
+                if(species == 29 && level >= 16){
+                    setEvolving(1);
+                }
+                if(species == 32 && level >= 16){
+                    setEvolving(1);
+                }
+                if(species == 41 && level >= 22){
+                    setEvolving(1);
+                }
+                if(species == 43 && level >= 21){
+                    setEvolving(1);
+                }
+//SPLIT EVOLUTION LINE
+                if(species == 46 && level >= 24){
+                    setEvolving(1);
+                }
+                if(species == 48 && level >= 31){
+                    setEvolving(1);
+                }
+                if(species == 50 && level >= 28){
+                    setEvolving(1);
+                }
+                //Split Line
+                if(species == 54 && level >= 33){
+                    setEvolving(1);
+                }
+                if(species == 56 && level >= 28){
+                    setEvolving(1);
+                }
+                if(species == 60 && level >= 25){
+                    setEvolving(1);
+                }
+                //split line
+                if(species == 63 && level >= 16){
+                    setEvolving(1);
+                }
+                if(species == 66 && level >= 28){
+                    setEvolving(1);
+                }
+                if(species == 69 && level >= 21){
+                    setEvolving(1);
                 }
 
+                if(species == 72 && level >= 30){
+                    setEvolving(1);
+                }
+                if(species == 74 && level >= 25){
+                    setEvolving(1);
+                }
+                if(species == 77 && level >= 40){
+                    setEvolving(1);
+                }
+                //split line
+                if(species == 81 && level >= 30){
+                    setEvolving(1);
+                }
+                if(species == 84 && level >= 31){
+                    setEvolving(1);
+                }
+                if(species == 86 && level >= 34){
+                    setEvolving(1);
+                }
+                if(species == 88 && level >= 38){
+                    setEvolving(1);
+                }
+                if(species == 92 && level >= 25){
+                    setEvolving(1);
+                }
+                if(species == 96 && level >= 26){
+                    setEvolving(1);
+                }
+                if(species == 98 && level >= 28){
+                    setEvolving(1);
+                }
+                if(species == 100 && level >= 30){
+                    setEvolving(1);
+                }
+                //split line
+                if(species == 109 && level >= 35){
+                    setEvolving(1);
+                }
+                if(species == 111 && level >= 42){
+                    setEvolving(1);
+                }
+                if(species == 116 && level >= 32){
+                    setEvolving(1);
+                }
+                if(species == 118 && level >= 33){
+                    setEvolving(1);
+                }
+                //split line
+                if(species == 129 && level >= 20){
+                    setEvolving(1);
+                }
+                //split line
+                if(species == 138 && level >= 40){
+                    setEvolving(1);
+                }
+                if(species == 140 && level >= 40){
+                    setEvolving(1);
+                }
+
+                if(species == 147 && level >= 30){
+                    setEvolving(1);
+                }
+                if(species == 148 && level >= 55){
+                    setEvolving(1);
+                }
+                if(species == 152 && level >= 16){
+                    setEvolving(1);
+                }
+                if(species == 153 && level >= 32){
+                    setEvolving(1);
+                }
+                if(species == 155 && level >= 14){
+                    setEvolving(1);
+                }
+                if(species == 156 && level >= 36){
+                    setEvolving(1);
+                }
+                if(species == 158 && level >= 18){
+                    setEvolving(1);
+                }
+                if(species == 159 && level >= 30){
+                    setEvolving(1);
+                }
+                if(species == 161 && level >= 15){
+                    setEvolving(1);
+                }
+                if(species == 163 && level >= 20){
+                    setEvolving(1);
+                }
+                if(species == 165 && level >= 18){
+                    setEvolving(1);
+                }
+                if(species == 167 && level >= 22){
+                    setEvolving(1);
+                }
+                if(species == 170 && level >= 27){
+                    setEvolving(1);
+                }
+                if(species == 177 && level >= 25){
+                    setEvolving(1);
+                }
+                if(species == 179 && level >= 15){
+                    setEvolving(1);
+                }
+                if(species == 180 && level >= 30){
+                    setEvolving(1);
+                }
+                if(species == 183 && level >= 18){
+                    setEvolving(1);
+                }
+                if(species == 187 && level >= 18){
+                    setEvolving(1);
+                }
+                if(species == 188 && level >= 27){
+                    setEvolving(1);
+                }
+                if(species == 360 && level >= 15){
+                    setEvolving(1);
+                }
+                if(species == 204 && level >= 31){
+                    setEvolving(1);
+                }
+                if(species == 209 && level >= 23){
+                    setEvolving(1);
+                }
+//Split Line
+                if(species == 216 && level >= 30){
+                    setEvolving(1);
+                }
+
+                if(species == 218 && level >= 38){
+                    setEvolving(1);
+                }
+                if(species == 220 && level >= 33){
+                    setEvolving(1);
+                }
+                if(species == 223 && level >= 25){
+                    setEvolving(1);
+                }
+
+                if(species == 228 && level >= 24){
+                    setEvolving(1);
+                }
+                if(species == 231 && level >= 25){
+                    setEvolving(1);
+                }
+                if(species == 246 && level >= 30){
+                    setEvolving(1);
+                }
+                if(species == 247 && level >= 55){
+                    setEvolving(1);
+                }
+
+                if(species == 42 && happiness >= 220){
+                    setEvolving(1);
+                }
+
+                if(species == 113 && happiness >= 220){
+                    setEvolving(1);
+                }
+                if(species == 172 && happiness >= 220){
+                    setEvolving(1);
+                }
+                if(species == 173 && happiness >= 220){
+                    setEvolving(1);
+                }
+                if(species == 174 && happiness >= 220){
+                    setEvolving(1);
+                }
+                if(species == 175 && happiness >= 220){
+                    setEvolving(1);
+                }
+                if(species == 133 && happiness >= 220){
+                    setEvolving(1);
+                }
+                if(species == 133 && happiness >= 220){
+                    setEvolving(1);
+                }
+                if(species == 446 && happiness >= 220){
+                    setEvolving(1);
+                }
+                if(species == 175 && happiness >= 220){
+                    setEvolving(1);
+                }
                 return InteractionResult.SUCCESS;
             }
 
@@ -5266,6 +5562,461 @@ public class PokemonEntity extends TamableAnimal {
         }
         return super.mobInteract(pPlayer, pHand);
     }
+
+
+    protected void setEvolving(int pSize) {
+        int i = Mth.clamp(pSize, 0, 1);
+        this.entityData.set(EVOLVING, i);
+
+    }
+    public int getEvolving() {
+        return this.entityData.get(EVOLVING);
+    }
+
+
+    public void setTimer(float timer) {
+        float time = Mth.clamp(timer, 0, 50);
+        this.entityData.set(EVOLUTIONTIMER, timer);
+    }
+
+    public float getTimer() {
+        return this.entityData.get(EVOLUTIONTIMER);
+    }
+
+    public void tick() {
+        if (this.isAlive() ) {
+            int species = this.getPokeSpecies();
+            if (this.getEvolving() == 1){
+                float i = this.getTimer() + 1;
+                if(this.getTimer() == 1){
+                    this.playSound(SoundEvents.CREEPER_PRIMED, 1.0F, 0.5F);
+                }
+                if(!(this.getTimer() == 50)){
+                    setTimer((float) (this.getTimer()+(0.5)));
+                }
+                if(this.getTimer() > 49.5){
+                    if(species == 1) {
+                        this.setPokeSpecies(2);
+                    }
+                    if(species == 2) {
+                        this.setPokeSpecies(3);
+                    }
+                    if(species == 4) {
+                        this.setPokeSpecies(5);
+                    }
+                    if(species == 5) {
+                        this.setPokeSpecies(6);
+                    }
+                    if(species == 7) {
+                        this.setPokeSpecies(8);
+                    }
+                    if(species == 8) {
+                        this.setPokeSpecies(9);
+                    }
+                    if(species == 10) {
+                        this.setPokeSpecies(11);
+                    }
+                    if(species == 11) {
+                        this.setPokeSpecies(12);
+                    }
+                    if(species == 13) {
+                        this.setPokeSpecies(14);
+                    }
+                    if(species == 14) {
+                        this.setPokeSpecies(15);
+                    }
+                    if(species == 16) {
+                        this.setPokeSpecies(17);
+                    }
+                    if(species == 17) {
+                        this.setPokeSpecies(18);
+                    }
+                    if(species == 19) {
+                        this.setPokeSpecies(20);
+                    }
+                    if(species == 21) {
+                        this.setPokeSpecies(22);
+                    }
+                    if(species == 23) {
+                        this.setPokeSpecies(24);
+                    }
+                    if(species == 172) {
+                        this.setPokeSpecies(25);
+                    }
+                    if(species == 25) {
+                        this.setPokeSpecies(26);
+                    }
+                    if(species == 27) {
+                        this.setPokeSpecies(28);
+                    }
+                    if(species == 29) {
+                        this.setPokeSpecies(30);
+                    }
+                    if(species == 30) {
+                        this.setPokeSpecies(31);
+                    }
+                    if(species == 32) {
+                        this.setPokeSpecies(33);
+                    }
+                    if(species == 33) {
+                        this.setPokeSpecies(34);
+                    }
+                    if(species == 173) {
+                        this.setPokeSpecies(35);
+                    }
+                    if(species == 35) {
+                        this.setPokeSpecies(36);
+                    }
+                    if(species == 37) {
+                        this.setPokeSpecies(38);
+                    }
+                    if(species == 174) {
+                        this.setPokeSpecies(39);
+                    }
+                    if(species == 39) {
+                        this.setPokeSpecies(40);
+                    }
+                    if(species == 41) {
+                        this.setPokeSpecies(42);
+                    }
+                    if(species == 41) {
+                        this.setPokeSpecies(169);
+                    }
+                    if(species == 43) {
+                        this.setPokeSpecies(44);
+                    }
+//SPLIT EVOLUTION LINE
+                    if(species == 46) {
+                        this.setPokeSpecies(47);
+                    }
+                    if(species == 48) {
+                        this.setPokeSpecies(49);
+                    }
+                    if(species == 50) {
+                        this.setPokeSpecies(51);
+                    }
+                    //Split Line
+                    if(species == 54) {
+                        this.setPokeSpecies(55);
+                    }
+                    if(species == 56) {
+                        this.setPokeSpecies(57);
+                    }
+                    if(species == 58) {
+                        this.setPokeSpecies(59);
+                    }
+                    if(species == 60) {
+                        this.setPokeSpecies(61);
+                    }
+                    //split line
+                    if(species == 63) {
+                        this.setPokeSpecies(64);
+                    }
+                    if(species == 64) {
+                        this.setPokeSpecies(65);
+                    }
+                    if(species == 66) {
+                        this.setPokeSpecies(67);
+                    }
+                    if(species == 67) {
+                        this.setPokeSpecies(68);
+                    }
+                    if(species == 69) {
+                        this.setPokeSpecies(70);
+                    }
+                    if(species == 70) {
+                        this.setPokeSpecies(71);
+                    }
+                    if(species == 72) {
+                        this.setPokeSpecies(73);
+                    }
+                    if(species == 74) {
+                        this.setPokeSpecies(75);
+                    }
+                    if(species == 75) {
+                        this.setPokeSpecies(76);
+                    }
+                    if(species == 77) {
+                        this.setPokeSpecies(78);
+                    }
+                    //split line
+                    if(species == 81) {
+                        this.setPokeSpecies(82);
+                    }
+                    if(species == 82) {
+                        this.setPokeSpecies(462);
+                    }
+                    if(species == 84) {
+                        this.setPokeSpecies(85);
+                    }
+                    if(species == 86) {
+                        this.setPokeSpecies(87);
+                    }
+                    if(species == 88) {
+                        this.setPokeSpecies(89);
+                    }
+                    if(species == 90) {
+                        this.setPokeSpecies(91);
+                    }
+                    if(species == 92) {
+                        this.setPokeSpecies(93);
+                    }
+                    if(species == 93) {
+                        this.setPokeSpecies(94);
+                    }
+                    if(species == 95) {
+                        this.setPokeSpecies(208);
+                    }
+                    if(species == 96) {
+                        this.setPokeSpecies(97);
+                    }
+                    if(species == 98) {
+                        this.setPokeSpecies(99);
+                    }
+                    if(species == 100) {
+                        this.setPokeSpecies(101);
+                    }
+                    if(species == 102) {
+                        this.setPokeSpecies(103);
+                    }
+                    if(species == 104) {
+                        this.setPokeSpecies(105);
+                    }
+                    //split line
+                    if(species == 108) {
+                        this.setPokeSpecies(463);
+                    }
+                    if(species == 109) {
+                        this.setPokeSpecies(110);
+                    }
+                    if(species == 111) {
+                        this.setPokeSpecies(112);
+                    }
+                    if(species == 112) {
+                        this.setPokeSpecies(464);
+                    }
+                    if(species == 440) {
+                        this.setPokeSpecies(113);
+                    }
+                    if(species == 113) {
+                        this.setPokeSpecies(242);
+                    }
+                    if(species == 114) {
+                        this.setPokeSpecies(465);
+                    }
+                    if(species == 116) {
+                        this.setPokeSpecies(117);
+                    }
+                    if(species == 117) {
+                        this.setPokeSpecies(230);
+                    }
+                    if(species == 118) {
+                        this.setPokeSpecies(119);
+                    }
+                    if(species == 120) {
+                        this.setPokeSpecies(121);
+                    }
+                    if(species == 439) {
+                        this.setPokeSpecies(122);
+                    }
+                    if(species == 122) {
+                        this.setPokeSpecies(866);
+                    }
+                    //split line
+                    if(species == 238) {
+                        this.setPokeSpecies(124);
+                    }
+                    if(species == 239) {
+                        this.setPokeSpecies(125);
+                    }
+                    if(species == 125) {
+                        this.setPokeSpecies(466);
+                    }
+                    if(species == 240) {
+                        this.setPokeSpecies(126);
+                    }
+                    if(species == 126) {
+                        this.setPokeSpecies(467);
+                    }
+                    if(species == 129) {
+                        this.setPokeSpecies(130);
+                    }
+                    //split line
+                    if(species == 137) {
+                        this.setPokeSpecies(233);
+                    }
+                    if(species == 233) {
+                        this.setPokeSpecies(474 );
+                    }
+                    if(species == 138) {
+                        this.setPokeSpecies(139 );
+                    }
+                    if(species == 140) {
+                        this.setPokeSpecies(141 );
+                    }
+                    if(species == 446) {
+                        this.setPokeSpecies(143 );
+                    }
+                    if(species == 147) {
+                        this.setPokeSpecies(148 );
+                    }
+                    if(species == 148) {
+                        this.setPokeSpecies(149 );
+                    }
+                    if(species == 152) {
+                        this.setPokeSpecies(153 );
+                    }
+                    if(species == 153) {
+                        this.setPokeSpecies(154 );
+                    }
+                    if(species == 155) {
+                        this.setPokeSpecies(156 );
+                    }
+                    if(species == 156) {
+                        this.setPokeSpecies(157 );
+                    }
+                    if(species == 158) {
+                        this.setPokeSpecies(159 );
+                    }
+                    if(species == 159) {
+                        this.setPokeSpecies(160 );
+                    }
+                    if(species == 161) {
+                        this.setPokeSpecies(162 );
+                    }
+                    if(species == 163) {
+                        this.setPokeSpecies(164 );
+                    }
+                    if(species == 165) {
+                        this.setPokeSpecies(166 );
+                    }
+                    if(species == 167) {
+                        this.setPokeSpecies(168 );
+                    }
+                    if(species == 170) {
+                        this.setPokeSpecies(171 );
+                    }
+                    if(species == 175) {
+                        this.setPokeSpecies(176 );
+                    }
+                    if(species == 176) {
+                        this.setPokeSpecies(468 );
+                    }
+                    if(species == 177) {
+                        this.setPokeSpecies(178 );
+                    }
+                    if(species == 179) {
+                        this.setPokeSpecies(180 );
+                    }
+                    if(species == 180) {
+                        this.setPokeSpecies(181 );
+                    }
+                    if(species == 298) {
+                        this.setPokeSpecies(183 );
+                    }
+                    if(species == 183) {
+                        this.setPokeSpecies(184 );
+                    }
+                    if(species == 438) {
+                        this.setPokeSpecies(185 );
+                    }
+                    if(species == 187) {
+                        this.setPokeSpecies(188 );
+                    }
+                    if(species == 194) {
+                        this.setPokeSpecies(195 );
+                    }
+                    if(species == 188) {
+                        this.setPokeSpecies(189 );
+                    }
+                    if(species == 190) {
+                        this.setPokeSpecies(424 );
+                    }
+                    if(species == 191) {
+                        this.setPokeSpecies(192 );
+                    }
+                    if(species == 193) {
+                        this.setPokeSpecies(469 );
+                    }
+                    if(species == 198) {
+                        this.setPokeSpecies(430 );
+                    }
+                    if(species == 200) {
+                        this.setPokeSpecies(429 );
+                    }
+                    if(species == 360) {
+                        this.setPokeSpecies(202 );
+                    }
+                    if(species == 204) {
+                        this.setPokeSpecies(205 );
+                    }
+                    if(species == 207) {
+                        this.setPokeSpecies(472 );
+                    }
+                    if(species == 209) {
+                        this.setPokeSpecies(210 );
+                    }
+//Split Line
+                    if(species == 216) {
+                        this.setPokeSpecies(217 );
+                    }
+                    if(species == 217) {
+                        this.setPokeSpecies(901 );
+                    }
+                    if(species == 218) {
+                        this.setPokeSpecies(219 );
+                    }
+                    if(species == 220) {
+                        this.setPokeSpecies(221 );
+                    }
+                    if(species == 221) {
+                        this.setPokeSpecies(473 );
+                    }
+                    if(species == 223) {
+                        this.setPokeSpecies(224 );
+                    }
+                    if(species == 458) {
+                        this.setPokeSpecies(226 );
+                    }
+                    if(species == 228) {
+                        this.setPokeSpecies(229 );
+                    }
+                    if(species == 231) {
+                        this.setPokeSpecies(232 );
+                    }
+                    if(species == 246) {
+                        this.setPokeSpecies(247 );
+                    }
+                    if(species == 247) {
+                        this.setPokeSpecies(248 );
+                    }
+
+                    if(species == 133 & isday) {
+                        this.setPokeSpecies(196);
+                    }
+                    if(species == 133 & !isday) {
+                        this.setPokeSpecies(197);
+                    }
+
+                }
+                if(this.getTimer() == 50) {
+                    this.setPokeStats();
+                    this.setPokeName();
+                    this.setHealth(this.getMaxHealth());
+                    this.setTrueHp();
+                    this.setTrueAttack();
+                    this.setTrueDefence();
+                    this.setTrueSpAttack();
+                    this.setTrueSpDefence();
+                    this.setTrueSpeed();
+                    setTimer(0);
+                    setEvolving(0);
+                }
+            }
+        }
+        super.tick();
+    }
+
 }
 
 

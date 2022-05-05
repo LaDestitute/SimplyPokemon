@@ -1,9 +1,6 @@
 package com.aquatictyphoon.pokemonmod.setup.client.render;
 
-import com.aquatictyphoon.pokemonmod.setup.client.entitymodels.ModelChikorita;
-import com.aquatictyphoon.pokemonmod.setup.client.entitymodels.ModelCyndaquil;
-import com.aquatictyphoon.pokemonmod.setup.client.entitymodels.ModelEgg;
-import com.aquatictyphoon.pokemonmod.setup.client.entitymodels.ModelTotodile;
+import com.aquatictyphoon.pokemonmod.setup.client.entitymodels.*;
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Matrix4f;
@@ -17,6 +14,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 
 import javax.annotation.Nullable;
 
@@ -32,7 +30,9 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
     public static final ModelLayerLocation EGG_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "egg"), "main");
 
     public static final ModelLayerLocation CHIKORITA_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "chikorita"), "main");
+    public static final ModelLayerLocation BAYLEEF_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "bayleef"), "main");
     public static final ModelLayerLocation CYNDAQUIL_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "cyndaquil"), "main");
+    public static final ModelLayerLocation QUILAVA_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "quilava"), "main");
     public static final ModelLayerLocation TOTODILE_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "totodile"), "main");
 
 
@@ -40,11 +40,15 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
     private static final ResourceLocation EGG_TEXTURE = new ResourceLocation(MOD_ID, "textures/entity/normal/egg.png");
 
     private static final ResourceLocation CHIKORITA_TEXTURE = new ResourceLocation(MOD_ID, "textures/entity/normal/chikorita.png");
+    private static final ResourceLocation BAYLEEF_TEXTURE = new ResourceLocation(MOD_ID, "textures/entity/normal/bayleef.png");
     private static final ResourceLocation CYNDAQUIL_TEXTURE = new ResourceLocation(MOD_ID, "textures/entity/normal/cyndaquil.png");
+    private static final ResourceLocation QUILAVA_TEXTURE = new ResourceLocation(MOD_ID, "textures/entity/normal/quilava.png");
     private static final ResourceLocation TOTODILE_TEXTURE = new ResourceLocation(MOD_ID, "textures/entity/normal/totodile.png");
 
     private static final ResourceLocation CHIKORITA_TEXTURE_S = new ResourceLocation(MOD_ID, "textures/entity/shiny/shiny_chikorita.png");
+    private static final ResourceLocation BAYLEEF_TEXTURE_S = new ResourceLocation(MOD_ID, "textures/entity/shiny/bayleef.png");
     private static final ResourceLocation CYNDAQUIL_TEXTURE_S = new ResourceLocation(MOD_ID, "textures/entity/shiny/shiny_cyndaquil.png");
+    private static final ResourceLocation QUILAVA_TEXTURE_S = new ResourceLocation(MOD_ID, "textures/entity/shiny/quilava.png");
     private static final ResourceLocation TOTODILE_TEXTURE_S = new ResourceLocation(MOD_ID, "textures/entity/shiny/shiny_totodile.png");
 
     //In 1.18, we now pass a LAYER_LOCATION (see the explanation in PokemonModel) and bake it in
@@ -53,9 +57,15 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
 
     public PokemonRenderer(EntityRendererProvider.Context context) {
         super(context, new ModelEgg<>(context.getModelSet().bakeLayer(EGG_LAYER_LOCATION)), 0.5f);
-        this.addLayer(new Cyndaquil_Fire(this) {
+        this.addLayer(new CyndaquilLayer(this) {
             public RenderType renderType() {
                 return RenderType.eyes(new ResourceLocation(MOD_ID,"textures/entity/normal/cyndaquil2.png"));
+            }
+        });
+
+        this.addLayer(new QuilavaLayer<>(this) {
+            public RenderType renderType() {
+                return RenderType.eyes(new ResourceLocation(MOD_ID,"textures/entity/normal/quilava2.png"));
             }
         });
     }
@@ -66,18 +76,26 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
         int species = pEntity.getPokeSpecies();
         int shiny = pEntity.getShinyness();
         if((shiny == 0)) {
-            if (species == 155) {
-                return CYNDAQUIL_TEXTURE;
-            } else if (species == 152) {
+            if (species == 152) {
                 return CHIKORITA_TEXTURE;
+            } else if (species == 153) {
+                return BAYLEEF_TEXTURE;
+            } else if (species == 155) {
+                return CYNDAQUIL_TEXTURE;
+            } else if (species == 156) {
+                return QUILAVA_TEXTURE;
             } else if (species == 158) {
                 return TOTODILE_TEXTURE;
             }
         }else{
-            if (species == 155) {
-                return CYNDAQUIL_TEXTURE_S;
-            } else if (species == 152) {
+            if (species == 152) {
                 return CHIKORITA_TEXTURE_S;
+            } else if (species == 153) {
+                return BAYLEEF_TEXTURE_S;
+            } else if (species == 155) {
+                return CYNDAQUIL_TEXTURE_S;
+            } else if (species == 156) {
+                return QUILAVA_TEXTURE_S;
             } else if (species == 158) {
                 return TOTODILE_TEXTURE_S;
             }
@@ -92,10 +110,14 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
     public void render(PokemonEntity pEntity, float pEntityYaw, float pPartialTicks, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
 
         int species = pEntity.getPokeSpecies();
-        if(species == 155){
-            this.model = new ModelCyndaquil(Minecraft.getInstance().getEntityModels().bakeLayer(CYNDAQUIL_LAYER_LOCATION));
-        }else if(species == 152){
-            this.model = new ModelChikorita<>(Minecraft.getInstance().getEntityModels().bakeLayer(CHIKORITA_LAYER_LOCATION));
+        if(species == 152){
+            this.model = new ModelChikorita(Minecraft.getInstance().getEntityModels().bakeLayer(CHIKORITA_LAYER_LOCATION));
+        }else if(species == 153){
+            this.model = new ModelBayleef<>(Minecraft.getInstance().getEntityModels().bakeLayer(BAYLEEF_LAYER_LOCATION));
+        }else if(species == 155){
+            this.model = new ModelCyndaquil<>(Minecraft.getInstance().getEntityModels().bakeLayer(CYNDAQUIL_LAYER_LOCATION));
+        }else if(species == 156){
+            this.model = new ModelQuilava<>(Minecraft.getInstance().getEntityModels().bakeLayer(QUILAVA_LAYER_LOCATION));
         }else if(species == 158){
             this.model = new ModelTotodile<>(Minecraft.getInstance().getEntityModels().bakeLayer(TOTODILE_LAYER_LOCATION));
         }else{
@@ -105,7 +127,7 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
         this.shadowRadius = 0.05F * (float)pEntity.getSize();
         net.minecraftforge.client.event.RenderNameplateEvent renderNameplateEvent = new net.minecraftforge.client.event.RenderNameplateEvent(pEntity, pEntity.getDisplayName(), this, pMatrixStack, pBuffer, pPackedLight, pPartialTicks);
         this.renderLevel(pEntity, renderNameplateEvent.getContent(), pMatrixStack, pBuffer, pPackedLight);
-        this.renderSpecies(pEntity, renderNameplateEvent.getContent(), pMatrixStack, pBuffer, pPackedLight);
+        this.renderName(pEntity, renderNameplateEvent.getContent(), pMatrixStack, pBuffer, pPackedLight);
         this.renderHP(pEntity, renderNameplateEvent.getContent(), pMatrixStack, pBuffer, pPackedLight);
 
 
@@ -113,13 +135,17 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
 
     }
 
+    protected float getWhiteOverlayProgress(PokemonEntity pLivingEntity, float pPartialTicks) {
+        return pLivingEntity.getTimer() == 0 ? 0.0F : Mth.clamp(pLivingEntity.getTimer(), 0.0F, 1.0F);
+    }
+
     protected void scale(PokemonEntity pLivingEntity, PoseStack pMatrixStack, float pPartialTickTime) {
-        float f = 0.999F;
         pMatrixStack.scale(0.5F, 0.5F, 0.5F);
         pMatrixStack.translate(0.0D, 0.0F, 0.0D);
+        float timer = (pLivingEntity.getTimer());
         float f1 = (float)pLivingEntity.getSize();
         float f2 = (float)pLivingEntity.getPokeLevel();
-        pMatrixStack.scale(f1+(f2/85), f1+(f2/85), f1+(f2/85));
+        pMatrixStack.scale((f1+(f2/85)+((timer)/40)), (f1+(f2/85)+((timer)/40)), (f1+(f2/85)+((timer)/40)));
     }
 
     protected void renderLevel(PokemonEntity pEntity,Component pDisplayName, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
@@ -142,6 +168,7 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
             pMatrixStack.popPose();
         }
     }
+
 
 
     protected void renderHP(PokemonEntity pEntity,Component pDisplayName, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight){
@@ -167,7 +194,8 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
     }
 
 
-    protected void renderSpecies(PokemonEntity pEntity, Component pDisplayName, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
+
+    protected void renderName(PokemonEntity pEntity, Component pDisplayName, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
         double d0 = this.entityRenderDispatcher.distanceToSqr(pEntity);
         if (net.minecraftforge.client.ForgeHooksClient.isNameplateInRenderDistance(pEntity, d0)) {
             boolean flag = !pEntity.isDiscrete();
