@@ -99,4 +99,36 @@ public class Registration {
 
     public static final RegistryObject<PokeScannerItem> POKESCANNER = ITEMS.register("pokescanner",
             () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+
+    public static final RegistryObject<PokeScannerItem> FIRESTONE = ITEMS.register("firestone",
+            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<PokeScannerItem> WATERSTONE = ITEMS.register("waterstone",
+            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<PokeScannerItem> THUNDERSTONE = ITEMS.register("thunderstone",
+            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<PokeScannerItem> LEAFSTONE = ITEMS.register("leafstone",
+            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<PokeScannerItem> MOONSTONE = ITEMS.register("moonstone",
+            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<PokeScannerItem> SUNSTONE = ITEMS.register("sunstone",
+            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<PokeScannerItem> SHINYSTONE = ITEMS.register("shinystone",
+            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<PokeScannerItem> DAWNSTONE = ITEMS.register("dawnstone",
+            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<PokeScannerItem> DUSKSTONE = ITEMS.register("duskstone",
+            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<PokeScannerItem> ICESTONE = ITEMS.register("icestone",
+            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 }
+

@@ -132,6 +132,11 @@ public class PokemonEntity extends TamableAnimal {
     private static final EntityDataAccessor<Integer> TYPE1 = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> TYPE2 = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
 
+    private static final EntityDataAccessor<Integer> EVOLUTIONBRANCH = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+
+ // 0 is no gender 1 is male and 2 is female.
+    private static final EntityDataAccessor<Integer> GENDER = SynchedEntityData.defineId(PokemonEntity.class, EntityDataSerializers.INT);
+
     public PokemonEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
         setCustomNameVisible(true);
@@ -4547,6 +4552,8 @@ public class PokemonEntity extends TamableAnimal {
         this.entityData.define(EVOLUTIONTIMER, (float)0);
         this.entityData.define(HASNICKNAME, 0);
         this.entityData.define(NICKNAME, "None");
+        this.entityData.define(EVOLUTIONBRANCH, 0);
+        this.entityData.define(GENDER, 0);
 
     }
 
@@ -4682,6 +4689,17 @@ public class PokemonEntity extends TamableAnimal {
         this.entityData.set(IVS_SPEED, speed);
     }
 
+    protected void setEvolutionbranch(int branchsize ) {
+        int branch = Mth.clamp(branchsize, 0, 100);
+        this.entityData.set(EVOLUTIONBRANCH, branch);
+    }
+
+
+    protected void setGender(int gendervalue ) {
+        int gender = Mth.clamp(gendervalue, 0, 2);
+        this.entityData.set(GENDER, gender);
+    }
+
     public void setTrueHp() {
         int true_hp = (int) (Math.floor(0.01 * (2 * (getBaseHP()) + (getIvsHP()) + Math.floor(0.25 * (getEvsHP()))) * (getPokeLevel())) + (getPokeLevel()) + 10);
         this.entityData.set(TRUE_HP, true_hp);
@@ -4781,6 +4799,14 @@ public class PokemonEntity extends TamableAnimal {
 
     public int getMoveSlot4() {
         return this.entityData.get(MOVE_SLOT_4);
+    }
+
+    public int getEvolutionBranch() {
+        return this.entityData.get(EVOLUTIONBRANCH);
+    }
+
+    public int getGender() {
+        return this.entityData.get(GENDER);
     }
 
     protected void setSize(int pSize) {
@@ -4920,6 +4946,8 @@ public class PokemonEntity extends TamableAnimal {
         pCompound.putInt("InLove", this.inLove);
         pCompound.putInt("Happiness", this.getHappiness());
         pCompound.putInt("HasNickname", this.getHasNickname());
+        pCompound.putInt("Branch", this.getEvolutionBranch());
+        pCompound.putInt("Gender", this.getGender());
         pCompound.putString("Nickname", this.getPokeNickname());
     }
 
@@ -4948,6 +4976,8 @@ public class PokemonEntity extends TamableAnimal {
         this.setHappiness(pCompound.getInt("Happiness"));
         this.setHasNickname(pCompound.getInt("HasNickname"));
         this.setPokeName();
+        this.setEvolutionbranch(pCompound.getInt("Branch"));;
+        this.setGender(pCompound.getInt("Gender"));;
         super.readAdditionalSaveData(pCompound);
 
     }
@@ -5062,7 +5092,7 @@ public class PokemonEntity extends TamableAnimal {
     @Override
     public SpawnGroupData finalizeSpawn(@NotNull ServerLevelAccessor pLevel, @NotNull DifficultyInstance pDifficulty, @NotNull MobSpawnType pReason, @javax.annotation.Nullable SpawnGroupData pSpawnData, @javax.annotation.Nullable CompoundTag pDataTag) {
         Random random = new Random();
-        int shinyroll = random.nextInt(4096) + 1;
+        int shinyroll = random.nextInt(4095) + 1;
         if (shinyroll == 4069) {
             this.entityData.set(SHINY, 1);
         } else {
@@ -5552,9 +5582,178 @@ public class PokemonEntity extends TamableAnimal {
                 if(species == 175 && happiness >= 220){
                     setEvolving(1);
                 }
+                if(species == 79 && level >= 37){
+                    setEvolving(1);
+                    setEvolutionbranch(0);
+                }
+                int attack_ivs = getIvsAttack();
+                int defence_ivs = getIvsDefence();
+                if(species == 236 && level >= 20 && attack_ivs > defence_ivs){
+                    setEvolving(1);
+                    setEvolutionbranch(0);
+                }
+                if(species == 236 && level >= 20 && attack_ivs < defence_ivs){
+                    setEvolving(1);
+                    setEvolutionbranch(1);
+                }
+                if(species == 236 && level >= 20 && attack_ivs == defence_ivs){
+                    setEvolving(1);
+                    setEvolutionbranch(2);
+                }
+                if(species == 281 && level >= 30){
+                    setEvolving(1);
+                    setEvolutionbranch(0);
+                }
+                if( species == 361 && level == 42){
+                    setEvolving(1);
+                    setEvolutionbranch(0);
+                }
+                Random random = new Random();
+                int cointoss = random.nextInt(0) + 1;
+                if(species == 265 && level >= 7 && cointoss == 0){
+                    setEvolving(1);
+                    setEvolutionbranch(0);
+                }
+                if(species == 265 && level >= 7 && cointoss == 1){
+                    setEvolving(1);
+                    setEvolutionbranch(1);
+                }
                 return InteractionResult.SUCCESS;
             }
-
+            if (pPlayer.isHolding((Registration.FIRESTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+                int species = this.getPokeSpecies();
+                int level = this.getPokeLevel();
+                int happiness = this.getHappiness();
+                if(species == 37 ||species == 58 || species == 133|| species == 513){
+                    setEvolving(1);
+                }
+                if( species == 133){
+                    setEvolving(1);
+                    setEvolutionbranch(2);
+                }
+                return InteractionResult.SUCCESS;
+            }
+            if (pPlayer.isHolding((Registration.WATERSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+                int species = this.getPokeSpecies();
+                int level = this.getPokeLevel();
+                int happiness = this.getHappiness();
+                if( species == 133 || species == 61 ||species == 90 || species == 120|| species == 271|| species == 515){
+                    setEvolving(1);
+                }
+                if( species == 61){
+                    setEvolving(1);
+                    setEvolutionbranch(0);
+                }
+                if( species == 133){
+                    setEvolving(1);
+                    setEvolutionbranch(0);
+                }
+                return InteractionResult.SUCCESS;
+            }
+            if (pPlayer.isHolding((Registration.THUNDERSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+                int species = this.getPokeSpecies();
+                int level = this.getPokeLevel();
+                int happiness = this.getHappiness();
+                if(species == 133 ||species == 25 || species == 603){
+                    setEvolving(1);
+                }
+                return InteractionResult.SUCCESS;
+            }
+            if (pPlayer.isHolding((Registration.LEAFSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+                int species = this.getPokeSpecies();
+                int level = this.getPokeLevel();
+                int happiness = this.getHappiness();
+                if( species == 133 || species == 70 ||species == 102 || species == 274|| species == 511){
+                    setEvolving(1);
+                }
+                if( species == 44){
+                    setEvolving(1);
+                    setEvolutionbranch(0);
+                }
+                if( species == 133){
+                    setEvolving(1);
+                    setEvolutionbranch(1);
+                }
+                if( species == 133){
+                    setEvolving(1);
+                    setEvolutionbranch(3);
+                }
+                return InteractionResult.SUCCESS;
+            }
+            if (pPlayer.isHolding((Registration.MOONSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+                int species = this.getPokeSpecies();
+                int level = this.getPokeLevel();
+                int happiness = this.getHappiness();
+                if( species == 30 || species == 33 ||species == 35 || species == 39|| species == 300 || species == 517){
+                    setEvolving(1);
+                }
+                return InteractionResult.SUCCESS;
+            }
+            if (pPlayer.isHolding((Registration.SUNSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+                int species = this.getPokeSpecies();
+                int level = this.getPokeLevel();
+                int happiness = this.getHappiness();
+                if( species == 191 || species == 546 ||species == 548 || species == 694){
+                    setEvolving(1);
+                }
+                if( species == 44){
+                    setEvolving(1);
+                    setEvolutionbranch(1);
+                }
+                return InteractionResult.SUCCESS;
+            }
+            if (pPlayer.isHolding((Registration.MOONSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+                int species = this.getPokeSpecies();
+                int level = this.getPokeLevel();
+                int happiness = this.getHappiness();
+                if( species == 30 || species == 33 ||species == 35 || species == 39|| species == 300 || species == 517){
+                    setEvolving(1);
+                }
+                return InteractionResult.SUCCESS;
+            }
+            if (pPlayer.isHolding((Registration.SHINYSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+                int species = this.getPokeSpecies();
+                int level = this.getPokeLevel();
+                int happiness = this.getHappiness();
+                if( species == 191 || species == 176 ||species == 572 || species == 670){
+                    setEvolving(1);
+                }
+                return InteractionResult.SUCCESS;
+            }
+            if (pPlayer.isHolding((Registration.DUSKSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+                int species = this.getPokeSpecies();
+                int level = this.getPokeLevel();
+                int happiness = this.getHappiness();
+                if( species == 198 || species == 200 ||species == 608 || species == 680){
+                    setEvolving(1);
+                }
+                return InteractionResult.SUCCESS;
+            }
+            if (pPlayer.isHolding((Registration.DAWNSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+                int species = this.getPokeSpecies();
+                int level = this.getPokeLevel();
+                int happiness = this.getHappiness();
+                int gender = this.getGender();
+                if( species == 361 && gender == 2){
+                    setEvolving(1);
+                    setEvolutionbranch(1);
+                }
+                if(species == 281 && gender == 1 ){
+                    setEvolving(1);
+                    setEvolutionbranch(1);
+                }
+                return InteractionResult.SUCCESS;
+            }
+            if (pPlayer.isHolding((Registration.ICESTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+                int species = this.getPokeSpecies();
+                int level = this.getPokeLevel();
+                int happiness = this.getHappiness();
+                if( species == 133){
+                    setEvolving(3);
+                    setEvolutionbranch(4);
+                }
+                return InteractionResult.SUCCESS;
+            }
 
             if (pPlayer.isHolding((Items.NAME_TAG))) {
                 return InteractionResult.FAIL;
@@ -5586,6 +5785,7 @@ public class PokemonEntity extends TamableAnimal {
     public void tick() {
         if (this.isAlive() ) {
             int species = this.getPokeSpecies();
+            int branch = this.getEvolutionBranch();
             if (this.getEvolving() == 1){
                 float i = this.getTimer() + 1;
                 if(this.getTimer() == 1){
@@ -5595,6 +5795,77 @@ public class PokemonEntity extends TamableAnimal {
                     setTimer((float) (this.getTimer()+(0.5)));
                 }
                 if(this.getTimer() > 49.5){
+
+                    if(species == 44 && branch == 0) {
+                        this.setPokeSpecies(45);
+                    }
+                    if(species == 44 && branch == 1) {
+                        this.setPokeSpecies(182);
+                    }
+                    if(species == 61 && branch == 0) {
+                        this.setPokeSpecies(62);
+                    }
+                    if(species == 61 && branch == 1) {
+                        this.setPokeSpecies(186);
+                    }
+                    if(species == 79 && branch == 0) {
+                        this.setPokeSpecies(80);
+                    }
+                    if(species == 79 && branch == 1) {
+                        this.setPokeSpecies(199);
+                    }
+                    if(species == 133 && branch == 0) {
+                        this.setPokeSpecies(134);
+                    }
+                    if(species == 133 && branch == 1) {
+                        this.setPokeSpecies(135);
+                    }
+                    if(species == 133 && branch == 2) {
+                        this.setPokeSpecies(136);
+                    }
+                    if(species == 133 && branch == 3) {
+                        this.setPokeSpecies(470);
+                    }
+                    if(species == 133 && branch == 4) {
+                        this.setPokeSpecies(471);
+                    }
+                    if(species == 133 && branch == 5) {
+                        this.setPokeSpecies(700);
+                    }
+
+                    if(species == 236 && branch == 0) {
+                        this.setPokeSpecies(106);
+                    }
+                    if(species == 236 && branch == 1) {
+                        this.setPokeSpecies(107);
+                    }
+                    if(species == 236 && branch == 2) {
+                        this.setPokeSpecies(237);
+                    }
+
+                    if(species == 265 && branch == 0) {
+                        this.setPokeSpecies(266);
+                    }
+                    if(species == 265 && branch == 1) {
+                        this.setPokeSpecies(268);
+                    }
+
+                    if(species == 281 && branch == 0) {
+                        this.setPokeSpecies(282);
+                    }
+                    if(species == 281 && branch == 1) {
+                        this.setPokeSpecies(475);
+                    }
+                    if(species == 361 && branch == 0) {
+                        this.setPokeSpecies(362);
+                    }
+                    if(species == 361 && branch == 1) {
+                        this.setPokeSpecies(478);
+                    }
+
+
+
+
                     if(species == 1) {
                         this.setPokeSpecies(2);
                     }
@@ -5685,7 +5956,6 @@ public class PokemonEntity extends TamableAnimal {
                     if(species == 43) {
                         this.setPokeSpecies(44);
                     }
-//SPLIT EVOLUTION LINE
                     if(species == 46) {
                         this.setPokeSpecies(47);
                     }
@@ -5956,7 +6226,6 @@ public class PokemonEntity extends TamableAnimal {
                     if(species == 209) {
                         this.setPokeSpecies(210 );
                     }
-//Split Line
                     if(species == 216) {
                         this.setPokeSpecies(217 );
                     }
