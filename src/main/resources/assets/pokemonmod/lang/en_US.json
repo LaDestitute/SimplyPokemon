@@ -27,6 +27,19 @@
   "entity.pokemonmod.pokemon":"pokemon",
   "entity.tempstring": "Pokemon",
   "item.pokemonmod.pokescanner": "Pokescanner",
-  "item.pokemonmod.pokescanner.description": "A special device for retrieving pokemon information"
+  "item.pokemonmod.pokescanner.description": "A special device for retrieving pokemon information",
+
+  "item.pokemonmod.thunderstone": "Thunder Stone",
+  "item.pokemonmod.firestone": "Fire Stone",
+  "item.pokemonmod.waterstone": "Water Stone",
+  "item.pokemonmod.sunstone": "Sun Stone",
+  "item.pokemonmod.moonstone": "Moon Stone",
+  "item.pokemonmod.leafstone": "Leaf Stone",
+  "item.pokemonmod.dawnstone": "Dawn Stone",
+  "item.pokemonmod.duskstone": "Dusk Stone",
+  "item.pokemonmod.icestone": "Ice Stone",
+  "item.pokemonmod.shinystone": "Shiny Stone",
+  "item.pokemonmod.everstone": "Ever Stone"
+
 
 }

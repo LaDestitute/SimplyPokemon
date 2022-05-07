@@ -5624,7 +5624,7 @@ public class PokemonEntity extends TamableAnimal {
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
-                if(species == 37 ||species == 58 || species == 133|| species == 513){
+                if(species == 37 ||species == 58 || species == 513){
                     setEvolving(1);
                 }
                 if( species == 133){
@@ -5637,7 +5637,7 @@ public class PokemonEntity extends TamableAnimal {
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
-                if( species == 133 || species == 61 ||species == 90 || species == 120|| species == 271|| species == 515){
+                if(species == 61 ||species == 90 || species == 120|| species == 271|| species == 515){
                     setEvolving(1);
                 }
                 if( species == 61){
@@ -5654,8 +5654,12 @@ public class PokemonEntity extends TamableAnimal {
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
-                if(species == 133 ||species == 25 || species == 603){
+                if(species == 25 || species == 603){
                     setEvolving(1);
+                }
+                if( species == 133){
+                    setEvolving(1);
+                    setEvolutionbranch(1);
                 }
                 return InteractionResult.SUCCESS;
             }
@@ -5663,16 +5667,12 @@ public class PokemonEntity extends TamableAnimal {
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
-                if( species == 133 || species == 70 ||species == 102 || species == 274|| species == 511){
+                if( species == 70 ||species == 102 || species == 274|| species == 511){
                     setEvolving(1);
                 }
                 if( species == 44){
                     setEvolving(1);
                     setEvolutionbranch(0);
-                }
-                if( species == 133){
-                    setEvolving(1);
-                    setEvolutionbranch(1);
                 }
                 if( species == 133){
                     setEvolving(1);
@@ -5831,6 +5831,12 @@ public class PokemonEntity extends TamableAnimal {
                     }
                     if(species == 133 && branch == 5) {
                         this.setPokeSpecies(700);
+                    }
+                    if(species == 133 && branch == 6) {
+                        this.setPokeSpecies(196);
+                    }
+                    if(species == 133 && branch == 7) {
+                        this.setPokeSpecies(197);
                     }
 
                     if(species == 236 && branch == 0) {
@@ -6262,9 +6268,12 @@ public class PokemonEntity extends TamableAnimal {
 
                     if(species == 133 & isday) {
                         this.setPokeSpecies(196);
+                        this.setEvolutionbranch(6);
+
                     }
                     if(species == 133 & !isday) {
                         this.setPokeSpecies(197);
+                        this.setEvolutionbranch(7);
                     }
 
                 }
