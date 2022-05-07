@@ -5302,9 +5302,6 @@ public class PokemonEntity extends TamableAnimal {
                 return InteractionResult.SUCCESS;
             }
 
-
-
-
             if ((itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
@@ -5570,11 +5567,13 @@ public class PokemonEntity extends TamableAnimal {
                 if(species == 175 && happiness >= 220){
                     setEvolving(1);
                 }
-                if(species == 133 && happiness >= 220){
+                if(species == 133 && happiness >= 220  && isday){
                     setEvolving(1);
+                    setEvolutionbranch(6);
                 }
-                if(species == 133 && happiness >= 220){
+                if(species == 133 && happiness >= 220 && !isday){
                     setEvolving(1);
+                    setEvolutionbranch(7);
                 }
                 if(species == 446 && happiness >= 220){
                     setEvolving(1);
@@ -5620,7 +5619,7 @@ public class PokemonEntity extends TamableAnimal {
                 }
                 return InteractionResult.SUCCESS;
             }
-            if (pPlayer.isHolding((Registration.FIRESTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+            if (pPlayer.isHolding((Registration.FIRESTONE.get())) &&!(itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
@@ -5631,9 +5630,10 @@ public class PokemonEntity extends TamableAnimal {
                     setEvolving(1);
                     setEvolutionbranch(2);
                 }
+                itemstack.shrink(1);
                 return InteractionResult.SUCCESS;
             }
-            if (pPlayer.isHolding((Registration.WATERSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+            if (pPlayer.isHolding((Registration.WATERSTONE.get())) &&!(itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
@@ -5648,9 +5648,10 @@ public class PokemonEntity extends TamableAnimal {
                     setEvolving(1);
                     setEvolutionbranch(0);
                 }
+                itemstack.shrink(1);
                 return InteractionResult.SUCCESS;
             }
-            if (pPlayer.isHolding((Registration.THUNDERSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+            if (pPlayer.isHolding((Registration.THUNDERSTONE.get())) &&!(itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
@@ -5661,9 +5662,10 @@ public class PokemonEntity extends TamableAnimal {
                     setEvolving(1);
                     setEvolutionbranch(1);
                 }
+                itemstack.shrink(1);
                 return InteractionResult.SUCCESS;
             }
-            if (pPlayer.isHolding((Registration.LEAFSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+            if (pPlayer.isHolding((Registration.LEAFSTONE.get())) &&!(itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
@@ -5678,18 +5680,20 @@ public class PokemonEntity extends TamableAnimal {
                     setEvolving(1);
                     setEvolutionbranch(3);
                 }
+                itemstack.shrink(1);
                 return InteractionResult.SUCCESS;
             }
-            if (pPlayer.isHolding((Registration.MOONSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+            if (pPlayer.isHolding((Registration.MOONSTONE.get())) &&!(itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
                 if( species == 30 || species == 33 ||species == 35 || species == 39|| species == 300 || species == 517){
                     setEvolving(1);
                 }
+                itemstack.shrink(1);
                 return InteractionResult.SUCCESS;
             }
-            if (pPlayer.isHolding((Registration.SUNSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+            if (pPlayer.isHolding((Registration.SUNSTONE.get())) &&!(itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
@@ -5700,36 +5704,40 @@ public class PokemonEntity extends TamableAnimal {
                     setEvolving(1);
                     setEvolutionbranch(1);
                 }
+                itemstack.shrink(1);
                 return InteractionResult.SUCCESS;
             }
-            if (pPlayer.isHolding((Registration.MOONSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+            if (pPlayer.isHolding((Registration.MOONSTONE.get())) &&!(itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
                 if( species == 30 || species == 33 ||species == 35 || species == 39|| species == 300 || species == 517){
                     setEvolving(1);
                 }
+                itemstack.shrink(1);
                 return InteractionResult.SUCCESS;
             }
-            if (pPlayer.isHolding((Registration.SHINYSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+            if (pPlayer.isHolding((Registration.SHINYSTONE.get())) &&!(itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
                 if( species == 191 || species == 176 ||species == 572 || species == 670){
                     setEvolving(1);
                 }
+                itemstack.shrink(1);
                 return InteractionResult.SUCCESS;
             }
-            if (pPlayer.isHolding((Registration.DUSKSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+            if (pPlayer.isHolding((Registration.DUSKSTONE.get())) &&!(itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
                 if( species == 198 || species == 200 ||species == 608 || species == 680){
                     setEvolving(1);
                 }
+                itemstack.shrink(1);
                 return InteractionResult.SUCCESS;
             }
-            if (pPlayer.isHolding((Registration.DAWNSTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+            if (pPlayer.isHolding((Registration.DAWNSTONE.get())) &&!(itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
@@ -5742,9 +5750,10 @@ public class PokemonEntity extends TamableAnimal {
                     setEvolving(1);
                     setEvolutionbranch(1);
                 }
+                itemstack.shrink(1);
                 return InteractionResult.SUCCESS;
             }
-            if (pPlayer.isHolding((Registration.ICESTONE.get())) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
+            if (pPlayer.isHolding((Registration.ICESTONE.get())) &&!(itemstack.getItem() == Items.AIR) && this.isOwnedBy(pPlayer) && Objects.requireNonNull(getOwner()).isShiftKeyDown()){
                 int species = this.getPokeSpecies();
                 int level = this.getPokeLevel();
                 int happiness = this.getHappiness();
@@ -5752,6 +5761,7 @@ public class PokemonEntity extends TamableAnimal {
                     setEvolving(3);
                     setEvolutionbranch(4);
                 }
+                itemstack.shrink(1);
                 return InteractionResult.SUCCESS;
             }
 
@@ -6264,16 +6274,6 @@ public class PokemonEntity extends TamableAnimal {
                     }
                     if(species == 247) {
                         this.setPokeSpecies(248 );
-                    }
-
-                    if(species == 133 & isday) {
-                        this.setPokeSpecies(196);
-                        this.setEvolutionbranch(6);
-
-                    }
-                    if(species == 133 & !isday) {
-                        this.setPokeSpecies(197);
-                        this.setEvolutionbranch(7);
                     }
 
                 }
