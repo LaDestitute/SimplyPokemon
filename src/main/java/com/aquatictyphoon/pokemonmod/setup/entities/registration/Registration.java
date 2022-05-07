@@ -101,34 +101,34 @@ public class Registration {
             () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 
-    public static final RegistryObject<PokeScannerItem> FIRESTONE = ITEMS.register("firestone",
-            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> FIRESTONE = ITEMS.register("firestone",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<PokeScannerItem> WATERSTONE = ITEMS.register("waterstone",
-            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> WATERSTONE = ITEMS.register("waterstone",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<PokeScannerItem> THUNDERSTONE = ITEMS.register("thunderstone",
-            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> THUNDERSTONE = ITEMS.register("thunderstone",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<PokeScannerItem> LEAFSTONE = ITEMS.register("leafstone",
-            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> LEAFSTONE = ITEMS.register("leafstone",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<PokeScannerItem> MOONSTONE = ITEMS.register("moonstone",
-            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> MOONSTONE = ITEMS.register("moonstone",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<PokeScannerItem> SUNSTONE = ITEMS.register("sunstone",
-            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> SUNSTONE = ITEMS.register("sunstone",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<PokeScannerItem> SHINYSTONE = ITEMS.register("shinystone",
-            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> SHINYSTONE = ITEMS.register("shinystone",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<PokeScannerItem> DAWNSTONE = ITEMS.register("dawnstone",
-            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> DAWNSTONE = ITEMS.register("dawnstone",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<PokeScannerItem> DUSKSTONE = ITEMS.register("duskstone",
-            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> DUSKSTONE = ITEMS.register("duskstone",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<PokeScannerItem> ICESTONE = ITEMS.register("icestone",
-            () -> new PokeScannerItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> ICESTONE = ITEMS.register("icestone",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 }
 

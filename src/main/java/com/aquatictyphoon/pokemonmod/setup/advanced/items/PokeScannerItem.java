@@ -29,10 +29,6 @@ public class PokeScannerItem extends Item {
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
-
-
-
-
         public InteractionResult interactLivingEntity(ItemStack pStack, Player pPlayer, LivingEntity pInteractionTarget, InteractionHand pUsedHand) {
 
 
