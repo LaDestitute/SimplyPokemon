@@ -2,11 +2,13 @@ package com.aquatictyphoon.pokemonmod.setup.advanced.items.projectiles;
 
 import com.aquatictyphoon.pokemonmod.setup.entities.misc.Pokeball_Entity;
 import net.minecraft.client.resources.language.I18n;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -15,15 +17,23 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
-import java.awt.*;
 import java.util.List;
 
 public class PokeBallItem extends Item {
-    public PokeBallItem(Properties pProperties) {
 
+    public PokeBallItem(Properties pProperties) {
         super(pProperties);
     }
 
+    @Override
+    public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+        super.inventoryTick(pStack, pLevel, pEntity, pSlotId, pIsSelected);
+
+        CompoundTag nbt = pStack.getOrCreateTag();
+        nbt.putFloat("ballBonus", 1);
+
+        pStack.setTag(nbt);
+    }
 
     @Override
     public void appendHoverText(@Nonnull() ItemStack stack, Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flagIn) {
@@ -35,7 +45,6 @@ public class PokeBallItem extends Item {
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
-
     public static String name(ItemStack stack)
     {
         return stack.getOrCreateTag().getString("Nickname");

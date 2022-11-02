@@ -106,9 +106,22 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     BlockPos blockPos = this.blockPosition();
                     entity.absMoveTo(blockPos.getX(), blockPos.getY(), BlockPos.getZ(+1), 0, 0);
                     level.addFreshEntity(entity);
-                    //System.out.println("RELEASE SUCCESS!");
                 }
-                if ((!containsEntity(PokeballItem)) && (target.isAlive() && !((PokemonEntity) target).isTame()) && random.nextInt(256) <= Math.round((catchrate / 1.5873)))
+                if(PokeballItem.getTag().getFloat("ballBonus") == 0){
+                    return;
+                }
+
+                float maxHP = ((PokemonEntity)target).getMaxHealth();
+                float currentHP = ((PokemonEntity)target).getHealth();
+                float ballBonus =  PokeballItem.getTag().getFloat("ballBonus");
+                float statusBonus = 1;
+
+
+                float calculatedCatch = (( ((((3 * (maxHP) ) - 2 *(currentHP)  ) * catchrate * ballBonus) / 3 * maxHP) * statusBonus) / 255);
+
+                System.out.println(calculatedCatch);
+
+                if (!containsEntity(PokeballItem) && (target.isAlive()) && !((PokemonEntity)target).isTame()  && random.nextInt(256) <= calculatedCatch)
                 {
                     Player player = (Player) this.getOwner();
                     if(player == null){
@@ -141,21 +154,20 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     nbt.putString("Nickname", Name);
                     nbt.putString("Species", Species);
                     target.save(nbt);
-                    ItemStack owned_ball = new ItemStack(Registration.POKEBALL.get());
+                    ItemStack owned_ball = new ItemStack(PokeballItem.getItem());
                     owned_ball.setTag(nbt);
                     owned_ball.setCount(1);
                     ItemHandlerHelper.giveItemToPlayer(player, owned_ball);
                     target.discard();
                     //System.out.println("CAPTURE SUCCESS!");
                 }
-                if ((!containsEntity(PokeballItem)) && (target.isAlive() && !((PokemonEntity) target).isTame()) && random.nextInt(256) >= Math.round((catchrate / 1.5873))){
+                if(!containsEntity(PokeballItem) && (target.isAlive()) && !((PokemonEntity)target).isTame()  && random.nextInt(256) >= calculatedCatch)        {
                     Player player = (Player) this.getOwner();
                     if(player == null){
                         return;
                     }
                     player.displayClientMessage( Component.translatable("Oh no! The " + ((PokemonEntity) target).getPokeName() + " broke free!"), true);
                     this.discard();
-
                 }
                 //Retrieval
                 if((containsEntity(PokeballItem)) && (target.isAlive() && ((PokemonEntity) target).isTame()) && (String.valueOf(target.getUUID()).equals(String.valueOf(PokeballItem.getOrCreateTag().getUUID("UUID")))))

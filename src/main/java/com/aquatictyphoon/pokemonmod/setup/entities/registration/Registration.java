@@ -2,8 +2,11 @@ package com.aquatictyphoon.pokemonmod.setup.entities.registration;
 
 
 import com.aquatictyphoon.pokemonmod.setup.advanced.items.PokeScannerItem;
+import com.aquatictyphoon.pokemonmod.setup.advanced.items.projectiles.GreatBallItem;
+import com.aquatictyphoon.pokemonmod.setup.advanced.items.projectiles.MasterBallItem;
 import com.aquatictyphoon.pokemonmod.setup.advanced.items.projectiles.PokeBallItem;
 import com.aquatictyphoon.pokemonmod.setup.advanced.items.RareCandyItem;
+import com.aquatictyphoon.pokemonmod.setup.advanced.items.projectiles.UltraBallItem;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -35,13 +38,13 @@ public class Registration {
             () -> new PokeBallItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     public static final RegistryObject<Item> GREATBALL = ITEMS.register("greatball",
-            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+            () -> new GreatBallItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     public static final RegistryObject<Item> ULTRABALL = ITEMS.register("ultraball",
-            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+            () -> new UltraBallItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     public static final RegistryObject<Item> MASTERBALL = ITEMS.register("masterball",
-            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+            () -> new MasterBallItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     public static final RegistryObject<Item> POTION = ITEMS.register("potion",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
