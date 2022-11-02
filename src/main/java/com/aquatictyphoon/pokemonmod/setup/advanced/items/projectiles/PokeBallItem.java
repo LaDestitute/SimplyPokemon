@@ -1,30 +1,21 @@
 package com.aquatictyphoon.pokemonmod.setup.advanced.items.projectiles;
 
 import com.aquatictyphoon.pokemonmod.setup.entities.misc.Pokeball_Entity;
-import com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration;
-import com.google.common.collect.Lists;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.item.ItemTossEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.awt.*;
 import java.util.List;
 
 public class PokeBallItem extends Item {
@@ -38,7 +29,7 @@ public class PokeBallItem extends Item {
     public void appendHoverText(@Nonnull() ItemStack stack, Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flagIn) {
         if (containsEntity(stack)) {
             if (getID(stack).isEmpty()) {
-                tooltip.add(new TranslatableComponent("tooltip.pokemonmod.item.pokeball"));
+                tooltip.add(Component.translatable("tooltip.pokemonmod.item.pokeball"));
             }
         }
 
@@ -57,14 +48,14 @@ public class PokeBallItem extends Item {
 
     @Override
     @Nonnull
-    public TextComponent getName(@Nonnull ItemStack stack) {
+    public Component getName(@Nonnull ItemStack stack) {
         if (!containsEntity(stack))
-            return new TextComponent(I18n.get("item.pokemonmod.pokeball"));
+            return Component.translatable(I18n.get("item.pokemonmod.pokeball"));
         else{
 
         String s0 = species(stack);
         String s1 = s0.replace(':','.');
-        return new TextComponent(name(stack) +": "+ I18n.get(s1));}
+        return Component.translatable(name(stack) +": "+ I18n.get(s1));}
     }
 
     //Helper

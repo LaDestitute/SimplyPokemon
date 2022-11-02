@@ -2,7 +2,6 @@ package com.aquatictyphoon.pokemonmod.setup.advanced.items;
 
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,7 +24,7 @@ public class PokeScannerItem extends Item {
 
     @Override
     public void appendHoverText(@Nonnull() ItemStack stack, Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flagIn) {
-        tooltip.add(new TranslatableComponent("item.pokemonmod.pokescanner.description"));
+        tooltip.add(Component.translatable("item.pokemonmod.pokescanner.description"));
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
@@ -66,14 +65,14 @@ public class PokeScannerItem extends Item {
 
 
             if (!pPlayer.level.isClientSide && pInteractionTarget instanceof PokemonEntity) {
-                pPlayer.sendMessage(new TranslatableComponent("" + (nickname) + ": Level: " + (level)), pPlayer.getUUID());
+                pPlayer.displayClientMessage(Component.translatable("" + (nickname) + ": Level: " + (level)), false);
 
-                pPlayer.sendMessage(new TranslatableComponent("Type: " + (type1) + " / " + (type2)), pPlayer.getUUID());
-                pPlayer.sendMessage(new TranslatableComponent("Size: " + (size) + " Nature: " + (nature)), pPlayer.getUUID());
-                pPlayer.sendMessage(new TranslatableComponent("Hp Ivs: " + (ivs_hp) + " ,Attack Ivs: " + (ivs_attack) + " ,Defence Ivs: " + (ivs_defence) + " ,Special Attack Ivs: " + (ivs_sp_attack) + " ,Special Defence Ivs: " + (ivs_sp_defence)  + " ,Speed Ivs: " + (ivs_speed)), pPlayer.getUUID());
-                pPlayer.sendMessage(new TranslatableComponent("Base Hp : " + (base_hp) + " ,Base Attack: " + (base_attack) + " ,Base Defence: " + (base_defence) + " ,Base Special Attack: " + (base_sp_attack) + " ,Base Special Defence: " + (base_sp_defence)  + " ,Base Speed: " + (base_speed)), pPlayer.getUUID());
-                pPlayer.sendMessage(new TranslatableComponent("Hp : " + (true_hp) + " ,Attack: " + (true_attack) + " ,Defence: " + (true_defence) + " ,Special Attack: " + (true_sp_attack) + " ,Special Defence: " + (true_sp_defence)  + " ,Speed: " + (true_speed)), pPlayer.getUUID());
-                pPlayer.sendMessage(new TranslatableComponent("Hapiness : " + (happiness)), pPlayer.getUUID());
+                pPlayer.displayClientMessage(Component.translatable("Type: " + (type1) + " / " + (type2)),false);
+                pPlayer.displayClientMessage(Component.translatable("Size: " + (size) + " Nature: " + (nature)),false);
+                pPlayer.displayClientMessage(Component.translatable("Hp Ivs: " + (ivs_hp) + " ,Attack Ivs: " + (ivs_attack) + " ,Defence Ivs: " + (ivs_defence) + " ,Special Attack Ivs: " + (ivs_sp_attack) + " ,Special Defence Ivs: " + (ivs_sp_defence)  + " ,Speed Ivs: " + (ivs_speed)), false);
+                pPlayer.displayClientMessage(Component.translatable("Base Hp : " + (base_hp) + " ,Base Attack: " + (base_attack) + " ,Base Defence: " + (base_defence) + " ,Base Special Attack: " + (base_sp_attack) + " ,Base Special Defence: " + (base_sp_defence)  + " ,Base Speed: " + (base_speed)), false);
+                pPlayer.displayClientMessage(Component.translatable("Hp : " + (true_hp) + " ,Attack: " + (true_attack) + " ,Defence: " + (true_defence) + " ,Special Attack: " + (true_sp_attack) + " ,Special Defence: " + (true_sp_defence)  + " ,Speed: " + (true_speed)),false);
+                pPlayer.displayClientMessage(Component.translatable("Hapiness : " + (happiness)), false);
             }
         }
         return InteractionResult.PASS;

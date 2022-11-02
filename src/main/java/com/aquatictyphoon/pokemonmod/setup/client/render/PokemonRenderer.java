@@ -125,7 +125,7 @@ public class PokemonRenderer extends MobRenderer<PokemonEntity, EntityModel<Poke
         }
         this.getTextureLocation(pEntity);
         this.shadowRadius = 0.05F * (float)pEntity.getSize();
-        net.minecraftforge.client.event.RenderNameplateEvent renderNameplateEvent = new net.minecraftforge.client.event.RenderNameplateEvent(pEntity, pEntity.getDisplayName(), this, pMatrixStack, pBuffer, pPackedLight, pPartialTicks);
+        net.minecraftforge.client.event.RenderNameTagEvent renderNameplateEvent = new net.minecraftforge.client.event.RenderNameTagEvent(pEntity, pEntity.getDisplayName(), this, pMatrixStack, pBuffer, pPackedLight, pPartialTicks);
         this.renderLevel(pEntity, renderNameplateEvent.getContent(), pMatrixStack, pBuffer, pPackedLight);
         this.renderName(pEntity, renderNameplateEvent.getContent(), pMatrixStack, pBuffer, pPackedLight);
         this.renderHP(pEntity, renderNameplateEvent.getContent(), pMatrixStack, pBuffer, pPackedLight);

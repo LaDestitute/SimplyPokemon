@@ -3,7 +3,7 @@ package com.aquatictyphoon.pokemonmod.setup.entities.misc;
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.aquatictyphoon.pokemonmod.setup.entities.registration.Registration;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.nbt.CompoundTag;
@@ -85,7 +85,7 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
 
     public Entity getEntityFromNBT(@Nonnull ItemStack PokeballItem, Level world, boolean withInfo) {
         assert PokeballItem.getTag() != null;
-        Entity entity = Objects.requireNonNull(ForgeRegistries.ENTITIES.getValue(new ResourceLocation(PokeballItem.getTag().getString("entity")))).create(world);
+        Entity entity = Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getValue(new ResourceLocation(PokeballItem.getTag().getString("entity")))).create(world);
         if (withInfo) {
             assert entity != null;
             entity.load(PokeballItem.getTag());
@@ -153,7 +153,7 @@ public class Pokeball_Entity extends ThrowableItemProjectile {
                     if(player == null){
                         return;
                     }
-                    player.sendMessage(new TranslatableComponent("Oh no! The " + ((PokemonEntity) target).getPokeName() + " broke free!"), player.getUUID());
+                    player.displayClientMessage( Component.translatable("Oh no! The " + ((PokemonEntity) target).getPokeName() + " broke free!"), true);
                     this.discard();
 
                 }

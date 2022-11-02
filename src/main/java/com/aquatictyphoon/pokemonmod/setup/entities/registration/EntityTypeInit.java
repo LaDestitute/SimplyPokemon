@@ -13,7 +13,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class EntityTypeInit {
 
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, PokemonMod.MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, PokemonMod.MOD_ID);
 
     public static final RegistryObject<EntityType<Pokeball_Entity>> POKE_BALL = ENTITIES.register("poke_ball",
             () -> EntityType.Builder.<Pokeball_Entity>of(Pokeball_Entity::new, MobCategory.MISC)
