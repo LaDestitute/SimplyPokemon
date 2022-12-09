@@ -1,0 +1,10 @@
+{
+  "pokeball_thrown": {
+    "subtitle": "sounds.pokemonmod.pokeball_thrown",
+    "sounds": [
+      "pokemonmod:pokeball_thrown"
+    ]
+  }
+
+
+}

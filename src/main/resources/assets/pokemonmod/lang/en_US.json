@@ -28,7 +28,6 @@
   "entity.tempstring": "Pokemon",
   "item.pokemonmod.pokescanner": "Pokescanner",
   "item.pokemonmod.pokescanner.description": "A special device for retrieving pokemon information",
-
   "item.pokemonmod.thunderstone": "Thunder Stone",
   "item.pokemonmod.firestone": "Fire Stone",
   "item.pokemonmod.waterstone": "Water Stone",
@@ -39,7 +38,13 @@
   "item.pokemonmod.duskstone": "Dusk Stone",
   "item.pokemonmod.icestone": "Ice Stone",
   "item.pokemonmod.shinystone": "Shiny Stone",
-  "item.pokemonmod.everstone": "Ever Stone"
+  "item.pokemonmod.everstone": "Ever Stone",
+  "sounds.pokemonmod.pokeball_thrown": "Ball thrown",
+
+  "pokemon.notfound": "Pokémon not found",
+  "key.pokemonmod.pokeball": "Send and Release Pokemon",
+  "key.category.pokemonmod.pokemonmod": "Pokemon Mod"
+
 
 
 }
