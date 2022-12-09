@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 import static com.aquatictyphoon.pokemonmod.PokemonMod.*;
 import static com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyStorage.getPokemonBySlot;
+import static com.aquatictyphoon.pokemonmod.setup.sounds.ModSoundEvents.POKE_BALL_THROWN;
 import static net.minecraft.world.entity.Entity.RemovalReason.CHANGED_DIMENSION;
 
 //Have to code ball types and PC
@@ -111,9 +112,9 @@ public class PokeballEntity extends ThrowableItemProjectile {
     public void onAddedToWorld() {
         super.onAddedToWorld();
         if(CurrentMon == null) {
-            playSound(POKE_BALL_THROWN.get(), 1, 1);
+            playSound(POKE_BALL_THROWN, 1, 1);
         }else if(CurrentMon.isRemoved()){
-            playSound(POKE_BALL_THROWN.get(), 1, 1);
+            playSound(POKE_BALL_THROWN, 1, 1);
         }
     }
 

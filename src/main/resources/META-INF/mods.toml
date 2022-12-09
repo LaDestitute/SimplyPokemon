@@ -4,7 +4,7 @@ loaderVersion="[40,)" #mandatory This is typically bumped every Minecraft versio
 license="MIT"
 [[mods]] #mandatory
 modId="pokemonmod" #mandatory
-version="0.12a" #mandatory
+version="0.13a" #mandatory
 displayName="Simply Pokemon" #mandatory
 logoFile="pokemonmod.png" #optional
 credits="This is a fan project! Pokemon is owned by Nintendo! https://www.nintendo.com/store/ " #optional
@@ -33,6 +33,6 @@ criticize, modify, or publish branches of this mod so long as you credit the ori
     modId="minecraft"
     mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-    versionRange="[1.19.2,1.19.3)"
+    versionRange="[1.19.3,1.19.4)"
     ordering="NONE"
     side="BOTH"

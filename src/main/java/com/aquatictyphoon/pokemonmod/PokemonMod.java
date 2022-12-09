@@ -6,18 +6,23 @@ import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.aquatictyphoon.pokemonmod.setup.items.RareCandyItem;
 import com.aquatictyphoon.pokemonmod.setup.pokeballs.PokeBallItem;
 import com.aquatictyphoon.pokemonmod.setup.server.ModMessages;
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.CreativeModeTabRegistry;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -25,7 +30,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.slf4j.Logger;
+
+import java.util.List;
+import java.util.function.Consumer;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(PokemonMod.MODID)
@@ -38,28 +45,12 @@ public class PokemonMod
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, MODID);
 
-
-    public static final RegistryObject<SoundEvent> POKE_BALL_THROWN =
-            registerSoundEvent("pokeball_thrown");
-
-    public static RegistryObject<SoundEvent> registerSoundEvent(String name){
-        return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(PokemonMod.MODID, name)));
-    }
-
-
-
-
-
-
-
-
-
     public static final RegistryObject<Item> POKEBALL_ITEM = ITEMS.register("pokeball",
-            () -> new PokeBallItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+            () -> new PokeBallItem(new Item.Properties()));
 
     //Registry goes here
     public static final RegistryObject<Item> RARECANDY = ITEMS.register("rarecandy",
-            () -> new RareCandyItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(new FoodProperties.Builder().alwaysEat().build())));
+            () -> new RareCandyItem(new Item.Properties().food(new FoodProperties.Builder().alwaysEat().build())));
     public static final RegistryObject<EntityType<PokemonEntity>> POKEMON = ENTITIES.register("pokemon",
             () -> EntityType.Builder.<PokemonEntity>of(PokemonEntity::new, MobCategory.CREATURE).sized(0.5F, 0.8F).build("pokemon"));
 

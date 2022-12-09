@@ -12,6 +12,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.server.command.EnumArgument;
 
 import static net.minecraft.world.entity.MobSpawnType.COMMAND;
@@ -45,7 +46,7 @@ public class PokeSummonCommand {
             ServerLevel serverLevel = (ServerLevel) player.level;
             PokemonEntity entity = new PokemonEntity(PokemonMod.POKEMON.get(), player.level);
             EntityType entityType = entity.getType();
-            PokemonEntity pokemonEntity = (PokemonEntity) entityType.spawn(serverLevel, null, null, player.blockPosition(), COMMAND, false, false);
+            PokemonEntity pokemonEntity = (PokemonEntity) entityType.spawn(serverLevel, (ItemStack) null, null, player.blockPosition(), COMMAND, false, false);
 
             if(Shinyness.equals("SHINY")){
                 pokemonEntity.setShinnyness(true);

@@ -6,17 +6,11 @@ import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyPokeballProvider;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Supplier;
-
-import static com.aquatictyphoon.pokemonmod.PokemonMod.POKE_BALL_THROWN;
 
 public class SendPokemonPacket {
 
