@@ -3,7 +3,6 @@ package com.aquatictyphoon.pokemonmod.setup.client.render;
 import com.aquatictyphoon.pokemonmod.setup.client.entitymodels.*;
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Matrix4f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.model.EntityModel;
@@ -15,6 +14,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import org.joml.Matrix4f;
 
 import javax.annotation.Nullable;
 
