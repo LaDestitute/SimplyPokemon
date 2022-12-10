@@ -39,7 +39,7 @@
   "item.pokemonmod.icestone": "Ice Stone",
   "item.pokemonmod.shinystone": "Shiny Stone",
   "item.pokemonmod.everstone": "Ever Stone",
-  "pokemonmod:pokeball_thrown": "Ball thrown",
+  "sounds.pokemonmod.pokeball_thrown": "Ball thrown",
 
   "pokemon.notfound": "Pokémon not found",
   "key.pokemonmod.pokeball": "Send and Release Pokemon",

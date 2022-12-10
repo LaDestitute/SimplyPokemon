@@ -1,13 +1,10 @@
 package com.aquatictyphoon.pokemonmod.setup.entities;
 
-import com.aquatictyphoon.pokemonmod.PokemonMod;
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -111,11 +108,12 @@ public class PokeballEntity extends ThrowableItemProjectile {
     @Override
     public void onAddedToWorld() {
         super.onAddedToWorld();
-        if(CurrentMon == null) {
-            playSound(POKE_BALL_THROWN, 1, 1);
-        }else if(CurrentMon.isRemoved()){
-            playSound(POKE_BALL_THROWN, 1, 1);
-        }
+            if (CurrentMon == null) {
+                playSound(POKE_BALL_THROWN, 1, 1);
+            } else if (CurrentMon.isRemoved()) {
+                playSound(POKE_BALL_THROWN, 1, 1);
+            }
+
     }
 
     @Override

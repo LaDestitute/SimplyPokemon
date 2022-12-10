@@ -1,19 +1,18 @@
 package com.aquatictyphoon.pokemonmod.setup.sounds;
 
-import net.minecraft.client.sounds.SoundEngine;
+import com.aquatictyphoon.pokemonmod.PokemonMod;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.client.event.sound.SoundEvent;
 
-public class ModSoundEvents extends SoundEvent {
 
-    public static final net.minecraft.sounds.SoundEvent POKE_BALL_THROWN = register("pokeball_thrown");
+import net.minecraft.sounds.SoundEvent;
+import net.minecraftforge.registries.RegistryObject;
 
-    private static net.minecraft.sounds.SoundEvent register(String pKey) {
-        return register(String.valueOf(new ResourceLocation("pokeball_thrown")));
+
+public class ModSoundEvents {
+
+    public static final SoundEvent POKE_BALL_THROWN = register("pokeball_thrown");
+    private static SoundEvent register(String pKey) {
+        return SoundEvent.createVariableRangeEvent(new ResourceLocation(PokemonMod.MODID, "pokeball_thrown"));
     }
 
-
-    protected ModSoundEvents(SoundEngine engine) {
-        super(engine);
-    }
 }
