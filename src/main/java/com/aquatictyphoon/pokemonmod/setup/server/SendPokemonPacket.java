@@ -28,7 +28,7 @@ public class SendPokemonPacket {
 
     public boolean handle(Supplier<NetworkEvent.Context> supplier){
         NetworkEvent.Context context  =supplier.get();
-        final  var success = new AtomicBoolean(false);
+        final var success = new AtomicBoolean(false);
 
         context.enqueueWork(() ->{
             // HERE IS SERVER
@@ -41,15 +41,12 @@ public class SendPokemonPacket {
                 projectile.setOwner(pPlayer);
                 projectile.setItem(pokeball);
                 projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.3F, 1.0F);
-
                 pLevel.addFreshEntity(projectile);
-
-
                 success.set(true);
 
             });
         });
         context.setPacketHandled(true);
-        return  success.get();
+        return success.get();
     }
 }

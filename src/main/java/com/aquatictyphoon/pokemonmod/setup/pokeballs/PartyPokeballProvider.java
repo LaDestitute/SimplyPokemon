@@ -19,6 +19,7 @@ public class PartyPokeballProvider implements ICapabilityProvider, INBTSerializa
     private final LazyOptional<PartyStorage> optional = LazyOptional.of(this::createPlayerParty);
 
     private PartyStorage createPlayerParty() {
+
         if (party == null){
             this.party = new PartyStorage();
         }
@@ -27,8 +28,9 @@ public class PartyPokeballProvider implements ICapabilityProvider, INBTSerializa
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if(cap ==PLAYER_PARTY)
+        if(cap ==PLAYER_PARTY) {
             return optional.cast();
+        }
         return null;
     }
 

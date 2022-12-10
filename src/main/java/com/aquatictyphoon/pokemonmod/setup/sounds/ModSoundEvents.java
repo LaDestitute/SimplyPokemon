@@ -2,10 +2,7 @@ package com.aquatictyphoon.pokemonmod.setup.sounds;
 
 import com.aquatictyphoon.pokemonmod.PokemonMod;
 import net.minecraft.resources.ResourceLocation;
-
-
 import net.minecraft.sounds.SoundEvent;
-import net.minecraftforge.registries.RegistryObject;
 
 
 public class ModSoundEvents {
