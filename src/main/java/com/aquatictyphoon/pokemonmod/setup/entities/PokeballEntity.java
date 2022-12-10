@@ -17,7 +17,6 @@ import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.NotNull;
 
 import static com.aquatictyphoon.pokemonmod.PokemonMod.*;
-import static com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyStorage.getPokemonBySlot;
 import static com.aquatictyphoon.pokemonmod.setup.sounds.ModSoundEvents.POKE_BALL_THROWN;
 import static net.minecraft.world.entity.Entity.RemovalReason.CHANGED_DIMENSION;
 
@@ -28,7 +27,8 @@ public class PokeballEntity extends ThrowableItemProjectile {
 
     private boolean hasHitGround = false;
 
-    PokemonEntity CurrentMon;
+    Integer currentSlot = 0;
+    PokemonEntity CurrentMon = new PartyStorage().getPokemonBySlot(currentSlot);
     private Boolean speciesIsNull = false;
 
     private Boolean isFullBall = false;
@@ -42,7 +42,6 @@ public class PokeballEntity extends ThrowableItemProjectile {
     public PokeballEntity(LivingEntity entity, Level level, ItemStack pStack, Boolean fullBall) {
         super(POKE_BALL.get(), entity, level);
         if (!level.isClientSide){
-            CurrentMon = getPokemonBySlot(currentSlot);
 
             isFullBall = fullBall;
 
@@ -92,10 +91,10 @@ public class PokeballEntity extends ThrowableItemProjectile {
                     float statusBonus = 1;
                     int catchrate = pTarget.getCatchrate();
                     float calculatedCatch = ((((((3 * (maxHP)) - 2 * (currentHP)) * catchrate * ballBonus) / 3 * maxHP) * statusBonus) / 255);
-                    if (getPokemonBySlot(currentSlot) == null) {
+                    if (CurrentMon == null) {
                         if (!pTarget.isTame()) {
                             if ((pTarget.isAlive()) && random.nextInt(256) <= calculatedCatch) {
-                                PartyStorage.addNewPokemon(pTarget, 1);
+                                new PartyStorage().addPokemon(pTarget);
                                 pPlayer.displayClientMessage(Component.translatable(pPlayer.getGameProfile().getName() + " caught the wild " + pTarget.getPokeName()), false);
                                 pTarget.remove(CHANGED_DIMENSION);
                             }
@@ -162,9 +161,6 @@ public class PokeballEntity extends ThrowableItemProjectile {
             }
         }
     }
-
-
-    Integer currentSlot = 1;
 
     protected @NotNull Item getDefaultItem() {
         return (POKEBALL_ITEM.get());
