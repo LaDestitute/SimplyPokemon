@@ -44,7 +44,7 @@ public class PartyStorage {
 
     public static void addNewPokemon(PokemonEntity storedPokemon, int incomingSlot){
         int currentSlot = Mth.clamp(incomingSlot, 1, 7);
-        while (checkStoredPokemonBySlot(storedPokemon,currentSlot) != null){
+        while (checkStoredPokemonBySlot(currentSlot) != null){
             currentSlot++;
         }
         if(currentSlot == 1)
@@ -59,9 +59,7 @@ public class PartyStorage {
             slot5 = storedPokemon;
         if(currentSlot == 6)
             slot6 = storedPokemon;
-
         storedPokemon.setPartySlot(currentSlot);
-
         //HANDLE PC
         if(currentSlot ==7){
             System.out.println("ERROR NO PC STORAGE PROGRAMMED");
@@ -70,7 +68,6 @@ public class PartyStorage {
     }
 
     public static PokemonEntity getPokemonBySlot(int currentSlot) {
-
         //Could have use a switch case here lol
         if (currentSlot == 1)
            return slot1;
@@ -87,7 +84,7 @@ public class PartyStorage {
         return slot1;
     }
 
-    public  static PokemonEntity checkStoredPokemonBySlot(PokemonEntity storedPokemon, int currentSlot){
+    public  static PokemonEntity checkStoredPokemonBySlot(int currentSlot){
         if(currentSlot == 1)
             return slot1;
         if(currentSlot == 2)

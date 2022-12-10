@@ -54,11 +54,6 @@ public class PokemonMod
         event.put(POKEMON.get(), PokemonEntity.createLivingAttributes().build());
     }
 
-    //public static final RegistryObject<Block> EXAMPLE_BLOCK = BLOCKS.register("example_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE)));
-
-   // public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
-
-
     public PokemonMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

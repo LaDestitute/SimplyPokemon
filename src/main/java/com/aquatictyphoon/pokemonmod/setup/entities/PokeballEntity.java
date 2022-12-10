@@ -58,7 +58,7 @@ public class PokeballEntity extends ThrowableItemProjectile {
                 }
                 pStack.setTag(dataCheck);
                 thrownStack = pStack;
-                System.out.println(getSpecies);
+
                 if (getSpecies == null) {
                     this.speciesIsNull = true;
                 } else {
@@ -68,7 +68,9 @@ public class PokeballEntity extends ThrowableItemProjectile {
         }
     }
     void DiscardBall(){
-        this.setRemoved(RemovalReason.DISCARDED);
+        if (!level.isClientSide) {
+            this.setRemoved(RemovalReason.DISCARDED);
+        }
     }
 
 
@@ -116,7 +118,6 @@ public class PokeballEntity extends ThrowableItemProjectile {
             } else if (CurrentMon.isRemoved()) {
                 playSound(POKE_BALL_THROWN, 1, 1);
             }
-
     }
 
     @Override
