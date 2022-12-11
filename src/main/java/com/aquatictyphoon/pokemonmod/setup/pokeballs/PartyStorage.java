@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class PartyStorage {
     public ArrayList<PokemonEntity> playerParty = new ArrayList<>();
     public final int partySize = 6;
-    String playerPartyAsString = playerParty.toString();
+
     public void addPokemon(PokemonEntity storedPokemon){
         if(playerParty.size() < partySize) {
             playerParty.add(storedPokemon);
@@ -25,13 +25,15 @@ public class PartyStorage {
         }
     }
 
-    public void saveNBTData(CompoundTag nbt){
+    public void saveNBTData(CompoundTag tag){
         ListTag listTag = new ListTag();
-        nbt.put("Party", listTag);
+        for(PokemonEntity pok : playerParty){
+            listTag.add(pok.serializeNBT());
+        }
+        tag.put("playerParty", listTag);
     }
 
-    public void loadNBTData(CompoundTag nbt){
-        ListTag listTag = (ListTag) nbt.get("Party");
-        playerPartyAsString = String.valueOf(listTag);
+    public void loadNBTData(CompoundTag tag){
+
     }
 }

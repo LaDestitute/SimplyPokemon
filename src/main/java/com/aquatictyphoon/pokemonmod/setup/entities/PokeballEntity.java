@@ -2,7 +2,6 @@ package com.aquatictyphoon.pokemonmod.setup.entities;
 
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyPokeballProvider;
-import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
