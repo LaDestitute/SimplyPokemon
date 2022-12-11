@@ -1,6 +1,7 @@
 package com.aquatictyphoon.pokemonmod.setup.entities;
 
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
+import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyPokeballProvider;
 import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -28,7 +29,9 @@ public class PokeballEntity extends ThrowableItemProjectile {
     private boolean hasHitGround = false;
 
     Integer currentSlot = 0;
-    PokemonEntity CurrentMon = new PartyStorage().getPokemonBySlot(currentSlot);
+    PokemonEntity CurrentMon;
+
+
     private Boolean speciesIsNull = false;
 
     private Boolean isFullBall = false;
@@ -41,6 +44,17 @@ public class PokeballEntity extends ThrowableItemProjectile {
 
     public PokeballEntity(LivingEntity entity, Level level, ItemStack pStack, Boolean fullBall) {
         super(POKE_BALL.get(), entity, level);
+
+        Player pPlayer = (Player) this.getOwner();
+        if (pPlayer == null) {
+            return;
+        }
+
+        pPlayer.getCapability(PartyPokeballProvider.PLAYER_PARTY).ifPresent(partyStorage -> {
+            CurrentMon = partyStorage.getPokemonBySlot(currentSlot);
+        });
+
+
         if (!level.isClientSide){
 
             isFullBall = fullBall;
@@ -94,7 +108,13 @@ public class PokeballEntity extends ThrowableItemProjectile {
                     if (CurrentMon == null) {
                         if (!pTarget.isTame()) {
                             if ((pTarget.isAlive()) && random.nextInt(256) <= calculatedCatch) {
-                                new PartyStorage().addPokemon(pTarget);
+
+                                pPlayer.getCapability(PartyPokeballProvider.PLAYER_PARTY).ifPresent(partyStorage -> {
+                                    partyStorage.addPokemon(pTarget);
+                                });
+
+
+
                                 pPlayer.displayClientMessage(Component.translatable(pPlayer.getGameProfile().getName() + " caught the wild " + pTarget.getPokeName()), false);
                                 pTarget.remove(CHANGED_DIMENSION);
                             }

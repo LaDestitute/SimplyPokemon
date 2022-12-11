@@ -2,6 +2,7 @@ package com.aquatictyphoon.pokemonmod.setup.pokeballs;
 
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ public class PartyStorage {
     public final int partySize = 6;
     String playerPartyAsString = playerParty.toString();
     public void addPokemon(PokemonEntity storedPokemon){
-        if(playerParty.size() > partySize) {
+        if(playerParty.size() < partySize) {
             playerParty.add(storedPokemon);
         }else{
             System.out.println("ERROR NO PC STORAGE PROGRAMMED");
@@ -25,10 +26,12 @@ public class PartyStorage {
     }
 
     public void saveNBTData(CompoundTag nbt){
-        nbt.putString("Party", playerPartyAsString);
+        ListTag listTag = new ListTag();
+        nbt.put("Party", listTag);
     }
 
     public void loadNBTData(CompoundTag nbt){
-        playerPartyAsString = nbt.getString("Party");
+        ListTag listTag = (ListTag) nbt.get("Party");
+        playerPartyAsString = String.valueOf(listTag);
     }
 }

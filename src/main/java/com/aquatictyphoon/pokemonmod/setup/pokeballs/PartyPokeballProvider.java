@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class PartyPokeballProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
-    public static Capability<PartyStorage> PLAYER_PARTY = CapabilityManager.get(new CapabilityToken<PartyStorage>() {
+    public static Capability<PartyStorage> PLAYER_PARTY = CapabilityManager.get(new CapabilityToken<>() {
 
     });
     private PartyStorage party = null;
