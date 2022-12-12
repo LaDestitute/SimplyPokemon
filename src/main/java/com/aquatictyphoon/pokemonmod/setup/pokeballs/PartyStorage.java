@@ -3,8 +3,14 @@ package com.aquatictyphoon.pokemonmod.setup.pokeballs;
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PartyStorage {
     public ArrayList<PokemonEntity> playerParty = new ArrayList<>();
@@ -33,7 +39,13 @@ public class PartyStorage {
         tag.put("playerParty", listTag);
     }
 
-    public void loadNBTData(CompoundTag tag){
+    public void loadNBTData(CompoundTag compoundTag){
+        ListTag listTag = (ListTag) compoundTag.get("playerParty");
+        for(int i = 1; i <= listTag.stream().count(); i++){
+            Tag entity = listTag.get(i - 1);
 
+
+            System.out.println(entity);
+        }
     }
 }
