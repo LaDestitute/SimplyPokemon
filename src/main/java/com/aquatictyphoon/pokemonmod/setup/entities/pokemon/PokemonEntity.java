@@ -515,14 +515,13 @@ public class PokemonEntity extends TamableAnimal {
         super((EntityType<? extends TamableAnimal>) pEntityType, pLevel);
          int pSize = random.nextInt(3);
          setSize(Mth.clamp(pSize, 1, 3));
-         if(this.getOwner() != null) {
-             this.level = this.getOwner().level;
-         }
     }
 
     public void setTame(boolean isTame) {
         super.setTame(isTame);
     }
+
+
 
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
@@ -547,7 +546,6 @@ public class PokemonEntity extends TamableAnimal {
         if(shinyroll == 4096){
             this.entityData.set(SHINYNESS, Boolean.TRUE);
         }
-
 
         return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }
@@ -615,6 +613,10 @@ public class PokemonEntity extends TamableAnimal {
     }
 
     public void aiStep() {
+        if(this.getOwner() != null) {
+            this.level = this.getOwner().level;
+        }
+
     if(this.level.isClientSide) {
 
             if (this.getCustomName() != null && this.getCustomName().getString() != null) {

@@ -66,6 +66,9 @@ minecraft {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'pokemonmod'
 
+            args '--uuid', '5d3ce8920cab4604a2555e3f09fbdd2d'
+            args '--username=AquaticTyphoon'
+
             mods {
                 pokemonmod {
                     source sourceSets.main

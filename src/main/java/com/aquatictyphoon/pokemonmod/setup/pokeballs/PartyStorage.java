@@ -54,4 +54,8 @@ public class PartyStorage {
             }
         }
     }
+
+    public void copyFrom(PartyStorage source) {
+        this.playerParty = source.playerParty;
+    }
 }
