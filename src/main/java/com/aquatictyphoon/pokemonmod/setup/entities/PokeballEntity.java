@@ -22,24 +22,15 @@ import static net.minecraft.world.entity.Entity.RemovalReason.CHANGED_DIMENSION;
 
 //Have to code ball types and PC
 public class PokeballEntity extends ThrowableItemProjectile {
-
     ItemStack thrownStack;
-
     private boolean hasHitGround = false;
-
     Integer currentSlot = 0;
     PokemonEntity CurrentMon;
-
-
     private Boolean speciesIsNull = false;
-
     private Boolean isFullBall = false;
-
     public PokeballEntity(EntityType<PokeballEntity> type, Level level) {
         super(type, level);
     }
-
-
 
     public PokeballEntity(LivingEntity entity, Level level, ItemStack pStack, Boolean fullBall) {
         super(POKE_BALL.get(), entity, level);
@@ -48,16 +39,11 @@ public class PokeballEntity extends ThrowableItemProjectile {
         if (pPlayer == null) {
             return;
         }
-
         pPlayer.getCapability(PartyPokeballProvider.PLAYER_PARTY).ifPresent(partyStorage -> {
             CurrentMon = partyStorage.getPokemonBySlot(currentSlot);
         });
-
-
         if (!level.isClientSide){
-
             isFullBall = fullBall;
-
             if(pStack == null){
                 thrownStack = POKEBALL_ITEM.get().getDefaultInstance();
                 this.speciesIsNull = true;
@@ -70,7 +56,6 @@ public class PokeballEntity extends ThrowableItemProjectile {
                 }
                 pStack.setTag(dataCheck);
                 thrownStack = pStack;
-
                 if (getSpecies == null) {
                     this.speciesIsNull = true;
                 } else {
@@ -84,7 +69,6 @@ public class PokeballEntity extends ThrowableItemProjectile {
             this.setRemoved(RemovalReason.DISCARDED);
         }
     }
-
 
     @Override
     protected void onHitEntity(EntityHitResult pResult) {
@@ -107,13 +91,10 @@ public class PokeballEntity extends ThrowableItemProjectile {
                     if (CurrentMon == null) {
                         if (!pTarget.isTame()) {
                             if ((pTarget.isAlive()) && random.nextInt(256) <= calculatedCatch) {
-
+                                pTarget.tame(pPlayer);
                                 pPlayer.getCapability(PartyPokeballProvider.PLAYER_PARTY).ifPresent(partyStorage -> {
                                     partyStorage.addPokemon(pTarget);
                                 });
-
-
-
                                 pPlayer.displayClientMessage(Component.translatable(pPlayer.getGameProfile().getName() + " caught the wild " + pTarget.getPokeName()), false);
                                 pTarget.remove(CHANGED_DIMENSION);
                             }

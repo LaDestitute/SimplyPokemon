@@ -18,6 +18,7 @@ public class PartyPokeballProvider implements ICapabilityProvider, INBTSerializa
     private PartyStorage party = null;
     private final LazyOptional<PartyStorage> optional = LazyOptional.of(this::createPlayerParty);
 
+
     private PartyStorage createPlayerParty() {
         if (party == null){
             this.party = new PartyStorage();

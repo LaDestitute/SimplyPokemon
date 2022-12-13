@@ -1,14 +1,14 @@
 package com.aquatictyphoon.pokemonmod.setup.pokeballs;
 
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
-
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.registries.ForgeRegistries;
-import java.util.ArrayList;
+import net.minecraftforge.server.ServerLifecycleHooks;
 
+import java.util.ArrayList;
 public class PartyStorage {
     public ArrayList<PokemonEntity> playerParty = new ArrayList<>();
     public final int partySize = 6;
@@ -30,18 +30,28 @@ public class PartyStorage {
 
     public void saveNBTData(CompoundTag tag){
         ListTag listTag = new ListTag();
+
         for(PokemonEntity pok : playerParty){
             listTag.add(pok.serializeNBT());
         }
-        tag.put("playerParty", listTag);
+        if(listTag != null) {
+            tag.put("playerParty", listTag);
+        }
     }
 
+
+
     public void loadNBTData(CompoundTag compoundTag){
+        ServerLevel serverLevel  = ServerLifecycleHooks.getCurrentServer().getLevel(ServerLevel.OVERWORLD);
         ListTag listTag = (ListTag) compoundTag.get("playerParty");
-        for(int i = 1; i <= listTag.stream().count(); i++){
-            CompoundTag tag = (CompoundTag) listTag.get(i - 1);
-            //PokemonEntity test = (PokemonEntity) ForgeRegistries.ENTITY_TYPES.getValue(new ResourceLocation(tag.getString("entity"))).create(level);
-            //System.out.println(test);
+        if(serverLevel != null) {
+            ServerLevel overWorldLevel = serverLevel.getLevel();
+            for (int i = 1; i <= listTag.stream().count(); i++) {
+                CompoundTag pokemonCompoundTags = (CompoundTag) listTag.get(i - 1);
+                PokemonEntity pokemon = (PokemonEntity) ForgeRegistries.ENTITY_TYPES.getValue(new ResourceLocation(pokemonCompoundTags.getString("id"))).create(overWorldLevel);
+                pokemon.deserializeNBT(pokemonCompoundTags);
+                playerParty.add(pokemon);
+            }
         }
     }
 }

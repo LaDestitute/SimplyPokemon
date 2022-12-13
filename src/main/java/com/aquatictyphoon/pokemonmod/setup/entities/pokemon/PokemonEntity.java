@@ -7,6 +7,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -31,6 +32,7 @@ import java.util.Objects;
 import java.util.Random;
 
 import static com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonStats.Species.*;
+import static net.minecraft.world.entity.Entity.RemovalReason.CHANGED_DIMENSION;
 
 
 public class PokemonEntity extends TamableAnimal {
@@ -513,7 +515,9 @@ public class PokemonEntity extends TamableAnimal {
         super((EntityType<? extends TamableAnimal>) pEntityType, pLevel);
          int pSize = random.nextInt(3);
          setSize(Mth.clamp(pSize, 1, 3));
-
+         if(this.getOwner() != null) {
+             this.level = this.getOwner().level;
+         }
     }
 
     public void setTame(boolean isTame) {
@@ -613,15 +617,11 @@ public class PokemonEntity extends TamableAnimal {
     public void aiStep() {
     if(this.level.isClientSide) {
 
-
             if (this.getCustomName() != null && this.getCustomName().getString() != null) {
                 setNicknamed(true);
             } else {
                 setNicknamed(false);
             }
-
-
-
         if ((getShinyness()) == true) {
             for (int i = 0; i < 1; ++i) {
                 this.level.addParticle(ParticleTypes.ELECTRIC_SPARK, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.random.nextDouble() - 0.5D) * 2.0D, -this.random.nextDouble(), (this.random.nextDouble() - 0.5D) * 2.0D);
@@ -657,5 +657,4 @@ public class PokemonEntity extends TamableAnimal {
 
         super.aiStep();
     }
-
 }
