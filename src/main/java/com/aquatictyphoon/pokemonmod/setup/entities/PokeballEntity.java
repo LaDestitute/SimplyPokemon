@@ -2,9 +2,9 @@ package com.aquatictyphoon.pokemonmod.setup.entities;
 
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyPokeballProvider;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -23,8 +23,8 @@ import static net.minecraft.world.entity.Entity.RemovalReason.CHANGED_DIMENSION;
 public class PokeballEntity extends ThrowableItemProjectile {
 
     PokemonEntity CurrentMon;
-    Boolean isFullBall;
-    ServerPlayer pPlayer;
+    Boolean isFullBall = false;
+    Entity pPlayer;
 
     public PokeballEntity(EntityType<PokeballEntity> type, Level level) {
         super(type, level);
@@ -32,7 +32,7 @@ public class PokeballEntity extends ThrowableItemProjectile {
     public PokeballEntity(LivingEntity entity, Level level, ItemStack pStack, Boolean fullBall) {
         super(POKE_BALL.get(), entity, level);
         isFullBall = fullBall;
-        pPlayer = (ServerPlayer) this.getOwner();
+        pPlayer = this.getOwner();
         if (pPlayer == null) {return;}
         pPlayer.getCapability(PartyPokeballProvider.PLAYER_PARTY).ifPresent(partyStorage -> {
             CurrentMon = partyStorage.getPokemonBySlot(partyStorage.currentSlot);
@@ -43,34 +43,39 @@ public class PokeballEntity extends ThrowableItemProjectile {
         super.onHitEntity(result);
         if (!level.isClientSide) {
             if (result.getEntity() instanceof PokemonEntity pTarget ) {
-                if (pTarget.getSpecies() >= 0) {return;}
+                if (pTarget.getSpecies() == 0) {return;}
 
-                if(isFullBall && CurrentMon != null){
-                    CurrentMon.absMoveTo(result.getLocation().x, result.getLocation().y + 0.5f, result.getLocation().z, 0, 0);
-                    level.addFreshEntity(CurrentMon);
-                    DiscardBall();
-                }else{
+                if(!isFullBall){
                     float maxHP = pTarget.getMaxHealth();
                     float currentHP = pTarget.getHealth();
                     float ballBonus = 1;  // Need to program Status and Ball Bonus
                     float statusBonus = 1;
                     int catchrate = pTarget.getCatchrate();
                     float calculatedCatch = ((((((3 * (maxHP)) - 2 * (currentHP)) * catchrate * ballBonus) / 3 * maxHP) * statusBonus) / 255);
-                    if (CurrentMon == null) {
+                    if (pPlayer instanceof Player player) {
                         if (!pTarget.isTame()) {
                             if ((pTarget.isAlive()) && random.nextInt(256) <= calculatedCatch) {
-                                pTarget.tame(pPlayer);
-                                pPlayer.getCapability(PartyPokeballProvider.PLAYER_PARTY).ifPresent(partyStorage -> {
+                                pTarget.tame(player);
+                                player.getCapability(PartyPokeballProvider.PLAYER_PARTY).ifPresent(partyStorage -> {
                                     partyStorage.addPokemon(pTarget);
+                                    if(partyStorage.playerParty.stream().count() < 5){
+                                        player.displayClientMessage(Component.translatable(player.getGameProfile().getName() + " caught the wild " + pTarget.getPokeName() + " and was sent to the PC!" ), false);
+                                    }else{
+                                        player.displayClientMessage(Component.translatable(player.getGameProfile().getName() + " caught the wild " + pTarget.getPokeName() + "!"), false);
+                                    }
                                 });
-                                pPlayer.displayClientMessage(Component.translatable(pPlayer.getGameProfile().getName() + " caught the wild " + pTarget.getPokeName()), false);
+
                                 pTarget.remove(CHANGED_DIMENSION);
                             }
                             if ((pTarget.isAlive()) && random.nextInt(256) > calculatedCatch) {
-                                pPlayer.displayClientMessage(Component.translatable("Oh no! The " + pTarget.getPokeName() + " broke free!"), true);
+                                player.displayClientMessage(Component.translatable("Oh no! The " + pTarget.getPokeName() + " broke free!"), true);
                             }
                         }
                     }
+                }else{
+                    CurrentMon.absMoveTo(result.getLocation().x, result.getLocation().y + 0.5f, result.getLocation().z, 0, 0);
+                    level.addFreshEntity(CurrentMon);
+                    DiscardBall();
                 }
             }
             DiscardBall();
@@ -80,7 +85,7 @@ public class PokeballEntity extends ThrowableItemProjectile {
     @Override
     protected void onHitBlock(BlockHitResult result) {
         if (!level.isClientSide) {
-            if(CurrentMon != null) {
+            if(CurrentMon != null && isFullBall) {
                 CurrentMon.revive();
                 CurrentMon.absMoveTo(result.getLocation().x, result.getLocation().y + 0.5f, result.getLocation().z, 0, 0);
                 level.addFreshEntity(CurrentMon);
