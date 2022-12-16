@@ -24,7 +24,6 @@ import static com.aquatictyphoon.pokemonmod.setup.sounds.ModSoundEvents.POKE_BAL
 
 public class PokeballEntity extends ThrowableItemProjectile {
 
-
     PokemonEntity CurrentMon;
     Boolean isFullBall = false;
     Entity pPlayer;
@@ -87,7 +86,6 @@ public class PokeballEntity extends ThrowableItemProjectile {
     @Override
     public void tick() {
         super.tick();
-        System.out.println(ballShakeCount);
         if(ballShaking && !this.isNoGravity()) {
             ballShakeCount = random.nextInt(2);
         }
@@ -149,7 +147,6 @@ public class PokeballEntity extends ThrowableItemProjectile {
 
     @Override
     protected void onHitBlock(BlockHitResult result) {
-        if(ballShaking) {
             if (!level.isClientSide) {
                 if (CurrentMon != null && isFullBall) {
                     CurrentMon.revive();
@@ -158,7 +155,6 @@ public class PokeballEntity extends ThrowableItemProjectile {
                 }
             }
             DiscardBall();
-        }
     }
 
     void DiscardBall(){
