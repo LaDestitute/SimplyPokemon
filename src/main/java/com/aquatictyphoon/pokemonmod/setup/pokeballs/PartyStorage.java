@@ -16,6 +16,8 @@ public class PartyStorage {
     public ArrayList<PokemonEntity> playerParty = new ArrayList<>();
     public final int partySize = 6;
 
+    public int currentSlot = 0;
+
     public void addPokemon(PokemonEntity storedPokemon){
         if(playerParty.size() < partySize) {
             playerParty.add(storedPokemon);

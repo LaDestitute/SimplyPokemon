@@ -15,77 +15,44 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.NotNull;
-
 import static com.aquatictyphoon.pokemonmod.PokemonMod.*;
 import static com.aquatictyphoon.pokemonmod.setup.sounds.ModSoundEvents.POKE_BALL_THROWN;
 import static net.minecraft.world.entity.Entity.RemovalReason.CHANGED_DIMENSION;
 
-//Have to code ball types and PC
+
 public class PokeballEntity extends ThrowableItemProjectile {
-    boolean shouldRemoveMon;
-    ItemStack thrownStack;
-    private boolean hasHitGround = false;
-    Integer currentSlot = 0;
+
     PokemonEntity CurrentMon;
-    private Boolean speciesIsNull = false;
-    private Boolean isFullBall = false;
+    Boolean isFullBall;
+    ServerPlayer pPlayer;
+
     public PokeballEntity(EntityType<PokeballEntity> type, Level level) {
         super(type, level);
     }
-
     public PokeballEntity(LivingEntity entity, Level level, ItemStack pStack, Boolean fullBall) {
         super(POKE_BALL.get(), entity, level);
-
-        Player pPlayer = (Player) this.getOwner();
-        if (pPlayer == null) {
-            return;
-        }
+        isFullBall = fullBall;
+        pPlayer = (ServerPlayer) this.getOwner();
+        if (pPlayer == null) {return;}
         pPlayer.getCapability(PartyPokeballProvider.PLAYER_PARTY).ifPresent(partyStorage -> {
-            CurrentMon = partyStorage.getPokemonBySlot(currentSlot);
+            CurrentMon = partyStorage.getPokemonBySlot(partyStorage.currentSlot);
         });
-        if (!level.isClientSide){
-            isFullBall = fullBall;
-            if(pStack == null){
-                thrownStack = POKEBALL_ITEM.get().getDefaultInstance();
-                this.speciesIsNull = true;
-            }else {
-                CompoundTag dataCheck = new CompoundTag();
-                String getSpecies = "null";
-                if (CurrentMon != null) {
-                    getSpecies = String.valueOf(CurrentMon.getSpecies());
-                    dataCheck.putString("CURRENT_SPECIES", getSpecies);
-                }
-                pStack.setTag(dataCheck);
-                thrownStack = pStack;
-                if (getSpecies == null) {
-                    this.speciesIsNull = true;
-                } else {
-                    this.speciesIsNull = false;
-                }
-            }
-        }
     }
-    void DiscardBall(){
-        if (!level.isClientSide) {
-            this.setRemoved(RemovalReason.DISCARDED);
-        }
-    }
-
     @Override
-    protected void onHitEntity(EntityHitResult pResult) {
-        super.onHitEntity(pResult);
+    protected void onHitEntity(EntityHitResult result) {
+        super.onHitEntity(result);
         if (!level.isClientSide) {
-            if(pResult.getEntity() instanceof PokemonEntity) {
-                PokemonEntity pTarget = (PokemonEntity) pResult.getEntity();
+            if (result.getEntity() instanceof PokemonEntity pTarget ) {
+                if (pTarget.getSpecies() >= 0) {return;}
 
-                Player pPlayer = (Player) this.getOwner();
-                if (pPlayer == null) {
-                    return;
-                }
-                if (!this.speciesIsNull) {
+                if(isFullBall && CurrentMon != null){
+                    CurrentMon.absMoveTo(result.getLocation().x, result.getLocation().y + 0.5f, result.getLocation().z, 0, 0);
+                    level.addFreshEntity(CurrentMon);
+                    DiscardBall();
+                }else{
                     float maxHP = pTarget.getMaxHealth();
                     float currentHP = pTarget.getHealth();
-                    float ballBonus = 1;
+                    float ballBonus = 1;  // Need to program Status and Ball Bonus
                     float statusBonus = 1;
                     int catchrate = pTarget.getCatchrate();
                     float calculatedCatch = ((((((3 * (maxHP)) - 2 * (currentHP)) * catchrate * ballBonus) / 3 * maxHP) * statusBonus) / 255);
@@ -111,69 +78,30 @@ public class PokeballEntity extends ThrowableItemProjectile {
     }
 
     @Override
-    public void onAddedToWorld() {
-        super.onAddedToWorld();
-            if (CurrentMon == null) {
-                playSound(POKE_BALL_THROWN, 1, 1);
-            } else if (CurrentMon.isRemoved()) {
-                playSound(POKE_BALL_THROWN, 1, 1);
-            }
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (CurrentMon != null) {
-            if (getOwner() != null && getOwner() instanceof ServerPlayer player) {
-                if (player.hasDisconnected() || (!this.hasHitGround && !CurrentMon.isRemoved())) {
-                    shouldRemoveMon = true;
-                }
-            }
-        }
-
-
-        if (!level.isClientSide){
-            if (CurrentMon != null) {
-                if (shouldRemoveMon) {
-                    CurrentMon.remove(CHANGED_DIMENSION);
-                    DiscardBall();
-                }
-            }
-        }
-    }
-
-    @Override
     protected void onHitBlock(BlockHitResult result) {
         if (!level.isClientSide) {
-            this.hasHitGround = true;
-            Player player = (Player) this.getOwner();
-            if (this.speciesIsNull != null && !level.isClientSide && this.isFullBall) {
-                if (player == null || CurrentMon == null) {
-                    this.setRemoved(RemovalReason.DISCARDED);
-                    return;
-                }
-
-                if (shouldRemoveMon) {
-                    //Debug Code if ball somehow not removed
-                    CurrentMon.remove(CHANGED_DIMENSION);
-                    DiscardBall();
-                } else if (!CurrentMon.isDeadOrDying()) {
-                    CurrentMon.revive();
-                    CurrentMon.absMoveTo(result.getLocation().x, result.getLocation().y + 0.5f, result.getLocation().z, 0, 0);
-                    level.addFreshEntity(CurrentMon);
-                    DiscardBall();
-                } else {
-                    player.displayClientMessage(Component.translatable(CurrentMon.getPokeName() + " is Fainted"), true);
-                }
-            } else {
-                DiscardBall();
+            if(CurrentMon != null) {
+                CurrentMon.revive();
+                CurrentMon.absMoveTo(result.getLocation().x, result.getLocation().y + 0.5f, result.getLocation().z, 0, 0);
+                level.addFreshEntity(CurrentMon);
             }
         }
+        DiscardBall();
+    }
+
+    void DiscardBall(){
+        if (!level.isClientSide) {
+            this.setRemoved(RemovalReason.DISCARDED);
+        }
+    }
+
+    @Override
+    public void onAddedToWorld() {
+        super.onAddedToWorld();
+        playSound(POKE_BALL_THROWN, 1, 1);
     }
 
     protected @NotNull Item getDefaultItem() {
         return (POKEBALL_ITEM.get());
     }
-
 }
-
