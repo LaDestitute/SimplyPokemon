@@ -2,9 +2,9 @@ package com.aquatictyphoon.pokemonmod.setup.entities;
 
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyPokeballProvider;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -22,6 +22,7 @@ import static net.minecraft.world.entity.Entity.RemovalReason.CHANGED_DIMENSION;
 
 //Have to code ball types and PC
 public class PokeballEntity extends ThrowableItemProjectile {
+    boolean shouldRemoveMon;
     ItemStack thrownStack;
     private boolean hasHitGround = false;
     Integer currentSlot = 0;
@@ -122,9 +123,18 @@ public class PokeballEntity extends ThrowableItemProjectile {
     @Override
     public void tick() {
         super.tick();
+        if (CurrentMon != null) {
+            if (getOwner() != null && getOwner() instanceof ServerPlayer player) {
+                if (player.hasDisconnected() || (!this.hasHitGround && !CurrentMon.isRemoved())) {
+                    shouldRemoveMon = true;
+                }
+            }
+        }
+
+
         if (!level.isClientSide){
             if (CurrentMon != null) {
-                if (!this.hasHitGround && !CurrentMon.isRemoved()) {
+                if (shouldRemoveMon) {
                     CurrentMon.remove(CHANGED_DIMENSION);
                     DiscardBall();
                 }
@@ -143,14 +153,13 @@ public class PokeballEntity extends ThrowableItemProjectile {
                     return;
                 }
 
-                if (!CurrentMon.isRemoved()) {
+                if (shouldRemoveMon) {
                     //Debug Code if ball somehow not removed
                     CurrentMon.remove(CHANGED_DIMENSION);
                     DiscardBall();
                 } else if (!CurrentMon.isDeadOrDying()) {
                     CurrentMon.revive();
-                    BlockPos blockPos = this.blockPosition();
-                    CurrentMon.absMoveTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0, 0);
+                    CurrentMon.absMoveTo(result.getLocation().x, result.getLocation().y + 0.5f, result.getLocation().z, 0, 0);
                     level.addFreshEntity(CurrentMon);
                     DiscardBall();
                 } else {

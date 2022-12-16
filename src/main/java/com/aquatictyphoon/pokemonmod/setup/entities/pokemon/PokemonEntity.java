@@ -1,6 +1,7 @@
 package com.aquatictyphoon.pokemonmod.setup.entities.pokemon;
 
 import com.aquatictyphoon.pokemonmod.PokemonMod;
+import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyPokeballProvider;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -613,8 +614,12 @@ public class PokemonEntity extends TamableAnimal {
     }
 
     public void aiStep() {
-        if(this.getOwner() != null) {
-            this.level = this.getOwner().level;
+        if(this.getOwner() != null){
+            if(this.getOwner() instanceof ServerPlayer player){
+                if(player.isDeadOrDying() || player.isChangingDimension() || player.hasDisconnected()){
+                    this.remove(CHANGED_DIMENSION);
+                }
+            }
         }
 
     if(this.level.isClientSide) {

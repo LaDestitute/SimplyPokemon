@@ -43,7 +43,8 @@
 
   "pokemon.notfound": "Pokémon not found",
   "key.pokemonmod.pokeball": "Send and Release Pokemon",
-  "key.category.pokemonmod.pokemonmod": "Pokemon Mod"
+  "key.category.pokemonmod.pokemonmod": "Pokemon Mod",
+  "itemGroup.pokeball_tab": "Simply Pokémon Items"
 
 
 

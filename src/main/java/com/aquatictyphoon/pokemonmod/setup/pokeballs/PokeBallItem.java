@@ -11,6 +11,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
+import static com.aquatictyphoon.pokemonmod.setup.sounds.ModSoundEvents.POKE_BALL_THROWN;
+
 public class PokeBallItem extends Item {
 
     public PokeBallItem(Properties pProperties) {
@@ -19,7 +21,7 @@ public class PokeBallItem extends Item {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pHand) {
-        pLevel.playSound(pPlayer, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
+        pLevel.playSound(pPlayer, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), POKE_BALL_THROWN, SoundSource.NEUTRAL, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
         pPlayer.getCooldowns().addCooldown(this, 5);
             ItemStack PokeballItem = pPlayer.getItemInHand(pHand);
             if (PokeballItem != null){

@@ -5,14 +5,22 @@ import com.aquatictyphoon.pokemonmod.setup.entities.PokeballEntity;
 import com.aquatictyphoon.pokemonmod.setup.entities.pokemon.PokemonEntity;
 import com.aquatictyphoon.pokemonmod.setup.items.RareCandyItem;
 import com.aquatictyphoon.pokemonmod.setup.pokeballs.PokeBallItem;
+import com.aquatictyphoon.pokemonmod.setup.server.ModEvents;
 import com.aquatictyphoon.pokemonmod.setup.server.ModMessages;
+import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -49,6 +57,17 @@ public class PokemonMod
             () -> EntityType.Builder.<PokeballEntity>of(PokeballEntity::new, MobCategory.MISC)
                     .sized(0.25F, 0.25F).build("poke_ball"));
 
+    private void registerTabs(CreativeModeTabEvent.Register event) {
+        CreativeModeTab tabPokeballs = event.registerCreativeModeTab(new ResourceLocation(PokemonMod.MODID, "pokeball_tab"), builder -> builder
+                .title(Component.translatable(I18n.get("itemGroup.pokeball_tab")))
+                .icon(() -> new ItemStack(POKEBALL_ITEM.get()))
+                .displayItems((featureFlags, output, hasOp) -> {
+                    output.accept(POKEBALL_ITEM.get());
+                })
+        );
+    }
+
+
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(POKEMON.get(), PokemonEntity.createLivingAttributes().build());
@@ -59,6 +78,8 @@ public class PokemonMod
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
+
+        modEventBus.addListener(this::registerTabs);
 
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);

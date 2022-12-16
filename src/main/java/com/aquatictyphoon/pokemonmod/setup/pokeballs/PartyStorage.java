@@ -5,10 +5,13 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraftforge.common.capabilities.AutoRegisterCapability;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.server.ServerLifecycleHooks;
 
 import java.util.ArrayList;
+
+@AutoRegisterCapability
 public class PartyStorage {
     public ArrayList<PokemonEntity> playerParty = new ArrayList<>();
     public final int partySize = 6;
@@ -58,4 +61,5 @@ public class PartyStorage {
     public void copyFrom(PartyStorage source) {
         this.playerParty = source.playerParty;
     }
+
 }

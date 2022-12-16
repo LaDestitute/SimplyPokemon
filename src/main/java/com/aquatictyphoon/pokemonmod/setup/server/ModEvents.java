@@ -5,7 +5,6 @@ import com.aquatictyphoon.pokemonmod.setup.client.KeyBinds;
 import com.aquatictyphoon.pokemonmod.setup.commands.PokeSummonCommand;
 import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyPokeballProvider;
 import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyStorage;
-import net.minecraft.client.gui.screens.social.PlayerEntry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -16,7 +15,6 @@ import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerNegotiationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.server.command.ConfigCommand;
@@ -40,11 +38,14 @@ public class ModEvents {
         }
     }
 
+
     @SubscribeEvent
-    public static void onPlayerCloned(PlayerEvent.Clone event){
-        if(event.isWasDeath()) {
+    public static void onPlayerCloned(PlayerEvent.Clone event) {
+        if (event.isWasDeath()) {
+            // We need to copyFrom the capabilities
+            event.getOriginal().reviveCaps();
             event.getOriginal().getCapability(PartyPokeballProvider.PLAYER_PARTY).ifPresent(oldStore -> {
-                event.getOriginal().getCapability(PartyPokeballProvider.PLAYER_PARTY).ifPresent(newStore -> {
+                event.getEntity().getCapability(PartyPokeballProvider.PLAYER_PARTY).ifPresent(newStore -> {
                     newStore.copyFrom(oldStore);
                 });
             });
@@ -60,7 +61,7 @@ public class ModEvents {
     public static class ClientForgeEvents {
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key event) {
-            if(KeyBinds.POKEBALL_KEY.consumeClick()) {
+            if(KeyBinds.pokeball_keymapping.consumeClick()) {
                 ModMessages.setPacketToServer(new SendPokemonPacket());
             }
         }
@@ -68,9 +69,10 @@ public class ModEvents {
 
     @Mod.EventBusSubscriber(modid = PokemonMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModBusEvents {
+
         @SubscribeEvent
-        public static void onKeyRegister(RegisterKeyMappingsEvent event) {
-            event.register(KeyBinds.POKEBALL_KEY);
+        public static void onKeyBindRegister(RegisterKeyMappingsEvent event) {
+            KeyBinds.init(event);
         }
     }
 }
