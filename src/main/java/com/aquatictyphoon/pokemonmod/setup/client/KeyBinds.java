@@ -11,10 +11,7 @@ public class KeyBinds {
     public static final String KEY_CATEGORY_POKEBALL = "key.category.pokemonmod.pokemonmod";
     public static final String KEY_POKEBALL = "key.pokemonmod.pokeball";
 
-    public static KeyMapping pokeball_keymapping;
 
-    public static void init(RegisterKeyMappingsEvent event) {
-        pokeball_keymapping = new KeyMapping(KEY_POKEBALL, KeyConflictContext.IN_GAME, InputConstants.getKey("key.keyboard.period"), KEY_CATEGORY_POKEBALL);
-        event.register(pokeball_keymapping);
-    }
+    public static final KeyMapping POKEBALL_KEY = new KeyMapping(KEY_POKEBALL, KeyConflictContext.IN_GAME,
+            InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_R, KEY_CATEGORY_POKEBALL);
 }

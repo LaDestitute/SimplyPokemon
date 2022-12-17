@@ -61,7 +61,7 @@ public class ModEvents {
     public static class ClientForgeEvents {
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key event) {
-            if(KeyBinds.pokeball_keymapping.consumeClick()) {
+            if(KeyBinds.POKEBALL_KEY.consumeClick()) {
                 ModMessages.setPacketToServer(new SendPokemonPacket());
             }
         }
@@ -72,7 +72,7 @@ public class ModEvents {
 
         @SubscribeEvent
         public static void onKeyBindRegister(RegisterKeyMappingsEvent event) {
-            KeyBinds.init(event);
+            event.register(KeyBinds.POKEBALL_KEY);
         }
     }
 }

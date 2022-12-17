@@ -55,7 +55,7 @@ public class PokeballEntity extends ThrowableItemProjectile {
             if (result.getEntity() instanceof PokemonEntity pTarget ) {
                 if (pTarget.getSpecies() == 0) {return;}
 
-                if(!isFullBall){
+                if(!isFullBall && !pTarget.isTame()){
                     ballShaking = true;
                     TargetCapture = pTarget;
                     float maxHP = pTarget.getMaxHealth();
@@ -64,12 +64,11 @@ public class PokeballEntity extends ThrowableItemProjectile {
                     float statusBonus = 1;
                     int catchrate = pTarget.getCatchrate();
                     float calculatedCatch = ((((((3 * (maxHP)) - 2 * (currentHP)) * catchrate * ballBonus) / 3 * maxHP) * statusBonus) / 255);
-                        if (!pTarget.isTame()) {
-                            if ((pTarget.isAlive()) && random.nextInt(256) <= calculatedCatch) {
+                        if (!pTarget.isTame() && pTarget.isAlive()) {
+                            if (random.nextInt(256) <= calculatedCatch) {
                                 didCatchMon = true;
-                            }
-                            if ((pTarget.isAlive()) && random.nextInt(256) > calculatedCatch) {
-                                didCatchMon = true;
+                            }else {
+                                didCatchMon = false;
                             }
                         }
                 }else{
