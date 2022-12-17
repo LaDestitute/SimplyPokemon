@@ -8,6 +8,8 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -38,25 +40,36 @@ public class SendPokemonPacket {
             // HERE IS SERVER
             ServerPlayer pPlayer = context.getSender();
             ServerLevel pLevel = context.getSender().getLevel();
+            ItemStack pokeball = PokemonMod.POKEBALL_ITEM.get().getDefaultInstance();
+            PokeballEntity projectile = new PokeballEntity(pPlayer, pLevel, pokeball, true);
+            
             pPlayer.getCapability(PartyPokeballProvider.PLAYER_PARTY).ifPresent(partyStorage -> {
-                PokemonEntity CurrentMon = partyStorage.getPokemonBySlot(partyStorage.currentSlot);
-                if (!CurrentMon.isDeadOrDying()) {
-                    if (!CurrentMon.isRemoved() && !pPlayer.hasDisconnected()){
-                        CurrentMon.remove(CHANGED_DIMENSION);
-                    }else {
-                        CurrentMon.revive();
-                        ItemStack pokeball = PokemonMod.POKEBALL_ITEM.get().getDefaultInstance();
-                        PokeballEntity projectile = new PokeballEntity(pPlayer, pLevel, pokeball, true);
+                PokemonEntity currentMon = partyStorage.getPokemonBySlot(partyStorage.currentSlot);
+                if (!currentMon.isDeadOrDying()) {
+                    PokemonEntity pokemonInWorld = null;
+                    for(Entity entity : pLevel.getAllEntities()){
+                        if (entity instanceof PokemonEntity levelPokemon) {
+                            if (levelPokemon.getUUID().equals(currentMon.getUUID()) && !levelPokemon.isRemoved()) {
+                                levelPokemon.remove(CHANGED_DIMENSION);
+                                currentMon = levelPokemon;
+                                pokemonInWorld = levelPokemon;
+                                success.set(true);
+                                break;
+                            }
+                        }
+                    }
+
+                    if (pokemonInWorld == null) {
+                        currentMon.revive();
                         projectile.setOwner(pPlayer);
                         projectile.setItem(pokeball);
                         projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.3F, 1.0F);
                         pLevel.addFreshEntity(projectile);
+                        success.set(true);
                     }
                 }else{
-                    pPlayer.displayClientMessage(Component.translatable(CurrentMon.getPokeName() + " is Fainted"), true);
+                    pPlayer.displayClientMessage(Component.translatable(currentMon.getPokeName() + " is Fainted"), true);
                 }
-                success.set(true);
-
             });
         });
         context.setPacketHandled(true);
