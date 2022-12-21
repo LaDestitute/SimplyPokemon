@@ -40,11 +40,11 @@
   "item.pokemonmod.shinystone": "Shiny Stone",
   "item.pokemonmod.everstone": "Ever Stone",
   "sounds.pokemonmod.pokeball_thrown": "Ball thrown",
-
   "pokemon.notfound": "Pokémon not found",
   "key.pokemonmod.pokeball": "Send and Release Pokemon",
   "key.category.pokemonmod.pokemonmod": "Pokemon Mod",
-  "itemGroup.pokeball_tab": "Simply Pokémon Items"
+  "itemGroup.pokeball_tab": "Simply Pokémon Items",
+  "block.pokemonmod.computer": "Computer"
 
 
 
