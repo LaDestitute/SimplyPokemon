@@ -5,6 +5,9 @@ import com.aquatictyphoon.pokemonmod.setup.client.KeyBinds;
 import com.aquatictyphoon.pokemonmod.setup.commands.PokeSummonCommand;
 import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyPokeballProvider;
 import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyStorage;
+import com.aquatictyphoon.pokemonmod.setup.server.packets.SendPokemonPacket;
+import com.aquatictyphoon.pokemonmod.setup.server.packets.SwapPokemonPacketDown;
+import com.aquatictyphoon.pokemonmod.setup.server.packets.SwapPokemonPacketUp;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -64,6 +67,13 @@ public class ModEvents {
             if(KeyBinds.POKEBALL_KEY.consumeClick()) {
                 ModMessages.setPacketToServer(new SendPokemonPacket());
             }
+
+            if(KeyBinds.SWAP_SLOT_UP_KEY.consumeClick()) {
+                ModMessages.setPacketToServer(new SwapPokemonPacketUp());
+            }else if(KeyBinds.SWAP_SLOT_DOWN_KEY.consumeClick()) {
+                ModMessages.setPacketToServer(new SwapPokemonPacketDown());
+            }
+
         }
     }
 
@@ -73,6 +83,8 @@ public class ModEvents {
         @SubscribeEvent
         public static void onKeyBindRegister(RegisterKeyMappingsEvent event) {
             event.register(KeyBinds.POKEBALL_KEY);
+            event.register(KeyBinds.SWAP_SLOT_UP_KEY);
+            event.register(KeyBinds.SWAP_SLOT_DOWN_KEY);
         }
     }
 }

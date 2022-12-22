@@ -1,4 +1,4 @@
-package com.aquatictyphoon.pokemonmod.setup.server;
+package com.aquatictyphoon.pokemonmod.setup.server.packets;
 
 import com.aquatictyphoon.pokemonmod.PokemonMod;
 import com.aquatictyphoon.pokemonmod.setup.entities.PokeballEntity;
@@ -9,7 +9,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -32,7 +31,7 @@ public class SendPokemonPacket {
 
     }
 
-    public boolean handle(Supplier<NetworkEvent.Context> supplier){
+    public boolean handleSendPokemon(Supplier<NetworkEvent.Context> supplier){
         NetworkEvent.Context context  =supplier.get();
         final var success = new AtomicBoolean(false);
 

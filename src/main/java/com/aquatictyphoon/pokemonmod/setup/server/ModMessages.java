@@ -1,6 +1,9 @@
 package com.aquatictyphoon.pokemonmod.setup.server;
 
 import com.aquatictyphoon.pokemonmod.PokemonMod;
+import com.aquatictyphoon.pokemonmod.setup.server.packets.SendPokemonPacket;
+import com.aquatictyphoon.pokemonmod.setup.server.packets.SwapPokemonPacketDown;
+import com.aquatictyphoon.pokemonmod.setup.server.packets.SwapPokemonPacketUp;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
@@ -26,7 +29,17 @@ public class ModMessages {
         network.messageBuilder(SendPokemonPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(SendPokemonPacket::new)
                 .encoder(SendPokemonPacket::toBytes)
-                .consumerMainThread(SendPokemonPacket::handle).add();
+                .consumerMainThread(SendPokemonPacket::handleSendPokemon).add();
+
+        network.messageBuilder(SwapPokemonPacketUp.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(SwapPokemonPacketUp::new)
+                .encoder(SwapPokemonPacketUp::toBytes)
+                .consumerMainThread(SwapPokemonPacketUp::handleSwapPokemon).add();
+
+        network.messageBuilder(SwapPokemonPacketDown.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(SwapPokemonPacketDown::new)
+                .encoder(SwapPokemonPacketDown::toBytes)
+                .consumerMainThread(SwapPokemonPacketDown::handleSwapPokemon).add();
     }
 
     public static <MSG> void  setPacketToServer(MSG packet){
