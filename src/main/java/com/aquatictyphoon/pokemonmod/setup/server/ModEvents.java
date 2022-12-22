@@ -2,6 +2,7 @@ package com.aquatictyphoon.pokemonmod.setup.server;
 
 import com.aquatictyphoon.pokemonmod.PokemonMod;
 import com.aquatictyphoon.pokemonmod.setup.client.KeyBinds;
+import com.aquatictyphoon.pokemonmod.setup.client.ui.PartyHud;
 import com.aquatictyphoon.pokemonmod.setup.commands.PokeSummonCommand;
 import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyPokeballProvider;
 import com.aquatictyphoon.pokemonmod.setup.pokeballs.PartyStorage;
@@ -13,6 +14,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -86,5 +88,11 @@ public class ModEvents {
             event.register(KeyBinds.SWAP_SLOT_UP_KEY);
             event.register(KeyBinds.SWAP_SLOT_DOWN_KEY);
         }
+
+        @SubscribeEvent
+        public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
+            event.registerAboveAll("party", PartyHud.HUD_PARTY);
+        }
+
     }
 }
